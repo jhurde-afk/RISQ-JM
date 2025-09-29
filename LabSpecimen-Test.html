@@ -256,15 +256,17 @@
                     </div>
                 </div>
                 
-                <div class="form-row additional-services-row">
-                    <div style="display: flex; flex-direction: column; min-width: 180px; margin-top: 3%;">
+                <div class="form-row additional-services-row" style="margin-top:4%;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 40px;">
+                    <div style="display:flex; flex-direction:column;">
                         <label for="services" style="font-size: 13px;">Select Additional Services</label>
-                        <div class="dashed-underline" style="width: 160px; margin-top: -1%;"></div>
+                        <div class="dashed-underline" style="width: 160px; margin-top: 0;"></div>
                     </div>
-                    <div style="display: flex; flex-direction: column; justify-content: flex-start;">
-                        <div id="selectedServices" class="selected-services">Not Specified</div>
-                        <a href="#" onclick="openPopup('servicesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                    <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
+                        <div id="selectedServices" class="selected-services" style="margin-left:15%; width: 100%;">Not Specified</div>
+                        <a href="#" onclick="openPopup('servicesPopup')">Add/Edit</a>
                     </div>
+                  </div>
                 </div>
                 
                 <div class="form-section-row" style="display: flex; margin-top: 4%;">
