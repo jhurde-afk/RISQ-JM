@@ -567,10 +567,28 @@
                       <span>Huddle Participants</span>            
                     </div>
                     <div class="options services-grid">
-                        <label><input type="checkbox" class="notified-checkbox" value="Nurse"> Nurse</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Administrator"> Administrator</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="APP (NP/PA)"> APP (NP/PA)</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Care Coordinator"> Care Coordinator</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Clinical Nurse Specialist"> Clinical Nurse Specialist</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Environmental Services"> Environmental Services</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Family Member"> Family Member</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="NPDS"> NPDS</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Nurse Leader"> Nurse Leader</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Nursing Assistant"> Nursing Assistant</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Nursing Supervisor"> Nursing Supervisor</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Patient"> Patient</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Patient Care Tech"> Patient Care Tech</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Patient Support Services"> Patient Support Services</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Phlebotomist"> Phlebotomist</label>
                         <label><input type="checkbox" class="notified-checkbox" value="Physician"> Physician</label>
-                        <label><input type="checkbox" class="notified-checkbox" value="Therapist"> Therapist</label>
-                        <label><input type="checkbox" class="notified-checkbox" value="Other"> Other</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="PT/OT"> PT/OT</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Radiology Tech"> Radiology Tech</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Respiratory Therapist"> Respiratory Therapist</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="RN"> RN</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Security"> Security</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Unit Assistant"> Unit Assistant</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Radiology assistant"> Radiology assistant</label>
                     </div>
                     <div class="popup-actions">
                         <button class="action-cancel" onclick="closePopup('huddleParticipantsPopup')">Cancel</button>
@@ -1603,7 +1621,11 @@ function confirmSelection(popupId, selectedId) {
   });
 
   const out = document.getElementById(selectedId);
-  if (out) out.innerText = items.length ? items.join(', ') : 'Not Specified';
+  // after you collect `items` …
+  out.innerText = items.length ? items.join('\n') : 'Not Specified';
+  // make sure newlines show as line breaks
+  out.style.whiteSpace = 'pre-line';
+
 
   closePopup(popupId); // <- will now always run
 }
