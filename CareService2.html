@@ -1032,22 +1032,37 @@ function toggleContent(contentId, arrowBoxId) {
     }
 
     // Function to confirm selection and update the display
-function confirmSelection(popupId, selectedId) {
+  function confirmSelection(popupId, selectedId) {
   const popup = document.getElementById(popupId);
-  const chosen = Array.from(
-    popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked')
-  ).map(input => {
-    // get the visible text next to the input
-    const labelEl =
-      input.closest('label') ||
-      popup.querySelector(`label[for="${input.id}"]`) ||
-      input.parentElement;
-    const text = (labelEl?.innerText || input.value || '').trim();
-    return text;
-  }).join('\n');
+  if (!popup) return;
 
-  document.getElementById(selectedId).innerText = chosen || 'Not Specified';
-  closePopup(popupId);
+  // collect checked boxes/radios
+  const checked = popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+
+  const items = Array.from(checked).map((inp) => {
+    // Prefer the wrapping label’s text
+    const lbl = inp.closest('label');
+    if (lbl) {
+      // Only the text nodes (skip the input element)
+      const text = Array.from(lbl.childNodes)
+        .filter(n => n.nodeType === Node.TEXT_NODE)
+        .map(n => n.textContent)
+        .join(' ')
+        .trim();
+      return text || inp.value;
+    }
+    // Fallback if structure changes
+    return inp.value;
+  });
+
+  const out = document.getElementById(selectedId);
+  // after you collect `items` …
+  out.innerText = items.length ? items.join('\n') : 'Not Specified';
+  // make sure newlines show as line breaks
+  out.style.whiteSpace = 'pre-line';
+
+
+  closePopup(popupId); // <- will now always run
 }
 
 
