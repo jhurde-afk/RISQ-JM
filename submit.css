@@ -1,0 +1,94 @@
+html, body {
+    height: 100%;
+    min-width: 1000px; /* Set a minimum width to prevent content from shrinking too much */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #222222;
+    background: white;
+}
+.topnav, .secondnav {
+    width: 100%;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+    background-color: #272626;
+}
+
+.topnav {
+    top: 0;
+    overflow: hidden;
+    background-color: #000000;
+    height: 60px;
+    color: white;
+    text-align: left;
+    padding: 5px 16px;
+}
+.secondnav {
+    overflow: hidden;
+    background-color: white; /* Dark grey color */
+    text-align: left;
+    padding: 8px 16px;
+    z-index: 1; /* Ensure the secondnav is above the sidenav */
+    margin-left: 70px; /* Add margin to the left to avoid overlapping with sidenav */
+    font-weight: bold;
+    font-size: 22px;
+    top: 60px; /* height of topnav */
+    margin-top: 0.5%;
+}
+.sidenav {
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    padding-top: 60px;
+    z-index: 10;
+}
+.sidenav a {
+    padding: 8px 8px 8px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+.sidenav a:hover {
+    background-color: #575757;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  z-index: 9999; /* above the nav bars */
+}
+.card {
+  background: #fff;
+  color: #111;
+  max-width: 520px;
+  padding: 24px 28px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  text-align: center;
+}
+.card h2 { margin: 0 0 8px; font-size: 20px; }
+.card p  { margin: 6px 0; font-size: 16px; }
+.actions { margin-top: 14px; display: flex; gap: 10px; justify-content: center; }
+.btn {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #0d6efd;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+.btn.secondary { background: #e9ecef; color: #111; }
+
+
+

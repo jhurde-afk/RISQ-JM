@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Navigation Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+
+<div class="topnav">
+    RLDatix
+</div>
+
+<div class="secondnav" style="font-weight: bold;">
+    Radiation Treatment Submission Form
+</div>
+
+<div class="sidenav">
+    <!-- Sidebar content -->
+</div>
+
+<div class="main">
+    <div class="left-container">
+        <div class="content-title">Table of Contents</div>
+        <div class="content-section">General Event Information</div>
+        <div class="content-section">Event Information</div>
+        <div class="content-section">Details of the Event</div>
+        <div class="content-section">Attachments and Notes</div>
+
+        <div class="progress-title">File Status</div>
+        <div class="content-section">0 out of 32 total files completed.</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="fileProgressBar"></div>
+        </div>
+
+        <div class="progress-title">Mandatory Fields Status</div>
+        <div class="content-section">0 out of 23 mandatory fields completed.</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="mandatoryProgressBar"></div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <img src="RISQForm.png" alt="Form Image">
+        <div style="margin-right: 5%; margin-top: 5%; text-align: right; font-weight: bold;">
+            For help, call 646-888-5630 or e-mail RISQ@mskcc.org
+        </div>
+        <div style="margin-right: 5%; text-align: right; font-weight: bold; color: red;">
+            Fields labeled with an asterisk(*) are required.
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">General Event Information</span>
+            <div class="arrow-box" id="arrowBox1" onclick="toggleContent('collapsibleContent', 'arrowBox1')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="patientInvolved" style="margin-top: 20px; font-size: 13px;">Patient/Person Involved</label>
+                        <div class="dashed-underline"></div>
+                        <select id="patientInvolved" name="patientInvolved">
+                            <option value=""> </option>
+                            <option value="patient1">AXR</option>
+                            <option value="patient2">CDU-Observation</option>
+                            <option value="patient3">Observation</option>
+                            <option value="patient4">Inpatient</option>
+                            <option value="patient5">Outpatient</option>
+                            <option value="patient6">Not Applicable</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="mrn" style="margin-top: 20px; font-size: 13px; white-space: nowrap;">MRN (Lookup # with magnifying glass)</label>
+                        <div class="dashed-underline" style="width: 240px;"></div>
+                        <input type="text" id="mrn" name="mrn" style="width: 100%;">
+                    </div>
+                    <div>
+                        <label for="patientService" style="margin-top: 20px; font-size: 13px;">Patient Service</label>
+                        <div class="dashed-underline" style="width: 100px;"></div>
+                        <select id="patientService" name="patientService">
+                            <option value=""> </option>
+                            <option value="service1">Anesthesiology</option>
+                            <option value="service2">Behavioral Sciences</option>
+                            <option value="service3">Bone Marrow Transplant</option>
+                            <option value="service4">Breast Medicine Service</option>
+                            <option value="service5">Breast Surgery</option>
+                            <option value="service6">Cardiology</option>
+                            <option value="service7">Cell Therapy Service (CTS)</option>
+                            <option value="service8">Clinical Genetics</option>
+                            <option value="service9">Colorectal Surgery</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="lastName" style=" font-size: 13px;">Last Name</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="text" id="lastName" name="lastName">
+                    </div>
+                    <div>
+                        <label for="firstName" style="font-size: 13px;">First Name</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="text" id="firstName" name="firstName">
+                    </div>
+                    <div>
+                        <label for="dob" style="font-size: 13px;">DOB</label>
+                        <div class="dashed-underline"style="width: 40px;"></div>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+                    <div>
+                        <label for="age" style="font-size: 13px;">Age</label>
+                        <div class="dashed-underline" style="width: 40px;"></div>
+                        <input type="number" id="age" name="age">
+                    </div>
+                </div>
+                <div>
+                    <label for="gender" style="font-size: 13px;">Gender</label>
+                    <div class="dashed-underline" style="width: 45px;"></div>
+                    <select id="gender" name="gender" style="width: 20%;">
+                        <option value=""> </option>
+                        <option value="patient1">Female</option>
+                        <option value="patient2">Male</option>
+                    </select>
+                </div>
+                <!-- Additional form content goes here -->
+            </form>
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: 17px; font-weight: bold;">Event Information - Confidential and Privileged File To be Used For QA Purposes Only</span>
+            <div class="arrow-box" id="arrowBox2" onclick="toggleContent('collapsibleContentConfidential', 'arrowBox2')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContentConfidential">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="eventDate" style="margin-top: 24px; font-size: 13px;">Event Date</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="date" id="eventdate" name="eventdate">
+                    </div>
+                    <div>
+                        <label for="time" style="margin-top: 24px; font-size: 13px;">Time (Military)</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="text" id="time" name="time">
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Specific Event Type</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="type1">Network failure or problem</option>
+                            <option value="type2">Bar code error/misleading</option>
+                            <option value="type3">Brachytherapy equipment</option>
+                            <option value="type4">Brachytherapy event - other</option>
+                            <option value="type5">Brachytherapy event - Radio. Material COntrolr</option>
+                            <option value="type6">Contouring/Segmenting issue</option>
+                            <option value="type7">Deterioration in clinical condition</option>
+                            <option value="type8">Disruption in care</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="severityLevel" style="margin-top: 20px; font-size: 13px;">Severity Level</label>
+                        <div class="dashed-underline"></div>
+                        <select id="severityLevel" name="severityLevel">
+                            <option value=""> </option>
+                            <option value="level0">Level 0-Near Miss</option>
+                            <option value="level1">Level 1-No Harm</option>
+                            <option value="level2">Level 2-Temp Harm</option>
+                            <option value="level3">Level 3-Permanent Harm</option>
+                            <option value="level4">Level 4-Death</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="site" style="margin-top: 20px; font-size: 13px;">Site</label>
+                        <div class="dashed-underline"></div>
+                        <select id="site" name="site">
+                            <option value=""> </option>
+                            <option value="site1">1275 York Ave</option>
+                            <option value="site2">515 Madison</option>
+                            <option value="site3">53rd Street</option>
+                            <option value="site4">55th Street</option>
+                            <option value="site5">61st Street</option>
+                            <option value="site6">633 3rd AVe</option>
+                            <option value="site7">64th Street</option>
+                            <option value="site8">70th Street</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="container mt-5">
+                            <div class="dropdown">
+                                <label for="loc1" style="margin-top: 10px; font-size: 13px;">Location & Area/Unit</label>
+                                <div class="dashed-underline" style="width: 130px;"></div>
+                                <!-- Use the custom button class here -->
+                                <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Location
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Ambulatory/Clinic</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Ambulatory/Clinic', 'STGI')">STGI</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Ambulatory/Clinic', '11th floor infusion unit')">11th floor infusion unit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Ambulatory/Clinic', '12th floor Bone Marrow Procedure')">12th floor Bone Marrow Procedure</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Ambulatory/Clinic', '12th floor infusion unit')">12th floor infusion unit</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Ambulatory/Clinic', '14th floor Bone Marrow Procedure')">14th floor Bone Marrow Procedure</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Ambulatory/Clinic', '15th floor infusion unit')">15th floor infusion unit</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Cardiopulmonary Testing</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Cardiopulmonary Testing', 'Cardiopulmonary Testing')">Cardiopulmonary Testing</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">CPD</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'CPD', 'CPD')">CPD</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">East River Imaging - Westchester</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'East River Imaging - Westchester', 'Outpatient')">Outpatient</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Flatbush Brooklyn-MMC</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Flatbush Brooklyn-MMC', 'Clinic')">Clinic</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Flatbush Brooklyn-MMC', 'Other')">Other</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Hackensack (HUMC)</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Hackensack (HUMC)', 'ER')">Clinic</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Hackensack (HUMC)', 'Inpatient')">Inpatient</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Hackensack (HUMC)', 'Other')">Other</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Perioperative</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'Anesthesia - Pain')">Anesthesia - Pain</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'Anesthesiology')">Anesthesiology</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'Brachytherapy - OR')">Brachytherapy - OR</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'CPD')">CPD</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'Endoscopy Suite')">Endoscopy Suite</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'K5 Endo Suite')">K5 Endo Suite</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'K5 PACU')">K5 PACU</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'K5 PSC')">K5 PSC</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton1', 'Perioperative', 'Main OR')">Main OR</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container mt-5">
+                            <div class="dropdown">
+                                <label for="loc2" style="margin-top: 10px; font-size: 13px;">Where in the process did event occur?</label>
+                                <div class="dashed-underline" style="width: 130px;"></div>
+                                <!-- Use the custom button class here -->
+                                <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Data Entry</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Data Entry', 'energy')">energy</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Data Entry', 'field parameters')">field parameters</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Data Entry', 'field scheduling')">field scheduling</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Data Entry', 'MLC/DMLC')">MLC/DMLC</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Data Entry', 'MU setings')">MU setings</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Data Entry', 'not otherwise specified')">not otherwise specified</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">MD</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'MD', 'not otherwise specified')">not otherwise specified</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'MD', 'prescription')">prescription</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'MD', 'previous treatment review')">previous treatment review</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'MD', 'Not available for SImulation or Treatment')">Not available for SImulation or Treatment</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'MD', 'SIM Order')">SIM Order</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Planning</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Planning', 'calc parameters')">Calc parameters</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Planning', 'contouring')">Contouring</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Planning', 'inverse square')">inverse square</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Planning', 'isocenter location')">isocenter location</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Planning', 'MLC/DMLC device')">MLC/DMLC device</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Planning', 'non-MLC device')">non-MLC device</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Sim</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'SIM', 'Documentation')">Documentation</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'SIM', 'marking')">marking</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'SIM', 'measurement')">measurement</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'SIM', 'not otherwise specified')">not otherwise specified</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Treatment</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Treatment', 'field sequencing')">field sequencing</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Treatment', 'MLC/DMLC during treatment delivery')">MLC/DMLC during treatment delivery</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Treatment', 'not otherwise specified')">not otherwise specified</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('dropdownMenuButton2', 'Treatment', 'omitted')">omitted</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Where was event discovered?</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="no">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="services" style="font-size: 13px; margin-right: 10px;">Select Additional Services</label>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedServices" class="selected-services">Not Specified</div>
+                            <a href="#" onclick="openPopup('servicesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                    <div class="dashed-underline" style="width: 150px;"></div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">EHR/System Related</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Equipment Malfunction</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="no">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Outside Vendor Involved?</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="no">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row" style="width: 20%;">
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">IRB Protocol?</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Add form content for the confidential section here -->
+                <div class="popup" id="servicesPopup">
+                    <div class="options">
+                        <button class="collapsible">1275</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Admitting"> Admitting</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Anesthesiology"> Anesthesiology</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cardiology Tests"> Cardiology Tests</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Case Management"> Case Management</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo Admission Unit"> Chemo Admission Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo BMT"> Chemo BMT</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo/Verification Inpatient"> Chemo/Verification Inpatient</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Clinical Decidsion Unit"> Clinical Decidsion Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - CPD"> CPD</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cyclotro"> Cyclotron</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Donor Room"> Donor Room</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Endoscopy Suite"> Endoscopy Suite</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Food and Nutrition"> Food and Nutrition</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - ICU"> ICU</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - IV Team"> IV Team</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Blood Bank"> Labs - Blood Bank</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Cell Therapy"> Labs - Cell Therapy</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Chemistry"> Labs - Chemistry</label>
+                        </div>
+                        <button class="collapsible">53rd Street OP</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 4th Floor chemo unit">4th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 5th Floor chemo unit">5th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 6th Floor chemo unit">6th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 7th Floor chemo unit">7th Floor chemo unit</label>
+                        </div>
+                        <button class="collapsible">72nd Street</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Cyclotron"> Cyclotron</label>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('servicesPopup', 'selectedServices')">OK</button>
+                        <button onclick="closePopup('servicesPopup')">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">Details of the Event</span>
+            <div class="arrow-box" id="arrowBox3" onclick="toggleContent('collapsibleContent3', 'arrowBox3')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent3">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="eventDescription" style="margin-top: 30px; font-size: 13px; white-space: nowrap;">
+                            Event description (Use titles instead of names, i.e. nurses, physician, etc.)
+                        </label>
+                        <div class="dashed-underline" style="width: 240px;"></div>
+                        <textarea id="eventDescription" name="eventDescription" style="width: 100%; height: 150px;"></textarea>
+                    </div>
+                </div>                  
+                <div class="form-row contributing-factors-row" style="margin-top: 1%;">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="contributingFactors" style="font-size: 13px; margin-right: 8%;">Contributing Factors</label>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedContributingFactors" class="selected-services" style="margin-top: 5%;">Not Specified</div>
+                            <a href="#" onclick="openPopup('contributingFactorsPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashed-underline" style="width: 140px; margin-top: -3%;"></div>         
+                <div class="popup" id="contributingFactorsPopup">
+                    <div class="options">
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 1"> Factor 1</label>
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 2"> Factor 2</label>
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 3"> Factor 3</label>
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 4"> Factor 4</label>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('contributingFactorsPopup', 'selectedContributingFactors')">OK</button>
+                        <button onclick="closePopup('contributingFactorsPopup')">Cancel</button>
+                    </div>
+                </div>
+                <div class="form-row steps-contributed-row" style="margin-top: 1%;">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="steps-contributed" style="font-size: 13px; margin-right: 8%;">What other process steps contributed?</label>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedStepsContributed" class="selected-steps" style="margin-top: 5%; font-size: 13px;">Not Specified</div>
+                            <a href="#" onclick="openPopup('stepsContributedPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;"># of Staff Present?</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">1</option>
+                            <option value="no">2</option>
+                            <option value="no">>2</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Brachy Treatment Technique</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">1</option>
+                            <option value="no">2</option>
+                            <option value="no">>2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dashed-underline" style="width: 130px; margin-top: -2.5%;"></div>
+                <div class="popup" id="stepsContributedPopup">
+                    <div class="options">
+                        <button class="collapsible">1275</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Admitting"> Admitting</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Anesthesiology"> Anesthesiology</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cardiology Tests"> Cardiology Tests</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Case Management"> Case Management</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo Admission Unit"> Chemo Admission Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo BMT"> Chemo BMT</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo/Verification Inpatient"> Chemo/Verification Inpatient</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Clinical Decidsion Unit"> Clinical Decidsion Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - CPD"> CPD</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cyclotro"> Cyclotron</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Donor Room"> Donor Room</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Endoscopy Suite"> Endoscopy Suite</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Food and Nutrition"> Food and Nutrition</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - ICU"> ICU</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - IV Team"> IV Team</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Blood Bank"> Labs - Blood Bank</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Cell Therapy"> Labs - Cell Therapy</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Chemistry"> Labs - Chemistry</label>
+                        </div>
+                        <button class="collapsible">53rd Street OP</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 4th Floor chemo unit">4th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 5th Floor chemo unit">5th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 6th Floor chemo unit">6th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 7th Floor chemo unit">7th Floor chemo unit</label>
+                        </div>
+                        <button class="collapsible">72nd Street</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Cyclotron"> Cyclotron</label>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('stepsContributedPopup', 'selectedStepsContributed')">OK</button>
+                        <button onclick="closePopup('stepsContributedPopup')">Cancel</button>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="time" style="margin-top: 24px; font-size: 13px;"># of Fraction for Entire Course</label>
+                        <div class="dashed-underline"></div>
+                        <input type="text" id="time" name="">
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">EBRT Treatment Technique</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="type1">Declined To Answer</option>
+                            <option value="type2">English</option>
+                            <option value="type3">Spanish</option>
+                            <option value="type4">French</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="time" style="margin-top: 24px; font-size: 13px;">Prescription Dose for Entire Course</label>
+                        <div class="dashed-underline"></div>
+                        <input type="text" id="time" name="">
+                    </div>
+                </div>  
+                <div class="form-row">
+                    <div>
+                        <label for="eventType" style="margin-top: 16px; font-size: 13px;">Treatment Modality</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 16px; font-size: 13px;">Treatment Machine</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="no">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 16px; font-size: 13px;">Treatment Planning Technique</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="no">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="eventType" style="margin-top: 16px; font-size: 13px;">Treatment Site</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="injuryIncurred" style="margin-top: 20px; font-size: 13px;">Injury Incurred?</label>
+                        <div class="dashed-underline"></div>
+                        <select id="injuryIncurred" name="injuryIncurred" onchange="toggleInjuryDetails(this.value)">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="line" id="injuryDetailsLine" style="display: none;">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">Injury Details</span>
+            <div class="arrow-box" id="arrowBox4" onclick="toggleContent('injuryDetailsContent', 'arrowBox4')">&#9660;</div>
+        </div>
+        <div class="content" id="injuryDetailsContent" style="display: none;">
+            <form>
+                <div class="injury-details-form-row">
+                    <div style="display: flex; align-items: center; width: 100%; margin-top: 4%;">
+                        <label for="tests" style="font-size: 13px; margin-right: 10px;">Diagnostic Test(s) Ordered</label>
+                        <!-- <div class="dashed-underline"style="width: 40px; margin-top: 6%;"></div> -->
+                        <div style="flex-grow: 1;">
+                            <div id="selectedtests" class="selected-tests" style="font-size: 13px;">Not Specified</div>
+                            <a href="#" onclick="openPopup('servicesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="injury-details-form-row" style="display: flex; align-items: center;">
+                    <label for="comments" style="font-size: 13px; margin-right: 10px;">Comments/Exact Amount (%)</label>
+                    <input type="text" id="comments" name="comments" style="flex-grow: 1;">
+                </div>
+                <div class="injury-details-form-row" style="display: flex; align-items: center;">
+                    <label for="eventType" style="font-size: 13px; margin-right: 10px;">% Error per Fraction</label>
+                    <select id="eventType" name="eventType" style="flex-grow: 1;">
+                        <option value=""> </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="unsure">Unknown/UnSure</option>
+                    </select>
+                </div>
+                <div class="injury-details-form-row" style="display: flex; align-items: center;">
+                    <label for="fractionsAffected" style="font-size: 13px; margin-right: 10px;"># Fractions Affected</label>
+                    <input type="text" id="fractionsAffected" name="fractionsAffected" style="flex-grow: 1;">
+                </div>
+                <div class="injury-details-form-row" style="display: flex; align-items: center;">
+                    <label for="eventType" style="font-size: 13px; margin-right: 10px;">% Error Over Course</label>
+                    <select id="eventType" name="eventType" style="flex-grow: 1;">
+                        <option value=""> </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="unsure">Unknown/UnSure</option>
+                    </select>
+                </div>
+                <div class="injury-details-form-row" style="display: flex; align-items: center;">
+                    <label for="eventType" style="font-size: 13px; margin-right: 10px;">Dose to critical normal tissue <br> affected</label>
+                    <select id="eventType" name="eventType" style="flex-grow: 1;">
+                        <option value=""> </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="unsure">Unknown/UnSure</option>
+                    </select>
+                </div>
+                <div class="injury-details-form-row" style="display: flex; align-items: center;">
+                    <label for="eventType" style="font-size: 13px; margin-right: 10px;">Volume of target affected at <br> dose level listed above</label>
+                    <select id="eventType" name="eventType" style="flex-grow: 1;">
+                        <option value=""> </option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="unsure">Unknown/UnSure</option>
+                    </select>
+                </div>
+                <div class="injury-details-form" style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <label for="imageTaken" style="font-size: 13px; margin-right: 10px; width: 200px;">Image Taken?</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="radio" id="imageTakenYes" name="imageTaken" value="yes" onclick="toggleImageDetails(this.value)">
+                        <label for="imageTakenYes" style="margin-right: 10px; font-size: 13px;">Yes</label>
+                        <input type="radio" id="imageTakenNo" name="imageTaken" value="no" onclick="toggleImageDetails(this.value)">
+                        <label for="imageTakenNo" style="margin-right: 10px; font-size: 13px;">No</label>
+                        <input type="radio" id="imageTakenUnknown" name="imageTaken" value="unknown" onclick="toggleImageDetails(this.value)">
+                        <label for="imageTakenUnknown" style="margin-right: 10px; font-size: 13px;">Unknown</label>
+                    </div>
+                    <div id="imageDateContainer" style="display: none; align-items: center;">
+                        <label for="eventdate" id="eventdateLabel" style="font-size: 13px; margin-right: 10px;">Image Date</label>
+                        <input type="date" id="eventdate" name="eventdate" style="width: 150px; font-size: 13px;">
+                    </div>
+                </div> 
+                <div class="injury-details-form" id="imageDetailsRow" style="display: none; flex-direction: column;">
+                    <div style="display: flex; align-items: center;">
+                        <label for="imageResult" style="font-size: 13px; margin-right: 10px; width: 200px;">Image Result</label>
+                        <input type="radio" id="imageResultYes" name="imageResult" value="yes">
+                        <label for="imageResultYes" style="margin-right: 10px; font-size: 13px;">Yes</label>
+                        <input type="radio" id="imageResultNo" name="imageResult" value="no">
+                        <label for="imageResultNo" style="margin-right: 10px; font-size: 13px;">No</label>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-top: 10px;">
+                        <label for="imageSite" style="font-size: 13px; margin-right: 10px; width: 200px;">Image Site</label>
+                        <input type="text" id="imageSite" name="imageSite" style="flex-grow: 1;">
+                    </div>
+                </div>              
+            </form>
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">Attachments and Notes</span>
+            <div class="arrow-box" id="arrowBox4" onclick="toggleContent('collapsibleContent4', 'arrowBox4')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent4">
+            <!-- Collapsible content goes here -->
+            <form>
+                <!-- Add/Edit link for Attachments -->
+                <!-- Attachments label -->
+                <div class="form-row attachments-row">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="attachments" style="font-size: 13px; margin-right: 10px; margin-top: 5%;">Attachments</label>
+                    </div>
+                </div>
+
+                <!-- Add link in a new form row -->
+                <div class="form-row add-attachments-row">
+                    <div style="width: 100%; margin-top: 5px;">
+                        <a href="#" onclick="openPopup('attachmentsPopup')" style="display: block;">Add</a>
+                    </div>
+                </div>
+
+               <!-- Popup for Attachments -->
+                <div class="popup" id="attachmentsPopup">
+                    <div class="popup-header">
+                        <span>Add Attachment</span>
+                    </div>
+                    <div class="drop-area" id="dropArea">
+                        <p>Drop files here</p>
+                        <input type="file" id="fileInput" style="display: none;" multiple>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmAttachment()">OK</button>
+                        <button onclick="closePopup('attachmentsPopup')">Cancel</button>
+                    </div>
+                </div>
+                
+                <!-- Additional form content goes here -->
+            </form>
+    </div>
+</div>
+
+<!-- Bottom bar -->
+<!-- Bottom bar -->
+<div class="bottom-nav">
+    <button class="btn btn-delete" onclick="deleteAction()">Delete</button>
+    <button class="btn btn-exit" onclick="exitAction()">Exit</button>
+    <div class="dropup">
+        <button class="btn btn-more-actions dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+            More Actions
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+            <li><a class="dropdown-item" href="#">Option 3</a></li>
+        </ul>
+    </div>
+    <button class="btn btn-submit" onclick="submitAction()">Submit</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+
+    function toggleContent(contentId, arrowBoxId) {
+        var content = document.getElementById(contentId);
+        var arrowBox = document.getElementById(arrowBoxId);
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            arrowBox.innerHTML = "&#9660;"; // Down arrow
+        } else {
+            content.style.display = "block";
+            arrowBox.innerHTML = "&#9650;"; // Up arrow
+        }
+    }
+
+
+    // Example JavaScript to update the progress bars
+    function updateProgressBar(id, percentage) {
+        const progressBar = document.getElementById(id);
+        progressBar.style.width = percentage + '%';
+    }
+
+    // Update the progress bars (example values)
+    updateProgressBar('fileProgressBar', 0); // 50% completed
+    updateProgressBar('mandatoryProgressBar', 0); // 50% completed
+
+    document.addEventListener("DOMContentLoaded", function () {
+    function selectItem(buttonId, category, item) {
+        console.log(`Button ID: ${buttonId}, Category: ${category}, Item: ${item}`); // Debugging
+        const dropdownButton = document.getElementById(buttonId);
+        if (dropdownButton) {
+            dropdownButton.textContent = `${category} - ${item}`;
+        } else {
+            console.error(`Element with ID ${buttonId} not found`);
+        }
+    }
+
+    // Attach click event listeners dynamically
+    document.querySelectorAll(".dropdown-item").forEach(item => {
+        item.addEventListener("click", function () {
+            const buttonId = this.getAttribute("onclick").match(/'([^']+)'/g)[0].replace(/'/g, "");
+            const category = this.getAttribute("onclick").match(/'([^']+)'/g)[1].replace(/'/g, "");
+            const itemName = this.getAttribute("onclick").match(/'([^']+)'/g)[2].replace(/'/g, "");
+            selectItem(buttonId, category, itemName);
+        });
+    });});
+
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("#dropdownMenuButton3 + .dropdown-menu .dropdown-item").forEach(item => {
+        item.addEventListener("click", function (event) {
+            event.preventDefault();
+            document.getElementById("dropdownMenuButton3").textContent = this.textContent;
+        });
+    });});
+
+
+
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "flex") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "flex";
+            }
+        });
+    }
+
+    // Function to open a popup
+    function openPopup(popupId) {
+        document.getElementById(popupId).style.display = 'block';
+    }
+
+    // Function to close a popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
+    
+    // Function to confirm selection and update the display
+    function confirmSelection(popupId, selectedId) {
+        const popup = document.getElementById(popupId);
+        const selectedOptions = Array.from(popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked'))
+            .map(input => input.value)
+            .join('\n');
+
+        document.getElementById(selectedId).innerText = selectedOptions || 'Not Specified';
+        closePopup(popupId);
+    }
+
+    // Prevent form submission and page reload
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        });
+    });
+
+    // Function to confirm attachment selection
+    function confirmAttachment() {
+        var fileInput = document.getElementById('fileInput');
+        var files = fileInput.files;
+        if (files.length > 0) {
+            alert('Files selected: ' + files.length);
+        } else {
+            alert('No files selected');
+        }
+        closePopup('attachmentsPopup');
+    }
+
+    // Add event listeners for drag and drop functionality
+    var dropArea = document.getElementById('dropArea');
+    dropArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#000';
+    });
+    dropArea.addEventListener('dragleave', function() {
+        dropArea.style.borderColor = '#ccc';
+    });
+    dropArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#ccc';
+        var files = e.dataTransfer.files;
+        document.getElementById('fileInput').files = files;
+    });
+
+    // Add event listener to open file dialog when drop area is clicked
+    dropArea.addEventListener('click', function() {
+        document.getElementById('fileInput').click();
+    });
+
+    // Function to handle delete action
+    function deleteAction() {
+        alert('Delete action triggered');
+    }
+
+    // Function to handle exit action
+    function exitAction() {
+        alert('Exit action triggered');
+    }
+
+    // Function to handle submit action
+    function submitAction() {
+        alert('Submit action triggered');
+    }
+
+    // Function to toggle the visibility of sections based on the post huddle selection
+    function togglePostHuddleSections(value) {
+        const postHuddleSections = document.getElementById('postHuddleSections');
+        const postHuddleParticipants = document.getElementById('postHuddleParticipants');
+        const recentClinicalChanges = document.getElementById('recentClinicalChanges');
+        const additionalSections = document.getElementById('additionalSections');
+        const additionalSections2 = document.getElementById('additionalSections2');
+        
+        if (value === 'yes') {
+            postHuddleSections.style.display = 'flex';
+            postHuddleParticipants.style.display = 'block';
+            recentClinicalChanges.style.display = 'block';
+            additionalSections.style.display = 'block';
+            additionalSections2.style.display = 'block';
+        } else {
+            postHuddleSections.style.display = 'none';
+            postHuddleParticipants.style.display = 'none';
+            recentClinicalChanges.style.display = 'none';
+            additionalSections.style.display = 'none';
+            additionalSections2.style.display = 'none';
+        }
+    }
+
+    // Prevent form submission and page reload
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        });
+    });
+
+    // Function to toggle the visibility of the injury details section
+    function toggleInjuryDetails(value) {
+        const injuryDetailsLine = document.getElementById('injuryDetailsLine');
+        const injuryDetailsContent = document.getElementById('injuryDetailsContent');
+        if (value === 'yes') {
+            injuryDetailsLine.style.display = 'block';
+            injuryDetailsContent.style.display = 'block';
+        } else {
+            injuryDetailsLine.style.display = 'none';
+            injuryDetailsContent.style.display = 'none';
+        }
+    }
+
+    // Function to toggle the visibility of collapsible content
+    function toggleContent(contentId, arrowBoxId) {
+        const content = document.getElementById(contentId);
+        const arrowBox = document.getElementById(arrowBoxId);
+        if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'block';
+            arrowBox.innerHTML = '&#9650;'; // Up arrow
+        } else {
+            content.style.display = 'none';
+            arrowBox.innerHTML = '&#9660;'; // Down arrow
+        }
+    }
+
+    function toggleImageDetails(value) {
+    console.log("toggleImageDetails called with value:", value); // Debugging line
+    const imageDateContainer = document.getElementById('imageDateContainer');
+    const imageDetailsRow = document.getElementById('imageDetailsRow');
+    if (value === 'yes') {
+        imageDateContainer.style.display = 'flex';
+        imageDetailsRow.style.display = 'flex';
+    } else {
+        imageDateContainer.style.display = 'none';
+        imageDetailsRow.style.display = 'none';
+    }}
+
+    function selectItem(category, item) {
+    const dropdownButton = document.getElementById('dropdownMenuButton');
+    dropdownButton.textContent = `${category} - ${item}`;}
+</script>
+
+
+</body>
+</html>
+
+    

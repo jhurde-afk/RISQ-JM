@@ -1,0 +1,2002 @@
+﻿Site,Location,Area,Patient/Person Involved
+1275 York Ave,Ambulatory/Clinic,A3 Clinic,Not Applicable
+1275 York Ave,Ambulatory/Clinic,A3 Clinic,Outpatient
+1275 York Ave,Ambulatory/Clinic,A3 Clinic,Visitor
+1275 York Ave,Ambulatory/Clinic,BMT,Not Applicable
+1275 York Ave,Ambulatory/Clinic,BMT,Outpatient
+1275 York Ave,Ambulatory/Clinic,BMT,Visitor
+1275 York Ave,Ambulatory/Clinic,Cardiology,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Cardiology,Outpatient
+1275 York Ave,Ambulatory/Clinic,Cardiology,Visitor
+1275 York Ave,Ambulatory/Clinic,CDU,Inpatient
+1275 York Ave,Ambulatory/Clinic,CDU,Not Applicable
+1275 York Ave,Ambulatory/Clinic,CDU,Outpatient
+1275 York Ave,Ambulatory/Clinic,CDU,Visitor
+1275 York Ave,Ambulatory/Clinic,CDU,CDU-Observation
+1275 York Ave,Ambulatory/Clinic,Chemo verification,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Chemo verification,Outpatient
+1275 York Ave,Ambulatory/Clinic,Chemo verification,Visitor
+1275 York Ave,Ambulatory/Clinic,Chemo verification - Pediatrics,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Chemo verification - Pediatrics,Outpatient
+1275 York Ave,Ambulatory/Clinic,Chemo verification - Pediatrics,Visitor
+1275 York Ave,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+1275 York Ave,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+1275 York Ave,Ambulatory/Clinic,Dental,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Dental,Outpatient
+1275 York Ave,Ambulatory/Clinic,Dental,Visitor
+1275 York Ave,Ambulatory/Clinic,Haupt 04,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Haupt 04,Observation
+1275 York Ave,Ambulatory/Clinic,Haupt 04,Outpatient
+1275 York Ave,Ambulatory/Clinic,Haupt 04,Visitor
+1275 York Ave,Ambulatory/Clinic,Hematology,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Hematology,Outpatient
+1275 York Ave,Ambulatory/Clinic,Hematology,Visitor
+1275 York Ave,Ambulatory/Clinic,Leukemia,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Leukemia,Outpatient
+1275 York Ave,Ambulatory/Clinic,Leukemia,Visitor
+1275 York Ave,Ambulatory/Clinic,Ophthalmology,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Ophthalmology,Outpatient
+1275 York Ave,Ambulatory/Clinic,Ophthalmology,Visitor
+1275 York Ave,Ambulatory/Clinic,Neurosurgery,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Neurosurgery,Outpatient
+1275 York Ave,Ambulatory/Clinic,Neurosurgery,Visitor
+1275 York Ave,Ambulatory/Clinic,PACC,Not Applicable
+1275 York Ave,Ambulatory/Clinic,PACC,Outpatient
+1275 York Ave,Ambulatory/Clinic,PACC,Visitor
+1275 York Ave,Ambulatory/Clinic,Pediatric UCC,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Pediatric UCC,Outpatient
+1275 York Ave,Ambulatory/Clinic,Pediatric UCC,Visitor
+1275 York Ave,Ambulatory/Clinic,Phlebotomy,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Phlebotomy,Outpatient
+1275 York Ave,Ambulatory/Clinic,Phlebotomy,Visitor
+1275 York Ave,Ambulatory/Clinic,Pulmonology,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Pulmonology,Outpatient
+1275 York Ave,Ambulatory/Clinic,Pulmonology,Visitor
+1275 York Ave,Ambulatory/Clinic,Rehabilitation Medicine,Inpatient
+1275 York Ave,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+1275 York Ave,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+1275 York Ave,Ambulatory/Clinic,Speech and Hearing,Not Applicable
+1275 York Ave,Ambulatory/Clinic,Speech and Hearing,Outpatient
+1275 York Ave,Ambulatory/Clinic,Speech and Hearing,Visitor
+1275 York Ave,Ambulatory/Clinic,UCC,Not Applicable
+1275 York Ave,Ambulatory/Clinic,UCC,Outpatient
+1275 York Ave,Ambulatory/Clinic,UCC,CDU-Observation
+1275 York Ave,Ambulatory/Clinic,UCC,Visitor
+1275 York Ave,Cardiopulmonary Testing,Cardiopulmonary Testing,Inpatient
+1275 York Ave,Cardiopulmonary Testing,Cardiopulmonary Testing,Not Applicable
+1275 York Ave,Cardiopulmonary Testing,Cardiopulmonary Testing,Outpatient
+1275 York Ave,Cardiopulmonary Testing,Cardiopulmonary Testing,Visitor
+1275 York Ave,Inpatient Unit,CDU,CDU-Observation
+1275 York Ave,Inpatient Unit,Chemo Admission Unit,Inpatient
+1275 York Ave,Inpatient Unit,Chemo Admission Unit,Not Applicable
+1275 York Ave,Inpatient Unit,Chemo Admission Unit,Visitor
+1275 York Ave,Inpatient Unit,Chemo verification,Inpatient
+1275 York Ave,Inpatient Unit,Chemo verification,Not Applicable
+1275 York Ave,Inpatient Unit,Chemo verification,Visitor
+1275 York Ave,Inpatient Unit,Chemo verification - Pediatrics,Inpatient
+1275 York Ave,Inpatient Unit,Chemo verification - Pediatrics,Not Applicable
+1275 York Ave,Inpatient Unit,Chemo verification - Pediatrics,Visitor
+1275 York Ave,Inpatient Unit,ICU,Inpatient
+1275 York Ave,Inpatient Unit,ICU,Not Applicable
+1275 York Ave,Inpatient Unit,ICU,Visitor
+1275 York Ave,Inpatient Unit,Haupt 04,Inpatient
+1275 York Ave,Inpatient Unit,Haupt 04,Observation
+1275 York Ave,Inpatient Unit,Haupt 04,Not Applicable
+1275 York Ave,Inpatient Unit,Haupt 04,Visitor
+1275 York Ave,Inpatient Unit,M 04,Inpatient
+1275 York Ave,Inpatient Unit,M 04,Not Applicable
+1275 York Ave,Inpatient Unit,M 04,Visitor
+1275 York Ave,Inpatient Unit,M 05,Inpatient
+1275 York Ave,Inpatient Unit,M 05,AXR
+1275 York Ave,Inpatient Unit,M 05,Not Applicable
+1275 York Ave,Inpatient Unit,M 05,Visitor
+1275 York Ave,Inpatient Unit,M 07,Inpatient
+1275 York Ave,Inpatient Unit,M 07,Not Applicable
+1275 York Ave,Inpatient Unit,M 07,Visitor
+1275 York Ave,Inpatient Unit,M 08,Inpatient
+1275 York Ave,Inpatient Unit,M 08,Not Applicable
+1275 York Ave,Inpatient Unit,M 08,Visitor
+1275 York Ave,Inpatient Unit,M 09,Inpatient
+1275 York Ave,Inpatient Unit,M 09,Not Applicable
+1275 York Ave,Inpatient Unit,M 09,Visitor
+1275 York Ave,Inpatient Unit,M 10,Inpatient
+1275 York Ave,Inpatient Unit,M 10,Not Applicable
+1275 York Ave,Inpatient Unit,M 10,Visitor
+1275 York Ave,Inpatient Unit,M 12,Inpatient
+1275 York Ave,Inpatient Unit,M 12,Not Applicable
+1275 York Ave,Inpatient Unit,M 12,Visitor
+1275 York Ave,Inpatient Unit,M 14,Inpatient
+1275 York Ave,Inpatient Unit,M 14,Not Applicable
+1275 York Ave,Inpatient Unit,M 14,Visitor
+1275 York Ave,Inpatient Unit,M 15,Inpatient
+1275 York Ave,Inpatient Unit,M 15,Not Applicable
+1275 York Ave,Inpatient Unit,M 15,Visitor
+1275 York Ave,Inpatient Unit,M 16,Inpatient
+1275 York Ave,Inpatient Unit,M 16,Not Applicable
+1275 York Ave,Inpatient Unit,M 16,Visitor
+1275 York Ave,Inpatient Unit,M 17,Inpatient
+1275 York Ave,Inpatient Unit,M 17,AXR
+1275 York Ave,Inpatient Unit,M 17,Not Applicable
+1275 York Ave,Inpatient Unit,M 17,Visitor
+1275 York Ave,Inpatient Unit,M 18,Inpatient
+1275 York Ave,Inpatient Unit,M 18,AXR
+1275 York Ave,Inpatient Unit,M 18,Not Applicable
+1275 York Ave,Inpatient Unit,M 18,Visitor
+1275 York Ave,Inpatient Unit,M 18 - SDU C,Inpatient
+1275 York Ave,Inpatient Unit,M 18 - SDU C,AXR
+1275 York Ave,Inpatient Unit,M 18 - SDU C,Not Applicable
+1275 York Ave,Inpatient Unit,M 18 - SDU C,Visitor
+1275 York Ave,Inpatient Unit,M 18 - SDU D,Inpatient
+1275 York Ave,Inpatient Unit,M 18 - SDU D,AXR
+1275 York Ave,Inpatient Unit,M 18 - SDU D,Not Applicable
+1275 York Ave,Inpatient Unit,M 18 - SDU D,Visitor
+1275 York Ave,Inpatient Unit,M 18 - SDU F,Inpatient
+1275 York Ave,Inpatient Unit,M 18 - SDU F,AXR
+1275 York Ave,Inpatient Unit,M 18 - SDU F,Not Applicable
+1275 York Ave,Inpatient Unit,M 18 - SDU F,Visitor
+1275 York Ave,Inpatient Unit,M 19,Inpatient
+1275 York Ave,Inpatient Unit,M 19,AXR
+1275 York Ave,Inpatient Unit,M 19,Not Applicable
+1275 York Ave,Inpatient Unit,M 19,Visitor
+1275 York Ave,Inpatient Unit,NACU,Inpatient
+1275 York Ave,Inpatient Unit,NACU,Visitor
+1275 York Ave,Inpatient Unit,PACC Boarder,Inpatient
+1275 York Ave,Inpatient Unit,PACC Boarder,Not Applicable
+1275 York Ave,Inpatient Unit,PACC Boarder,Visitor
+1275 York Ave,Inpatient Unit,Pediatric ICU,Inpatient
+1275 York Ave,Inpatient Unit,Pediatric ICU,Not Applicable
+1275 York Ave,Inpatient Unit,Pediatric ICU,Visitor
+1275 York Ave,Inpatient Unit,Pediatric Procedure Room,Inpatient
+1275 York Ave,Inpatient Unit,Pediatric Procedure Room,Not Applicable
+1275 York Ave,Inpatient Unit,Pediatric Procedure Room,Visitor
+1275 York Ave,Inpatient Unit,UCC,Inpatient
+1275 York Ave,Inpatient Unit,UCC,CDU-Observation
+1275 York Ave,Inpatient Unit,UCC,Not Applicable
+1275 York Ave,Inpatient Unit,UCC,Visitor
+1275 York Ave,Laboratory,Blood Bank,Inpatient
+1275 York Ave,Laboratory,Blood Bank,Not Applicable
+1275 York Ave,Laboratory,Blood Bank,Outpatient
+1275 York Ave,Laboratory,Blood Bank,Visitor
+1275 York Ave,Laboratory,Cell Therapy,Inpatient
+1275 York Ave,Laboratory,Cell Therapy,Not Applicable
+1275 York Ave,Laboratory,Cell Therapy,Outpatient
+1275 York Ave,Laboratory,Cell Therapy,Visitor
+1275 York Ave,Laboratory,Cellular Immunology,Inpatient
+1275 York Ave,Laboratory,Cellular Immunology,Not Applicable
+1275 York Ave,Laboratory,Cellular Immunology,Outpatient
+1275 York Ave,Laboratory,Cellular Immunology,Visitor
+1275 York Ave,Laboratory,Chemistry,Inpatient
+1275 York Ave,Laboratory,Chemistry,Not Applicable
+1275 York Ave,Laboratory,Chemistry,Outpatient
+1275 York Ave,Laboratory,Chemistry,Visitor
+1275 York Ave,Laboratory,Cytotherapy,Inpatient
+1275 York Ave,Laboratory,Cytotherapy,Not Applicable
+1275 York Ave,Laboratory,Cytotherapy,Outpatient
+1275 York Ave,Laboratory,Cytotherapy,Visitor
+1275 York Ave,Laboratory,Donor Room,Inpatient
+1275 York Ave,Laboratory,Donor Room,Not Applicable
+1275 York Ave,Laboratory,Donor Room,Outpatient
+1275 York Ave,Laboratory,Donor Room,Visitor
+1275 York Ave,Laboratory,Emergency Lab,Inpatient
+1275 York Ave,Laboratory,Emergency Lab,Not Applicable
+1275 York Ave,Laboratory,Emergency Lab,Outpatient
+1275 York Ave,Laboratory,Emergency Lab,Visitor
+1275 York Ave,Laboratory,Hematology,Inpatient
+1275 York Ave,Laboratory,Hematology,Not Applicable
+1275 York Ave,Laboratory,Hematology,Outpatient
+1275 York Ave,Laboratory,Hematology,Visitor
+1275 York Ave,Laboratory,Microbiology,Inpatient
+1275 York Ave,Laboratory,Microbiology,Not Applicable
+1275 York Ave,Laboratory,Microbiology,Outpatient
+1275 York Ave,Laboratory,Microbiology,Visitor
+1275 York Ave,Laboratory,Pediatric phlebotomy,Not Applicable
+1275 York Ave,Laboratory,Pediatric phlebotomy,Outpatient
+1275 York Ave,Laboratory,Pediatric phlebotomy,Visitor
+1275 York Ave,Laboratory,POCT,Inpatient
+1275 York Ave,Laboratory,POCT,Not Applicable
+1275 York Ave,Laboratory,POCT,Visitor
+1275 York Ave,Non-Clinical Area,Public Spaces,Inpatient
+1275 York Ave,Non-Clinical Area,Public Spaces,Not Applicable
+1275 York Ave,Non-Clinical Area,Public Spaces,Outpatient
+1275 York Ave,Non-Clinical Area,Public Spaces,Visitor
+1275 York Ave,Non-Clinical Area,Transition Lounge,Inpatient
+1275 York Ave,Non-Clinical Area,Transition Lounge,Not Applicable
+1275 York Ave,Non-Clinical Area,Transition Lounge,Outpatient
+1275 York Ave,Non-Clinical Area,Transition Lounge,Visitor
+1275 York Ave,Pathology,Bone Marrow,Inpatient
+1275 York Ave,Pathology,Bone Marrow,Not Applicable
+1275 York Ave,Pathology,Bone Marrow,Outpatient
+1275 York Ave,Pathology,Bone Marrow,Visitor
+1275 York Ave,Pathology,Cell marker,Inpatient
+1275 York Ave,Pathology,Cell marker,Not Applicable
+1275 York Ave,Pathology,Cell marker,Outpatient
+1275 York Ave,Pathology,Cell marker,Visitor
+1275 York Ave,Pathology,Cytogenetics,Inpatient
+1275 York Ave,Pathology,Cytogenetics,Not Applicable
+1275 York Ave,Pathology,Cytogenetics,Outpatient
+1275 York Ave,Pathology,Cytogenetics,Visitor
+1275 York Ave,Pathology,Cytology,Inpatient
+1275 York Ave,Pathology,Cytology,Not Applicable
+1275 York Ave,Pathology,Cytology,Outpatient
+1275 York Ave,Pathology,Cytology,Visitor
+1275 York Ave,Pathology,Molecular genetics,Inpatient
+1275 York Ave,Pathology,Molecular genetics,Not Applicable
+1275 York Ave,Pathology,Molecular genetics,Outpatient
+1275 York Ave,Pathology,Molecular genetics,Visitor
+1275 York Ave,Pathology,Molecular oncology,Inpatient
+1275 York Ave,Pathology,Molecular oncology,Not Applicable
+1275 York Ave,Pathology,Molecular oncology,Outpatient
+1275 York Ave,Pathology,Molecular oncology,Visitor
+1275 York Ave,Pathology,Morgue,Inpatient
+1275 York Ave,Pathology,Morgue,Not Applicable
+1275 York Ave,Pathology,Morgue,Outpatient
+1275 York Ave,Pathology,Morgue,Visitor
+1275 York Ave,Pathology,Surgical pathology,Inpatient
+1275 York Ave,Pathology,Surgical pathology,Not Applicable
+1275 York Ave,Pathology,Surgical pathology,Outpatient
+1275 York Ave,Pathology,Surgical pathology,Visitor
+1275 York Ave,Patient Financial Services,Patient Financial Services,Not Applicable
+1275 York Ave,Patient Financial Services,Patient Financial Services,Outpatient
+1275 York Ave,Patient Financial Services,Patient Financial Services,Visitor
+1275 York Ave,Perioperative,Anesthesia - Pain,Inpatient
+1275 York Ave,Perioperative,Anesthesia - Pain,AXR
+1275 York Ave,Perioperative,Anesthesia - Pain,Not Applicable
+1275 York Ave,Perioperative,Anesthesia - Pain,Outpatient
+1275 York Ave,Perioperative,Anesthesiology,Inpatient
+1275 York Ave,Perioperative,Anesthesiology,AXR
+1275 York Ave,Perioperative,Anesthesiology,Not Applicable
+1275 York Ave,Perioperative,Anesthesiology,Outpatient
+1275 York Ave,Perioperative,Anesthesiology,Visitor
+1275 York Ave,Perioperative,Brachytherapy - OR,Visitor
+1275 York Ave,Perioperative,Brachytherapy - OR,Not Applicable
+1275 York Ave,Perioperative,Brachytherapy - OR,Outpatient
+1275 York Ave,Perioperative,CPD,AXR
+1275 York Ave,Perioperative,CPD,Inpatient
+1275 York Ave,Perioperative,CPD,Not Applicable
+1275 York Ave,Perioperative,CPD,Outpatient
+1275 York Ave,Perioperative,CPD,Visitor
+1275 York Ave,Perioperative,Endoscopy Suite,Inpatient
+1275 York Ave,Perioperative,Endoscopy Suite,Not Applicable
+1275 York Ave,Perioperative,Endoscopy Suite,Outpatient
+1275 York Ave,Perioperative,Endoscopy Suite,Visitor
+1275 York Ave,Perioperative,M2 OR,Inpatient
+1275 York Ave,Perioperative,M2 OR,AXR
+1275 York Ave,Perioperative,M2 OR,Not Applicable
+1275 York Ave,Perioperative,M2 OR,Outpatient
+1275 York Ave,Perioperative,M2 OR,Visitor
+1275 York Ave,Perioperative,M2 PACU,Inpatient
+1275 York Ave,Perioperative,M2 PACU,AXR
+1275 York Ave,Perioperative,M2 PACU,Not Applicable
+1275 York Ave,Perioperative,M2 PACU,Outpatient
+1275 York Ave,Perioperative,M2 PACU,Visitor
+1275 York Ave,Perioperative,M2 PSC- Endo,Inpatient
+1275 York Ave,Perioperative,M2 PSC- Endo,Not Applicable
+1275 York Ave,Perioperative,M2 PSC- Endo,Outpatient
+1275 York Ave,Perioperative,M2 PSC- Endo,Visitor
+1275 York Ave,Perioperative,M2 PSC- IR,Inpatient
+1275 York Ave,Perioperative,M2 PSC- IR,AXR
+1275 York Ave,Perioperative,M2 PSC- IR,Not Applicable
+1275 York Ave,Perioperative,M2 PSC- IR,Outpatient
+1275 York Ave,Perioperative,M2 PSC- IR,Visitor
+1275 York Ave,Perioperative,M2 PSC- SDH,AXR
+1275 York Ave,Perioperative,M2 PSC- SDH,Inpatient
+1275 York Ave,Perioperative,M2 PSC- SDH,Not Applicable
+1275 York Ave,Perioperative,M2 PSC- SDH,Outpatient
+1275 York Ave,Perioperative,M2 PSC- SDH,Visitor
+1275 York Ave,Perioperative,M6 PACU,Inpatient
+1275 York Ave,Perioperative,M6 PACU,AXR
+1275 York Ave,Perioperative,M6 PACU,Not Applicable
+1275 York Ave,Perioperative,M6 PACU,Outpatient
+1275 York Ave,Perioperative,M6 PACU,Visitor
+1275 York Ave,Perioperative,M6 PSC,AXR
+1275 York Ave,Perioperative,M6 PSC,Inpatient
+1275 York Ave,Perioperative,M6 PSC,Not Applicable
+1275 York Ave,Perioperative,M6 PSC,Outpatient
+1275 York Ave,Perioperative,M6 PSC,Visitor
+1275 York Ave,Perioperative,Main OR,AXR
+1275 York Ave,Perioperative,Main OR,Inpatient
+1275 York Ave,Perioperative,Main OR,Not Applicable
+1275 York Ave,Perioperative,Main OR,Outpatient
+1275 York Ave,Perioperative,Main OR,Visitor
+1275 York Ave,Pharmacy,ICU,Inpatient
+1275 York Ave,Pharmacy,ICU,Not Applicable
+1275 York Ave,Pharmacy,ICU,Visitor
+1275 York Ave,Pharmacy,M 04/NOU,Inpatient
+1275 York Ave,Pharmacy,M 04/NOU,Not Applicable
+1275 York Ave,Pharmacy,M 04/NOU,Visitor
+1275 York Ave,Pharmacy,M 05,Inpatient
+1275 York Ave,Pharmacy,M 05,Not Applicable
+1275 York Ave,Pharmacy,M 05,Visitor
+1275 York Ave,Pharmacy,M 08,Inpatient
+1275 York Ave,Pharmacy,M 08,Not Applicable
+1275 York Ave,Pharmacy,M 08,Visitor
+1275 York Ave,Pharmacy,M 09,Inpatient
+1275 York Ave,Pharmacy,M 09,Not Applicable
+1275 York Ave,Pharmacy,M 09,Visitor
+1275 York Ave,Pharmacy,M 10,Inpatient
+1275 York Ave,Pharmacy,M 10,Not Applicable
+1275 York Ave,Pharmacy,M 10,Visitor
+1275 York Ave,Pharmacy,M 12,Inpatient
+1275 York Ave,Pharmacy,M 12,Not Applicable
+1275 York Ave,Pharmacy,M 12,Visitor
+1275 York Ave,Pharmacy,M 14,Inpatient
+1275 York Ave,Pharmacy,M 14,Not Applicable
+1275 York Ave,Pharmacy,M 14,Visitor
+1275 York Ave,Pharmacy,M 15,Inpatient
+1275 York Ave,Pharmacy,M 15,Not Applicable
+1275 York Ave,Pharmacy,M 15,Visitor
+1275 York Ave,Pharmacy,M 16,Inpatient
+1275 York Ave,Pharmacy,M 16,Not Applicable
+1275 York Ave,Pharmacy,M 16,Visitor
+1275 York Ave,Pharmacy,M 17,Inpatient
+1275 York Ave,Pharmacy,M 17,Not Applicable
+1275 York Ave,Pharmacy,M 17,Visitor
+1275 York Ave,Pharmacy,M 18,Inpatient
+1275 York Ave,Pharmacy,M 18,Not Applicable
+1275 York Ave,Pharmacy,M 18,Visitor
+1275 York Ave,Pharmacy,M 19,Inpatient
+1275 York Ave,Pharmacy,M 19,Not Applicable
+1275 York Ave,Pharmacy,M 19,Visitor
+1275 York Ave,Pharmacy,Main Pharmacy,Inpatient
+1275 York Ave,Pharmacy,Main Pharmacy,Not Applicable
+1275 York Ave,Pharmacy,Main Pharmacy,Outpatient
+1275 York Ave,Pharmacy,Main Pharmacy,Visitor
+1275 York Ave,Pharmacy,OR/SDH,Inpatient
+1275 York Ave,Pharmacy,OR/SDH,Not Applicable
+1275 York Ave,Pharmacy,OR/SDH,Outpatient
+1275 York Ave,Pharmacy,OR/SDH,Visitor
+1275 York Ave,Pharmacy,PACC,Not Applicable
+1275 York Ave,Pharmacy,PACC,Outpatient
+1275 York Ave,Pharmacy,PACC,Visitor
+1275 York Ave,Pharmacy,R-5,Inpatient
+1275 York Ave,Pharmacy,R-5,Not Applicable
+1275 York Ave,Pharmacy,R-5,Visitor
+1275 York Ave,Pharmacy,R5 Chemo,Inpatient
+1275 York Ave,Pharmacy,R5 Chemo,Not Applicable
+1275 York Ave,Pharmacy,R5 Chemo,Outpatient
+1275 York Ave,Pharmacy,R5 Chemo,Visitor
+1275 York Ave,Pharmacy,Retail pharmacy,Not Applicable
+1275 York Ave,Pharmacy,Retail pharmacy,Outpatient
+1275 York Ave,Pharmacy,Retail pharmacy,Visitor
+1275 York Ave,Pharmacy,UCC,Inpatient
+1275 York Ave,Pharmacy,UCC,Not Applicable
+1275 York Ave,Pharmacy,UCC,Outpatient
+1275 York Ave,Pharmacy,UCC,Visitor
+1275 York Ave,Radiation Oncology,Brachytherapy - Procedure Room,Inpatient
+1275 York Ave,Radiation Oncology,Brachytherapy - Procedure Room,Not Applicable
+1275 York Ave,Radiation Oncology,Brachytherapy - Procedure Room,Outpatient
+1275 York Ave,Radiation Oncology,Brachytherapy - Procedure Room,Visitor
+1275 York Ave,Radiation Oncology,Chart Coordination,Inpatient
+1275 York Ave,Radiation Oncology,Chart Coordination,Not Applicable
+1275 York Ave,Radiation Oncology,Chart Coordination,Outpatient
+1275 York Ave,Radiation Oncology,Chart Coordination,Visitor
+1275 York Ave,Radiation Oncology,Chart Rounds,Inpatient
+1275 York Ave,Radiation Oncology,Chart Rounds,Not Applicable
+1275 York Ave,Radiation Oncology,Chart Rounds,Outpatient
+1275 York Ave,Radiation Oncology,Chart Rounds,Visitor
+1275 York Ave,Radiation Oncology,Clinic,Inpatient
+1275 York Ave,Radiation Oncology,Clinic,Not Applicable
+1275 York Ave,Radiation Oncology,Clinic,Outpatient
+1275 York Ave,Radiation Oncology,Clinic,Visitor
+1275 York Ave,Radiation Oncology,MRI,Inpatient
+1275 York Ave,Radiation Oncology,MRI,Not Applicable
+1275 York Ave,Radiation Oncology,MRI,Outpatient
+1275 York Ave,Radiation Oncology,MRI,Visitor
+1275 York Ave,Radiation Oncology,Simulation - Brachytherapy,Inpatient
+1275 York Ave,Radiation Oncology,Simulation - Brachytherapy,Not Applicable
+1275 York Ave,Radiation Oncology,Simulation - Brachytherapy,Outpatient
+1275 York Ave,Radiation Oncology,Simulation - Brachytherapy,Visitor
+1275 York Ave,Radiation Oncology,Simulation - EBRT,Inpatient
+1275 York Ave,Radiation Oncology,Simulation - EBRT,Not Applicable
+1275 York Ave,Radiation Oncology,Simulation - EBRT,Outpatient
+1275 York Ave,Radiation Oncology,Simulation - EBRT,Visitor
+1275 York Ave,Radiation Oncology,Treatment,Inpatient
+1275 York Ave,Radiation Oncology,Treatment,Not Applicable
+1275 York Ave,Radiation Oncology,Treatment,Outpatient
+1275 York Ave,Radiation Oncology,Treatment,Visitor
+1275 York Ave,Radiation Oncology,Treatment Planning - Brachytherapy,Inpatient
+1275 York Ave,Radiation Oncology,Treatment Planning - Brachytherapy,Not Applicable
+1275 York Ave,Radiation Oncology,Treatment Planning - Brachytherapy,Outpatient
+1275 York Ave,Radiation Oncology,Treatment Planning - Brachytherapy,Visitor
+1275 York Ave,Radiation Oncology,Treatment Planning - EBRT,Inpatient
+1275 York Ave,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+1275 York Ave,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+1275 York Ave,Radiation Oncology,Treatment Planning - EBRT,Visitor
+1275 York Ave,Radiology,CIGI-Interventional Radiology,Inpatient
+1275 York Ave,Radiology,CIGI-Interventional Radiology,Not Applicable
+1275 York Ave,Radiology,CIGI-Interventional Radiology,Outpatient
+1275 York Ave,Radiology,CIGI-Interventional Radiology,CDU-Observation
+1275 York Ave,Radiology,CIGI-Interventional Radiology,Visitor
+1275 York Ave,Radiology,CIGI-MRI,Inpatient
+1275 York Ave,Radiology,CIGI-MRI,Not Applicable
+1275 York Ave,Radiology,CIGI-MRI,Outpatient
+1275 York Ave,Radiology,CIGI-MRI,CDU-Observation
+1275 York Ave,Radiology,CIGI-MRI,Visitor
+1275 York Ave,Radiology,CT,Inpatient
+1275 York Ave,Radiology,CT,Not Applicable
+1275 York Ave,Radiology,CT,Outpatient
+1275 York Ave,Radiology,CT,CDU-Observation
+1275 York Ave,Radiology,CT,Visitor
+1275 York Ave,Radiology,Cyclotron/RMIP (Radiochemistry & Imaging Probe),Inpatient
+1275 York Ave,Radiology,Cyclotron/RMIP (Radiochemistry & Imaging Probe),Not Applicable
+1275 York Ave,Radiology,Cyclotron/RMIP (Radiochemistry & Imaging Probe),Outpatient
+1275 York Ave,Radiology,Cyclotron/RMIP (Radiochemistry & Imaging Probe),CDU-Observation
+1275 York Ave,Radiology,Cyclotron/RMIP (Radiochemistry & Imaging Probe),Visitor
+1275 York Ave,Radiology,General Radiology,Inpatient
+1275 York Ave,Radiology,General Radiology,Not Applicable
+1275 York Ave,Radiology,General Radiology,Outpatient
+1275 York Ave,Radiology,General Radiology,CDU-Observation
+1275 York Ave,Radiology,General Radiology,Visitor
+1275 York Ave,Radiology,Interventional Radiology,Inpatient
+1275 York Ave,Radiology,Interventional Radiology,Not Applicable
+1275 York Ave,Radiology,Interventional Radiology,Outpatient
+1275 York Ave,Radiology,Interventional Radiology,CDU-Observation
+1275 York Ave,Radiology,Interventional Radiology,Visitor
+1275 York Ave,Radiology,Mammography,Inpatient
+1275 York Ave,Radiology,Mammography,Not Applicable
+1275 York Ave,Radiology,Mammography,Outpatient
+1275 York Ave,Radiology,Mammography,CDU-Observation
+1275 York Ave,Radiology,Mammography,Visitor
+1275 York Ave,Radiology,MITS (Molecular Imaging & Therapy Services),Inpatient
+1275 York Ave,Radiology,MITS (Molecular Imaging & Therapy Services),Not Applicable
+1275 York Ave,Radiology,MITS (Molecular Imaging & Therapy Services),Outpatient
+1275 York Ave,Radiology,MITS (Molecular Imaging & Therapy Services),CDU-Observation
+1275 York Ave,Radiology,MITS (Molecular Imaging & Therapy Services),Visitor
+1275 York Ave,Radiology,MRI,Inpatient
+1275 York Ave,Radiology,MRI,Not Applicable
+1275 York Ave,Radiology,MRI,Outpatient
+1275 York Ave,Radiology,MRI,CDU-Observation
+1275 York Ave,Radiology,MRI,Visitor
+1275 York Ave,Radiology,US,Inpatient
+1275 York Ave,Radiology,US,Not Applicable
+1275 York Ave,Radiology,US,Outpatient
+1275 York Ave,Radiology,US,CDU-Observation
+1275 York Ave,Radiology,US,Visitor
+53rd Street,Ambulatory/Clinic,4th floor chemo unit,Not Applicable
+53rd Street,Ambulatory/Clinic,4th floor chemo unit,Outpatient
+53rd Street,Ambulatory/Clinic,4th floor chemo unit,Visitor
+53rd Street,Ambulatory/Clinic,5th floor chemo unit,Not Applicable
+53rd Street,Ambulatory/Clinic,5th floor chemo unit,Outpatient
+53rd Street,Ambulatory/Clinic,5th floor chemo unit,Visitor
+53rd Street,Ambulatory/Clinic,6th floor chemo unit,Not Applicable
+53rd Street,Ambulatory/Clinic,6th floor chemo unit,Outpatient
+53rd Street,Ambulatory/Clinic,6th floor chemo unit,Visitor
+53rd Street,Ambulatory/Clinic,7th floor chemo unit,Not Applicable
+53rd Street,Ambulatory/Clinic,7th floor chemo unit,Outpatient
+53rd Street,Ambulatory/Clinic,7th floor chemo unit,Visitor
+53rd Street,Ambulatory/Clinic,9th floor chemo unit,Not Applicable
+53rd Street,Ambulatory/Clinic,9th floor chemo unit,Outpatient
+53rd Street,Ambulatory/Clinic,9th floor chemo unit,Visitor
+53rd Street,Ambulatory/Clinic,Adult Survivorship,Not Applicable
+53rd Street,Ambulatory/Clinic,Adult Survivorship,Outpatient
+53rd Street,Ambulatory/Clinic,Adult Survivorship,Visitor
+53rd Street,Ambulatory/Clinic,Cardiology/Medical Consult,Not Applicable
+53rd Street,Ambulatory/Clinic,Cardiology/Medical Consult,Outpatient
+53rd Street,Ambulatory/Clinic,Cardiology/Medical Consult,Visitor
+53rd Street,Ambulatory/Clinic,Chemo verification,Not Applicable
+53rd Street,Ambulatory/Clinic,Chemo verification,Outpatient
+53rd Street,Ambulatory/Clinic,Chemo verification,Visitor
+53rd Street,Ambulatory/Clinic,Colorectal Clinic,Not Applicable
+53rd Street,Ambulatory/Clinic,Colorectal Clinic,Outpatient
+53rd Street,Ambulatory/Clinic,Colorectal Clinic,Visitor
+53rd Street,Ambulatory/Clinic,Derm/Plastic,Not Applicable
+53rd Street,Ambulatory/Clinic,Derm/Plastic,Outpatient
+53rd Street,Ambulatory/Clinic,Derm/Plastic,Visitor
+53rd Street,Ambulatory/Clinic,DTU,Not Applicable
+53rd Street,Ambulatory/Clinic,DTU,Outpatient
+53rd Street,Ambulatory/Clinic,DTU,Visitor
+53rd Street,Ambulatory/Clinic,Gastroenterology,Not Applicable
+53rd Street,Ambulatory/Clinic,Gastroenterology,Outpatient
+53rd Street,Ambulatory/Clinic,Gastroenterology,Visitor
+53rd Street,Ambulatory/Clinic,GI Med Onc clinic,Not Applicable
+53rd Street,Ambulatory/Clinic,GI Med Onc clinic,Outpatient
+53rd Street,Ambulatory/Clinic,GI Med Onc clinic,Visitor
+53rd Street,Ambulatory/Clinic,GMT clinic,Not Applicable
+53rd Street,Ambulatory/Clinic,GMT clinic,Outpatient
+53rd Street,Ambulatory/Clinic,GMT clinic,Visitor
+53rd Street,Ambulatory/Clinic,GYN Med Onc clinic,Not Applicable
+53rd Street,Ambulatory/Clinic,GYN Med Onc clinic,Outpatient
+53rd Street,Ambulatory/Clinic,GYN Med Onc clinic,Visitor
+53rd Street,Ambulatory/Clinic,Gynecology Surgery,Not Applicable
+53rd Street,Ambulatory/Clinic,Gynecology Surgery,Outpatient
+53rd Street,Ambulatory/Clinic,Gynecology Surgery,Visitor
+53rd Street,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Not Applicable
+53rd Street,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Outpatient
+53rd Street,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Visitor
+53rd Street,Ambulatory/Clinic,International Center,Not Applicable
+53rd Street,Ambulatory/Clinic,International Center,Outpatient
+53rd Street,Ambulatory/Clinic,International Center,Visitor
+53rd Street,Ambulatory/Clinic,Early Drug Development,Not Applicable
+53rd Street,Ambulatory/Clinic,Early Drug Development,Outpatient
+53rd Street,Ambulatory/Clinic,Early Drug Development,Visitor
+53rd Street,Ambulatory/Clinic,Melanoma clinic,Not Applicable
+53rd Street,Ambulatory/Clinic,Melanoma clinic,Outpatient
+53rd Street,Ambulatory/Clinic,Melanoma clinic,Visitor
+53rd Street,Ambulatory/Clinic,Neurology,Not Applicable
+53rd Street,Ambulatory/Clinic,Neurology,Outpatient
+53rd Street,Ambulatory/Clinic,Neurology,Visitor
+53rd Street,Ambulatory/Clinic,Ophthalmic Oncology,Not Applicable
+53rd Street,Ambulatory/Clinic,Ophthalmic Oncology,Outpatient
+53rd Street,Ambulatory/Clinic,Ophthalmic Oncology,Visitor
+53rd Street,Ambulatory/Clinic,Orthopaedics,Not Applicable
+53rd Street,Ambulatory/Clinic,Orthopaedics,Outpatient
+53rd Street,Ambulatory/Clinic,Orthopaedics,Visitor
+53rd Street,Ambulatory/Clinic,Pain and Palliative Care,Not Applicable
+53rd Street,Ambulatory/Clinic,Pain and Palliative Care,Outpatient
+53rd Street,Ambulatory/Clinic,Pain and Palliative Care,Visitor
+53rd Street,Ambulatory/Clinic,PST,Not Applicable
+53rd Street,Ambulatory/Clinic,PST,Outpatient
+53rd Street,Ambulatory/Clinic,PST,Visitor
+53rd Street,Ambulatory/Clinic,STGI,Not Applicable
+53rd Street,Ambulatory/Clinic,STGI,Outpatient
+53rd Street,Ambulatory/Clinic,STGI,Visitor
+53rd Street,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+53rd Street,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+53rd Street,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+53rd Street,Ambulatory/Clinic,Sarcoma clinic,Not Applicable
+53rd Street,Ambulatory/Clinic,Sarcoma clinic,Outpatient
+53rd Street,Ambulatory/Clinic,Sarcoma clinic,Visitor
+53rd Street,Laboratory,Laboratory,Not Applicable
+53rd Street,Laboratory,Laboratory,Outpatient
+53rd Street,Laboratory,Laboratory,Visitor
+53rd Street,Non-Clinical Area,Public Spaces,Not Applicable
+53rd Street,Non-Clinical Area,Public Spaces,Outpatient
+53rd Street,Non-Clinical Area,Public Spaces,Visitor
+53rd Street,Patient Financial Services,Patient Financial Services,Not Applicable
+53rd Street,Patient Financial Services,Patient Financial Services,Outpatient
+53rd Street,Patient Financial Services,Patient Financial Services,Visitor
+53rd Street,Pharmacy,Pharmacy,Not Applicable
+53rd Street,Pharmacy,Pharmacy,Outpatient
+53rd Street,Pharmacy,Pharmacy,Visitor
+53rd Street,Pharmacy,Specialty Pharmacy,Not Applicable
+53rd Street,Pharmacy,Specialty Pharmacy,Outpatient
+53rd Street,Pharmacy,Specialty Pharmacy,Visitor
+53rd Street,Phlebotomy,Mediport Hub,Not Applicable
+53rd Street,Phlebotomy,Mediport Hub,Outpatient
+53rd Street,Phlebotomy,Mediport Hub,Visitor
+53rd Street,Phlebotomy,Phlebotomy,Not Applicable
+53rd Street,Phlebotomy,Phlebotomy,Outpatient
+53rd Street,Phlebotomy,Phlebotomy,Visitor
+53rd Street,Radiology,Bone density,Not Applicable
+53rd Street,Radiology,Bone density,Outpatient
+53rd Street,Radiology,Bone density,Visitor
+53rd Street,Radiology,CT,Not Applicable
+53rd Street,Radiology,CT,Outpatient
+53rd Street,Radiology,CT,Visitor
+53rd Street,Radiology,General Radiology,Not Applicable
+53rd Street,Radiology,General Radiology,Outpatient
+53rd Street,Radiology,General Radiology,Visitor
+53rd Street,Radiology,Digitizing,Not Applicable
+53rd Street,Radiology,Digitizing,Outpatient
+53rd Street,Radiology,Digitizing,Visitor
+53rd Street,Radiology,Interventional Radiology,Not Applicable
+53rd Street,Radiology,Interventional Radiology,Outpatient
+53rd Street,Radiology,Interventional Radiology,Visitor
+53rd Street,Radiology,MRI,Not Applicable
+53rd Street,Radiology,MRI,Outpatient
+53rd Street,Radiology,MRI,Visitor
+53rd Street,Radiology,US,Not Applicable
+53rd Street,Radiology,US,Outpatient
+53rd Street,Radiology,US,Visitor
+61st Street,Non-Clinical Area,Patient Access Services,Outpatient
+61st Street,Non-Clinical Area,Public Spaces,Not Applicable
+61st Street,Non-Clinical Area,Public Spaces,Outpatient
+61st Street,Non-Clinical Area,Public Spaces,Visitor
+633 3rd Ave,Non-Clinical Area,Medical Records,Not Applicable
+633 3rd Ave,Non-Clinical Area,Physician Billing Department,Not Applicable
+633 3rd Ave,Non-Clinical Area,Public Spaces,Not Applicable
+633 3rd Ave,Non-Clinical Area,Public Spaces,Outpatient
+633 3rd Ave,Non-Clinical Area,Public Spaces,Visitor
+64th Street,Ambulatory/Clinic,Chemo verification,Not Applicable
+64th Street,Ambulatory/Clinic,Chemo verification,Outpatient
+64th Street,Ambulatory/Clinic,Chemo verification,Visitor
+64th Street,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+64th Street,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+64th Street,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+64th Street,Ambulatory/Clinic,Clinic,Not Applicable
+64th Street,Ambulatory/Clinic,Clinic,Outpatient
+64th Street,Ambulatory/Clinic,Clinic,Visitor
+64th Street,Ambulatory/Clinic,DTU,Not Applicable
+64th Street,Ambulatory/Clinic,DTU,Outpatient
+64th Street,Ambulatory/Clinic,DTU,Visitor
+64th Street,Ambulatory/Clinic,Laboratory,Not Applicable
+64th Street,Ambulatory/Clinic,Laboratory,Outpatient
+64th Street,Ambulatory/Clinic,Laboratory,Visitor
+64th Street,Ambulatory/Clinic,Phlebotomy,Not Applicable
+64th Street,Ambulatory/Clinic,Phlebotomy,Outpatient
+64th Street,Ambulatory/Clinic,Phlebotomy,Visitor
+64th Street,Non-Clinical Area,Public Spaces,Not Applicable
+64th Street,Non-Clinical Area,Public Spaces,Outpatient
+64th Street,Non-Clinical Area,Public Spaces,Visitor
+64th St Lab Medicine,Laboratory,Blood Bank,Inpatient
+64th St Lab Medicine,Laboratory,Blood Bank,Not Applicable
+64th St Lab Medicine,Laboratory,Blood Bank,Outpatient
+64th St Lab Medicine,Laboratory,Blood Bank,Visitor
+64th St Lab Medicine,Laboratory,Chemistry,Inpatient
+64th St Lab Medicine,Laboratory,Chemistry,Not Applicable
+64th St Lab Medicine,Laboratory,Chemistry,Outpatient
+64th St Lab Medicine,Laboratory,Chemistry,Visitor
+64th St Lab Medicine,Laboratory,Hematology,Inpatient
+64th St Lab Medicine,Laboratory,Hematology,Not Applicable
+64th St Lab Medicine,Laboratory,Hematology,Outpatient
+64th St Lab Medicine,Laboratory,Hematology,Visitor
+64th St Lab Medicine,Laboratory,Microbiology,Inpatient
+64th St Lab Medicine,Laboratory,Microbiology,Not Applicable
+64th St Lab Medicine,Laboratory,Microbiology,Outpatient
+64th St Lab Medicine,Laboratory,Microbiology,Visitor
+70th Street,Ambulatory/Clinic,Clinical Genetics,Not Applicable
+70th Street,Ambulatory/Clinic,Clinical Genetics,Outpatient
+70th Street,Ambulatory/Clinic,Clinical Genetics,Visitor
+70th Street,Non-Clinical Area,Public Spaces,Not Applicable
+70th Street,Non-Clinical Area,Public Spaces,Outpatient
+70th Street,Non-Clinical Area,Public Spaces,Visitor
+72nd Street,Non-Clinical Area,Public Spaces,Not Applicable
+72nd Street,Non-Clinical Area,Public Spaces,Outpatient
+72nd Street,Non-Clinical Area,Public Spaces,Visitor
+72nd Street,Radiology,CBIC,Outpatient
+75th Street Residence,Non-Clinical Area,Public Spaces,Not Applicable
+75th Street Residence,Non-Clinical Area,Public Spaces,Outpatient
+75th Street Residence,Non-Clinical Area,Public Spaces,Visitor
+BAIC,Ambulatory/Clinic,Breast chemo,Not Applicable
+BAIC,Ambulatory/Clinic,Breast chemo,Outpatient
+BAIC,Ambulatory/Clinic,Breast chemo,Visitor
+BAIC,Ambulatory/Clinic,Breast clinic,Not Applicable
+BAIC,Ambulatory/Clinic,Breast clinic,Outpatient
+BAIC,Ambulatory/Clinic,Breast clinic,Visitor
+BAIC,Ambulatory/Clinic,Chemo verification,Not Applicable
+BAIC,Ambulatory/Clinic,Chemo verification,Outpatient
+BAIC,Ambulatory/Clinic,Chemo verification,Visitor
+BAIC,Ambulatory/Clinic,DTU,Not Applicable
+BAIC,Ambulatory/Clinic,DTU,Outpatient
+BAIC,Ambulatory/Clinic,DTU,Visitor
+BAIC,Ambulatory/Clinic,Pain and Palliative Care,Not Applicable
+BAIC,Ambulatory/Clinic,Pain and Palliative Care,Outpatient
+BAIC,Ambulatory/Clinic,Pain and Palliative Care,Visitor
+BAIC,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+BAIC,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+BAIC,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+BAIC,Laboratory,Hematology,Not Applicable
+BAIC,Laboratory,Hematology,Outpatient
+BAIC,Laboratory,Hematology,Visitor
+BAIC,Laboratory,Phlebotomy,Not Applicable
+BAIC,Laboratory,Phlebotomy,Outpatient
+BAIC,Laboratory,Phlebotomy,Visitor
+BAIC,Non-Clinical Area,Public Spaces,Not Applicable
+BAIC,Non-Clinical Area,Public Spaces,Outpatient
+BAIC,Non-Clinical Area,Public Spaces,Visitor
+BAIC,Pathology,Pathology,Not Applicable
+BAIC,Pathology,Pathology,Outpatient
+BAIC,Pathology,Pathology,Visitor
+BAIC,Patient Financial Services,Patient Financial Services,Not Applicable
+BAIC,Patient Financial Services,Patient Financial Services,Outpatient
+BAIC,Patient Financial Services,Patient Financial Services,Visitor
+BAIC,Pharmacy,Pharmacy,Not Applicable
+BAIC,Pharmacy,Pharmacy,Outpatient
+BAIC,Pharmacy,Pharmacy,Visitor
+BAIC,Radiology,CT,Not Applicable
+BAIC,Radiology,CT,Outpatient
+BAIC,Radiology,CT,Visitor
+BAIC,Radiology,General Radiology,Not Applicable
+BAIC,Radiology,General Radiology,Outpatient
+BAIC,Radiology,General Radiology,Visitor
+BAIC,Radiology,Mammo Interventional,Not Applicable
+BAIC,Radiology,Mammo Interventional,Outpatient
+BAIC,Radiology,Mammo Interventional,Visitor
+BAIC,Radiology,Mammography,Not Applicable
+BAIC,Radiology,Mammography,Outpatient
+BAIC,Radiology,Mammography,Visitor
+BAIC,Radiology,MITS (Molecular Imaging & Therapy Services),Not Applicable
+BAIC,Radiology,MITS (Molecular Imaging & Therapy Services),Outpatient
+BAIC,Radiology,MITS (Molecular Imaging & Therapy Services),Visitor
+BAIC,Radiology,MRI,Not Applicable
+BAIC,Radiology,MRI,Outpatient
+BAIC,Radiology,MRI,Visitor
+BAIC,Radiology,US,Not Applicable
+BAIC,Radiology,US,Outpatient
+BAIC,Radiology,US,Visitor
+Basking Ridge,Ambulatory/Clinic,Cardiology Testing,Not Applicable
+Basking Ridge,Ambulatory/Clinic,Cardiology Testing,Outpatient
+Basking Ridge,Ambulatory/Clinic,Cardiology Testing,Visitor
+Basking Ridge,Ambulatory/Clinic,Chemo verification,Not Applicable
+Basking Ridge,Ambulatory/Clinic,Chemo verification,Outpatient
+Basking Ridge,Ambulatory/Clinic,Chemo verification,Visitor
+Basking Ridge,Ambulatory/Clinic,Dermatology,Not Applicable
+Basking Ridge,Ambulatory/Clinic,Dermatology,Outpatient
+Basking Ridge,Ambulatory/Clinic,Dermatology,Visitor
+Basking Ridge,Ambulatory/Clinic,Medical Oncology Clinic,Not Applicable
+Basking Ridge,Ambulatory/Clinic,Medical Oncology Clinic,Outpatient
+Basking Ridge,Ambulatory/Clinic,Medical Oncology Clinic,Visitor
+Basking Ridge,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Basking Ridge,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Basking Ridge,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Basking Ridge,Ambulatory/Clinic,Surgical Oncology Clinic,Not Applicable
+Basking Ridge,Ambulatory/Clinic,Surgical Oncology Clinic,Outpatient
+Basking Ridge,Ambulatory/Clinic,Surgical Oncology Clinic,Visitor
+Basking Ridge,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Outpatient
+Basking Ridge,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Not Applicable
+Basking Ridge,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Visitor
+Basking Ridge,Laboratory,Laboratory,Not Applicable
+Basking Ridge,Laboratory,Laboratory,Outpatient
+Basking Ridge,Laboratory,Laboratory,Visitor
+Basking Ridge,Non-Clinical Area,Public Spaces,Not Applicable
+Basking Ridge,Non-Clinical Area,Public Spaces,Outpatient
+Basking Ridge,Non-Clinical Area,Public Spaces,Visitor
+Basking Ridge,Pathology,Cytology,Not Applicable
+Basking Ridge,Pathology,Cytology,Outpatient
+Basking Ridge,Pathology,Cytology,Visitor
+Basking Ridge,Pathology,Pathology,Not Applicable
+Basking Ridge,Pathology,Pathology,Outpatient
+Basking Ridge,Pathology,Pathology,Visitor
+Basking Ridge,Patient Financial Services,Patient Financial Services,Not Applicable
+Basking Ridge,Patient Financial Services,Patient Financial Services,Outpatient
+Basking Ridge,Patient Financial Services,Patient Financial Services,Visitor
+Basking Ridge,Perioperative,Anesthesia - Pain,Not Applicable
+Basking Ridge,Perioperative,Anesthesia - Pain,Outpatient
+Basking Ridge,Perioperative,Anesthesia - Pain,Visitor
+Basking Ridge,Perioperative,Anesthesiology,Not Applicable
+Basking Ridge,Perioperative,Anesthesiology,Outpatient
+Basking Ridge,Perioperative,Anesthesiology,Visitor
+Basking Ridge,Pharmacy,Pharmacy,Not Applicable
+Basking Ridge,Pharmacy,Pharmacy,Outpatient
+Basking Ridge,Pharmacy,Pharmacy,Visitor
+Basking Ridge,Phlebotomy,Phlebotomy,Not Applicable
+Basking Ridge,Phlebotomy,Phlebotomy,Outpatient
+Basking Ridge,Phlebotomy,Phlebotomy,Visitor
+Basking Ridge,Radiation Oncology,Chart Coordination,Not Applicable
+Basking Ridge,Radiation Oncology,Chart Coordination,Outpatient
+Basking Ridge,Radiation Oncology,Chart Coordination,Visitor
+Basking Ridge,Radiation Oncology,Chart Rounds,Not Applicable
+Basking Ridge,Radiation Oncology,Chart Rounds,Outpatient
+Basking Ridge,Radiation Oncology,Chart Rounds,Visitor
+Basking Ridge,Radiation Oncology,Clinic,Not Applicable
+Basking Ridge,Radiation Oncology,Clinic,Outpatient
+Basking Ridge,Radiation Oncology,Clinic,Visitor
+Basking Ridge,Radiation Oncology,Simulation - EBRT,Not Applicable
+Basking Ridge,Radiation Oncology,Simulation - EBRT,Outpatient
+Basking Ridge,Radiation Oncology,Simulation - EBRT,Visitor
+Basking Ridge,Radiation Oncology,Treatment,Not Applicable
+Basking Ridge,Radiation Oncology,Treatment,Outpatient
+Basking Ridge,Radiation Oncology,Treatment,Visitor
+Basking Ridge,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+Basking Ridge,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+Basking Ridge,Radiation Oncology,Treatment Planning - EBRT,Visitor
+Basking Ridge,Radiology,CT,Not Applicable
+Basking Ridge,Radiology,CT,Outpatient
+Basking Ridge,Radiology,CT,Visitor
+Basking Ridge,Radiology,General Radiology,Not Applicable
+Basking Ridge,Radiology,General Radiology,Outpatient
+Basking Ridge,Radiology,General Radiology,Visitor
+Basking Ridge,Radiology,Mammo Interventional,Not Applicable
+Basking Ridge,Radiology,Mammo Interventional,Outpatient
+Basking Ridge,Radiology,Mammo Interventional,Visitor
+Basking Ridge,Radiology,MRI,Not Applicable
+Basking Ridge,Radiology,MRI,Outpatient
+Basking Ridge,Radiology,MRI,Visitor
+Basking Ridge,Radiology,PET,Not Applicable
+Basking Ridge,Radiology,PET,Outpatient
+Basking Ridge,Radiology,PET,Visitor
+Basking Ridge,Radiology,US,Not Applicable
+Basking Ridge,Radiology,US,Outpatient
+Basking Ridge,Radiology,US,Visitor
+Basking Ridge,Rehab clinical area,4th floor,Not Applicable
+Basking Ridge,Rehab clinical area,4th floor,Outpatient
+Basking Ridge,Rehab clinical area,4th floor,Visitor
+Basking Ridge,Ambulatory/Clinic,Trailer,Outpatient
+Basking Ridge,Ambulatory/Clinic,Trailer,Not Applicable
+Basking Ridge,Ambulatory/Clinic,Trailer,Visitor
+Basking Ridge,Radiation Oncology,Treatment Planning - Brachytherapy,Not Applicable
+Basking Ridge,Radiation Oncology,Treatment Planning - Brachytherapy,Outpatient
+Basking Ridge,Radiation Oncology,Treatment Planning - Brachytherapy,Visitor
+Bergen,Ambulatory/Clinic,Cardiology Testing,Not Applicable
+Bergen,Ambulatory/Clinic,Cardiology Testing,Outpatient
+Bergen,Ambulatory/Clinic,Cardiology Testing,Visitor
+Bergen,Ambulatory/Clinic,Chemo verification,Outpatient
+Bergen,Ambulatory/Clinic,Chemo verification,Not Applicable
+Bergen,Ambulatory/Clinic,Chemo verification,Visitor
+Bergen,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Bergen,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Bergen,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Bergen,Ambulatory/Clinic,Genetics,Outpatient
+Bergen,Ambulatory/Clinic,Genetics,Not Applicable
+Bergen,Ambulatory/Clinic,Genetics,Visitor
+Bergen,Ambulatory/Clinic,Integrative Medicine,Outpatient
+Bergen,Ambulatory/Clinic,Integrative Medicine,Not Applicable
+Bergen,Ambulatory/Clinic,Integrative Medicine,Visitor
+Bergen,Ambulatory/Clinic,Medical Oncology Clinic,Outpatient
+Bergen,Ambulatory/Clinic,Medical Oncology Clinic,Not Applicable
+Bergen,Ambulatory/Clinic,Medical Oncology Clinic,Visitor
+Bergen,Ambulatory/Clinic,Neurology,Outpatient
+Bergen,Ambulatory/Clinic,Neurology,Not Applicable
+Bergen,Ambulatory/Clinic,Neurology,Visitor
+Bergen,Ambulatory/Clinic,Nutrition,Outpatient
+Bergen,Ambulatory/Clinic,Nutrition,Not Applicable
+Bergen,Ambulatory/Clinic,Nutrition,Visitor
+Bergen,Ambulatory/Clinic,Physiatry Clinic,Outpatient
+Bergen,Ambulatory/Clinic,Physiatry Clinic,Not Applicable
+Bergen,Ambulatory/Clinic,Physiatry Clinic,Visitor
+Bergen,Ambulatory/Clinic,PST,Outpatient
+Bergen,Ambulatory/Clinic,PST,Not Applicable
+Bergen,Ambulatory/Clinic,PST,Visitor
+Bergen,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Outpatient
+Bergen,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Not Applicable
+Bergen,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Visitor
+Bergen,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+Bergen,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+Bergen,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+Bergen,Ambulatory/Clinic,Social Work,Outpatient
+Bergen,Ambulatory/Clinic,Social Work,Not Applicable
+Bergen,Ambulatory/Clinic,Social Work,Visitor
+Bergen,Ambulatory/Clinic,Surgical Oncology Clinic,Outpatient
+Bergen,Ambulatory/Clinic,Surgical Oncology Clinic,Not Applicable
+Bergen,Ambulatory/Clinic,Surgical Oncology Clinic,Visitor
+Bergen,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Outpatient
+Bergen,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Not Applicable
+Bergen,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Visitor
+Bergen,Laboratory,Laboratory,Not Applicable
+Bergen,Laboratory,Laboratory,Outpatient
+Bergen,Laboratory,Laboratory,Visitor
+Bergen,Non-Clinical Area,Academic Office - Regional,Not Applicable
+Bergen,Non-Clinical Area,Academic Office - Regional,Outpatient
+Bergen,Non-Clinical Area,Academic Office - Regional,Visitor
+Bergen,Non-Clinical Area,Public Spaces,Not Applicable
+Bergen,Non-Clinical Area,Public Spaces,Outpatient
+Bergen,Non-Clinical Area,Public Spaces,Visitor
+Bergen,Pathology,Cytology,Not Applicable
+Bergen,Pathology,Cytology,Outpatient
+Bergen,Pathology,Cytology,Visitor
+Bergen,Patient Financial Services,Patient Financial Services,Not Applicable
+Bergen,Patient Financial Services,Patient Financial Services,Outpatient
+Bergen,Patient Financial Services,Patient Financial Services,Visitor
+Bergen,Pharmacy,Infusion Pharmacy,Not Applicable
+Bergen,Pharmacy,Infusion Pharmacy,Outpatient
+Bergen,Pharmacy,Infusion Pharmacy,Visitor
+Bergen,Pharmacy,Retail pharmacy,Not Applicable
+Bergen,Pharmacy,Retail pharmacy,Outpatient
+Bergen,Pharmacy,Retail pharmacy,Visitor
+Bergen,Phlebotomy,Phlebotomy,Not Applicable
+Bergen,Phlebotomy,Phlebotomy,Outpatient
+Bergen,Phlebotomy,Phlebotomy,Visitor
+Bergen,Radiation Oncology,Chart Coordination,Not Applicable
+Bergen,Radiation Oncology,Chart Coordination,Outpatient
+Bergen,Radiation Oncology,Chart Coordination,Visitor
+Bergen,Radiation Oncology,Chart Rounds,Not Applicable
+Bergen,Radiation Oncology,Chart Rounds,Outpatient
+Bergen,Radiation Oncology,Chart Rounds,Visitor
+Bergen,Radiation Oncology,Clinic,Not Applicable
+Bergen,Radiation Oncology,Clinic,Outpatient
+Bergen,Radiation Oncology,Clinic,Visitor
+Bergen,Radiation Oncology,Simulation - EBRT,Not Applicable
+Bergen,Radiation Oncology,Simulation - EBRT,Outpatient
+Bergen,Radiation Oncology,Simulation - EBRT,Visitor
+Bergen,Radiation Oncology,Treatment,Not Applicable
+Bergen,Radiation Oncology,Treatment,Outpatient
+Bergen,Radiation Oncology,Treatment,Visitor
+Bergen,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+Bergen,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+Bergen,Radiation Oncology,Treatment Planning - EBRT,Visitor
+Bergen,Radiology,Bone density,Not Applicable
+Bergen,Radiology,Bone density,Outpatient
+Bergen,Radiology,Bone density,Visitor
+Bergen,Radiology,CT,Not Applicable
+Bergen,Radiology,CT,Outpatient
+Bergen,Radiology,CT,Visitor
+Bergen,Radiology,General Radiology,Not Applicable
+Bergen,Radiology,General Radiology,Outpatient
+Bergen,Radiology,General Radiology,Visitor
+Bergen,Radiology,Mammography,Not Applicable
+Bergen,Radiology,Mammography,Outpatient
+Bergen,Radiology,Mammography,Visitor
+Bergen,Radiology,MRI,Not Applicable
+Bergen,Radiology,MRI,Outpatient
+Bergen,Radiology,MRI,Visitor
+Bergen,Radiology,PET/MITS,Not Applicable
+Bergen,Radiology,PET/MITS,Outpatient
+Bergen,Radiology,PET/MITS,Visitor
+Bergen,Radiology,US,Not Applicable
+Bergen,Radiology,US,Outpatient
+Bergen,Radiology,US,Visitor
+Bergen,Ambulatory/Clinic,Trailer,Outpatient
+Bergen,Ambulatory/Clinic,Trailer,Not Applicable
+Bergen,Ambulatory/Clinic,Trailer,Visitor
+Brooklyn Infusion Center,Ambulatory/Clinic,Chemo verification,Not Applicable
+Brooklyn Infusion Center,Ambulatory/Clinic,Chemo verification,Outpatient
+Brooklyn Infusion Center,Ambulatory/Clinic,Chemo verification,Visitor
+Brooklyn Infusion Center,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Brooklyn Infusion Center,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Brooklyn Infusion Center,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Brooklyn Infusion Center,Non-Clinical Area,Public Spaces,Not Applicable
+Brooklyn Infusion Center,Non-Clinical Area,Public Spaces,Outpatient
+Brooklyn Infusion Center,Non-Clinical Area,Public Spaces,Visitor
+Commack,Ambulatory/Clinic,Cardiology Testing,Not Applicable
+Commack,Ambulatory/Clinic,Cardiology Testing,Outpatient
+Commack,Ambulatory/Clinic,Cardiology Testing,Visitor
+Commack,Ambulatory/Clinic,Chemo verification,Not Applicable
+Commack,Ambulatory/Clinic,Chemo verification,Outpatient
+Commack,Ambulatory/Clinic,Chemo verification,Visitor
+Commack,Ambulatory/Clinic,Medical Oncology Clinic,Not Applicable
+Commack,Ambulatory/Clinic,Medical Oncology Clinic,Outpatient
+Commack,Ambulatory/Clinic,Medical Oncology Clinic,Visitor
+Commack,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+Commack,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+Commack,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+Commack,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Commack,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Commack,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Commack,Ambulatory/Clinic,Surgical Oncology Clinic,Not Applicable
+Commack,Ambulatory/Clinic,Surgical Oncology Clinic,Outpatient
+Commack,Ambulatory/Clinic,Surgical Oncology Clinic,Visitor
+Commack,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Outpatient
+Commack,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Not Applicable
+Commack,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Visitor
+Commack,Laboratory,Laboratory,Not Applicable
+Commack,Laboratory,Laboratory,Outpatient
+Commack,Laboratory,Laboratory,Visitor
+Commack,Non-Clinical Area,Public Spaces,Not Applicable
+Commack,Non-Clinical Area,Public Spaces,Outpatient
+Commack,Non-Clinical Area,Public Spaces,Visitor
+Commack,Pathology,Cytology,Not Applicable
+Commack,Pathology,Cytology,Outpatient
+Commack,Pathology,Cytology,Visitor
+Commack,Patient Financial Services,Patient Financial Services,Not Applicable
+Commack,Patient Financial Services,Patient Financial Services,Outpatient
+Commack,Patient Financial Services,Patient Financial Services,Visitor
+Commack,Perioperative,Anesthesia - Pain,Not Applicable
+Commack,Perioperative,Anesthesia - Pain,Outpatient
+Commack,Perioperative,Anesthesia - Pain,Visitor
+Commack,Perioperative,Anesthesiology,Not Applicable
+Commack,Perioperative,Anesthesiology,Outpatient
+Commack,Perioperative,Anesthesiology,Visitor
+Commack,Pharmacy,Pharmacy,Not Applicable
+Commack,Pharmacy,Pharmacy,Outpatient
+Commack,Pharmacy,Pharmacy,Visitor
+Commack,Phlebotomy,Phlebotomy,Not Applicable
+Commack,Phlebotomy,Phlebotomy,Outpatient
+Commack,Phlebotomy,Phlebotomy,Visitor
+Commack,Radiation Oncology,Chart Coordination,Not Applicable
+Commack,Radiation Oncology,Chart Coordination,Outpatient
+Commack,Radiation Oncology,Chart Coordination,Visitor
+Commack,Radiation Oncology,Chart Rounds,Not Applicable
+Commack,Radiation Oncology,Chart Rounds,Outpatient
+Commack,Radiation Oncology,Chart Rounds,Visitor
+Commack,Radiation Oncology,Clinic,Not Applicable
+Commack,Radiation Oncology,Clinic,Outpatient
+Commack,Radiation Oncology,Clinic,Visitor
+Commack,Radiation Oncology,Simulation - EBRT,Not Applicable
+Commack,Radiation Oncology,Simulation - EBRT,Outpatient
+Commack,Radiation Oncology,Simulation - EBRT,Visitor
+Commack,Radiation Oncology,Treatment,Not Applicable
+Commack,Radiation Oncology,Treatment,Outpatient
+Commack,Radiation Oncology,Treatment,Visitor
+Commack,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+Commack,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+Commack,Radiation Oncology,Treatment Planning - EBRT,Visitor
+Commack,Radiology,CT,Not Applicable
+Commack,Radiology,CT,Outpatient
+Commack,Radiology,CT,Visitor
+Commack,Radiology,General Radiology,Not Applicable
+Commack,Radiology,General Radiology,Outpatient
+Commack,Radiology,General Radiology,Visitor
+Commack,Radiology,Interventional Radiology,Not Applicable
+Commack,Radiology,Interventional Radiology,Outpatient
+Commack,Radiology,Interventional Radiology,Visitor
+Commack,Radiology,Mammo Interventional,Not Applicable
+Commack,Radiology,Mammo Interventional,Outpatient
+Commack,Radiology,Mammo Interventional,Visitor
+Commack,Radiology,Mammography,Not Applicable
+Commack,Radiology,Mammography,Outpatient
+Commack,Radiology,Mammography,Visitor
+Commack,Radiology,MRI,Not Applicable
+Commack,Radiology,MRI,Outpatient
+Commack,Radiology,MRI,Visitor
+Commack,Radiology,PET CT,Not Applicable
+Commack,Radiology,PET CT,Outpatient
+Commack,Radiology,PET CT,Visitor
+Commack,Radiology,US,Not Applicable
+Commack,Radiology,US,Outpatient
+Commack,Radiology,US,Visitor
+Commack,Ambulatory/Clinic,Trailer,Outpatient
+Commack,Ambulatory/Clinic,Trailer,Not Applicable
+Commack,Ambulatory/Clinic,Trailer,Visitor
+Counseling Center,Ambulatory/Clinic,Clinic,Not Applicable
+Counseling Center,Ambulatory/Clinic,Clinic,Outpatient
+Counseling Center,Ambulatory/Clinic,Clinic,Visitor
+Counseling Center,Non-Clinical Area,Public Spaces,Not Applicable
+Counseling Center,Non-Clinical Area,Public Spaces,Outpatient
+Counseling Center,Non-Clinical Area,Public Spaces,Visitor
+Hauppauge,Ambulatory/Clinic,Dermatology,Not Applicable
+Hauppauge,Ambulatory/Clinic,Dermatology,Outpatient
+Hauppauge,Ambulatory/Clinic,Dermatology,Visitor
+Hauppauge,Ambulatory/Clinic,Mohs Laboratory,Not Applicable
+Hauppauge,Ambulatory/Clinic,Mohs Laboratory,Outpatient
+Hauppauge,Ambulatory/Clinic,Mohs Laboratory,Visitor
+Hauppauge,Non-Clinical Area,Public Spaces,Not Applicable
+Hauppauge,Non-Clinical Area,Public Spaces,Outpatient
+Hauppauge,Non-Clinical Area,Public Spaces,Visitor
+Hauppauge,Patient Financial Services,Patient Financial Services,Not Applicable
+Hauppauge,Patient Financial Services,Patient Financial Services,Outpatient
+Hauppauge,Patient Financial Services,Patient Financial Services,Visitor
+Integrative Medicine,Ambulatory/Clinic,Integrative Medicine,Not Applicable
+Integrative Medicine,Ambulatory/Clinic,Integrative Medicine,Outpatient
+Integrative Medicine,Ambulatory/Clinic,Integrative Medicine,Visitor
+Integrative Medicine,Non-Clinical Area,Public Spaces,Not Applicable
+Integrative Medicine,Non-Clinical Area,Public Spaces,Outpatient
+Integrative Medicine,Non-Clinical Area,Public Spaces,Visitor
+JRSC,Ambulatory/Clinic,JR 4,Not Applicable
+JRSC,Ambulatory/Clinic,JR 4,Outpatient
+JRSC,Ambulatory/Clinic,JR 4,Visitor
+JRSC,Ambulatory/Clinic,JR 5,Not Applicable
+JRSC,Ambulatory/Clinic,JR 5,Outpatient
+JRSC,Ambulatory/Clinic,JR 5,Visitor
+JRSC,Ambulatory/Clinic,JR 6,Not Applicable
+JRSC,Ambulatory/Clinic,JR 6,Outpatient
+JRSC,Ambulatory/Clinic,JR 6,Visitor
+JRSC,CPD,CPD,Not Applicable
+JRSC,CPD,CPD,Outpatient
+JRSC,CPD,CPD,Visitor
+JRSC,Laboratory,Laboratory,Not Applicable
+JRSC,Laboratory,Laboratory,Outpatient
+JRSC,Laboratory,Laboratory,Visitor
+JRSC,Non-Clinical Area,Public Spaces,Not Applicable
+JRSC,Non-Clinical Area,Public Spaces,Outpatient
+JRSC,Non-Clinical Area,Public Spaces,Visitor
+JRSC,Pathology,Pathology,Not Applicable
+JRSC,Pathology,Pathology,Outpatient
+JRSC,Pathology,Pathology,Visitor
+JRSC,Perioperative,Anesthesia - Pain,AXR
+JRSC,Perioperative,Anesthesia - Pain,Not Applicable
+JRSC,Perioperative,Anesthesia - Pain,Outpatient
+JRSC,Perioperative,Anesthesia - Pain,Visitor
+JRSC,Perioperative,Anesthesiology,AXR
+JRSC,Perioperative,Anesthesiology,Not Applicable
+JRSC,Perioperative,Anesthesiology,Outpatient
+JRSC,Perioperative,Anesthesiology,Visitor
+JRSC,Perioperative,OR,AXR
+JRSC,Perioperative,OR,Not Applicable
+JRSC,Perioperative,OR,Outpatient
+JRSC,Perioperative,OR,Visitor
+JRSC,Perioperative,PACU,AXR
+JRSC,Perioperative,PACU,Not Applicable
+JRSC,Perioperative,PACU,Outpatient
+JRSC,Perioperative,PACU,Visitor
+JRSC,Perioperative,PSC,AXR
+JRSC,Perioperative,PSC,Not Applicable
+JRSC,Perioperative,PSC,Outpatient
+JRSC,Perioperative,PSC,Visitor
+JRSC,Pharmacy,Pharmacy,Not Applicable
+JRSC,Pharmacy,Pharmacy,Outpatient
+JRSC,Pharmacy,Pharmacy,Visitor
+Kimmel,Ambulatory/Clinic,Chemo verification,Not Applicable
+Kimmel,Ambulatory/Clinic,Chemo verification,Outpatient
+Kimmel,Ambulatory/Clinic,Chemo verification,Visitor
+Kimmel,Ambulatory/Clinic,DTU,Not Applicable
+Kimmel,Ambulatory/Clinic,DTU,Outpatient
+Kimmel,Ambulatory/Clinic,DTU,Visitor
+Kimmel,Ambulatory/Clinic,GU chemo,Not Applicable
+Kimmel,Ambulatory/Clinic,GU chemo,Outpatient
+Kimmel,Ambulatory/Clinic,GU chemo,Visitor
+Kimmel,Ambulatory/Clinic,GU Med Onc clinic,Not Applicable
+Kimmel,Ambulatory/Clinic,GU Med Onc clinic,Outpatient
+Kimmel,Ambulatory/Clinic,GU Med Onc clinic,Visitor
+Kimmel,Ambulatory/Clinic,Procedure room,Not Applicable
+Kimmel,Ambulatory/Clinic,Procedure room,Outpatient
+Kimmel,Ambulatory/Clinic,Procedure room,Visitor
+Kimmel,Ambulatory/Clinic,Urology,Not Applicable
+Kimmel,Ambulatory/Clinic,Urology,Outpatient
+Kimmel,Ambulatory/Clinic,Urology,Visitor
+Kimmel,Laboratory,Laboratory,Not Applicable
+Kimmel,Laboratory,Laboratory,Outpatient
+Kimmel,Laboratory,Laboratory,Visitor
+Kimmel,Non-Clinical Area,Public Spaces,Not Applicable
+Kimmel,Non-Clinical Area,Public Spaces,Outpatient
+Kimmel,Non-Clinical Area,Public Spaces,Visitor
+Kimmel,Patient Financial Services,Patient Financial Services,Not Applicable
+Kimmel,Patient Financial Services,Patient Financial Services,Outpatient
+Kimmel,Patient Financial Services,Patient Financial Services,Visitor
+Kimmel,Pharmacy,Pharmacy,Not Applicable
+Kimmel,Pharmacy,Pharmacy,Outpatient
+Kimmel,Pharmacy,Pharmacy,Visitor
+Koch,Ambulatory/Clinic,5th floor Bone Marrow Procedure,Outpatient
+Koch,Ambulatory/Clinic,5th floor Bone Marrow Procedure,Visitor
+Koch,Ambulatory/Clinic,5th floor Bone Marrow Procedure,Not Applicable
+Koch,Ambulatory/Clinic,11th floor infusion unit,Outpatient
+Koch,Ambulatory/Clinic,11th floor infusion unit,Visitor
+Koch,Ambulatory/Clinic,11th floor infusion unit,Not Applicable
+Koch,Ambulatory/Clinic,12th floor Bone Marrow Procedure,Outpatient
+Koch,Ambulatory/Clinic,12th floor Bone Marrow Procedure,Visitor
+Koch,Ambulatory/Clinic,12th floor Bone Marrow Procedure,Not Applicable
+Koch,Ambulatory/Clinic,12th floor infusion unit,Outpatient
+Koch,Ambulatory/Clinic,12th floor infusion unit,Visitor
+Koch,Ambulatory/Clinic,12th floor infusion unit,Not Applicable
+Koch,Ambulatory/Clinic,14th floor Bone Marrow Procedure,Outpatient
+Koch,Ambulatory/Clinic,14th floor Bone Marrow Procedure,Visitor
+Koch,Ambulatory/Clinic,14th floor Bone Marrow Procedure,Not Applicable
+Koch,Ambulatory/Clinic,15th floor infusion unit,Outpatient
+Koch,Ambulatory/Clinic,15th floor infusion unit,Visitor
+Koch,Ambulatory/Clinic,15th floor infusion unit,Not Applicable
+Koch,Ambulatory/Clinic,16th floor Thoracic/Pulmonary Procedure,Outpatient
+Koch,Ambulatory/Clinic,16th floor Thoracic/Pulmonary Procedure,Visitor
+Koch,Ambulatory/Clinic,16th floor Thoracic/Pulmonary Procedure,Not Applicable
+Koch,Ambulatory/Clinic,Adult Bone Marrow Transplant,Outpatient
+Koch,Ambulatory/Clinic,Adult Bone Marrow Transplant,Visitor
+Koch,Ambulatory/Clinic,Adult Bone Marrow Transplant,Not Applicable
+Koch,Ambulatory/Clinic,Anesthesia - Pain,Outpatient
+Koch,Ambulatory/Clinic,Anesthesia - Pain,Visitor
+Koch,Ambulatory/Clinic,Anesthesia - Pain,Not Applicable
+Koch,Ambulatory/Clinic,Apheresis,Outpatient
+Koch,Ambulatory/Clinic,Apheresis,Visitor
+Koch,Ambulatory/Clinic,Apheresis,Not Applicable
+Koch,Ambulatory/Clinic,Benign Hematology,Outpatient
+Koch,Ambulatory/Clinic,Benign Hematology,Visitor
+Koch,Ambulatory/Clinic,Benign Hematology,Not Applicable
+Koch,Ambulatory/Clinic,Car T Cell - investigational,Outpatient
+Koch,Ambulatory/Clinic,Car T Cell - investigational,Visitor
+Koch,Ambulatory/Clinic,Car T Cell - investigational,Not Applicable
+Koch,Ambulatory/Clinic,Cardiology,Outpatient
+Koch,Ambulatory/Clinic,Cardiology,Visitor
+Koch,Ambulatory/Clinic,Cardiology,Not Applicable
+Koch,Ambulatory/Clinic,Cardiology Testing,Outpatient
+Koch,Ambulatory/Clinic,Cardiology Testing,Visitor
+Koch,Ambulatory/Clinic,Cardiology Testing,Not Applicable
+Koch,Ambulatory/Clinic,Center for Drug Development - Leukemia,Outpatient
+Koch,Ambulatory/Clinic,Center for Drug Development - Leukemia,Visitor
+Koch,Ambulatory/Clinic,Center for Drug Development - Leukemia,Not Applicable
+Koch,Ambulatory/Clinic,Chemo verification,Outpatient
+Koch,Ambulatory/Clinic,Chemo verification,Visitor
+Koch,Ambulatory/Clinic,Chemo verification,Not Applicable
+Koch,Ambulatory/Clinic,Consultative Talk,Outpatient
+Koch,Ambulatory/Clinic,Consultative Talk,Visitor
+Koch,Ambulatory/Clinic,Consultative Talk,Not Applicable
+Koch,Ambulatory/Clinic,Dental,Outpatient
+Koch,Ambulatory/Clinic,Dental,Visitor
+Koch,Ambulatory/Clinic,Dental,Not Applicable
+Koch,Ambulatory/Clinic,Dermatology,Outpatient
+Koch,Ambulatory/Clinic,Dermatology,Visitor
+Koch,Ambulatory/Clinic,Dermatology,Not Applicable
+Koch,Ambulatory/Clinic,DTU,Outpatient
+Koch,Ambulatory/Clinic,DTU,Visitor
+Koch,Ambulatory/Clinic,DTU,Not Applicable
+Koch,Ambulatory/Clinic,Early Drug Development,Outpatient
+Koch,Ambulatory/Clinic,Early Drug Development,Visitor
+Koch,Ambulatory/Clinic,Early Drug Development,Not Applicable
+Koch,Ambulatory/Clinic,Endocrine,Outpatient
+Koch,Ambulatory/Clinic,Endocrine,Visitor
+Koch,Ambulatory/Clinic,Endocrine,Not Applicable
+Koch,Ambulatory/Clinic,General Internal Medicine,Outpatient
+Koch,Ambulatory/Clinic,General Internal Medicine,Visitor
+Koch,Ambulatory/Clinic,General Internal Medicine,Not Applicable
+Koch,Ambulatory/Clinic,Geriatrics,Outpatient
+Koch,Ambulatory/Clinic,Geriatrics,Visitor
+Koch,Ambulatory/Clinic,Geriatrics,Not Applicable
+Koch,Ambulatory/Clinic,GI Med Onc,Outpatient
+Koch,Ambulatory/Clinic,GI Med Onc,Visitor
+Koch,Ambulatory/Clinic,GI Med Onc,Not Applicable
+Koch,Ambulatory/Clinic,GMT,Outpatient
+Koch,Ambulatory/Clinic,GMT,Visitor
+Koch,Ambulatory/Clinic,GMT,Not Applicable
+Koch,Ambulatory/Clinic,GYN Med Onc,Outpatient
+Koch,Ambulatory/Clinic,GYN Med Onc,Visitor
+Koch,Ambulatory/Clinic,GYN Med Onc,Not Applicable
+Koch,Ambulatory/Clinic,Head & Neck,Visitor
+Koch,Ambulatory/Clinic,Head & Neck,Not Applicable
+Koch,Ambulatory/Clinic,Head & Neck,Outpatient
+Koch,Ambulatory/Clinic,Infectious Diseases,Outpatient
+Koch,Ambulatory/Clinic,Infectious Diseases,Visitor
+Koch,Ambulatory/Clinic,Infectious Diseases,Not Applicable
+Koch,Ambulatory/Clinic,Leukemia,Outpatient
+Koch,Ambulatory/Clinic,Leukemia,Visitor
+Koch,Ambulatory/Clinic,Leukemia,Not Applicable
+Koch,Ambulatory/Clinic,Lymphoma,Outpatient
+Koch,Ambulatory/Clinic,Lymphoma,Visitor
+Koch,Ambulatory/Clinic,Lymphoma,Not Applicable
+Koch,Ambulatory/Clinic,Melanoma,Outpatient
+Koch,Ambulatory/Clinic,Melanoma,Visitor
+Koch,Ambulatory/Clinic,Melanoma,Not Applicable
+Koch,Ambulatory/Clinic,Multiple Myeloma,Outpatient
+Koch,Ambulatory/Clinic,Multiple Myeloma,Visitor
+Koch,Ambulatory/Clinic,Multiple Myeloma,Not Applicable
+Koch,Ambulatory/Clinic,Neuro Rehab,Outpatient
+Koch,Ambulatory/Clinic,Neuro Rehab,Visitor
+Koch,Ambulatory/Clinic,Neuro Rehab,Not Applicable
+Koch,Ambulatory/Clinic,Neurology,Outpatient
+Koch,Ambulatory/Clinic,Neurology,Visitor
+Koch,Ambulatory/Clinic,Neurology,Not Applicable
+Koch,Ambulatory/Clinic,Plastic and Reconstructive,Outpatient
+Koch,Ambulatory/Clinic,Plastic and Reconstructive,Visitor
+Koch,Ambulatory/Clinic,Plastic and Reconstructive,Not Applicable
+Koch,Ambulatory/Clinic,PST,Inpatient
+Koch,Ambulatory/Clinic,PST,Outpatient
+Koch,Ambulatory/Clinic,PST,Visitor
+Koch,Ambulatory/Clinic,PST,Not Applicable
+Koch,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Outpatient
+Koch,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Visitor
+Koch,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Not Applicable
+Koch,Ambulatory/Clinic,Pulmonary Function Testing,Outpatient
+Koch,Ambulatory/Clinic,Pulmonary Function Testing,Visitor
+Koch,Ambulatory/Clinic,Pulmonary Function Testing,Not Applicable
+Koch,Ambulatory/Clinic,Interventional Radiology,Outpatient
+Koch,Ambulatory/Clinic,Interventional Radiology,Visitor
+Koch,Ambulatory/Clinic,Interventional Radiology,Not Applicable
+Koch,Ambulatory/Clinic,Pulmonology,Outpatient
+Koch,Ambulatory/Clinic,Pulmonology,Visitor
+Koch,Ambulatory/Clinic,Pulmonology,Not Applicable
+Koch,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+Koch,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+Koch,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+Koch,Ambulatory/Clinic,Solid Tumor Head and Neck,Outpatient
+Koch,Ambulatory/Clinic,Solid Tumor Head and Neck,Visitor
+Koch,Ambulatory/Clinic,Solid Tumor Head and Neck,Not Applicable
+Koch,Ambulatory/Clinic,Solid Tumor Thoracic,Outpatient
+Koch,Ambulatory/Clinic,Solid Tumor Thoracic,Visitor
+Koch,Ambulatory/Clinic,Solid Tumor Thoracic,Not Applicable
+Koch,Ambulatory/Clinic,Speech and Swallow,Outpatient
+Koch,Ambulatory/Clinic,Speech and Swallow,Visitor
+Koch,Ambulatory/Clinic,Speech and Swallow,Not Applicable
+Koch,Ambulatory/Clinic,Supportive Care,Outpatient
+Koch,Ambulatory/Clinic,Supportive Care,Visitor
+Koch,Ambulatory/Clinic,Supportive Care,Not Applicable
+Koch,Ambulatory/Clinic,Survivorship,Outpatient
+Koch,Ambulatory/Clinic,Survivorship,Visitor
+Koch,Ambulatory/Clinic,Survivorship,Not Applicable
+Koch,Ambulatory/Clinic,Thoracic,Outpatient
+Koch,Ambulatory/Clinic,Thoracic,Visitor
+Koch,Ambulatory/Clinic,Thoracic,Not Applicable
+Koch,Inpatient Unit,Chemo verification,Inpatient
+Koch,Inpatient Unit,K5,Inpatient
+Koch,Inpatient Unit,K5,Visitor
+Koch,Inpatient Unit,K5,Not Applicable
+Koch,Non-Clinical Area,K5 Family and Patient Lounge,Outpatient
+Koch,Non-Clinical Area,K5 Family and Patient Lounge,Visitor
+Koch,Non-Clinical Area,K5 Family and Patient Lounge,Not Applicable
+Koch,Non-Clinical Area,Public Spaces,Outpatient
+Koch,Non-Clinical Area,Public Spaces,Visitor
+Koch,Non-Clinical Area,Public Spaces,Not Applicable
+Koch,Non-Clinical Area,Public Spaces,Outpatient
+Koch,Non-Clinical Area,Public Spaces,Visitor
+Koch,Non-Clinical Area,Public Spaces,Not Applicable
+Koch,Non-Clinical Area,Public Spaces,Outpatient
+Koch,Non-Clinical Area,Public Spaces,Visitor
+Koch,Non-Clinical Area,Public Spaces,Not Applicable
+Koch,Non-Clinical Area,Public Spaces,Outpatient
+Koch,Non-Clinical Area,Public Spaces,Visitor
+Koch,Non-Clinical Area,Public Spaces,Not Applicable
+Koch,Non-Clinical Area,Parking Garage,Outpatient
+Koch,Non-Clinical Area,Parking Garage,Visitor
+Koch,Non-Clinical Area,Parking Garage,Not Applicable
+Koch,Non-Clinical Area,Public Spaces,Outpatient
+Koch,Non-Clinical Area,Public Spaces,Visitor
+Koch,Non-Clinical Area,Public Spaces,Not Applicable
+Koch,Laboratory,Mohs Laboratory,Outpatient
+Koch,Laboratory,Mohs Laboratory,Visitor
+Koch,Laboratory,Mohs Laboratory,Not Applicable
+Koch,Laboratory,Laboratory,Outpatient
+Koch,Laboratory,Laboratory,Visitor
+Koch,Laboratory,Laboratory,Not Applicable
+Koch,Perioperative,K5 Endo Suite,Inpatient
+Koch,Perioperative,K5 Endo Suite,Outpatient
+Koch,Perioperative,K5 Endo Suite,Visitor
+Koch,Perioperative,K5 Endo Suite,Not Applicable
+Koch,Perioperative,K5 PACU,Inpatient
+Koch,Perioperative,K5 PACU,Outpatient
+Koch,Perioperative,K5 PACU,Not Applicable
+Koch,Perioperative,K5 PACU,Visitor
+Koch,Perioperative,K5 PSC,Inpatient
+Koch,Perioperative,K5 PSC,Outpatient
+Koch,Perioperative,K5 PSC,Visitor
+Koch,Perioperative,K5 PSC,Not Applicable
+Koch,Perioperative,K8 PSC,Inpatient
+Koch,Perioperative,K8 PSC,Outpatient
+Koch,Perioperative,K8 PSC,Visitor
+Koch,Perioperative,K8 PSC,Not Applicable
+Koch,Perioperative,K8 PACU,Inpatient
+Koch,Perioperative,K8 PACU,Outpatient
+Koch,Perioperative,K8 PACU,Visitor
+Koch,Perioperative,K8 PACU,Not Applicable
+Koch,Perioperative,PST,Inpatient
+Koch,Perioperative,PST,Outpatient
+Koch,Perioperative,PST,Visitor
+Koch,Perioperative,CPD,Outpatient
+Koch,Perioperative,CPD,Visitor
+Koch,Perioperative,CPD,Not Applicable
+Koch,Pharmacy,10th Floor Pharmacy,Outpatient
+Koch,Pharmacy,10th Floor Pharmacy,Visitor
+Koch,Pharmacy,10th Floor Pharmacy,Not Applicable
+Koch,Pharmacy,Verification,Inpatient
+Koch,Pharmacy,Verification,Outpatient
+Koch,Pharmacy,Verification,Visitor
+Koch,Pharmacy,Verification,Not Applicable
+Koch,Pharmacy,Retail pharmacy,Outpatient
+Koch,Pharmacy,Retail pharmacy,Visitor
+Koch,Pharmacy,Retail pharmacy,Not Applicable
+Koch,Pathology,Pathology,Outpatient
+Koch,Pathology,Pathology,Visitor
+Koch,Pathology,Pathology,Not Applicable
+Koch,Phlebotomy,11th floor Quick Treat,Outpatient
+Koch,Phlebotomy,11th floor Quick Treat,Visitor
+Koch,Phlebotomy,11th floor Quick Treat,Not Applicable
+Koch,Phlebotomy,12th floor Quick Treat,Outpatient
+Koch,Phlebotomy,12th floor Quick Treat,Visitor
+Koch,Phlebotomy,12th floor Quick Treat,Not Applicable
+Koch,Phlebotomy,14th floor Quick Treat,Outpatient
+Koch,Phlebotomy,14th floor Quick Treat,Visitor
+Koch,Phlebotomy,14th floor Quick Treat,Not Applicable
+Koch,Phlebotomy,15th floor Quick Treat,Outpatient
+Koch,Phlebotomy,15th floor Quick Treat,Visitor
+Koch,Phlebotomy,15th floor Quick Treat,Not Applicable
+Koch,Phlebotomy,16th floor Quick Treat,Outpatient
+Koch,Phlebotomy,16th floor Quick Treat,Visitor
+Koch,Phlebotomy,16th floor Quick Treat,Not Applicable
+Koch,Phlebotomy,17th floorQuick Treat,Outpatient
+Koch,Phlebotomy,17th floorQuick Treat,Visitor
+Koch,Phlebotomy,17th floorQuick Treat,Not Applicable
+Koch,Radiation Oncology,Chart Coordination,Outpatient
+Koch,Radiation Oncology,Chart Coordination,Visitor
+Koch,Radiation Oncology,Chart Coordination,Not Applicable
+Koch,Radiation Oncology,Chart Rounds,Outpatient
+Koch,Radiation Oncology,Chart Rounds,Visitor
+Koch,Radiation Oncology,Chart Rounds,Not Applicable
+Koch,Radiation Oncology,Infusion,Outpatient
+Koch,Radiation Oncology,Infusion,Visitor
+Koch,Radiation Oncology,Infusion,Not Applicable
+Koch,Radiation Oncology,MR SIM,Outpatient
+Koch,Radiation Oncology,MR SIM,Visitor
+Koch,Radiation Oncology,MR SIM,Not Applicable
+Koch,Radiation Oncology,MRLINAC,Outpatient
+Koch,Radiation Oncology,MRLINAC,Visitor
+Koch,Radiation Oncology,MRLINAC,Not Applicable
+Koch,Radiation Oncology,Simulation - EBRT,Outpatient
+Koch,Radiation Oncology,Simulation - EBRT,Visitor
+Koch,Radiation Oncology,Simulation - EBRT,Not Applicable
+Koch,Radiation Oncology,PET CT,Outpatient
+Koch,Radiation Oncology,PET CT,Visitor
+Koch,Radiation Oncology,PET CT,Not Applicable
+Koch,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+Koch,Radiation Oncology,Treatment Planning - EBRT,Visitor
+Koch,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+Koch,Radiation Oncology,Clinic,Outpatient
+Koch,Radiation Oncology,Clinic,Visitor
+Koch,Radiation Oncology,Clinic,Not Applicable
+Koch,Radiation Oncology,Koch_TB1,Outpatient
+Koch,Radiation Oncology,Koch_TB1,Visitor
+Koch,Radiation Oncology,Koch_TB1,Not Applicable
+Koch,Radiology,CT,Outpatient
+Koch,Radiology,CT,Visitor
+Koch,Radiology,CT,Not Applicable
+Koch,Radiology,General Radiology,Outpatient
+Koch,Radiology,General Radiology,Visitor
+Koch,Radiology,General Radiology,Not Applicable
+Koch,Radiology,Interventional Radiology,Inpatient
+Koch,Radiology,Interventional Radiology,Outpatient
+Koch,Radiology,Interventional Radiology,Visitor
+Koch,Radiology,Interventional Radiology,Not Applicable
+Koch,Radiology,MITS (Molecular Imaging & Therapy Services),Outpatient
+Koch,Radiology,MITS (Molecular Imaging & Therapy Services),Visitor
+Koch,Radiology,MITS (Molecular Imaging & Therapy Services),Not Applicable
+Koch,Radiology,MRI,Outpatient
+Koch,Radiology,MRI,Visitor
+Koch,Radiology,MRI,Not Applicable
+Koch,Radiology,PET,Outpatient
+Koch,Radiology,PET,Visitor
+Koch,Radiology,PET,Not Applicable
+Koch,Radiology,US,Outpatient
+Koch,Radiology,US,Visitor
+Koch,Radiology,US,Not Applicable
+Long Island City,Pharmacy,IDS - Investigational Drug Services,Outpatient
+Long Island City,Pharmacy,IDS - Investigational Drug Services,Visitor
+Long Island City,Pharmacy,IDS - Investigational Drug Services,Not Applicable
+Memorial Medical Care,Flatbush Brooklyn-MMC,Clinic,Outpatient
+Memorial Medical Care,Flatbush Brooklyn-MMC,Clinic,Visitor
+Memorial Medical Care,Flatbush Brooklyn-MMC,Clinic,Not Applicable
+Memorial Medical Care,Flatbush Brooklyn-MMC,Other,Outpatient
+Memorial Medical Care,Flatbush Brooklyn-MMC,Other,Visitor
+Memorial Medical Care,Flatbush Brooklyn-MMC,Other,Not Applicable
+Monmouth,Ambulatory/Clinic,Breast Medicine,Not Applicable
+Monmouth,Ambulatory/Clinic,Breast Medicine,Outpatient
+Monmouth,Ambulatory/Clinic,Breast Medicine,Visitor
+Monmouth,Ambulatory/Clinic,Breast Surgery,Not Applicable
+Monmouth,Ambulatory/Clinic,Breast Surgery,Outpatient
+Monmouth,Ambulatory/Clinic,Breast Surgery,Visitor
+Monmouth,Ambulatory/Clinic,Cardiology Testing,Outpatient
+Monmouth,Ambulatory/Clinic,Cardiology Testing,Visitor
+Monmouth,Ambulatory/Clinic,Cardiology Testing,Not Applicable
+Monmouth,Ambulatory/Clinic,Chemo verification,Not Applicable
+Monmouth,Ambulatory/Clinic,Chemo verification,Outpatient
+Monmouth,Ambulatory/Clinic,Chemo verification,Visitor
+Monmouth,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Monmouth,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Monmouth,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Monmouth,Ambulatory/Clinic,Colorectal Clinic,Not Applicable
+Monmouth,Ambulatory/Clinic,Colorectal Clinic,Outpatient
+Monmouth,Ambulatory/Clinic,Colorectal Clinic,Visitor
+Monmouth,Ambulatory/Clinic,Colorectal Surgery,Not Applicable
+Monmouth,Ambulatory/Clinic,Colorectal Surgery,Outpatient
+Monmouth,Ambulatory/Clinic,Colorectal Surgery,Visitor
+Monmouth,Ambulatory/Clinic,GI Med Onc clinic,Not Applicable
+Monmouth,Ambulatory/Clinic,GI Med Onc clinic,Outpatient
+Monmouth,Ambulatory/Clinic,GI Med Onc clinic,Visitor
+Monmouth,Ambulatory/Clinic,GMT clinic,Not Applicable
+Monmouth,Ambulatory/Clinic,GMT clinic,Outpatient
+Monmouth,Ambulatory/Clinic,GMT clinic,Visitor
+Monmouth,Ambulatory/Clinic,GU Med Onc clinic,Not Applicable
+Monmouth,Ambulatory/Clinic,GU Med Onc clinic,Outpatient
+Monmouth,Ambulatory/Clinic,GU Med Onc clinic,Visitor
+Monmouth,Ambulatory/Clinic,GYN Med Onc clinic,Not Applicable
+Monmouth,Ambulatory/Clinic,GYN Med Onc clinic,Outpatient
+Monmouth,Ambulatory/Clinic,GYN Med Onc clinic,Visitor
+Monmouth,Ambulatory/Clinic,Gynecology Surgery,Not Applicable
+Monmouth,Ambulatory/Clinic,Gynecology Surgery,Outpatient
+Monmouth,Ambulatory/Clinic,Gynecology Surgery,Visitor
+Monmouth,Ambulatory/Clinic,Head & Neck,Not Applicable
+Monmouth,Ambulatory/Clinic,Head & Neck,Outpatient
+Monmouth,Ambulatory/Clinic,Head & Neck,Visitor
+Monmouth,Ambulatory/Clinic,Head & Neck Surgery,Not Applicable
+Monmouth,Ambulatory/Clinic,Head & Neck Surgery,Outpatient
+Monmouth,Ambulatory/Clinic,Head & Neck Surgery,Visitor
+Monmouth,Ambulatory/Clinic,Hematology,Not Applicable
+Monmouth,Ambulatory/Clinic,Hematology,Outpatient
+Monmouth,Ambulatory/Clinic,Hematology,Visitor
+Monmouth,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Not Applicable
+Monmouth,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Outpatient
+Monmouth,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Visitor
+Monmouth,Ambulatory/Clinic,Leukemia,Not Applicable
+Monmouth,Ambulatory/Clinic,Leukemia,Outpatient
+Monmouth,Ambulatory/Clinic,Leukemia,Visitor
+Monmouth,Ambulatory/Clinic,Lymphoma,Not Applicable
+Monmouth,Ambulatory/Clinic,Lymphoma,Outpatient
+Monmouth,Ambulatory/Clinic,Lymphoma,Visitor
+Monmouth,Ambulatory/Clinic,Multiple Myeloma,Not Applicable
+Monmouth,Ambulatory/Clinic,Multiple Myeloma,Outpatient
+Monmouth,Ambulatory/Clinic,Multiple Myeloma,Visitor
+Monmouth,Ambulatory/Clinic,Neurology,Not Applicable
+Monmouth,Ambulatory/Clinic,Neurology,Outpatient
+Monmouth,Ambulatory/Clinic,Neurology,Visitor
+Monmouth,Ambulatory/Clinic,Nutrition,Not Applicable
+Monmouth,Ambulatory/Clinic,Nutrition,Outpatient
+Monmouth,Ambulatory/Clinic,Nutrition,Visitor
+Monmouth,Ambulatory/Clinic,Orthopaedics,Not Applicable
+Monmouth,Ambulatory/Clinic,Orthopaedics,Outpatient
+Monmouth,Ambulatory/Clinic,Orthopaedics,Visitor
+Monmouth,Ambulatory/Clinic,Pain and Palliative Care,Not Applicable
+Monmouth,Ambulatory/Clinic,Pain and Palliative Care,Outpatient
+Monmouth,Ambulatory/Clinic,Pain and Palliative Care,Visitor
+Monmouth,Ambulatory/Clinic,Pediatric Medical Oncology,Not Applicable
+Monmouth,Ambulatory/Clinic,Pediatric Medical Oncology,Outpatient
+Monmouth,Ambulatory/Clinic,Pediatric Medical Oncology,Visitor
+Monmouth,Ambulatory/Clinic,Plastic and Reconstructive,Outpatient
+Monmouth,Ambulatory/Clinic,Plastic and Reconstructive,Visitor
+Monmouth,Ambulatory/Clinic,PST,Not Applicable
+Monmouth,Ambulatory/Clinic,PST,Outpatient
+Monmouth,Ambulatory/Clinic,PST,Visitor
+Monmouth,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Not Applicable
+Monmouth,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Outpatient
+Monmouth,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Visitor
+Monmouth,Ambulatory/Clinic,Pulmonology,Not Applicable
+Monmouth,Ambulatory/Clinic,Pulmonology,Outpatient
+Monmouth,Ambulatory/Clinic,Pulmonology,Visitor
+Monmouth,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+Monmouth,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+Monmouth,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+Monmouth,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Outpatient
+Monmouth,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Not Applicable
+Monmouth,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Visitor
+Monmouth,Ambulatory/Clinic,Thoracic Oncology,Not Applicable
+Monmouth,Ambulatory/Clinic,Thoracic Oncology,Outpatient
+Monmouth,Ambulatory/Clinic,Thoracic Oncology,Visitor
+Monmouth,Ambulatory/Clinic,Thoracic Surgery,Not Applicable
+Monmouth,Ambulatory/Clinic,Thoracic Surgery,Outpatient
+Monmouth,Ambulatory/Clinic,Thoracic Surgery,Visitor
+Monmouth,Ambulatory/Clinic,Trailer,Outpatient
+Monmouth,Ambulatory/Clinic,Trailer,Not Applicable
+Monmouth,Ambulatory/Clinic,Trailer,Visitor
+Monmouth,Ambulatory/Clinic,Urology,Not Applicable
+Monmouth,Ambulatory/Clinic,Urology,Outpatient
+Monmouth,Ambulatory/Clinic,Urology,Visitor
+Monmouth,CPD,CPD,Not Applicable
+Monmouth,CPD,CPD,Outpatient
+Monmouth,CPD,CPD,Visitor
+Monmouth,Laboratory,Laboratory,Not Applicable
+Monmouth,Laboratory,Laboratory,Outpatient
+Monmouth,Laboratory,Laboratory,Visitor
+Monmouth,Non-Clinical Area,Public Spaces,Not Applicable
+Monmouth,Non-Clinical Area,Public Spaces,Outpatient
+Monmouth,Non-Clinical Area,Public Spaces,Visitor
+Monmouth,Pathology,Cytology,Not Applicable
+Monmouth,Pathology,Cytology,Outpatient
+Monmouth,Pathology,Cytology,Visitor
+Monmouth,Patient Financial Services,Patient Financial Services,Outpatient
+Monmouth,Patient Financial Services,Patient Financial Services,Visitor
+Monmouth,Patient Financial Services,Patient Financial Services,Not Applicable
+Monmouth,Perioperative,Anesthesia - Pain,Outpatient
+Monmouth,Perioperative,Anesthesia - Pain,Visitor
+Monmouth,Perioperative,Anesthesia - Pain,Not Applicable
+Monmouth,Perioperative,Anesthesiology,Outpatient
+Monmouth,Perioperative,Anesthesiology,Visitor
+Monmouth,Perioperative,Anesthesiology,Not Applicable
+Monmouth,Perioperative,OR,Outpatient
+Monmouth,Perioperative,OR,Visitor
+Monmouth,Perioperative,OR,Not Applicable
+Monmouth,Perioperative,PACU,Outpatient
+Monmouth,Perioperative,PACU,Visitor
+Monmouth,Perioperative,PACU,Not Applicable
+Monmouth,Perioperative,PSC,Outpatient
+Monmouth,Perioperative,PSC,Visitor
+Monmouth,Perioperative,PSC,Not Applicable
+Monmouth,Pharmacy,Pharmacy,Outpatient
+Monmouth,Pharmacy,Pharmacy,Visitor
+Monmouth,Pharmacy,Pharmacy,Not Applicable
+Monmouth,Phlebotomy,Phlebotomy,Not Applicable
+Monmouth,Phlebotomy,Phlebotomy,Outpatient
+Monmouth,Phlebotomy,Phlebotomy,Visitor
+Monmouth,Radiation Oncology,Chart Coordination,Outpatient
+Monmouth,Radiation Oncology,Chart Coordination,Visitor
+Monmouth,Radiation Oncology,Chart Coordination,Not Applicable
+Monmouth,Radiation Oncology,Chart Rounds,Outpatient
+Monmouth,Radiation Oncology,Chart Rounds,Visitor
+Monmouth,Radiation Oncology,Chart Rounds,Not Applicable
+Monmouth,Radiation Oncology,Clinic,Outpatient
+Monmouth,Radiation Oncology,Clinic,Visitor
+Monmouth,Radiation Oncology,Clinic,Not Applicable
+Monmouth,Radiation Oncology,Simulation - EBRT,Outpatient
+Monmouth,Radiation Oncology,Simulation - EBRT,Visitor
+Monmouth,Radiation Oncology,Simulation - EBRT,Not Applicable
+Monmouth,Radiation Oncology,Treatment,Outpatient
+Monmouth,Radiation Oncology,Treatment,Visitor
+Monmouth,Radiation Oncology,Treatment,Not Applicable
+Monmouth,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+Monmouth,Radiation Oncology,Treatment Planning - EBRT,Visitor
+Monmouth,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+Monmouth,Radiology,Bone density,Outpatient
+Monmouth,Radiology,Bone density,Visitor
+Monmouth,Radiology,Bone density,Not Applicable
+Monmouth,Radiology,CT,Outpatient
+Monmouth,Radiology,CT,Visitor
+Monmouth,Radiology,CT,Not Applicable
+Monmouth,Radiology,General Radiology,Outpatient
+Monmouth,Radiology,General Radiology,Visitor
+Monmouth,Radiology,General Radiology,Not Applicable
+Monmouth,Radiology,Interventional Radiology,Outpatient
+Monmouth,Radiology,Interventional Radiology,Visitor
+Monmouth,Radiology,Interventional Radiology,Not Applicable
+Monmouth,Radiology,Mammo Interventional,Outpatient
+Monmouth,Radiology,Mammo Interventional,Visitor
+Monmouth,Radiology,Mammo Interventional,Not Applicable
+Monmouth,Radiology,Mammography,Outpatient
+Monmouth,Radiology,Mammography,Visitor
+Monmouth,Radiology,Mammography,Not Applicable
+Monmouth,Radiology,MRI,Outpatient
+Monmouth,Radiology,MRI,Visitor
+Monmouth,Radiology,MRI,Not Applicable
+Monmouth,Radiology,PET CT,Outpatient
+Monmouth,Radiology,PET CT,Visitor
+Monmouth,Radiology,PET CT,Not Applicable
+Monmouth,Radiology,US,Outpatient
+Monmouth,Radiology,US,Visitor
+Monmouth,Radiology,US,Not Applicable
+Nassau,Radiation Oncology,Treatment Planning - Brachytherapy,Not Applicable
+Nassau,Radiation Oncology,Treatment Planning - Brachytherapy,Outpatient
+Nassau,Radiation Oncology,Treatment Planning - Brachytherapy,Visitor
+Nassau,Ambulatory/Clinic,Cardiology Testing,Not Applicable
+Nassau,Ambulatory/Clinic,Cardiology Testing,Outpatient
+Nassau,Ambulatory/Clinic,Cardiology Testing,Visitor
+Nassau,Ambulatory/Clinic,Chemo verification,Not Applicable
+Nassau,Ambulatory/Clinic,Chemo verification,Outpatient
+Nassau,Ambulatory/Clinic,Chemo verification,Visitor
+Nassau,Ambulatory/Clinic,Medical Oncology Clinic,Not Applicable
+Nassau,Ambulatory/Clinic,Medical Oncology Clinic,Outpatient
+Nassau,Ambulatory/Clinic,Medical Oncology Clinic,Visitor
+Nassau,Ambulatory/Clinic,Pain and Palliative Care,Not Applicable
+Nassau,Ambulatory/Clinic,Pain and Palliative Care,Outpatient
+Nassau,Ambulatory/Clinic,Pain and Palliative Care,Visitor
+Nassau,Ambulatory/Clinic,Phlebotomy/Quick Treat,Not Applicable
+Nassau,Ambulatory/Clinic,Phlebotomy/Quick Treat,Outpatient
+Nassau,Ambulatory/Clinic,Phlebotomy/Quick Treat,Visitor
+Nassau,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Not Applicable
+Nassau,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Outpatient
+Nassau,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Visitor
+Nassau,Ambulatory/Clinic,Surgical Oncology Clinic,Not Applicable
+Nassau,Ambulatory/Clinic,Surgical Oncology Clinic,Outpatient
+Nassau,Ambulatory/Clinic,Surgical Oncology Clinic,Visitor
+Nassau,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Outpatient
+Nassau,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Not Applicable
+Nassau,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Visitor
+Nassau,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Nassau,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Nassau,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Nassau,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+Nassau,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+Nassau,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+Nassau,Laboratory,Laboratory,Not Applicable
+Nassau,Laboratory,Laboratory,Outpatient
+Nassau,Laboratory,Laboratory,Visitor
+Nassau,Non-Clinical Area,Public Spaces,Not Applicable
+Nassau,Non-Clinical Area,Public Spaces,Outpatient
+Nassau,Non-Clinical Area,Public Spaces,Visitor
+Nassau,Pathology,Cytology,Not Applicable
+Nassau,Pathology,Cytology,Outpatient
+Nassau,Pathology,Cytology,Visitor
+Nassau,Patient Financial Services,Patient Financial Services,Not Applicable
+Nassau,Patient Financial Services,Patient Financial Services,Outpatient
+Nassau,Patient Financial Services,Patient Financial Services,Visitor
+Nassau,Perioperative,Anesthesia - Pain,Not Applicable
+Nassau,Perioperative,Anesthesia - Pain,Outpatient
+Nassau,Perioperative,Anesthesia - Pain,Visitor
+Nassau,Pharmacy,Pharmacy,Not Applicable
+Nassau,Pharmacy,Pharmacy,Outpatient
+Nassau,Pharmacy,Pharmacy,Visitor
+Nassau,Radiation Oncology,Chart Coordination,Not Applicable
+Nassau,Radiation Oncology,Chart Coordination,Outpatient
+Nassau,Radiation Oncology,Chart Coordination,Visitor
+Nassau,Radiation Oncology,Chart Rounds,Not Applicable
+Nassau,Radiation Oncology,Chart Rounds,Outpatient
+Nassau,Radiation Oncology,Chart Rounds,Visitor
+Nassau,Radiation Oncology,Clinic,Not Applicable
+Nassau,Radiation Oncology,Clinic,Outpatient
+Nassau,Radiation Oncology,Clinic,Visitor
+Nassau,Radiation Oncology,Simulation - EBRT,Not Applicable
+Nassau,Radiation Oncology,Simulation - EBRT,Outpatient
+Nassau,Radiation Oncology,Simulation - EBRT,Visitor
+Nassau,Radiation Oncology,Treatment,Not Applicable
+Nassau,Radiation Oncology,Treatment,Outpatient
+Nassau,Radiation Oncology,Treatment,Visitor
+Nassau,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+Nassau,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+Nassau,Radiation Oncology,Treatment Planning - EBRT,Visitor
+Nassau,Radiology,CT,Not Applicable
+Nassau,Radiology,CT,Outpatient
+Nassau,Radiology,CT,Visitor
+Nassau,Radiology,General Radiology,Not Applicable
+Nassau,Radiology,General Radiology,Outpatient
+Nassau,Radiology,General Radiology,Visitor
+Nassau,Radiology,Mammo Interventional,Not Applicable
+Nassau,Radiology,Mammo Interventional,Outpatient
+Nassau,Radiology,Mammo Interventional,Visitor
+Nassau,Radiology,Mammography,Not Applicable
+Nassau,Radiology,Mammography,Outpatient
+Nassau,Radiology,Mammography,Visitor
+Nassau,Radiology,MRI,Not Applicable
+Nassau,Radiology,MRI,Outpatient
+Nassau,Radiology,MRI,Visitor
+Nassau,Radiology,PET CT,Not Applicable
+Nassau,Radiology,PET CT,Outpatient
+Nassau,Radiology,PET CT,Visitor
+Nassau,Radiology,US,Not Applicable
+Nassau,Radiology,US,Outpatient
+Nassau,Radiology,US,Visitor
+Nassau,Ambulatory/Clinic,Trailer,Outpatient
+Nassau,Ambulatory/Clinic,Trailer,Not Applicable
+Nassau,Ambulatory/Clinic,Trailer,Visitor
+Non-MSK Partner Site,Other,Other,Outpatient
+Non-MSK Partner Site,East River Imaging - Westchester,Outpatient,Outpatient
+Non-MSK Partner Site,Hackensack (HUMC),ER,Inpatient
+Non-MSK Partner Site,Hackensack (HUMC),Inpatient,Inpatient
+Non-MSK Partner Site,Hackensack (HUMC),Other,Outpatient
+Non-MSK Partner Site,Hackensack (HUMC),Other,Inpatient
+Non-MSK Partner Site,Jersey Shore (JSUMC),ER,Inpatient
+Non-MSK Partner Site,Jersey Shore (JSUMC),Inpatient,Inpatient
+Non-MSK Partner Site,Jersey Shore (JSUMC),Other,Outpatient
+Non-MSK Partner Site,Jersey Shore (JSUMC),Other,Inpatient
+Non-MSK Partner Site,Mary Manning Walsh,ER,Inpatient
+Non-MSK Partner Site,Mary Manning Walsh,Inpatient,Inpatient
+Non-MSK Partner Site,Mary Manning Walsh,Other,Outpatient
+Non-MSK Partner Site,Mary Manning Walsh,Other,Inpatient
+Non-MSK Partner Site,Mercy,ER,Inpatient
+Non-MSK Partner Site,Mercy,Inpatient,Inpatient
+Non-MSK Partner Site,Mercy,Other,Outpatient
+Non-MSK Partner Site,Mercy,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Brooklyn Hospital Center,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Brooklyn Hospital Center,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Brooklyn Hospital Center,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Brooklyn Hospital Center,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Good Samaritan Hospital Medical Center,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Good Samaritan Hospital Medical Center,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Good Samaritan Hospital Medical Center,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Good Samaritan Hospital Medical Center,Other,Inpatient
+Non-MSK Partner Site,Huntington Hospital,ER,Inpatient
+Non-MSK Partner Site,Huntington Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,Huntington Hospital,Other,Outpatient
+Non-MSK Partner Site,Huntington Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-LIJ Forest Hills,ER,Inpatient
+Non-MSK Partner Site,NYCBS-LIJ Forest Hills,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-LIJ Forest Hills,Other,Outpatient
+Non-MSK Partner Site,NYCBS-LIJ Forest Hills,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Long Island Community Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Long Island Community Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Long Island Community Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Long Island Community Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Long Island Jewish Medical Center,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Long Island Jewish Medical Center,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Long Island Jewish Medical Center,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Long Island Jewish Medical Center,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Mather Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Mather Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Mather Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Mather Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Montefiore,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Montefiore,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Montefiore,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Montefiore,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Mt. Sinai Brooklyn,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Mt. Sinai Brooklyn,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Mt. Sinai Brooklyn,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Mt. Sinai Brooklyn,Other,Inpatient
+Non-MSK Partner Site,NYCBS-North Shore University Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-North Shore University Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-North Shore University Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-North Shore University Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-NYU-LongIsland,ER,Inpatient
+Non-MSK Partner Site,NYCBS-NYU-LongIsland,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-NYU-LongIsland,Other,Outpatient
+Non-MSK Partner Site,NYCBS-NYU-LongIsland,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Peconic Bay Medical Center,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Peconic Bay Medical Center,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Peconic Bay Medical Center,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Peconic Bay Medical Center,Other,Inpatient
+Non-MSK Partner Site,NYCBS-South Shore Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-South Shore Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-South Shore Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-South Shore Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-St.Catherine of Siena Medical Center,ER,Inpatient
+Non-MSK Partner Site,NYCBS-St.Catherine of Siena Medical Center,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-St.Catherine of Siena Medical Center,Other,Outpatient
+Non-MSK Partner Site,NYCBS-St.Catherine of Siena Medical Center,Other,Inpatient
+Non-MSK Partner Site,NYCBS-St.Charles Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-St.Charles Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-St.Charles Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-St.Charles Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-St.Francis Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-St.Francis Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-St.Francis Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-St.Francis Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Stony Brook Southampton Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Stony Brook Southampton Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Stony Brook Southampton Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Stony Brook Southampton Hospital,Other,Inpatient
+Non-MSK Partner Site,NYCBS-Stony Brook University Hospital,ER,Inpatient
+Non-MSK Partner Site,NYCBS-Stony Brook University Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,NYCBS-Stony Brook University Hospital,Other,Outpatient
+Non-MSK Partner Site,NYCBS-Stony Brook University Hospital,Other,Inpatient
+Non-MSK Partner Site,NYP Lawrence,ER,Inpatient
+Non-MSK Partner Site,NYP Lawrence,Inpatient,Inpatient
+Non-MSK Partner Site,NYP Lawrence,Other,Outpatient
+Non-MSK Partner Site,NYP Lawrence,Other,Inpatient
+Non-MSK Partner Site,Overlook (OMC),ER,Inpatient
+Non-MSK Partner Site,Overlook (OMC),Inpatient,Inpatient
+Non-MSK Partner Site,Overlook (OMC),Other,Outpatient
+Non-MSK Partner Site,Overlook (OMC),Other,Inpatient
+Non-MSK Partner Site,Riverview (RMC),ER,Inpatient
+Non-MSK Partner Site,Riverview (RMC),Inpatient,Inpatient
+Non-MSK Partner Site,Riverview (RMC),Other,Outpatient
+Non-MSK Partner Site,Riverview (RMC),Other,Inpatient
+Non-MSK Partner Site,Valley Hospital,ER,Inpatient
+Non-MSK Partner Site,Valley Hospital,Inpatient,Inpatient
+Non-MSK Partner Site,Valley Hospital,Other,Outpatient
+Non-MSK Partner Site,Valley Hospital,Other,Inpatient
+Non-MSK Partner Site,White Plains (WPH),ER,Inpatient
+Non-MSK Partner Site,White Plains (WPH),Inpatient,Inpatient
+Non-MSK Partner Site,White Plains (WPH),Other,Outpatient
+Non-MSK Partner Site,White Plains (WPH),Other,Inpatient
+Non-MSKCC Site,Home,Home,Not Applicable
+Non-MSKCC Site,Home,Home,Outpatient
+Non-MSKCC Site,Home,Home,Visitor
+Non-MSKCC Site,Home,AHTT (After Hours Telephone Triage),Outpatient
+Non-MSKCC Site,Other,AHTT (After Hours Telephone Triage),Outpatient
+Non-MSKCC Site,Other,Other,Not Applicable
+Non-MSKCC Site,Other,Other,Outpatient
+Non-MSKCC Site,Other,Other,Visitor
+Ralph Lauren Center,Ambulatory/Clinic,Chemo verification,Not Applicable
+Ralph Lauren Center,Ambulatory/Clinic,Chemo verification,Outpatient
+Ralph Lauren Center,Ambulatory/Clinic,Chemo verification,Visitor
+Ralph Lauren Center,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Ralph Lauren Center,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Ralph Lauren Center,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Ralph Lauren Center,Ambulatory/Clinic,Clinic,Not Applicable
+Ralph Lauren Center,Ambulatory/Clinic,Clinic,Outpatient
+Ralph Lauren Center,Ambulatory/Clinic,Clinic,Visitor
+Ralph Lauren Center,Laboratory,Laboratory,Not Applicable
+Ralph Lauren Center,Laboratory,Laboratory,Outpatient
+Ralph Lauren Center,Laboratory,Laboratory,Visitor
+Ralph Lauren Center,Phlebotomy,Phlebotomy/Triage,Not Applicable
+Ralph Lauren Center,Phlebotomy,Phlebotomy/Triage,Outpatient
+Ralph Lauren Center,Phlebotomy,Phlebotomy/Triage,Visitor
+Ralph Lauren Center,Non-Clinical Area,Public Spaces,Not Applicable
+Ralph Lauren Center,Non-Clinical Area,Public Spaces,Outpatient
+Ralph Lauren Center,Non-Clinical Area,Public Spaces,Visitor
+Westchester,Ambulatory/Clinic,Breast Medicine,Not Applicable
+Westchester,Ambulatory/Clinic,Breast Medicine,Outpatient
+Westchester,Ambulatory/Clinic,Breast Medicine,Visitor
+Westchester,Ambulatory/Clinic,Breast Surgery,Not Applicable
+Westchester,Ambulatory/Clinic,Breast Surgery,Outpatient
+Westchester,Ambulatory/Clinic,Breast Surgery,Visitor
+Westchester,Ambulatory/Clinic,Cardiology Testing,Not Applicable
+Westchester,Ambulatory/Clinic,Cardiology Testing,Outpatient
+Westchester,Ambulatory/Clinic,Cardiology Testing,Visitor
+Westchester,Ambulatory/Clinic,Chemo verification,Not Applicable
+Westchester,Ambulatory/Clinic,Chemo verification,Outpatient
+Westchester,Ambulatory/Clinic,Chemo verification,Visitor
+Westchester,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Not Applicable
+Westchester,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Outpatient
+Westchester,Ambulatory/Clinic,Chemo/Infusion Treatment Area,Visitor
+Westchester,Ambulatory/Clinic,Clinical Genetics,Not Applicable
+Westchester,Ambulatory/Clinic,Clinical Genetics,Outpatient
+Westchester,Ambulatory/Clinic,Clinical Genetics,Visitor
+Westchester,Ambulatory/Clinic,Dermatology,Not Applicable
+Westchester,Ambulatory/Clinic,Dermatology,Outpatient
+Westchester,Ambulatory/Clinic,Dermatology,Visitor
+Westchester,Ambulatory/Clinic,Early Drug Development,Not Applicable
+Westchester,Ambulatory/Clinic,Early Drug Development,Outpatient
+Westchester,Ambulatory/Clinic,Early Drug Development,Visitor
+Westchester,Ambulatory/Clinic,GI Med Onc clinic,Not Applicable
+Westchester,Ambulatory/Clinic,GI Med Onc clinic,Outpatient
+Westchester,Ambulatory/Clinic,GI Med Onc clinic,Visitor
+Westchester,Ambulatory/Clinic,GMT clinic,Not Applicable
+Westchester,Ambulatory/Clinic,GMT clinic,Outpatient
+Westchester,Ambulatory/Clinic,GMT clinic,Visitor
+Westchester,Ambulatory/Clinic,GU Med Onc clinic,Not Applicable
+Westchester,Ambulatory/Clinic,GU Med Onc clinic,Outpatient
+Westchester,Ambulatory/Clinic,GU Med Onc clinic,Visitor
+Westchester,Ambulatory/Clinic,GYN Med Onc clinic,Not Applicable
+Westchester,Ambulatory/Clinic,GYN Med Onc clinic,Outpatient
+Westchester,Ambulatory/Clinic,GYN Med Onc clinic,Visitor
+Westchester,Ambulatory/Clinic,Gynecology Surgery,Not Applicable
+Westchester,Ambulatory/Clinic,Gynecology Surgery,Outpatient
+Westchester,Ambulatory/Clinic,Gynecology Surgery,Visitor
+Westchester,Ambulatory/Clinic,Head & Neck,Not Applicable
+Westchester,Ambulatory/Clinic,Head & Neck,Outpatient
+Westchester,Ambulatory/Clinic,Head & Neck,Visitor
+Westchester,Ambulatory/Clinic,Hematology,Not Applicable
+Westchester,Ambulatory/Clinic,Hematology,Outpatient
+Westchester,Ambulatory/Clinic,Hematology,Visitor
+Westchester,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Not Applicable
+Westchester,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Outpatient
+Westchester,Ambulatory/Clinic,Hepatopancreatobiliary Clinic,Visitor
+Westchester,Ambulatory/Clinic,Lymphoma,Not Applicable
+Westchester,Ambulatory/Clinic,Lymphoma,Outpatient
+Westchester,Ambulatory/Clinic,Lymphoma,Visitor
+Westchester,Ambulatory/Clinic,Neurology,Not Applicable
+Westchester,Ambulatory/Clinic,Neurology,Outpatient
+Westchester,Ambulatory/Clinic,Neurology,Visitor
+Westchester,Ambulatory/Clinic,Multiple Myeloma,Not Applicable
+Westchester,Ambulatory/Clinic,Multiple Myeloma,Outpatient
+Westchester,Ambulatory/Clinic,Multiple Myeloma,Visitor
+Westchester,Ambulatory/Clinic,Nutrition,Not Applicable
+Westchester,Ambulatory/Clinic,Nutrition,Outpatient
+Westchester,Ambulatory/Clinic,Nutrition,Visitor
+Westchester,Ambulatory/Clinic,Pediatric Medical Oncology,Not Applicable
+Westchester,Ambulatory/Clinic,Pediatric Medical Oncology,Outpatient
+Westchester,Ambulatory/Clinic,Pediatric Medical Oncology,Visitor
+Westchester,Ambulatory/Clinic,Plastic and Reconstructive,Not Applicable
+Westchester,Ambulatory/Clinic,Plastic and Reconstructive,Outpatient
+Westchester,Ambulatory/Clinic,Plastic and Reconstructive,Visitor
+Westchester,Ambulatory/Clinic,PST,Not Applicable
+Westchester,Ambulatory/Clinic,PST,Outpatient
+Westchester,Ambulatory/Clinic,PST,Visitor
+Westchester,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Not Applicable
+Westchester,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Outpatient
+Westchester,Ambulatory/Clinic,Psychiatry & Behavioral Sciences,Visitor
+Westchester,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+Westchester,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+Westchester,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+Westchester,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Not Applicable
+Westchester,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Outpatient
+Westchester,Ambulatory/Clinic,Symptomatic Care Clinic (SCC),Visitor
+Westchester,Ambulatory/Clinic,Thoracic Oncology,Not Applicable
+Westchester,Ambulatory/Clinic,Thoracic Oncology,Outpatient
+Westchester,Ambulatory/Clinic,Thoracic Oncology,Visitor
+Westchester,Ambulatory/Clinic,Thoracic Surgery,Not Applicable
+Westchester,Ambulatory/Clinic,Thoracic Surgery,Outpatient
+Westchester,Ambulatory/Clinic,Thoracic Surgery,Visitor
+Westchester,Ambulatory/Clinic,Trailer,Outpatient
+Westchester,Ambulatory/Clinic,Trailer,Not Applicable
+Westchester,Ambulatory/Clinic,Trailer,Visitor
+Westchester,Ambulatory/Clinic,Urology,Not Applicable
+Westchester,Ambulatory/Clinic,Urology,Outpatient
+Westchester,Ambulatory/Clinic,Urology,Visitor
+Westchester,Laboratory,Laboratory,Not Applicable
+Westchester,Laboratory,Laboratory,Outpatient
+Westchester,Laboratory,Laboratory,Visitor
+Westchester,Non-Clinical Area,Public Spaces,Not Applicable
+Westchester,Non-Clinical Area,Public Spaces,Outpatient
+Westchester,Non-Clinical Area,Public Spaces,Visitor
+Westchester,Pathology,Cytology,Outpatient
+Westchester,Patient Financial Services,Patient Financial Services,Not Applicable
+Westchester,Patient Financial Services,Patient Financial Services,Outpatient
+Westchester,Patient Financial Services,Patient Financial Services,Visitor
+Westchester,Perioperative,Anesthesia - Pain,Not Applicable
+Westchester,Perioperative,Anesthesia - Pain,Outpatient
+Westchester,Perioperative,Anesthesia - Pain,Visitor
+Westchester,Perioperative,Anesthesiology,Not Applicable
+Westchester,Perioperative,Anesthesiology,Outpatient
+Westchester,Perioperative,Anesthesiology,Visitor
+Westchester,Pharmacy,Pharmacy,Not Applicable
+Westchester,Pharmacy,Pharmacy,Outpatient
+Westchester,Pharmacy,Pharmacy,Visitor
+Westchester,Phlebotomy,Phlebotomy,Not Applicable
+Westchester,Phlebotomy,Phlebotomy,Outpatient
+Westchester,Phlebotomy,Phlebotomy,Visitor
+Westchester,Radiation Oncology,Chart Rounds,Not Applicable
+Westchester,Radiation Oncology,Chart Rounds,Outpatient
+Westchester,Radiation Oncology,Chart Rounds,Visitor
+Westchester,Radiation Oncology,Clinic,Not Applicable
+Westchester,Radiation Oncology,Clinic,Outpatient
+Westchester,Radiation Oncology,Clinic,Visitor
+Westchester,Radiation Oncology,Simulation - EBRT,Not Applicable
+Westchester,Radiation Oncology,Simulation - EBRT,Outpatient
+Westchester,Radiation Oncology,Simulation - EBRT,Visitor
+Westchester,Radiation Oncology,Treatment,Not Applicable
+Westchester,Radiation Oncology,Treatment,Outpatient
+Westchester,Radiation Oncology,Treatment,Visitor
+Westchester,Radiation Oncology,Treatment Planning - Brachytherapy,Not Applicable
+Westchester,Radiation Oncology,Treatment Planning - Brachytherapy,Outpatient
+Westchester,Radiation Oncology,Treatment Planning - Brachytherapy,Visitor
+Westchester,Radiation Oncology,Treatment Planning - EBRT,Not Applicable
+Westchester,Radiation Oncology,Treatment Planning - EBRT,Outpatient
+Westchester,Radiation Oncology,Treatment Planning - EBRT,Visitor
+Westchester,Radiology,Bone density,Not Applicable
+Westchester,Radiology,Bone density,Outpatient
+Westchester,Radiology,Bone density,Visitor
+Westchester,Radiology,CT,Not Applicable
+Westchester,Radiology,CT,Outpatient
+Westchester,Radiology,CT,Visitor
+Westchester,Radiology,General Radiology,Not Applicable
+Westchester,Radiology,General Radiology,Outpatient
+Westchester,Radiology,General Radiology,Visitor
+Westchester,Radiology,Interventional Radiology,Not Applicable
+Westchester,Radiology,Interventional Radiology,Outpatient
+Westchester,Radiology,Interventional Radiology,Visitor
+Westchester,Radiology,Mammo Interventional,Not Applicable
+Westchester,Radiology,Mammo Interventional,Outpatient
+Westchester,Radiology,Mammo Interventional,Visitor
+Westchester,Radiology,Mammography,Not Applicable
+Westchester,Radiology,Mammography,Outpatient
+Westchester,Radiology,Mammography,Visitor
+Westchester,Radiology,MRI,Not Applicable
+Westchester,Radiology,MRI,Outpatient
+Westchester,Radiology,MRI,Visitor
+Westchester,Radiology,PET CT,Not Applicable
+Westchester,Radiology,PET CT,Outpatient
+Westchester,Radiology,PET CT,Visitor
+Westchester,Radiology,US,Not Applicable
+Westchester,Radiology,US,Outpatient
+Westchester,Radiology,US,Visitor
+Kimmel,Ambulatory/Clinic,Rehabilitation Medicine,Not Applicable
+Kimmel,Ambulatory/Clinic,Rehabilitation Medicine,Outpatient
+Kimmel,Ambulatory/Clinic,Rehabilitation Medicine,Visitor
+1275 York Ave,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Inpatient
+1275 York Ave,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+1275 York Ave,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+1275 York Ave,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+53rd Street,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+53rd Street,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+53rd Street,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+BAIC,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+BAIC,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+BAIC,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+Bergen,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+Bergen,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+Bergen,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+JRSC,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+JRSC,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+JRSC,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+Koch,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+Koch,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+Koch,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+Monmouth,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+Monmouth,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+Monmouth,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+Nassau,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+Nassau,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+Nassau,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+Westchester,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Not Applicable
+Westchester,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Outpatient
+Westchester,Ambulatory/Clinic,PT/OT Rehabilitation Therapy,Visitor
+,,,
+Koch,Ambulatory/Clinic,GU Med Onc clinic,Outpatient
+Koch,Ambulatory/Clinic,GU Med Onc clinic,Visitor
+Koch,Ambulatory/Clinic,GU Med Onc clinic,Not Applicable
+Koch,Ambulatory/Clinic,Urology,Outpatient
+Koch,Ambulatory/Clinic,Urology,Visitor
+Koch,Ambulatory/Clinic,Urology,Not Applicable
+Kimmel,Phlebotomy,Phlebotomy,Outpatient
+Kimmel,Phlebotomy,Phlebotomy,Not Applicable
+Kimmel,Phlebotomy,Phlebotomy,Visitor

@@ -1,0 +1,77 @@
+html, body {
+    height: 100%;
+    min-width: 1000px; /* Set a minimum width to prevent content from shrinking too much */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #222222;
+    background: #222222;
+}
+.topnav, .secondnav {
+    width: 100%;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+    background-color: #272626;
+}
+
+.topnav {
+    top: 0;
+    overflow: hidden;
+    background-color: #000000;
+    height: 60px;
+    color: white;
+    text-align: left;
+    padding: 5px 16px;
+}
+.secondnav {
+    overflow: hidden;
+    background-color: white; /* Dark grey color */
+    text-align: left;
+    padding: 8px 16px;
+    z-index: 1; /* Ensure the secondnav is above the sidenav */
+    margin-left: 70px; /* Add margin to the left to avoid overlapping with sidenav */
+    font-weight: bold;
+    font-size: 22px;
+    top: 60px; /* height of topnav */
+    margin-top: 0.5%;
+}
+.sidenav {
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    padding-top: 60px;
+    z-index: 10;
+}
+.sidenav a {
+    padding: 8px 8px 8px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+.sidenav a:hover {
+    background-color: #575757;
+}
+
+.form-row {
+  display: flex;
+  align-items: flex-end;     /* top-align */
+  gap: 5%;
+}
+
+.form-row img {
+  display: block;
+  height: 220px;               /* <- same visual height */
+  width: auto;
+}
+
+.form-row a:nth-child(2) {     /* or img:nth-child(2) depending on your markup */
+  transform: translateY(-5px);
+}
+
+
+

@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Navigation Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="careservice.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="topnav">
+    <span style="font-size: 32px; font-weight: 100; font-family: 'Roboto', sans-serif;">RLD</span><span style=
+    "font-size: 22px; font-weight: 100; font-family: 'Roboto', sans-serif;">ATIX</span>
+</div>
+
+
+<div class="secondnav">
+    <span style="font-size: 20px; font-weight: bold; font-family: 'Roboto', sans-serif;">Care Service Submission Form</span>
+</div>
+
+<div class="sidenav">
+    <!-- Sidebar content -->
+</div>
+
+<div class="main">
+    <div class="left-container">
+        <div class="content-title">Table of Contents</div>
+        <div class="content-section">General Event Information</div>
+        <div class="content-section">Event Information</div>
+        <div class="content-section">Details of the Event</div>
+        <div class="content-section">Attachments and Notes</div>
+
+        <div class="progress-title">File Status</div>
+        <div class="content-section" id="fileCountText">0 out of 0 total fields completed.</div>
+        <div class="progress-bar-container"><div class="progress-bar" id="fileProgressBar"></div></div>
+
+        <div class="progress-title">Mandatory Fields Status</div>
+        <div class="content-section" id="mandatoryCountText">0 out of 0 mandatory fields completed</div>
+        <div class="progress-bar-container"><div class="progress-bar" id="mandatoryProgressBar"></div></div>
+    </div>
+
+    <div class="form-container">
+        <div class="form-header">
+            <img src="RISQForm.png" alt="Form Image" class="form-logo">
+            <div class="form-header-text">
+                <div class="form-help">For help, call 646-888-5630 or e-mail RISQ@mskcc.org</div>
+                <div class="form-help required">Fields labeled with an asterisk(*) are required.</div>
+            </div>
+        </div>
+        <div id="hdrGEI" class="section-header" data-target="secGEI">
+            <span class="chev" aria-hidden="true"></span>
+            <span>General Event Information</span>
+        </div>
+
+        <div id="secGEI" class="section-content" data-header="hdrGEI" data-open="true" data-delay="1500">
+         <!-- keep ALL the existing inner markup that was inside #collapsibleContent -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="PatientPersonInvolved" style="margin-top: 5px; font-size: 13px; white-space: nowrap;">Patient/Person Involved<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                        <div class="dashed-underline" style="width: 135px;"></div>
+                        <select id="PatientPersonInvolved" name="PatientPersonInvolved" style="font-size: 13px; width: 92%;" required>
+                            <option value=""> </option>
+                        </select>
+                    </div>
+
+                    <div style="margin-left: 3%;">
+                        <label for="mrn" class="mrn-label" style="margin-top: 5px;">MRN (lookup # with magnifying glass)<span style="color: red; font-size: 22px; margin-left: 3%;">*</span><img src="magnifying-glass-png-icon-11.jpg" alt="Search" onclick="openPopup('searchPopup')">
+                        </label>
+                        <div class="dashed-underline" style="width:235px; margin-top: -1.5%;"></div>
+                        <input type="text" id="mrn" name="mrn" style="width:95%; font-size: 13px;" required>
+                    </div>
+
+                    <div id="searchPopup" class="patient-search-popup">
+                        <div class="gray-container">
+                            <img src="contact.png" style="width: 20%; margin-top: 2%; margin-left: 4%;">
+                            <div class="form-group">
+                               <div style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                                    <label for="searchMrn" style="width: 80px;">MRN</label>
+                                    <input type="text" id="searchMrn" name="searchMrn" style="width: 80%; height:15%;">
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:10px;">
+                                    <label for="searchLast" style="width:80px;">Last Name</label>
+                                    <input type="text" id="searchLast" style="width:80%; height:15%;">
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:10px; margin-right: 12px;">
+                                    <label for="searchFirst" style="width:80px;">First Name</label>
+                                    <input type="text" id="searchFirst" style="width:80%; height:15%;">
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <div class="search-controls">
+                            <a onclick="searchPatient()" style="color: darkblue;">Search</a> | <a onclick="clearSearchFields()" style="color: darkblue;">Clear Fields</a>
+                        </div>
+
+                        <!-- results -->
+                        <div id="patientList" class="patient-list"></div>
+
+                        <!-- footer -->
+                        <div class="popup-actions">
+                          <button type="button" class="action-cancel" onclick="closePopup('searchPopup')">Cancel</button>
+                          <button type="button" class="action-ok" onclick="selectPatient()">OK</button>
+                        </div>
+                    </div>   
+
+                    <div style="margin-left: 1.5%;">
+                        <label for="patientService" style="margin-top: 1%; font-size: 13px;">Patient Service<span style="color: red; font-size: 22px; margin-left: 8%;">*</span></label>
+                        <div class="dashed-underline" style="width: 100px;"></div>
+                        <select id="patientService" name="patientService" style="font-size: 13px; width: 100%;">
+                            <option value=""></option><!-- keeps a blank default -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div style="margin-top: -1.6%;">
+                        <label for="lastname" style="font-size:13px;">Last Name<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                        <div class="dashed-underline" style="width:80px;"></div>
+                        <input type="text" id="lastname" name="lastname" style="font-size: 13px;" required>
+                    </div>
+                    <div style="margin-left: 2%;">
+                        <label for="firstname" style="font-size:13px;">First Name</label>
+                        <div class="dashed-underline" style="width:80px;"></div>
+                        <input type="text" id="firstname" name="firstname" style="font-size: 13px; width: 80%;">
+                    </div>
+                    <div style="margin-left: -3%;">
+                        <label for="dob" style="font-size:13px;">DOB</label>
+                        <div class="dashed-underline" style="width:40px;"></div>
+                        <input type="text" id="dob" name="dob" style="font-size: 13px;">
+                    </div>
+                    <div style="margin-top: 3%;">
+                        <label for="age" style="font-size:13px;">Age</label>
+                        <div class="dashed-underline" style="width:40px;"></div>
+                        <input type="text" id="age" name="age" style="font-size: 13px;">
+                    </div>
+                    <div  style="margin-top: 3%; margin-left: 2%;">
+                        <label for="gender" style="font-size:13px;">Gender</label>
+                        <div class="dashed-underline" style="width:45px;"></div>
+                        <input type="text" id="gender" name="gender" style="width:100%; font-size: 13px;">
+                    </div>
+                    <div  style="margin-top: 3%; margin-left: 3%;">
+                        <label for="language" style="font-size:13px;">Patient's Preffered Language</label>
+                        <div class="dashed-underline" style="width:180px;"></div>
+                        <input type="text" id="language" name="language" style="width:100%; font-size: 13px;">
+                    </div>
+                </div>
+                <!-- Additional form content goes here -->
+            </form>
+        </div>
+        <div id="hdrEvent" class="section-header" data-target="secEvent">
+            <span class="chev" aria-hidden="true"></span>
+            <span>Event Information — Confidential</span>
+        </div>
+
+        <div id="secEvent" class="section-content" data-header="hdrEvent" data-open="true" data-delay="1500">
+            <form>
+                <div id="todayBanner" style="
+                    display:flex; align-items:center; gap:12px; padding:10px 12px; 
+                    border:1px solid #5095f5; background:#b3cbfc; border-radius:8px;
+                    font-size:13px; margin-top: 5%;">
+                    <strong style="margin-right:6px;">Did the event occur today?</strong>
+                    <label><input type="radio" name="eventToday" value="yes" id="eventTodayYes"> Yes</label>
+                    <label style="margin-left:8px;"><input type="radio" name="eventToday" value="no" id="eventTodayNo"> No</label>
+                </div>
+                <div class="form-row" style="margin-top:2%;">
+                        <!-- Your Date/Time section -->
+                    <div style="margin-top: 5px; font-size: 13px;">
+                        <label for="eventDate">Event Date &amp; Time (Military)<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                        <div class="dashed-underline" style="width: 180px;"></div>
+                        <div style="display: flex;">
+                            <input type="date" id="eventDate" name="eventDate" style="margin-right: 5px; font-size: 13px; height: 28px;" required>
+                            <input type="text" id="militaryTime" name="militaryTime" placeholder="__:__" maxlength="5" style="width: 75px; font-size: 13px; height: 28px;" required>
+                        </div>
+                    </div>
+                    <div style="width: 150px;">
+                        <label for="eventType" style="margin-top: 5px; font-size: 13px;">Specific Event Type<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                        <div class="dashed-underline" style="width: 130px;"></div>
+                        <select id="eventType" name="eventType" style="font-size: 13px;" required>
+                            <option value=""> </option>
+                            <option value="Allergy status not communicated">Allergy status not communicated</option>
+                            <option value="Delay in care">Delay in care</option>
+                            <option value="Delay in transfer">Delay in transfer</option>
+                            <option value="Deterioration in clinical condition">Deterioration in clinical condition</option>
+                            <option value="Dietary instructions not followed">Dietary instructions not followed</option>
+                            <option value="Discharge">Discharge</option>
+                            <option value="Elopement">Elopement</option>
+                            <option value="Failure to follow order">Failure to follow order</option>
+                            <option value="Failure to follow up on tests">Failure to follow up on tests</option>
+                            <option value="Gender/Sex Mismatch">Gender/Sex Mismatch</option>
+                            <option value="Hand-off">Hand-off</option>
+                            <option value="Inconsistency in communication to patient">Inconsistency in communication to patient</option>
+                            <option value="Incorrect/missing information">Incorrect/missing information</option>
+                            <option value="Lack of coordination of multiple services">Lack of coordination of multiple services</option>
+                            <option value="LIP unknown or unavailable">LIP unknown or unavailable</option>
+                            <option value="Policy/ Procedure/ Process not followed">Policy/ Procedure/ Process not followed</option>
+                            <option value="Pre-Treatment Testing">Pre-Treatment Testing</option>
+                            <option value="Scheduling Issue">Scheduling Issue</option>
+                            <option value="Suicide attempted">Suicide attempted</option>
+                            <option value="Suicide completion">Suicide completion</option>
+                            <option value="Unknown/Other (please specify)">Unknown/Other (please specify)</option>
+                            <option value="Wrong patient">Wrong patient</option>
+
+                        </select>
+                    </div>
+                    <!-- Severity Level -->
+                    <div> 
+                      <label for="severityLevel" style="margin-top: 5px; font-size: 13px;">Severity Level<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                      <div class="dashed-underline" style="width: 120px;"></div>
+                      <select id="severityLevel" name="severityLevel" style="font-size: 13px;" required>
+                        <option value=""></option>
+                        <option value="level0">Level 0-No Harm</option>
+                        <option value="level1">Level 1-No Harm</option>
+                        <option value="level2">Level 2-Temp Harm</option>
+                        <option value="level3">Level 3-Permanent Harm</option>
+                        <option value="level4">Level 4-Death</option>
+                      </select>
+                    </div>
+ 
+                </div>
+               
+                <div id="lastLocationPrompt" style="display:flex; margin-top:5%; align-items:center; gap:12px; padding:8px;
+                    border:1px solid #5095f5; background:#b3cbfc; border-radius:8px; font-size:13px; font-weight:bold;">
+                    This is the last location of the patient on record. Is this where the event occurred?
+                    <label style="margin-left:12px;"><input type="radio" name="locationConfirmed" value="yes"> Yes</label>
+                    <label style="margin-left:8px;"><input type="radio" name="locationConfirmed" value="no"> No</label>
+                </div>
+
+                <div class="form-row">
+                    <div class="container mt-5" style="margin-left: -2%;">
+                        <label for="loc" style="font-size:13px; margin-top: -8%;">Site, Location & Area/Unit<span style="color: red; font-size: 22px; margin-left: 2%;">*</span></label>
+                        <div class="dashed-underline" style="width:160px;"></div>
+
+                        <!-- Dropdown Button -->
+                        <button class="btn btn-custom dropdown-toggle" type="button"
+                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="font-size:11px;" required>
+                            Select Site, Location & Area/Unit
+                        </button>
+
+                        <!-- Dynamic menu -->
+                        <ul class="dropdown-menu" id="dynamicMenu" aria-labelledby="dropdownMenuButton"></ul>
+                    </div>
+                </div>
+                
+                <div class="form-row additional-services-row" style="margin-top:4%;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 40px;">
+                    <div style="display:flex; flex-direction:column;">
+                        <label for="services" style="font-size: 13px;">Select Additional Services</label>
+                        <div class="dashed-underline" style="width: 160px; margin-top: 0;"></div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
+                        <div id="selectedServices" class="selected-services" style="margin-left:15%; width: 100%;">Not Specified</div>
+                        <a href="#" onclick="openPopup('servicesPopup')">Add/Edit</a>
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <div class="form-section-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2%;">
+                    <!-- EHR/System Related -->
+                    <div class="form-row" id="systemRow" style="display: flex; flex-direction: column; flex: 1;">
+                        <div id="systemInitial" style="display: flex; flex-direction: column;">
+                            <label style="font-size: 13px;">EHR/System Related</label>
+                            <div class="dashed-underline" style="width: 150px; margin-top: -2%;"></div>
+                            <div id="systemRadios" style="display: flex; gap: 10px; font-size: 11px;">
+                                <input type="radio" id="systemYes" name="system" value="yes" onclick="systemSection(this.value)">
+                                <label for="systemYes">Yes</label>
+                                <input type="radio" id="systemNo" name="system" value="no" checked onclick="systemSection(this.value)">
+                                <label for="systemNo">No</label>
+                                <input type="radio" id="systemUnknown" name="system" value="unknown" onclick="systemSection(this.value)">
+                                <label for="systemUnknown">Unknown/Unsure</label>
+                            </div>
+                        </div>
+                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label style="font-size: 13px;">EHR/System Related</label>
+                                <div class="dashed-underline" style="width: 150px; margin-top: -3%;"></div>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="sysCategory" style="font-size: 13px;">Help Desk Ticket #</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems">
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="sysType" style="font-size: 13px;">System</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <select name="sysType" style="margin-top: 1px;">
+                                    <option value=""> </option>
+                                    <option value="X">X</option>
+                                    <option value="Y">Y</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Equipment Malfunction -->
+                    <div class="form-row" id="malfunctionRow" style="display: flex; flex-direction: column; flex: 1; margin-right: 4%; margin-top: 1%;">
+                        <div id="malfunctionInitial" style="display: flex; flex-direction: column;">
+                            <label style="font-size: 13px;">Equipment Malfunction<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                            <div class="dashed-underline" style="width: 150px; margin-top: -1%;"></div>
+                            <div id="malfunctionRadios" style="display: flex; gap: 10px; font-size: 11px;" required>
+                                <input type="radio" id="malfunctionYes" name="malfunction1" value="yes" onclick="malfunctionSection(this.value)">
+                                <label for="malfunctionYes">Yes</label>
+                                <input type="radio" id="malfunctionNo" name="malfunction1" value="no" checked onclick="malfunctionSection(this.value)">
+                                <label for="malfunctionNo">No</label>
+                                <input type="radio" id="malfunctionUnknown" name="malfunction1" value="unknown" onclick="malfunctionSection(this.value)">
+                                <label for="malfunctionUnknown">Unknown/Unsure</label>
+                            </div>
+                        </div>
+                        <div id="malfunctionGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label style="font-size: 13px;">Equipment Malfunction</label>
+                                <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="malcategory" style="font-size: 13px;">Equipment Category</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <select name="malcategory" style="margin-top: 1px;">
+                                    <option value=""> </option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                    <option value="unknown">Unknown/UnSure</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="malequipment" style="font-size: 13px;">Equipment Type</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <select name="malequipment" style="margin-top: 1px;">
+                                    <option value=""> </option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                    <option value="unknown">Unknown/UnSure</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IRB Protocol -->
+                    <div class="form-row" style="display: flex; flex-direction: column; margin-top: 3%;"> 
+                        <div id="irbpro" style="display: flex; align-items: center;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label style="font-size: 13px;">IRB Protocol?</label>
+                                <div class="dashed-underline" style="width:100px; margin-top: -1%;"></div>
+                                <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
+                                    <input type="radio" id="protocolYes" name="protocol1" value="yes" onchange="toggleIRBSection(this.value)">
+                                    <label for="protocolYes">Yes</label>
+                                    <input type="radio" id="protocolNo" name="protocol1" value="no" checked onchange="toggleIRBSection(this.value)">
+                                    <label for="protocolNo">No</label>
+                                </div>
+                            </div>        
+
+                            <div id="IRBSection" style="display: none; align-items: center; gap: 8px; margin-top: 3%;">
+                                <div style="display: flex; flex-direction: column;">    
+                                    <label for="IRBno" style="font-size: 13px;">IRB #</label>
+                                    <div class="dashed-underline" style="width: 60px; margin-top: 0%;"></div>
+                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%;">
+                                </div>
+                            </div>    
+                        </div>
+                    </div>       
+                </div>
+                      
+                <!-- Add form content for the confidential section here -->
+                <div class="popup" id="servicesPopup">
+                  <div class="popup-header">
+                    <span>Select additional services to receive alerts</span>            
+                  </div>
+                  <div class="options services-grid">
+                    <label><input type="checkbox" value="Admitting"> Admitting</label>
+                    <label><input type="checkbox" value="After-Hours Triage Telephone"> After-Hours Triage Telephone</label>
+                    <label><input type="checkbox" value="Ambulatory Care Admin/Academic Office Support"> Ambulatory Care Admin/Academic Office Support</label>
+                    <label><input type="checkbox" value="Biomed"> Biomed</label>
+                    <label><input type="checkbox" value="Cardiology Tests"> Cardiology Tests</label>
+                    <label><input type="checkbox" value="Case Management"> Case Management</label>
+                    <label><input type="checkbox" value="Central Processing Department"> Central Processing Department</label>
+                    <label><input type="checkbox" value="Chemo Administration"> Chemo Administration</label>
+                    <label><input type="checkbox" value="DigITs"> DigITs</label>
+                    <label><input type="checkbox" value="Environmental Services"> Environmental Services</label>
+                    <label><input type="checkbox" value="Facilities/Plant Operations"> Facilities/Plant Operations</label>
+                    <label><input type="checkbox" value="Food and Nutrition"> Food and Nutrition</label>
+                    <label><input type="checkbox" value="Infection Control"> Infection Control</label>
+                    <label><input type="checkbox" value="Inpatient Nursing Support/Float Pool"> Inpatient Nursing Support/Float Pool</label>
+                    <label><input type="checkbox" value="International Center"> International Center</label>
+                    <label><input type="checkbox" value="IV Team"> IV Team</label>
+                    <label><input type="checkbox" value="Medical Emergency Response Team"> Medical Emergency Response Team</label>
+                    <label><input type="checkbox" value="Mobile I/R"> Mobile I/R</label>
+                    <label><input type="checkbox" value="MSK Vehicle Transportation/Shuttle"> MSK Vehicle Transportation/Shuttle</label>
+                    <label><input type="checkbox" value="Nursing Inpatient Support"> Nursing Inpatient Support</label>
+                    <label><input type="checkbox" value="Nursing Inpatient Support/Float Pool"> Nursing Inpatient Support/Float Pool</label>
+                    <label><input type="checkbox" value="Outpatient Chemo Verification"> Outpatient Chemo Verification</label>
+                    <label><input type="checkbox" value="Patient Financial Services"> Patient Financial Services</label>
+                    <label><input type="checkbox" value="Patient Guest Services"> Patient Guest Services</label>
+                    <label><input type="checkbox" value="Patient Representatives"> Patient Representatives</label>
+                    <label><input type="checkbox" value="Patient Transport"> Patient Transport</label>
+                    <label><input type="checkbox" value="Periop Support Services"> Periop Support Services</label>
+                    <label><input type="checkbox" value="QA - Anesthesiology & CCM"> QA - Anesthesiology & CCM</label>
+                    <label><input type="checkbox" value="QA - Neurosurgery"> QA - Neurosurgery</label>
+                    <label><input type="checkbox" value="QA - Pharmacy"> QA - Pharmacy</label>
+                    <label><input type="checkbox" value="QA - Psychiatry"> QA - Psychiatry</label>
+                    <label><input type="checkbox" value="QA: APP"> QA: APP</label>
+                    <label><input type="checkbox" value="QA: BMT"> QA: BMT</label>
+                    <label><input type="checkbox" value="QA: Cell Therapy"> QA: Cell Therapy</label>
+                    <label><input type="checkbox" value="QA: Lab Medicine"> QA: Lab Medicine</label>
+                    <label><input type="checkbox" value="QA: Medicine"> QA: Medicine</label>
+                    <label><input type="checkbox" value="QA: Neurology"> QA: Neurology</label>
+                    <label><input type="checkbox" value="QA: Nursing"> QA: Nursing</label>
+                    <label><input type="checkbox" value="QA: Pathology"> QA: Pathology</label>
+                    <label><input type="checkbox" value="QA: Pediatrics"> QA: Pediatrics</label>
+                    <label><input type="checkbox" value="QA: Radiation"> QA: Radiation</label>
+                    <label><input type="checkbox" value="QA: Radiology"> QA: Radiology</label>
+                    <label><input type="checkbox" value="QA: Surgery"> QA: Surgery</label>
+                    <label><input type="checkbox" value="Rapid Response Team"> Rapid Response Team</label>
+                    <label><input type="checkbox" value="Rehab: Occupational/Physical Therapy/Occupational Therapy"> Rehab: Occupational/Physical Therapy/Occupational Therapy</label>
+                    <label><input type="checkbox" value="Research Administration"> Research Administration</label>
+                    <label><input type="checkbox" value="Research Clinical Trial Nursing"> Research Clinical Trial Nursing</label>
+                    <label><input type="checkbox" value="Respiratory Therapy"> Respiratory Therapy</label>
+                    <label><input type="checkbox" value="Security"> Security</label>
+                    <label><input type="checkbox" value="Social Work"> Social Work</label>
+                    <label><input type="checkbox" value="Specimen Transport: Between Buildings"> Specimen Transport: Between Buildings</label>
+                    <label><input type="checkbox" value="Supply Chain/Materials Management"> Supply Chain/Materials Management</label>
+                    <label><input type="checkbox" value="Supply Chain:  Single Use Defective Equipment"> Supply Chain:  Single Use Defective Equipment</label>
+                    <label><input type="checkbox" value="Vascular Access (IV team)"> Vascular Access (IV team)</label>
+                    <label><input type="checkbox" value="Wound Ostomy"> Wound Ostomy</label>
+                  </div>
+
+                  <div class="popup-actions">
+                    <button type="button" class="action-cancel" onclick="closePopup('servicesPopup')">Cancel</button>
+                    <button type="button" class="action-ok" onclick="confirmSelection('servicesPopup','selectedServices')">OK</button>
+                  </div>
+                </div>
+            </form>
+        </div>
+        <div id="hdrDetails" class="section-header" data-target="secDetails">
+            <span class="chev" aria-hidden="true"></span>
+            <span>Details of the Event</span>
+        </div>
+
+        <div id="secDetails" class="section-content" data-header="hdrDetails" data-open="true" data-delay="1500">
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="eventDescription" style="margin-top: 30px; font-size: 13px; white-space: nowrap;">
+                            Event description (Use titles instead of names, i.e. nurses, physician, etc.)
+                            <span id="micButton" onclick="toggleSpeech()" style="cursor: pointer; margin-left: 10px; font-size: 24px;"><span style="color: red; font-size: 22px; margin-left: 5%;">*</span>
+                                <i id="micIcon" class="fas fa-microphone" style="color: #333;"></i>
+                            </span>
+                        </label>
+                        <div class="dashed-underline" style="width: 440px;"></div>
+                        <textarea id="eventDescription" name="eventDescription" style="width: 700px; height: 150px; font-size: 13px;" required></textarea>
+                    </div>
+                </div> 
+                
+                <div class="form-row contributing-factors-row" style="margin-top:2%;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 40px;">
+                    <!-- left: title + underline -->
+                    <div style="display:flex; flex-direction:column;">
+                       <label for="contributingFactors" style="font-size:13px;">Contributing Factors</label>
+                      <div class="dashed-underline" style="width:140px; margin-top:0;"></div>
+                    </div>
+
+                    <!-- right: readout + action -->
+                    <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
+                      <div id="selectedContributingFactors" class="selected-services" style="margin-left:15%; width: 100%;">Not Specified</div>
+                      <a href="#" onclick="openPopup('contributingFactorsPopup')">Add/Edit</a>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="popup" id="contributingFactorsPopup">
+                    <div class="popup-header">
+                      <span>Contributing Factors</span>            
+                    </div>
+                   <div class="options services-grid">
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Anesthesia related issue"> Anesthesia related issue</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Check/Verify"> Check/Verify</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Clinician Order Error"> Clinician Order Error</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Communication/Handoff"> Communication/Handoff</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Documentation discrepancy"> Documentation discrepancy</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Equipment issue"> Equipment issue</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Error identified by patient/family/caregiver"> Error identified by patient/family/caregiver</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Failure to return for scan"> Failure to return for scan</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="ID discrepancy"> ID discrepancy</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Instrument calibration"> Instrument calibration</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="IT Issues"> IT Issues</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Patient Education/Compliance"> Patient Education/Compliance</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Physical environment condition/design"> Physical environment condition/design</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Policy/procedure deviation"> Policy/procedure deviation</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Suboptimal technique"> Suboptimal technique</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Training/experience"> Training/experience</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Transcription error"> Transcription error</label>
+                    <label><input type="checkbox" class="contributing-factors-checkbox" value="Workload/workflow"> Workload/workflow</label>
+                  </div>
+                  <div class="popup-actions">
+                    <button class="action-cancel" onclick="closePopup('contributingFactorsPopup')">Cancel</button>
+                    <button class="action-ok" onclick="confirmSelection('contributingFactorsPopup', 'selectedContributingFactors')">OK</button>
+                  </div> 
+                </div>            
+        </div>
+
+        <div id="hdrAttach" class="section-header" data-target="secAttach">
+            <span class="chev" aria-hidden="true"></span>
+            <span>Attachments and Note</span>
+        </div>
+
+        <div id="secAttach" class="section-content" data-header="hdrAttach" data-open="true" data-delay="1500">
+          <!-- Attachments block -->
+          <div class="attachments-block" style="width:100%; margin-top: 2%;">
+            <div class="d-flex justify-content-between align-items-end">
+              <div class="attachments-actions med-actions" style="font-size:12px;">
+                <a href="#" data-action="add" onclick="openPopup('attachmentsPopup'); return false;">Add</a> |
+                <a href="#" data-action="edit"   class="disabled">Edit</a> |
+                <a href="#" data-action="delete" class="disabled">Delete</a>
+              </div>
+            </div>
+
+              <table id="attachmentsTable" style="margin-top:6px;">
+                <thead>
+                  <tr><th>FileName</th><th>Category</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="empty"><td colspan="3"><em>Not Specified</em></td></tr>
+                </tbody>
+              </table>
+          </div>
+
+          <!-- Add/Edit Attachment modal -->
+          <div class="popup" id="attachmentsPopup">
+            <div class="popup-header">
+              <span>Add Attachment ?</span>
+            </div>
+
+            <!-- Drop zone -->
+            <div class="drop-area" id="dropArea" style="width: 90%; margin-left: 5%;">
+              <p>Drop files here</p>
+            </div>
+
+            <!-- Toolbar: select + note -->
+            <div class="upload-toolbar" style="margin-top: 3%;">
+              <button type="button" class="select-btn" onclick="document.getElementById('fileInput').click()">Select file</button>
+              <span class="note">Please select file(s) to upload.</span>
+              <input type="file" id="fileInput" multiple style="display:none">
+            </div>
+
+            <!-- Progress bars (visual only for now) -->
+            <div class="bar"></div>
+            <div class="bar"></div>
+
+            <div class="popup-actions">
+              <button type="button" class="action-cancel" onclick="closePopup('attachmentsPopup')">Cancel</button>
+              <button type="button" class="action-ok" onclick="confirmAttachment()">OK</button>
+            </div>
+          </div>
+
+          <div class="popup" id="attachmentModal" style="display:none;">
+            <div class="popup-header">Add Attachment</div>
+            <form id="attachmentForm">
+              <div class="form-row" style="gap:16px;">
+                <div>
+                  <label style="font-size:13px; font-weight:bold;">File</label>
+                  <div class="dashed-underline" style="width:60px; margin-top:-2%;"></div>
+                  <input type="file" id="attFile" required>
+                </div>
+                <div>
+                  <label style="font-size:13px; font-weight:bold;">Category</label>
+                  <div class="dashed-underline" style="width:80px; margin-top:-2%;"></div>
+                  <select id="attCat">
+                    <option value=""></option>
+                    <option>Image</option><option>Report</option><option>Form</option><option>Other</option>
+                  </select>
+                </div>
+                <div style="flex:1;">
+                  <label style="font-size:13px; font-weight:bold;">Description</label>
+                  <div class="dashed-underline" style="width:90px; margin-top:-2%;"></div>
+                  <input type="text" id="attDesc" style="width:100%;">
+                </div>
+              </div>
+
+              <div class="popup-actions">
+                <button type="button" class="action-ok" onclick="confirmAttachment()">OK</button>
+                <button type="button" class="action-cancel" onclick="closePopup('attachmentModal')">Cancel</button>
+              </div>
+            </form>
+        </div>
+    </div>    
+</div>
+
+<!-- Bottom bar -->
+<div class="bottom-nav">
+    <button class="btn btn-delete" onclick="deleteAction()">Delete</button>
+    <button class="btn btn-exit" onclick="exitAction()">Exit</button>
+    <div class="dropup">
+        <button class="btn btn-more-actions dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            More Actions
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+            <li><a class="dropdown-item" href="#">Option 3</a></li>
+        </ul>
+    </div>
+    <!-- WITH THIS (navigates to submit page in same tab) -->
+    <a class="btn btn-submit" href="submit.html">Submit</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script>
+
+/* ========== SEARCH (uses Medication.xlsx) ========= */
+/* If your page already had performSearch, we replace it on purpose so it uses the catalog. */
+
+
+/* ===================== HOOKS ====================== */
+
+document.querySelectorAll('.med-actions a, .attachments-actions a').forEach(a => {
+  if (a.textContent.trim().toLowerCase() === 'add' && !a._medPrefillHooked){
+    a.addEventListener('click', () => { prefillFromMRNDefaults(); }, { capture: true });
+    a._medPrefillHooked = true;
+  }
+});
+
+
+function addRowSelectionListeners() {
+  document.querySelectorAll('input[name="selectRow"]').forEach(radio => {
+    if (!radio._hooked) {
+      radio.addEventListener("change", enableMedEditDelete);
+      radio._hooked = true;
+    }
+  });
+}
+
+
+function enableMedEditDelete() {
+  const selected = document.querySelector('input[name="selectRow"]:checked');
+  // if you’re using the link UI, toggle classes there:
+  document.querySelector('.med-actions [data-action="edit"]')?.classList.toggle('disabled', !selected);
+  document.querySelector('.med-actions [data-action="delete"]')?.classList.toggle('disabled', !selected);
+}
+
+function deleteSelected() {
+  const sel = document.querySelector('input[name="selectRow"]:checked');
+  if (!sel) return;
+  const tr = sel.closest("tr");
+  const body = document.getElementById("tableBody");
+  tr.remove();
+  if (!body.querySelector("tr")) {
+    body.innerHTML = `<tr><td colspan="3"><i>Not Specified</i></td></tr>`;
+  }
+  enableMedEditDelete();
+}
+
+function getSelectedRowIndex() {
+  const sel = document.querySelector('input[name="selectRow"]:checked');
+  if (!sel) return null;
+  const tr = sel.closest("tr");
+  const body = document.getElementById("tableBody");
+  return Array.from(body.rows).indexOf(tr);
+}
+
+let processData = [];
+
+async function loadProcessExcel(filePath) {
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+        const arrayBuffer = await response.arrayBuffer();
+        const workbook = XLSX.read(arrayBuffer, { type: "array" });
+        const sheetName = workbook.SheetNames[0];
+        processData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+        buildProcessDropdown();
+    } catch (err) {
+        console.error("❌ Failed to load Process Excel file:", err);
+    }
+}
+
+function buildProcessDropdown() {
+    // Group by area
+    const menuMap = {};
+    processData.forEach(row => {
+        const area = row['Area']?.trim();
+        const place = row['Place']?.trim();
+        if (area && place) {
+            if (!menuMap[area]) menuMap[area] = new Set();
+            menuMap[area].add(place);
+        }
+    });
+
+    const menu = document.getElementById('processDynamicMenu');
+    menu.innerHTML = '';
+    for (const area in menuMap) {
+        const areaLi = document.createElement('li');
+        areaLi.classList.add('dropdown-submenu');
+        const areaA = document.createElement('a');
+        areaA.className = 'dropdown-item dropdown-toggle';
+        areaA.href = '#';
+        areaA.textContent = area;
+
+        const placeUl = document.createElement('ul');
+        placeUl.classList.add('dropdown-menu');
+        menuMap[area].forEach(place => {
+            const placeLi = document.createElement('li');
+            const placeA = document.createElement('a');
+            placeA.className = 'dropdown-item';
+            placeA.href = '#';
+            placeA.textContent = place;
+            placeA.onclick = () => { setProcessDropdown(area, place); };
+            placeLi.appendChild(placeA);
+            placeUl.appendChild(placeLi);
+        });
+
+        areaLi.appendChild(areaA);
+        areaLi.appendChild(placeUl);
+        menu.appendChild(areaLi);
+    }
+}
+
+function setProcessDropdown(area, place) {
+    const btn = document.getElementById('processDropdownButton');
+    btn.textContent = `${area} - ${place}`;
+    btn.style.border = '1px solid black';
+}
+
+// Load the Process Excel file on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadProcessExcel('Process.xlsx');
+});
+
+
+// Load the second CSV for MRN-location mapping
+let patientMaster = [];
+Papa.parse('LocationDetails.csv', {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: res => { patientMaster = res.data; }
+});
+
+let excelData=[];
+Papa.parse('Locations.csv',{
+    download:true,
+    header:true,
+    complete:res=>{
+        excelData = res.data;
+        buildPatientDropdown();
+    }
+});
+
+function buildServiceDropdown() {
+    const sel = document.getElementById('patientService');
+    sel.innerHTML = '<option value=""></option>'; // reset
+
+    // Collect unique Patient Service values
+    const svcSet = new Set();
+    patientMaster.forEach(r => {
+        const svc = r['Patient Service']?.trim();
+        if (svc) svcSet.add(svc);
+    });
+
+    // Add them to the dropdown
+    [...svcSet].sort().forEach(svc => {
+        sel.add(new Option(svc, svc));
+    });
+}
+
+// After patientMaster is loaded
+Papa.parse('LocationDetails.csv', {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: res => {
+        patientMaster = res.data;
+        buildServiceDropdown(); // build services list once CSV is ready
+    }
+});
+
+function handleMRNInput() {
+  const mrnInput = document.getElementById('mrn').value.trim();
+  const match = mrnLocationData.find(row => row.MRN?.trim() === mrnInput);
+
+  if (match) {
+    // Autofill the dropdown
+    const siteLocationArea = `${match.Site} | ${match.Location} | ${match.Area}`;
+    const slaField = document.getElementById('siteLocationArea'); // assuming this is your unified dropdown
+    slaField.value = siteLocationArea;
+
+    // Show confirmation message
+    showConfirmationNote(siteLocationArea);
+  }
+}
+
+function showConfirmationNote(autofilledLocation) {
+  const noteContainer = document.getElementById('confirmationNote');
+  noteContainer.innerHTML = `
+    <div style="margin-top: 10px; background: #f1f1f1; padding: 10px; border-left: 4px solid #007bff;">
+      <p><strong>This is the last known location of the patient.</strong> Is this where the event occurred?</p>
+      <button onclick="confirmLocation(true)">Yes</button>
+      <button onclick="confirmLocation(false)">No</button>
+    </div>
+  `;
+}
+
+function confirmLocation(isConfirmed) {
+  const slaField = document.getElementById('siteLocationArea');
+
+  if (isConfirmed) {
+    slaField.disabled = true;
+    slaField.style.backgroundColor = ""; // normal
+  } else {
+    slaField.disabled = false;
+    slaField.style.backgroundColor = "#fff3cd"; // light yellow highlight
+  }
+
+  document.getElementById('confirmationNote').innerHTML = ""; // clear message
+}
+
+function buildPatientDropdown(){
+    const patientSet = new Set();
+    excelData.forEach(r=>{
+        const pat = r['Patient/Person Involved']?.trim();
+        if(pat) patientSet.add(pat);
+    });
+
+    const sel = document.getElementById('PatientPersonInvolved');
+    patientSet.forEach(p=>{
+        const opt=document.createElement('option'); opt.value=p; opt.textContent=p;
+        sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change',()=>{
+        const map={};
+        excelData.forEach(r=>{
+            if(r['Patient/Person Involved']?.trim()===sel.value){
+                const site = r.Site?.trim();
+                const loc  = r.Location?.trim();
+                const area = r.Area?.trim();
+                if(site&&loc&&area){
+                    if(!map[site]) map[site]={};
+                    if(!map[site][loc]) map[site][loc]=new Set();
+                    map[site][loc].add(area);
+                }
+            }
+        });
+        buildLocationMenu(map);
+    });
+}
+
+function buildLocationMenu(menuMap){
+    const menu=document.getElementById('dynamicMenu');
+    menu.innerHTML='';
+    for(const site in menuMap){
+        const siteLi=document.createElement('li');
+        siteLi.classList.add('dropdown-submenu');
+        const siteA=document.createElement('a');
+        siteA.className='dropdown-item dropdown-toggle'; siteA.href='#'; siteA.textContent=site;
+        const locUl=document.createElement('ul');
+        locUl.classList.add('dropdown-menu');
+
+        for(const loc in menuMap[site]){
+            const locLi=document.createElement('li');
+            locLi.classList.add('dropdown-submenu');
+            const locA=document.createElement('a');
+            locA.className='dropdown-item dropdown-toggle'; locA.href='#'; locA.textContent=loc;
+            const areaUl=document.createElement('ul'); areaUl.classList.add('dropdown-menu');
+            menuMap[site][loc].forEach(area=>{
+                const areaLi=document.createElement('li');
+                const areaA=document.createElement('a');
+                areaA.className='dropdown-item'; areaA.href='#'; areaA.textContent=area;
+                areaA.onclick=()=>{ setLocationDropdown(site,loc,area); };
+                areaLi.appendChild(areaA); areaUl.appendChild(areaLi);
+            });
+            locLi.appendChild(locA); locLi.appendChild(areaUl); locUl.appendChild(locLi);
+        }
+        siteLi.appendChild(siteA); siteLi.appendChild(locUl); menu.appendChild(siteLi);
+    }
+}
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    let isRecording = false;
+
+    function toggleSpeech() {
+    const micIcon = document.getElementById('micIcon');
+    if (!isRecording) {
+        recognition.start();
+        micIcon.style.color = 'red';
+        isRecording = true;
+    } else {
+        recognition.stop();
+        micIcon.style.color = '#333';
+        isRecording = false;
+    }
+    }
+
+    recognition.onresult = function(event) {
+    const textarea = document.getElementById('eventDescription');
+    let interim = '';
+    let finalText = '';
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+        const transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+        finalText += transcript + ' ';
+        } else {
+        interim += transcript;
+        }
+    }
+
+    textarea.value = textarea.value.replace(/\[.*?\]$/, '') + finalText + (interim ? `[${interim}]` : '');
+    };
+
+    recognition.onend = function() {
+    if (isRecording) {
+        document.getElementById('micIcon').style.color = '#333';
+        isRecording = false;
+    }
+    };
+// --- Elements
+  const militaryTimeInput = document.getElementById("militaryTime");
+  const dateInput = document.getElementById("eventDate");
+  const yesToday = document.getElementById("eventTodayYes");
+  const noToday  = document.getElementById("eventTodayNo");
+  const todayBanner = document.getElementById("todayBanner");
+
+  // --- 1) Banner behavior
+  function setTodayAndFocusTime() {
+    const now   = new Date();
+    const yyyy  = now.getFullYear();
+    const mm    = String(now.getMonth() + 1).padStart(2, "0");
+    const dd    = String(now.getDate()).padStart(2, "0");
+    dateInput.value = `${yyyy}-${mm}-${dd}`;
+    dateInput.dispatchEvent(new Event("change", { bubbles: true }));
+    militaryTimeInput.focus();
+    militaryTimeInput.setSelectionRange(0, 0);
+  }
+
+  function openDatePicker() {
+    dateInput.value = "";
+    if (typeof dateInput.showPicker === "function") {
+      dateInput.showPicker();
+    } else {
+      dateInput.focus();
+    }
+  }
+
+  function hideBanner() {
+    todayBanner.style.display = "none";
+  }
+
+  yesToday?.addEventListener("change", () => {
+    if (yesToday.checked) {
+      setTodayAndFocusTime();
+      hideBanner();
+    }
+  });
+
+  noToday?.addEventListener("change", () => {
+    if (noToday.checked) {
+      openDatePicker();
+      hideBanner();
+    }
+  });
+
+  // --- 2) Keep HH:MM enforcement
+  militaryTimeInput.addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9:]/g, "");
+    if (this.value.length === 2 && !this.value.includes(":")) {
+      this.value += ":";
+    }
+    if (this.value.length > 5) {
+      this.value = this.value.slice(0, 5);
+    }
+  });
+
+  // Optional: validate ranges on blur
+  militaryTimeInput.addEventListener("blur", function () {
+    const m = /^(\d{2}):(\d{2})$/.exec(this.value);
+    if (!m) return;
+    let [ , hh, mm ] = m;
+    if (+hh > 23 || +mm > 59) {
+      this.value = "";
+      this.placeholder = "HH:MM";
+      this.focus();
+    }
+  });
+
+  dateInput.addEventListener("change", function () {
+    militaryTimeInput.focus();
+    militaryTimeInput.setSelectionRange(0, 0);
+  }); 
+
+function toggleContent(contentId, arrowBoxId) {
+    var content = document.getElementById(contentId);
+    var arrowBox = document.getElementById(arrowBoxId);
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        arrowBox.innerHTML = "&#9660;"; // Down arrow
+    } else {
+        content.style.display = "block";
+    }
+
+      
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "flex") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "flex";
+            }
+        });
+    }
+  }
+    // Function to open a popup
+    function openPopup(popupId) {
+        document.getElementById(popupId).style.display = 'block';
+    }
+
+    // Function to close a popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
+    // Function to confirm selection and update the display
+function confirmSelection(popupId, selectedId) {
+  const popup = document.getElementById(popupId);
+  const chosen = Array.from(
+    popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked')
+  ).map(input => {
+    // get the visible text next to the input
+    const labelEl =
+      input.closest('label') ||
+      popup.querySelector(`label[for="${input.id}"]`) ||
+      input.parentElement;
+    const text = (labelEl?.innerText || input.value || '').trim();
+    return text;
+  }).join('\n');
+
+  document.getElementById(selectedId).innerText = chosen || 'Not Specified';
+  closePopup(popupId);
+}
+
+
+    // Prevent form submission and page reload
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        });
+    });
+
+    // Function to confirm attachment selection
+    function confirmAttachment() {
+        var fileInput = document.getElementById('fileInput');
+        var files = fileInput.files;
+        if (files.length > 0) {
+            alert('Files selected: ' + files.length);
+        } else {
+            alert('No files selected');
+        }
+        closePopup('attachmentsPopup');
+    }
+
+    // Function to handle delete action
+    function deleteAction() {
+        alert('Delete action triggered');
+    }
+
+    // Function to handle exit action
+    function exitAction() {
+        alert('Exit action triggered');
+    }
+
+    // Function to handle submit action
+    function submitAction() {
+        alert('Submit action triggered');
+    }
+
+    // Function to toggle the visibility of sections based on the post huddle selection
+    document.querySelectorAll('input[name="malfunction1"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            malfunctionSection(this.value);
+        });
+    });
+
+function malfunctionSection(value) {
+    const initial = document.getElementById('malfunctionInitial');
+    const grid = document.getElementById('malfunctionGrid');
+    const radios = document.getElementById('malfunctionRadios');
+
+    if (value === 'yes' || value === 'unknown') {
+        initial.style.display = 'none';
+        grid.style.display = 'grid';
+        grid.children[0].appendChild(radios);
+        radios.style.marginTop = '8px';
+        radios.style.flexDirection = 'row';
+    } else {
+        initial.style.display = 'flex';
+        grid.style.display = 'none';
+        initial.appendChild(radios);
+        radios.style.marginTop = '0';
+        radios.style.flexDirection = 'row';
+    }
+}
+
+
+function systemSection(value) {
+    const initial = document.getElementById('systemInitial');
+    const grid = document.getElementById('systemGrid');
+    const radios = document.getElementById('systemRadios');
+
+    if (value === 'yes' || value === 'unknown') {
+        initial.style.display = 'none';
+        grid.style.display = 'grid';
+        grid.children[0].appendChild(radios);
+        radios.style.marginTop = '8px';
+        radios.style.flexDirection = 'row';
+    } else {
+        initial.style.display = 'flex';
+        grid.style.display = 'none';
+        initial.appendChild(radios);
+        radios.style.marginTop = '0';
+        radios.style.flexDirection = 'row';
+    }
+}
+
+
+function toggleVendorSection(value) {
+    const VendorSection = document.getElementById('VendorSection');
+    if (value === 'yes') {
+        VendorSection.style.display = 'flex';
+    } else {
+        VendorSection.style.display = 'none';
+    }
+}
+
+function toggleIRBSection(value) {
+    const IRBSection = document.getElementById('IRBSection');        
+    if (value === 'yes') {
+        IRBSection.style.display = 'flex';
+        IRBSection.style.flexDirection = 'column'; // Label on top of input
+    } else {
+        IRBSection.style.display = 'none';
+    }
+}
+
+function toggleSepsisSection(value) {
+    const sepsisSection = document.getElementById('sepsisSection');
+    if (value === 'yes') {
+        sepsisSection.style.display = 'flex';
+    } else {
+        sepsisSection.style.display = 'none';
+    }
+}
+
+
+// Prevent form submission and page reload
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+    });
+});
+
+// In CareService2.html, replace the open/close functions with:
+function openPopup(id){
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('is-open');
+}
+function closePopup(id){
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('is-open');
+}
+
+
+function clearSearchFields(){
+    ['searchMrn','searchLast','searchFirst'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('patientList').innerHTML='';
+}
+
+function searchPatient(){
+    const mrn  = document.getElementById('searchMrn').value.trim();
+    const last = document.getElementById('searchLast').value.trim().toLowerCase();
+    const first= document.getElementById('searchFirst').value.trim().toLowerCase();
+
+    const hits = patientMaster.filter(r=>{
+        const byMrn  = !mrn  || r.MRN === mrn;
+        const byLast = !last || (r['Last Name']||'').toLowerCase().includes(last);
+        const byFirst= !first|| (r['First Name']||'').toLowerCase().includes(first);
+        return byMrn && byLast && byFirst;
+    });
+
+    if(!hits.length){
+        document.getElementById('patientList').innerHTML = '<p>No matching patients found.</p>';
+        return;
+    }
+
+    const rows = hits.map(p=>`
+        <tr>
+          <td><input type="radio" name="patientPick" value="${p.MRN}"></td>
+          <td>${p.MRN}</td><td>${p['First Name']}</td>
+          <td>${p['Last Name']}</td><td>${p.DOB}</td>
+        </tr>
+    `).join('');
+
+    document.getElementById('patientList').innerHTML = `
+      <table><thead><tr>
+         <th></th><th>MRN</th><th>First</th><th>Last</th><th>DOB</th>
+      </tr></thead><tbody>${rows}</tbody></table>`;
+}    
+
+function selectPatient(){
+  const pick = document.querySelector('input[name="patientPick"]:checked');
+  if(!pick){ alert('Please select a patient.'); return; }
+
+  const p = patientMaster.find(r => String(r.MRN) === String(pick.value));
+
+
+  // demographics
+  document.getElementById('mrn').value       = p.MRN;
+  document.getElementById('lastname').value  = p['Last Name'];
+  document.getElementById('firstname').value = p['First Name'];
+  document.getElementById('dob').value       = p.DOB;
+  document.getElementById('age').value       = p.Age;
+  document.getElementById('gender').value    = p.Gender;
+  document.getElementById('language').value  = p.Language || '';
+  document.getElementById('patientService').value = p['Patient Service'];
+
+  // location dropdown (your existing flow)
+  setLocationDropdown(p.Site, p['Location '], p.Area);
+  // reveal confirmation
+  document.getElementById('lastLocationPrompt').style.display='block';
+
+  document.getElementById('mrn').value = p.MRN || '';
+  handleMRNInput();           // run the autofill immediately
+
+  closePopup('searchPopup');
+}
+
+
+function setLocationDropdown(site, location, area){
+    const btn = document.getElementById('dropdownMenuButton');
+    btn.textContent = `${site} - ${location} - ${area}`;
+    btn.dataset.autofilled='true';
+    btn.style.border='1px solid black';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const prompt = document.getElementById('lastLocationPrompt');
+  const btn    = document.getElementById('dropdownMenuButton'); // bootstrap dropdown toggle
+  const radios = document.querySelectorAll('input[name="locationConfirmed"]');
+
+  radios.forEach(r => {
+    r.addEventListener('change', (e) => {
+      const isYes = e.target.value === 'yes';
+
+      if (btn) {
+        btn.style.border = isYes ? '1px solid black' : '2px solid red';
+      }
+
+      // hide the banner regardless
+      if (prompt) prompt.style.display = 'none';
+
+      // if NO, open the dropdown
+      if (!isYes && btn) {
+        const dd = bootstrap.Dropdown.getOrCreateInstance(btn);
+        dd.show();
+      }
+    });
+  });
+
+  // existing clear-red logic
+  const dyn = document.getElementById('dynamicMenu');
+  dyn && dyn.addEventListener('click', () => {
+    if (btn && btn.style.border.includes('red')) btn.style.border = '1px solid black';
+  });
+});
+
+/* remove red border once user actively chooses a different area */
+document.getElementById('dynamicMenu').addEventListener('click',()=>{
+   const btn = document.getElementById('dropdownMenuButton');
+   if(btn.style.border.includes('red')) btn.style.border='1px solid black';
+});
+
+// ---------- section open/close ----------
+function setSectionOpen(contentId, headerId, open) {
+  const c = document.getElementById(contentId);
+  const h = document.getElementById(headerId);
+  if (!c) return;
+  c.setAttribute('data-open', open ? 'true' : 'false');
+  if (h) h.setAttribute('data-expanded', open ? 'true' : 'false');
+}
+
+// ---------- visibility & completeness ----------
+function isVisible(el) {
+  if (!el) return false;
+  for (let p = el; p; p = p.parentElement) {
+    const cs = getComputedStyle(p);
+    if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+  }
+  return true;
+}
+
+function isFieldComplete(field, section) {
+  if (!isVisible(field) || field.disabled || field.hasAttribute('data-skip')) return true;
+  if (field.type === 'radio' || field.type === 'checkbox') {
+    return !!section.querySelector(`input[name="${field.name}"]:checked`);
+  }
+  return (field.value ?? '').toString().trim() !== '';
+}
+
+function allVisibleFieldsComplete(sec) {
+  return Array.from(sec.querySelectorAll('input, select, textarea'))
+              .every(f => isFieldComplete(f, sec));
+}
+
+function sectionComplete(sec) {
+  const mode = sec.dataset.mode || 'all';
+  if (mode === 'last' && sec.dataset.trigger) {
+    const trg = sec.querySelector(sec.dataset.trigger);
+    return trg ? isFieldComplete(trg, sec) : false;
+  }
+  return allVisibleFieldsComplete(sec);
+}
+
+// ---------- auto-close logic ----------
+function maybeCloseSection(sec) {
+  if (sec.dataset.lock === 'true') return;     // ignore during manual open
+  if (sec.dataset.sticky === 'true') return;   // ignore if manually reopened & sticky
+
+  const delay = +(sec.dataset.delay || 0);
+  if (sectionComplete(sec)) {
+    if (sec._timer) clearTimeout(sec._timer);
+    sec._timer = setTimeout(() => {
+      setSectionOpen(sec.id, sec.dataset.header, false);
+    }, delay);
+  }
+}
+
+// ---------- event handling ----------
+document.addEventListener('change', (e) => {
+  const sec = e.target.closest('.section-content');
+  if (!sec) return;
+
+  // remove sticky if no longer complete
+  if (!sectionComplete(sec) && sec.dataset.sticky === 'true') {
+    delete sec.dataset.sticky;
+  }
+
+  maybeCloseSection(sec);
+});
+
+document.addEventListener('blur', (e) => {
+  const sec = e.target.closest('.section-content');
+  if (!sec) return;
+
+  if (!sectionComplete(sec) && sec.dataset.sticky === 'true') {
+    delete sec.dataset.sticky;
+  }
+
+  maybeCloseSection(sec);
+}, true);
+
+// Prevent auto-close right after a manual open
+document.addEventListener('pointerdown', (e) => {
+  const hdr = e.target.closest('.section-header');
+  if (!hdr) return;
+  const sec = document.getElementById(hdr.getAttribute('data-target'));
+  if (!sec) return;
+  sec.dataset.lock = 'true';
+  setTimeout(() => { delete sec.dataset.lock; }, 700);
+});
+
+// Manual toggle & sticky mark
+document.addEventListener('click', (e) => {
+  const hdr = e.target.closest('.section-header');
+  if (!hdr) return;
+  const sec = document.getElementById(hdr.getAttribute('data-target'));
+  if (!sec) return;
+
+  const opening = sec.getAttribute('data-open') !== 'true';
+  setSectionOpen(sec.id, sec.dataset.header || hdr.id, opening);
+
+  if (opening) {
+    sec.dataset.sticky = 'true'; // user manually opened → stay open until incomplete again
+  }
+});
+
+(function(){
+  // ==== Config ====
+  const INACTIVITY_MS = 40 * 1000; // 10 minutes idle before timeout appears (change as needed)
+  const COUNTDOWN_SECONDS = 30;          // grace period before we could auto-logout (you can keep it at 30)
+
+  // ==== Create overlay once ====
+  const overlay = document.createElement('div');
+  overlay.id = 'sys-timeout-overlay';
+  overlay.innerHTML = `
+    <div id="sys-timeout-card" role="dialog" aria-modal="true" aria-labelledby="sys-timeout-title">
+      <h2 id="sys-timeout-title">System Timeout</h2>
+      <p>Your session has been idle. Click reset to continue.</p>
+      <div id="sys-timeout-countdown">00:${String(COUNTDOWN_SECONDS).padStart(2,'0')}</div>
+      <button id="sys-timeout-reset" type="button">Reset Now</button>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  const countdownEl = overlay.querySelector('#sys-timeout-countdown');
+  const resetBtn     = overlay.querySelector('#sys-timeout-reset');
+
+  let idleTimer = null;
+  let countdownTimer = null;
+  let remaining = COUNTDOWN_SECONDS;
+
+  // ==== Idle tracking ====
+  const activityEvents = ['mousemove','mousedown','keydown','scroll','touchstart','pointerdown','wheel','click'];
+  activityEvents.forEach(ev => document.addEventListener(ev, bumpIdle, {passive:true}));
+
+  function bumpIdle() {
+    // If overlay is visible, we don't auto-dismiss on random activity
+    if (overlay.style.display !== 'flex') {
+      startIdleTimer();
+    }
+  }
+
+  function startIdleTimer() {
+    if (idleTimer) clearTimeout(idleTimer);
+    idleTimer = setTimeout(showTimeout, INACTIVITY_MS);
+  }
+
+  // Start tracking immediately
+  startIdleTimer();
+
+  // ==== Timeout / countdown flow ====
+  function showTimeout() {
+    overlay.style.display = 'flex';
+    remaining = COUNTDOWN_SECONDS;
+    updateCountdownText();
+    if (countdownTimer) clearInterval(countdownTimer);
+    countdownTimer = setInterval(() => {
+      remaining -= 1;
+      updateCountdownText();
+      if (remaining <= 0) {
+        clearInterval(countdownTimer);
+        // Optional: hard logout / clear form / redirect. For now, just keep overlay up.
+        // window.location.reload(); // if you want a hard reset
+      }
+    }, 1000);
+  }
+
+  function hideTimeout() {
+    overlay.style.display = 'none';
+    if (countdownTimer) clearInterval(countdownTimer);
+  }
+
+  function updateCountdownText() {
+    countdownEl.textContent = `00:${String(Math.max(0, remaining)).padStart(2,'0')}`;
+  }
+
+  // ==== Reset button handler ====
+  resetBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    // 1) Reactivate session timers
+    hideTimeout();
+    startIdleTimer();
+
+    // 2) Highlight incomplete fields and open their sections
+    highlightIncompleteAndOpenSections();
+
+    // 3) Scroll to the first incomplete field (if any)
+    const first = document.querySelector('.needs-attn');
+    if (first) {
+      first.scrollIntoView({behavior: 'smooth', block: 'center'});
+      // brief focus for accessibility
+      if (first.focus) { try { first.focus({preventScroll:true}); } catch(_){} }
+    }
+  });
+
+  function highlightIncompleteAndOpenSections() {
+  // clear old highlights
+  document.querySelectorAll('.needs-attn').forEach(el => el.classList.remove('needs-attn'));
+
+  const sections = document.querySelectorAll('.section-content');
+  sections.forEach(sec => {
+    const incompleteFields = getIncompleteFieldsInSection(sec);
+
+    if (incompleteFields.length > 0) {
+      // Open the section if it isn't already open
+      const headerId = sec.dataset.header;
+      if (headerId) {
+        if (typeof window.setSectionOpen === 'function') {
+          window.setSectionOpen(sec.id, headerId, true);
+        } else {
+          sec.setAttribute('data-open','true');
+          const hdr = document.getElementById(headerId);
+          if (hdr) hdr.setAttribute('data-expanded','true');
+        }
+        sec.dataset.sticky = 'true';
+      }
+
+      // ✅ Apply the red border + auto-remove logic
+      incompleteFields.forEach(applyNeedsAttn);
+    }
+  });
+}
+
+// Treat placeholder-y values as empty
+function isSelectEmpty(sel){
+  if (!sel) return false;
+  const v = (sel.value || '').trim().toLowerCase();
+  if (!v || v === 'default' || v === 'none' || v === 'select' || v === 'choose') return true;
+  const opt = sel.options[sel.selectedIndex];
+  return !!(opt && (opt.disabled || /^(select|choose|\-\-)/.test((opt.text||'').trim().toLowerCase())));
+}
+
+// highlight all required bits (call this on timeout)
+window.highlightIncompleteAndOpenSections = function(){
+  // 1) Native selects you care about
+  ['method','accessType'].forEach(id => {
+    const sel = document.getElementById(id);
+    if (isSelectEmpty(sel)) {
+      sel.classList.add('is-invalid');
+      sel.addEventListener('change', function clearOnce(){
+        if (!isSelectEmpty(sel)) {
+          sel.classList.remove('is-invalid');
+          sel.removeEventListener('change', clearOnce);
+        }
+      });
+    }
+  });
+
+  // 2) Button dropdowns: mark the BUTTON if the hidden input is empty
+  const btnLoc = document.getElementById('dropdownMenuButton');
+  const valLoc = document.getElementById('loc');
+  if (btnLoc && valLoc && !valLoc.value) btnLoc.classList.add('btn-invalid');
+
+  const btnProc = document.getElementById('processDropdownButton');
+  const valProc = document.getElementById('processWhere');
+  if (btnProc && valProc && !valProc.value) btnProc.classList.add('btn-invalid');
+};
+
+// keep the button invalid state in sync when a choice is made
+document.addEventListener('DOMContentLoaded', () => {
+  // LOCATION menu
+  const menuLoc = document.getElementById('dynamicMenu');
+  const btnLoc  = document.getElementById('dropdownMenuButton');
+  const valLoc  = document.getElementById('loc');
+  if (menuLoc && btnLoc && valLoc){
+    menuLoc.addEventListener('click', (e) => {
+      const item = e.target.closest('a,button,[data-value],[role="menuitem"]');
+      if (!item) return;
+      const text = (item.getAttribute('data-value') || item.textContent || '').trim();
+      if (!text) return;
+      valLoc.value = text;
+      btnLoc.textContent = text;
+      btnLoc.classList.remove('btn-invalid');
+    });
+  }
+
+  // PROCESS menu
+  const menuProc = document.getElementById('processDynamicMenu');
+  const btnProc  = document.getElementById('processDropdownButton');
+  const valProc  = document.getElementById('processWhere');
+  if (menuProc && btnProc && valProc){
+    menuProc.addEventListener('click', (e) => {
+      const item = e.target.closest('a,button,[data-value],[role="menuitem"]');
+      if (!item) return;
+      const text = (item.getAttribute('data-value') || item.textContent || '').trim();
+      if (!text) return;
+      valProc.value = text;
+      btnProc.textContent = text;
+      btnProc.classList.remove('btn-invalid');
+    });
+  }
+});
+
+function getIncompleteFieldsInSection(sec) {
+  const fields = [];
+  const elements = sec.querySelectorAll('input, select, textarea, [data-required="true"]');
+
+  const radioGroups = new Map();
+  const checkboxGroups = new Map();
+
+  const visible = el =>
+    !el.disabled &&
+    el.offsetParent !== null &&
+    getComputedStyle(el).visibility !== 'hidden';
+
+  const checkboxKey = el => {
+    const wrap = el.closest('.checkbox-group, .field-row, [data-group]');
+    if (wrap?.dataset?.group) return `ds:${wrap.dataset.group}`;
+    if (wrap?.id) return `id:${wrap.id}`;
+    if (el.name) return `name:${el.name}`;
+    // fallback: group by nearest container
+    return `node:${(wrap || el.parentElement)?.outerHTML?.length || 0}-${(wrap || el.parentElement)}`;
+  };
+
+  elements.forEach(el => {
+    const isRequired = true; // treat all as required for timeout highlight
+    if (!isRequired || !visible(el)) return;
+
+    if (el.type === 'radio') {
+      const name = el.name || `(anon-radio-${Math.random()})`;
+      if (!radioGroups.has(name)) radioGroups.set(name, []);
+      radioGroups.get(name).push(el);
+    } else if (el.type === 'checkbox') {
+      const key = checkboxKey(el);
+      if (!checkboxGroups.has(key)) checkboxGroups.set(key, []);
+      checkboxGroups.get(key).push(el);
+    } else if (el.tagName === 'SELECT') {
+      const v = (el.value || '').trim().toLowerCase();
+      if (!v || v === 'default' || v === 'none') fields.push(el);
+    } else {
+      if (!el.value || String(el.value).trim() === '') fields.push(el);
+    }
+  });
+
+  radioGroups.forEach(group => {
+    if (!group.some(r => r.checked)) fields.push(group[0]);
+  });
+
+  checkboxGroups.forEach(group => {
+    if (!group.some(c => c.checked)) fields.push(group[0]);
+  });
+
+  return fields;
+}
+
+})();
+
+function applyNeedsAttn(el) {
+  el.classList.add('needs-attn');
+  const wrapper = el.closest('.radio-group, .checkbox-group, .field-row');
+  if (wrapper) wrapper.classList.add('needs-attn');
+
+  const clear = () => {
+    if (isFieldAnswered(el)) {
+      el.classList.remove('needs-attn');
+      if (wrapper) wrapper.classList.remove('needs-attn');
+      peers.forEach(p => { p.removeEventListener('input', clear); p.removeEventListener('change', clear); });
+    }
+  };
+
+  // attach to all peers in the same group
+  let peers = [el];
+  if (el.type === 'radio') {
+    peers = Array.from(document.querySelectorAll(`input[type="radio"][name="${CSS.escape(el.name)}"]`));
+  } else if (el.type === 'checkbox') {
+    const cont = wrapper || el.parentElement;
+    if (cont) peers = Array.from(cont.querySelectorAll('input[type="checkbox"]'));
+  }
+  peers.forEach(p => { p.addEventListener('input', clear); p.addEventListener('change', clear); });
+}
+
+function isFieldAnswered(el) {
+  if (el.type === 'radio') {
+    const name = el.name;
+    if (!name) return el.checked;
+    const group = document.querySelectorAll(`input[type="radio"][name="${CSS.escape(name)}"]`);
+    return Array.from(group).some(r => r.checked);
+  }
+  if (el.type === 'checkbox') {
+    // If any checkbox in the same group is checked, treat as answered
+    const group = el.closest('.checkbox-group, .field-row') || el.parentElement;
+    if (group) {
+      const boxes = group.querySelectorAll('input[type="checkbox"]');
+      return Array.from(boxes).some(b => b.checked);
+    }
+    return el.checked;
+  }
+  if (el.tagName === 'SELECT') {
+    return !!(el.value && el.value !== 'default' && el.value !== 'none');
+  }
+  return !!(el.value && String(el.value).trim() !== '');
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const mrnEl = document.getElementById('mrn');
+  if (mrnEl) {
+    mrnEl.addEventListener('change', handleMRNInput);
+  }
+});
+
+/* --- SAFETY PATCH: make OK close again and prefill from Excel --- */
+(function () {
+  // Override selectPatient with a safe version
+  const originalSelect = window.selectPatient;
+  window.selectPatient = function () {
+    try {
+      // run your original logic if it exists
+      if (typeof originalSelect === 'function') {
+        originalSelect.apply(this, arguments);
+      } else {
+        // minimal fallback if original isn't present
+        const pick = document.querySelector('input[name="patientPick"]:checked');
+        if (!pick) { alert('Please select a patient.'); return; }
+        const p = (window.patientMaster || []).find(r => String(r.MRN) === String(pick.value)) || {};
+        if (document.getElementById('mrn')) document.getElementById('mrn').value = p.MRN || '';
+      }
+
+      // DO NOT call handleMRNInput() here (not defined on this page).
+      // Instead, prefill from your Excel defaults if available:
+      if (typeof window.prefillFromMRNDefaults === 'function') {
+        try { window.prefillFromMRNDefaults(); } catch (e) { console.warn('prefillFromMRNDefaults failed:', e); }
+      }
+    } catch (e) {
+      console.warn('selectPatient error (continuing to close popup):', e);
+    }
+    // Always close the patient search popup
+    try { window.closePopup && closePopup('searchPopup'); } catch (e) {}
+  };
+})();
+
+(function () {
+  // visible & enabled, and not inside a popup
+  const VISIBLE = el =>
+    el && !el.disabled && el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden';
+  const IN_POPUP = el => !!el.closest('.popup');
+
+  function isSelectEmpty(sel){
+    if (!sel) return false;
+    const v = (sel.value || '').trim();
+    if (!v) return true;
+    const opt = sel.options[sel.selectedIndex];
+    if (!opt) return !v;
+    const t = (opt.text || '').trim().toLowerCase();
+    return opt.disabled || t === '' || /^(\-|\s)*(select|choose)/.test(t);
+  }
+
+  // Build "units" to count across the WHOLE form:
+  // - each text/select/textarea = 1 unit
+  // - each radio group (by name) = 1 unit
+  // - each checkbox group (nearest .checkbox-group/.field-row or by name) = 1 unit
+  function collectUnits(root){
+    const units = [];
+
+    // text-like inputs + textarea
+    Array.from(root.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], input[type="number"], input[type="email"], input[type="tel"], textarea'))
+      .forEach(el => { if (VISIBLE(el) && !IN_POPUP(el) && !el.hasAttribute('data-progress-ignore')) units.push({kind:'text', el}); });
+
+    // selects
+    Array.from(root.querySelectorAll('select'))
+      .forEach(el => { if (VISIBLE(el) && !IN_POPUP(el) && !el.hasAttribute('data-progress-ignore')) units.push({kind:'select', el}); });
+
+    // radios → group by name
+    const radios = Array.from(root.querySelectorAll('input[type="radio"]'))
+      .filter(r => VISIBLE(r) && !IN_POPUP(r) && !r.hasAttribute('data-progress-ignore'));
+    const radioMap = new Map();
+    radios.forEach(r => {
+      const n = r.name || `_radio_${Math.random().toString(36).slice(2)}`;
+      if (!radioMap.has(n)) radioMap.set(n, []);
+      radioMap.get(n).push(r);
+    });
+    radioMap.forEach(inputs => units.push({kind:'radio', inputs}));
+
+    // checkboxes → group by nearest container or by name
+    const checks = Array.from(root.querySelectorAll('input[type="checkbox"]'))
+      .filter(c => VISIBLE(c) && !IN_POPUP(c) && !c.hasAttribute('data-progress-ignore'));
+    const checkMap = new Map();
+    checks.forEach(c => {
+      const wrap = c.closest('.checkbox-group, .field-row');
+      const key = wrap || (c.name ? `name:${c.name}` : c);
+      if (!checkMap.has(key)) checkMap.set(key, []);
+      checkMap.get(key).push(c);
+    });
+    checkMap.forEach(inputs => units.push({kind:'checkg', inputs}));
+
+    return units;
+  }
+
+  function unitAnswered(u){
+    if (u.kind === 'radio')   return u.inputs.some(r => r.checked);
+    if (u.kind === 'checkg')  return u.inputs.some(c => c.checked);
+    if (u.kind === 'select')  return !isSelectEmpty(u.el);
+    if (u.kind === 'text')    return !!String(u.el.value || '').trim();
+    return false;
+  }
+
+  // A unit is mandatory if the element (or an ancestor) carries required/data-required="true"
+  function unitRequired(u){
+    if (u.kind === 'radio' || u.kind === 'checkg'){
+      return u.inputs.some(el => el.required || el.closest('[required],[data-required="true"]'));
+    }
+    const el = u.el;
+    return el.required || (el.closest && el.closest('[required],[data-required="true"]'));
+  }
+
+  function computeProgress(){
+    const root = document.querySelector('.form-container') || document;
+    const units = collectUnits(root);
+    const req   = units.filter(unitRequired);
+
+    return {
+      allDone: units.filter(unitAnswered).length,
+      allTotal: units.length,
+      mandDone: req.filter(unitAnswered).length,
+      mandTotal: req.length
+    };
+  }
+
+  function renderProgress(){
+    const { allDone, allTotal, mandDone, mandTotal } = computeProgress();
+
+    const fileText = document.getElementById('fileCountText');
+    const mandText = document.getElementById('mandatoryCountText');
+    if (fileText) fileText.textContent = `${allDone} out of ${allTotal} total fields completed.`;
+    if (mandText) mandText.textContent = `${mandDone} out of ${mandTotal} mandatory fields completed`;
+
+    const fileBar = document.getElementById('fileProgressBar');
+    const mandBar = document.getElementById('mandatoryProgressBar');
+    if (fileBar) fileBar.style.width = (allTotal ? Math.round((allDone/allTotal)*100) : 0) + '%';
+    if (mandBar) mandBar.style.width = (mandTotal ? Math.round((mandDone/mandTotal)*100) : 0) + '%';
+  }
+
+  function attachAutoUpdate(){
+    const root = document.querySelector('.form-container') || document;
+    // update whenever something changes anywhere in the form
+    root.addEventListener('input',  renderProgress, true);
+    root.addEventListener('change', renderProgress, true);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    attachAutoUpdate();
+    renderProgress();
+    setTimeout(renderProgress, 0);     // after immediate UI init
+    setTimeout(renderProgress, 300);   // after any async fills (Excel/CSV)
+  });
+})();
+
+    // Add event listeners for drag and drop functionality
+    var dropArea = document.getElementById('dropArea');
+    dropArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#000';
+    });
+    dropArea.addEventListener('dragleave', function() {
+        dropArea.style.borderColor = '#ccc';
+    });
+    dropArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#ccc';
+        var files = e.dataTransfer.files;
+        document.getElementById('fileInput').files = files;
+    });
+
+    // Add event listener to open file dialog when drop area is clicked
+    dropArea.addEventListener('click', function() {
+        document.getElementById('fileInput').click();
+    });
+
+</script>
+
+
+</body>
+</html>

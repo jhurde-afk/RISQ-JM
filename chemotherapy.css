@@ -1,0 +1,1040 @@
+html, body {
+    height: 100%;
+    min-width: 1000px; /* Set a minimum width to prevent content from shrinking too much */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.topnav, .secondnav {
+    width: 100%;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+.topnav {
+    top: 0;
+    overflow: hidden;
+    background-color: #000000;
+    height: 60px;
+    color: white;
+    text-align: left;
+    padding: 5px 16px;
+}
+.secondnav {
+    overflow: hidden;
+    background-color: #002569; /* Dark grey color */
+    color: white;
+    text-align: left;
+    padding: 8px 16px;
+    z-index: 1; /* Ensure the secondnav is above the sidenav */
+    margin-left: 70px; /* Add margin to the left to avoid overlapping with sidenav */
+    font-weight: bold;
+    font-size: 22px;
+    top: 60px; /* height of topnav */
+}
+.sidenav {
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    padding-top: 60px;
+    z-index: 10;
+}
+.sidenav a {
+    padding: 8px 8px 8px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+.sidenav a:hover {
+    background-color: #575757;
+}
+
+:root { --app-radius: var(--bs-border-radius, .375rem); }
+
+/* Make custom boxes match Bootstrap's curve */
+.form-container,
+.popup,
+.popup-content,
+.gray-container,
+.section-content {
+  border-radius: var(--app-radius);
+}
+
+/* If you want the patient results to look rounded as a unit */
+.patient-list { border-radius: var(--app-radius); overflow: hidden; }
+
+
+.main {
+    margin-left: 70px; /* Adjust the margin-left to match the width of the sidenav */
+    padding: 20px 10px;
+    padding-top: 120px;
+    /*height: calc(100% - 28px); /* Adjust height to span the full page minus topnav height */
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row; /* Align items in a row */
+    min-width: 1000px; /* Prevent shrinking */
+    width: 1000px;     /* Fixed width */
+}
+.left-container {
+    flex: 0 0 260px; /* Fixed width of 260px, adjust as needed */
+    max-width: 300px; /* Optional: prevent it from growing too wide */
+    min-width: 200px; /* Optional: prevent it from getting too small */
+    margin-right: 80px;
+    margin-left: 0;
+}
+.content-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    position: relative;
+}
+
+.form-help {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right: 0;
+    color: inherit; /* Use default unless overridden */
+    white-space: normal;
+    word-break: break-word;
+    font-size: 14px; /* Adjust font size as needed */
+}
+.form-help.required {
+    color: red;
+    font-size: 12px;
+}
+.content-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(62, 62, 62);
+    margin-top: 5px;
+}
+.content-section {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.progress-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    position: relative;
+}
+.progress-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    margin-top: 5px;
+}
+.progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    margin-top: 6px;
+}
+.progress-bar {
+    height: 20px;
+    width: 0%; /* Initial width */
+    background-color: #767676;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+}
+.form-container {
+    background-color: #f0f7ff; /* Light grey color */
+    padding: 20px;
+    width: 800px;
+    max-width: 800px; /* or whatever max you want */
+    margin: 20px auto; /* center horizontally */
+    min-width: 800px;  /* prevent it from getting too small */
+    height: auto; /* Adjust height to span the full page minus margins */
+    overflow: visible; /* Add scroll if content overflows */
+    position: relative; /* Ensure the image is positioned relative to the form container */
+}
+.form-container img {
+    width: 250px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f0f7ff;
+}
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+.form-row div {
+    flex: none;
+    margin-right: 20px;
+}
+.form-row div:last-child {
+    margin-right: 0;
+}
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-row > div:nth-child(2) {
+    min-width: 220px; /* Adjust as needed */
+}
+.form-row .dashed-underline {
+    border-bottom: 1px dashed #000;
+    width: auto;
+    margin-bottom: 10px;
+}
+.form-row select, .form-row input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.btn-custom {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: var(--app-radius);   /* <-- add this */
+}
+
+
+.btn-custom.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Use 100% for full width, or remove if you want default */
+    padding: 12px; /* Optional: keeps button height normal */
+}
+
+.btn-custom.dropdown-toggle::after {
+    margin-left: auto; /* pushes the arrow to the right */
+}
+
+.btn-custom:hover {
+background-color: #f8f9fa; /* Slightly darker white on hover */
+color: black; /* Keep text color black */
+}
+
+/* Customize the dropdown arrow */
+.btn-custom::after {
+border-top-color: black; /* Change the arrow color */
+margin-left: auto;
+}
+
+/* Ensure proper alignment for nested dropdowns */
+.dropdown-menu .dropdown-menu {
+margin-left: 0;
+margin-right: 0;
+}
+
+.dropdown-menu li {
+position: relative;
+}
+
+/* Properly position nested dropdowns */
+.dropdown-menu .dropdown-submenu > .dropdown-menu {
+top: 0;
+left: 100%;
+margin-top: -1px;
+}
+
+/* Show the submenu on hover */
+.dropdown-submenu:hover > .dropdown-menu {
+display: block;
+}
+
+/* Hide submenus by default */
+.dropdown-submenu .dropdown-menu {
+display: none;
+position: absolute;
+top: 0;
+left: 100%;
+margin-top: -1px;
+}
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 600px; /* Increase width for a larger box */
+}
+.popup .close-btn {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    color: red;
+}
+.popup .options {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup .content {
+    display: none;
+    flex-direction: column; /* Ensure the content is displayed in a column */
+}
+.popup .options label {
+    margin-bottom: 10px;
+}
+.popup button {
+    margin-right: 10px;
+    display: inline-block;
+}
+.popup .options a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+}
+.collapsible {
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    display: block;
+    width: 100%;
+}
+.collapsible::before {
+    content: '\25B6'; /* Right-pointing arrow */
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+.collapsible.active::before {
+    transform: rotate(90deg); /* Down-pointing arrow */
+}
+.additional-services-row, .notified-row {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.selected-services {
+    font-size: 13px;
+    display: block;
+    white-space: pre-line; /* Preserve line breaks */
+}
+
+.popup-header {
+    background-color: #d4cfcf;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color: white; /* Change text color to white */
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px; /* Add margin to separate from content */
+    margin: -20px -20px 20px -20px; /* Adjust margins to offset the padding of the popup */
+}
+
+.drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Bottom nav styles */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 70px; /* Ensure the bar starts from the left edge */
+    width: calc(100% - 70px);;
+    background-color:#d5d5d5;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    z-index: 800;
+    /* box-sizing: border-box; Include padding and border in the element's total width and height */
+}
+
+.bottom-nav .btn {
+    margin-left: 10px; /* Add margin to the left of each button */
+}
+
+.bottom-nav .btn-delete, .bottom-nav .btn-more-actions {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.bottom-nav .btn-exit, .bottom-nav .btn-submit {
+    background-color: #001a8c;
+    color: white;
+    border: 1px solid #001a8c;
+}
+
+.dropup .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 13px;
+    margin-right: 10px; /* Add space between the label and the radio buttons */
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px; /* Add space between radio buttons */
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.patient-search-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 9999;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+    padding: 24px;
+    border-radius: 8px;
+    display: none;
+    width: 70%;
+}
+
+/* Gray Container for Image + Text Fields */
+.gray-container {
+    background-color: #f0f0f0; /* Light gray */
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Contact Image */
+.contact-icon {
+    width: 3%; /* Adjust size */
+    height: 3%;
+    margin-right: 15px;
+}
+
+.gray-container{
+  height: 40%;
+}
+
+/* Make the popup a column so we can pin the footer at the bottom */
+#searchPopup.patient-search-popup {
+  width: 700px; max-width: 700px; min-width: 700px;
+  height: 60%;                 /* keep the height you want */             /* new */
+  flex-direction: column;       /* new */
+}
+
+/* Row with avatar + fields → move both to the RIGHT together */
+#searchPopup .gray-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  justify-content: flex-end;    /* push image + fields to the right */
+}
+
+#searchPopup .gray-container .contact-icon {
+  margin: 0 16px 0 0 !important;
+  width: 140px !important; height: auto !important; flex: 0 0 140px;
+}
+#searchPopup .gray-container .form-group {
+  margin: 0 !important; display: flex; flex-direction: column;
+}
+
+/* RESULTS area grows; whitespace stays ABOVE the footer */
+#searchPopup #patientList { flex: 1 1 auto; min-height: 0; overflow: auto; }
+
+/* FOOTER pinned to the bottom; buttons aligned right */
+#searchPopup .popup-actions {
+  margin-top: auto;             /* pins to bottom of the popup */
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+
+/* Search and Clear Fields Links */
+.search-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Patient List Table */
+.patient-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.patient-list th, .patient-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* OK and Cancel Buttons */
+.patient-search-popup-footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.mrn-label{
+    display:inline-flex !important;  /* override label{display:block;} */
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    font-size:13px;
+    white-space:nowrap;
+}
+
+.mrn-label img{
+    width:16px;
+    height:16px;
+    cursor:pointer;
+    position:static !important;      /* ensure normal flow */
+}
+
+/* Collapsible section header (replaces .line + .arrow-box) */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #001a8c;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px 0 0 0; /* space above/below the bar */
+}
+
+/* small square for the arrow icon */
+.section-header .chev {
+  width: 28px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b2ea0;
+  border-radius: 4px;
+}
+
+/* triangle + rotation */
+.section-header .chev::before {
+  content: "▲";
+  display: inline-block;
+  transition: transform .2s ease;
+}
+
+/* the block that opens/closes */
+.section-content {
+  display: none;
+  background: #f0f7ff;
+  padding: 6px 18px 6px 18px;
+  border-radius: 6px;
+}
+
+.section-content > *:first-child {
+  margin-top: -25px;
+}
+
+/* show/hide by data-open */
+.section-content { display: none; }
+.section-content[data-open="true"] { display: flex; flex-wrap: wrap; gap: 16px; }
+
+/* optional: arrow rotation on your rectangle header */
+.section-header[data-expanded="true"] .chev::before { transform: rotate(180deg); }
+.section-header .chev::before { content: "▲"; display:inline-block; transition:transform .2s; }
+
+/* Timeout overlay */
+#sys-timeout-overlay {
+  position: fixed; inset: 0;
+  display: none; /* shown via JS */
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+}
+
+#sys-timeout-card {
+  background: #0b1e33;
+  color: #fff;
+  max-width: 520px;
+  width: calc(100% - 32px);
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  text-align: center;
+}
+
+#sys-timeout-card h2 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  letter-spacing: .3px;
+}
+
+#sys-timeout-card p { margin: 0 0 14px 0; opacity: .9; }
+
+#sys-timeout-countdown {
+  font: 600 28px/1.2 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 6px 0 14px 0;
+}
+
+#sys-timeout-reset {
+  appearance: none; border: 0;
+  background: #60a5fa; color: #0b1e33;
+  padding: 10px 16px; border-radius: 10px; font-weight: 700; cursor: pointer;
+}
+#sys-timeout-reset:hover { filter: brightness(1.05); }
+
+@keyframes attnPulse {
+  0% { box-shadow: 0 0 0 3px rgba(249,115,22,0.15); }
+  50% { box-shadow: 0 0 0 5px rgba(249,115,22,0.35); }
+  100% { box-shadow: 0 0 0 3px rgba(249,115,22,0.15); }
+}
+/* Strong, visible error state */
+input.needs-attn,
+select.needs-attn,
+textarea.needs-attn,
+.needs-attn input,
+.needs-attn select,
+.needs-attn textarea {
+  border-color: red !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  outline: none !important;
+}
+
+/* Make radio/checkbox groups obvious: add the class to the group container */
+.radio-group.needs-attn,
+.checkbox-group.needs-attn,
+.field-row.needs-attn {
+  border: 2px solid red !important;
+  padding: 8px !important;      /* so the border isn't tight against controls */
+  border-radius: 6px;
+}
+
+input, select, textarea {
+  border: 1px solid black;
+  border-radius: var(--app-radius);
+  /* optional, to visually match bootstrap spacing */
+  padding: .375rem .5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: left;
+}
+
+table td:first-child {
+  width: 30px;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.popup-content {
+  background: white;
+  padding: 20px 30px;
+  width: 750px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #333;
+}
+.popup-header {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+}
+.popup-note {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 12px;
+}
+.popup-subtitle {
+  margin: 15px 0 10px;
+  font-weight: bold;
+}
+.popup-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.popup-footer button {
+    margin-left: 8px;
+}
+
+.cancel-btn, .ok-btn {
+  padding: 6px 16px;
+  margin-left: 10px;
+}
+
+.ok-btn {
+  background: #3a7300;
+  color: white;
+  border: none;
+}
+/* Tiny blue action links like the screenshot */
+.attachments-actions a {
+  color: #2563eb;
+  text-decoration: none;
+  margin: 0 4px;
+}
+.attachments-actions a:hover { text-decoration: underline; }
+.attachments-actions a.disabled {
+  color: #9aa0a6; pointer-events: none; text-decoration: none;
+}
+
+/* Selected row highlight */
+#attachmentsTable tbody tr.selected { background: #f2f6ff; }
+#attachmentsTable td, #attachmentsTable th { font-size: 12px; }
+
+/* Keep the empty state looking like the screenshot */
+#attachmentsTable tr.empty td em { color: #666; }
+
+/* Put the chosen value & Add/Edit link inline with the label */
+.inline-row { display:flex; align-items:center; gap:12px; }
+
+/* Override the block layout for these two readouts */
+#selectedContributingFactors,
+#selectedsigns { display:inline-block; margin:0; }
+
+/* was: display:block; */
+.selected-services {
+  font-size: 13px;
+  display: inline-block;
+  white-space: pre-line; /* keep line breaks if any */
+}
+
+/* Default: Edit/Delete look disabled and can't be clicked */
+.med-actions a[data-action="edit"],
+.med-actions a[data-action="delete"] {
+  color: #9aa0a6;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+/* When ANY row radio is selected in #medTable, enable them */
+.med-section:has(#medTable input[name="selectRow"]:checked)
+  .med-actions a[data-action="edit"],
+.med-section:has(#medTable input[name="selectRow"]:checked)
+  .med-actions a[data-action="delete"] {
+  color: #2563eb;
+  pointer-events: auto;
+  text-decoration: none;
+}
+
+/* Optional: selected row highlight, if you want it */
+#medTable tbody tr.selected { background: #f2f6ff; }
+/* Ensure Bootstrap selects visibly highlight */
+.form-select.is-invalid,
+select.is-invalid,
+.form-control.is-invalid {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 .2rem rgba(220,53,69,.25) !important;
+}
+#fileProgressBar,
+#mandatoryProgressBar {
+  background-color: #f97316;
+  transition: width .2s ease;
+}
+
+/* Tiny blue action links like the screenshot */
+.attachments-actions a {
+  color: #2563eb;
+  text-decoration: none;
+  margin: 0 4px;
+}
+.attachments-actions a:hover { text-decoration: underline; }
+.attachments-actions a.disabled {
+  color: #9aa0a6; pointer-events: none; text-decoration: none;
+}
+
+/* Selected row highlight */
+#attachmentsTable tbody tr.selected { background: #f2f6ff; }
+#attachmentsTable td, #attachmentsTable th { font-size: 12px; }
+
+/* Keep the empty state looking like the screenshot */
+#attachmentsTable tr.empty td em { color: #666; }
+
+/* Put the chosen value & Add/Edit link inline with the label */
+.inline-row { display:flex; align-items:center; gap:12px; }
+
+/* Override the block layout for these two readouts */
+#selectedContributingFactors,
+#selectedsigns { display:inline-block; margin:0; }
+
+/* was: display:block; */
+.selected-services {
+  font-size: 13px;
+  display: inline-block;
+  white-space: pre-line; /* keep line breaks if any */
+}
+
+/* Ensure Bootstrap selects visibly highlight */
+.form-select.is-invalid,
+select.is-invalid,
+.form-control.is-invalid {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 .2rem rgba(220,53,69,.25) !important;
+}
+#fileProgressBar,
+#mandatoryProgressBar {
+  background-color: #f97316;
+  transition: width .2s ease;
+}
+
+
+/* Header bar */
+#contributingFactorsPopup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+#contributingFactorsPopup .options { max-height: 320px; overflow: auto; padding-right: 8px; }
+
+#contributingFactorsPopup .services-grid label { font-size: 13px; display: flex; gap: 8px; align-items: center; }
+
+/* Round the popup and hide overflow so header corners look clean */
+#contributingFactorsPopup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Make popups stack header, body, footer */
+.popup.is-open{
+  display:flex;
+  flex-direction:column;
+  max-height:min(80vh, 640px);
+  border-radius:8px;
+  overflow:hidden;        /* so edges are flush */
+  padding:0;              /* no inner padding that would create side gaps */
+}
+
+/* Scroll only the middle area */
+.popup .options{
+  flex:1 1 auto;
+  overflow:auto;
+  padding:12px 14px 0;    /* no bottom padding so it meets the footer tightly */
+  margin:0;
+}
+
+/* Footer pinned to the bottom, full width */
+.popup .popup-actions{
+  position:static;        /* not sticky; flex keeps it at the bottom */
+  align-self:stretch;     /* ensures full width */
+  width:100%;
+  margin:0;               /* kill any gaps above/below */
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  background:#f5f5f5;     /* very light grey bar */
+  border-top:1px solid #e6e6e6;
+  padding:10px 14px;      /* set to 0 if you want completely edge-to-edge */
+}
+
+/* Buttons (shared look) */
+.popup .action-cancel{
+  background:transparent; border:0; color:#666;
+  font-size:14px; padding:6px 8px; cursor:pointer;
+}
+.popup .action-cancel:hover{ color:#333; text-decoration:underline; }
+.popup .action-ok{
+  background:#487f28; color:#fff; border:0; border-radius:6px;
+  font-weight:600; font-size:14px; padding:6px 12px; cursor:pointer;
+}
+.popup .action-ok:hover{ background:#3d6e22; }
+
+
+#servicesPopup .options { max-height: 320px; overflow: auto; padding-right: 8px; }
+#servicesPopup .services-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+  gap: 6px 16px; 
+}
+#servicesPopup .services-grid label { font-size: 13px; display: flex; gap: 8px; align-items: center; }
+
+/* Round the popup and hide overflow so header corners look clean */
+#servicesPopup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Header bar */
+#servicesPopup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+/* Header bar */
+#attachmentsPopup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+/* Round the popup and hide overflow so header corners look clean */
+#attachmentsPopup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#signsPopup .options { max-height: 320px; overflow: auto; padding-right: 8px; }
+
+/* Round the popup and hide overflow so header corners look clean */
+#signsPopup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Header bar */
+#signsPopup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+/* Header bar */
+#popup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+#popup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Footer pinned to the bottom, full width */
+.popup-actions{
+  position:static;        /* not sticky; flex keeps it at the bottom */
+  align-self:stretch;     /* ensures full width */
+  width:100%;
+  margin:0;               /* kill any gaps above/below */
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  background:#f5f5f5;     /* very light grey bar */
+  border-top:1px solid #e6e6e6;
+  padding:10px 14px;      /* set to 0 if you want completely edge-to-edge */
+}
+
+/* Buttons (shared look) */
+.action-cancel{
+  background:transparent; border:0; color:#666;
+  font-size:14px; padding:6px 8px; cursor:pointer;
+}
+.action-cancel:hover{ color:#333; text-decoration:underline; }
+.action-ok{
+  background:#487f28; color:#fff; border:0; border-radius:6px;
+  font-weight:600; font-size:14px; padding:6px 12px; cursor:pointer;
+}
+.action-ok:hover{ background:#3d6e22; }
+
+/* Container flush edges like the other modals */
+#popup.popup-overlay .popup-content {
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;   /* so the rounded corners clip the header */
+}
+
+.popup-overlay.is-open {
+  display: flex !important;   /* beat any inline display:block */
+}
+/* Give the inner content some breathing room */
+#popup .popup-body { padding: 12px; }

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Navigation Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="careservice.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+</head>
+<body>
+
+<div class="topnav">
+    <span style="font-size: 32px; font-weight: 100; font-family: 'Roboto', sans-serif;">RLD</span><span style=
+    "font-size: 22px; font-weight: 100; font-family: 'Roboto', sans-serif;">ATIX</span>
+</div>
+
+
+<div class="secondnav">
+    <span style="font-size: 20px; font-weight: 100; font-family: 'Roboto', sans-serif;">Care Service Event Management Form</span>
+</div>
+
+<div class="sidenav">
+    <!-- Sidebar content -->
+</div>
+
+<div class="main">
+    <div class="left-container">
+        <div class="content-title">Table of Contents</div>
+        <div class="content-section">General Event Information</div>
+        <div class="content-section">Event Information</div>
+        <div class="content-section">Details of the Event</div>
+        <div class="content-section">Attachments and Notes</div>
+
+        <div class="progress-title">File Status</div>
+        <div class="content-section">0 out of 32 total files completed.</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="fileProgressBar"></div>
+        </div>
+
+        <div class="progress-title">Mandatory Fields Status</div>
+        <div class="content-section">0 out of 23 mandatory fields completed.</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="mandatoryProgressBar"></div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="form-header">
+            <img src="RISQForm.png" alt="Form Image" class="form-logo">
+            <div class="form-header-text">
+                <div class="form-help">For help, call 646-888-5630 or e-mail RISQ@mskcc.org</div>
+                <div class="form-help required">Fields labeled with an asterisk(*) are required.</div>
+            </div>
+        </div>
+
+        <div class="line">
+            <span style="margin-left: 5%; padding-top: 15%; font-size: larger; font-weight: bold;">General Event Information</span>
+            <div class="arrow-box" id="arrowBox1" onclick="toggleContent('collapsibleContent', 'arrowBox1')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="PatientPersonInvolved" style="margin-top: 20px; font-size: 13px;">Patient/Person Involved</label>
+                        <div class="dashed-underline" style="width: 160px;"></div>
+                        <select id="PatientPersonInvolved" name="PatientPersonInvolved">
+                            <option value=""> </option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="mrn" class="mrn-label" style="margin-top: 20px;">MRN (lookup # with magnifying glass)<img src="magnifying-glass-png-icon-11.jpg" alt="Search" onclick="openPopup('searchPopup')">
+                        </label>
+                        <div class="dashed-underline" style="width:220px; margin-top: -1.5%;"></div>
+                        <input type="text" id="mrn" name="mrn" style="width:100%;">
+                    </div>
+
+                    <div id="searchPopup" class="patient-search-popup">
+                        <div class="gray-container">
+                            <img src="contact.png" alt="Contact" class="contact-icon" style="margin-top: 2%; margin-left: 1%; width: 5%; height: 5%;">
+                            <div class="form-group" style="display: flex; flex-direction: column; margin-left: 40%;">
+                               <div style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                                    <label for="searchMrn" style="width: 80px;">MRN</label>
+                                    <input type="text" id="searchMrn" name="searchMrn" style="width: 80%; height: 15%;">
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:10px;">
+                                    <label for="searchLast" style="width:80px;">Last Name</label>
+                                    <input type="text" id="searchLast" style="width:80%;height:15%;">
+                                </div>
+                                <div style="display:flex;align-items:center;margin-bottom:10px;">
+                                    <label for="searchFirst" style="width:80px;">First Name</label>
+                                    <input type="text" id="searchFirst" style="width:80%;height:15%;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="search-controls">
+                            <a onclick="searchPatient()">Search</a> | <a onclick="clearSearchFields()">Clear Fields</a>
+                        </div>
+
+                        <!-- results -->
+                        <div id="patientList" class="patient-list"></div>
+
+                        <!-- footer -->
+                        <div class="patient-search-popup-footer">
+                            <button type="button" onclick="selectPatient()">OK</button>
+                            <button type="button" onclick="closePopup('searchPopup')">Cancel</button>
+                        </div>
+                    </div>   
+
+                    <div style="margin-left: 3%;">
+                        <label for="patientService" style="margin-top: 20px; font-size: 13px;">Patient Service</label>
+                        <div class="dashed-underline" style="width: 100px;"></div>
+                        <select id="patientService" name="patientService">
+                            <option value=""> </option>
+                            <option value="service1">Anesthesiology</option>
+                            <option value="service2">Behavioral Sciences</option>
+                            <option value="service3">Bone Marrow Transplant</option>
+                            <option value="service4">Breast Medicine Service</option>
+                            <option value="service5">Breast Surgery</option>
+                            <option value="service6">Cardiology</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="lastname" style="font-size:13px;">Last Name</label>
+                        <div class="dashed-underline" style="width:80px;"></div>
+                        <input type="text" id="lastname" name="lastname">
+                    </div>
+                    <div>
+                        <label for="firstname" style="font-size:13px;">First Name</label>
+                        <div class="dashed-underline" style="width:80px;"></div>
+                        <input type="text" id="firstname" name="firstname">
+                    </div>
+                    <div>
+                        <label for="dob" style="font-size:13px;">DOB</label>
+                        <div class="dashed-underline" style="width:40px;"></div>
+                        <input type="text" id="dob" name="dob">
+                    </div>
+                    <div>
+                        <label for="age" style="font-size:13px;">Age</label>
+                        <div class="dashed-underline" style="width:40px;"></div>
+                        <input type="text" id="age" name="age">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="gender" style="font-size:13px;">Gender</label>
+                        <div class="dashed-underline" style="width:45px;"></div>
+                        <input type="text" id="gender" name="gender" style="width:90%;">
+                    </div>
+                    <div style="margin-right: 40%;">
+                        <label for="language" style="font-size:13px;">Patient's Preffered Language</label>
+                        <div class="dashed-underline" style="width:165px;"></div>
+                        <input type="text" id="language" name="language" style="width:80%;">
+                    </div>
+                </div>
+
+                <!-- Additional form content goes here -->
+            </form>
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: 17px; font-weight: bold;">Event Information - Confidential and Privileged File To be Used For QA Purposes Only</span>
+            <div class="arrow-box" id="arrowBox2" onclick="toggleContent('collapsibleContentConfidential', 'arrowBox2')">&#9660;</div>
+        </div>
+
+        <div class="content" id="collapsibleContentConfidential">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row" style="margin-top: 35px;">
+                    <div style="margin-top: 20px; font-size: 13px;">
+                        <label for="eventDateTime">Event Date & Time (Military)</label>
+                        <div class="dashed-underline"></div>
+                        <div style="display: flex;">
+                            <input type="date" id="eventDate" name="eventDate" style="margin-right: 5px;">
+                            <input type="text" id="militaryTime" name="militaryTime" placeholder="__ : __" maxlength="5" style="width: 75px;">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Specific Event Type</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="type1">During transfer/lift</option>
+                            <option value="type2">From bed/exam table/operating table/stretcher</option>
+                            <option value="type3">From chair/wheelchair</option>
+                            <option value="type4">From crib</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="severityLevel" style="margin-top: 20px; font-size: 13px;">Severity Level</label>
+                        <div class="dashed-underline"></div>
+                        <select id="severityLevel" name="severityLevel">
+                            <option value=""> </option>
+                            <option value="level1">Level 1-No Harm</option>
+                            <option value="level2">Level 2-Temp Harm</option>
+                            <option value="level3">Level 3-Permanent Harm</option>
+                            <option value="level4">Level 4-Death</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="lastLocationPrompt" style="display:none;margin-top: 5%; font-size:13px; font-weight: bold; background:#f0f0f0;padding:8px;">
+                    This is the last location of the patient on record. Is this where the event occurred?
+                    <button type="button" style="color: red;" onclick="locationConfirmed(true)">Yes</button>
+                    <button type="button" onclick="locationConfirmed(false)">No</button>
+                </div>
+
+                <div class="form-row">
+                    <div class="container mt-5">
+                        <label for="loc" style="font-size:13px; margin-top: -8%;">Site, Location & Area/Unit</label>
+                        <div class="dashed-underline" style="width:160px;"></div>
+
+                        <!-- Dropdown Button -->
+                        <button class="btn btn-custom dropdown-toggle" type="button"
+                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="font-size:11px;">
+                            Select Site, Location & Area/Unit
+                        </button>
+
+                        <!-- Dynamic menu -->
+                        <ul class="dropdown-menu" id="dynamicMenu" aria-labelledby="dropdownMenuButton"></ul>
+                    </div>
+                </div>
+                
+                <div class="form-row additional-services-row">
+                    <div style="display: flex; flex-direction: column; min-width: 180px; margin-top: 2%;">
+                        <label for="services" style="font-size: 13px;">Select Additional Services</label>
+                        <div class="dashed-underline" style="width: 160px; margin-top: -1%;"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: flex-start; margin-left: 24px;">
+                        <div id="selectedServices" class="selected-services">Not Specified</div>
+                        <a href="#" onclick="openPopup('servicesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                    </div>
+                </div>
+
+                <div class="form-section-row" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <!-- EHR/System Related -->
+                    <div class="form-row" id="systemRow" style="display: flex; flex-direction: column; flex: 1;">
+                        <div id="systemInitial" style="display: flex; flex-direction: column;">
+                            <label style="font-size: 13px;">EHR/System Related</label>
+                            <div class="dashed-underline" style="width: 150px; margin-top: -3%;"></div>
+                            <div id="systemRadios" style="display: flex; gap: 10px; font-size: 11px;">
+                                <input type="radio" id="systemYes" name="system" value="yes" onclick="systemSection(this.value)">
+                                <label for="systemYes">Yes</label>
+                                <input type="radio" id="systemNo" name="system" value="no" onclick="systemSection(this.value)">
+                                <label for="systemNo">No</label>
+                                <input type="radio" id="systemUnknown" name="system" value="unknown" onclick="systemSection(this.value)">
+                                <label for="systemUnknown">Unknown/Unsure</label>
+                            </div>
+                        </div>
+                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label style="font-size: 13px;">EHR/System Related</label>
+                                <div class="dashed-underline" style="width: 150px; margin-top: -3%;"></div>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="sysCategory" style="font-size: 13px;">Help Desk Ticket #</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems">
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="sysType" style="font-size: 13px;">System</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <select name="sysType" style="margin-top: 1px;">
+                                    <option value=""> </option>
+                                    <option value="X">X</option>
+                                    <option value="Y">Y</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Equipment Malfunction -->
+                    <div class="form-row" id="malfunctionRow" style="display: flex; flex-direction: column; flex: 1;">
+                        <div id="malfunctionInitial" style="display: flex; flex-direction: column;">
+                            <label style="font-size: 13px;">Equipment Malfunction</label>
+                            <div class="dashed-underline" style="width: 150px; margin-top: -3%;"></div>
+                            <div id="malfunctionRadios" style="display: flex; gap: 10px; font-size: 11px;">
+                                <input type="radio" id="malfunctionYes" name="malfunction1" value="yes" onclick="malfunctionSection(this.value)">
+                                <label for="malfunctionYes">Yes</label>
+                                <input type="radio" id="malfunctionNo" name="malfunction1" value="no" onclick="malfunctionSection(this.value)">
+                                <label for="malfunctionNo">No</label>
+                                <input type="radio" id="malfunctionUnknown" name="malfunction1" value="unknown" onclick="malfunctionSection(this.value)">
+                                <label for="malfunctionUnknown">Unknown/Unsure</label>
+                            </div>
+                        </div>
+                        <div id="malfunctionGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label style="font-size: 13px;">Equipment Malfunction</label>
+                                <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="malcategory" style="font-size: 13px;">Equipment Category</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <select name="malcategory" style="margin-top: 1px;">
+                                    <option value=""> </option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                    <option value="unknown">Unknown/UnSure</option>
+                                </select>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="malequipment" style="font-size: 13px;">Equipment Type</label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <select name="malequipment" style="margin-top: 1px;">
+                                    <option value=""> </option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                    <option value="unknown">Unknown/UnSure</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Outside Vendor Involved -->
+                    <div class="form-row" style="display: flex; align-items: center; gap: 3px; margin-top: 3%;">
+                        <div style="display: flex; flex-direction: column;">
+                            <label style="font-size: 13px;">Outside Vendor Involved?</label>
+                            <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
+                            <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
+                                <input type="radio" id="vendorYes" name="vendor1" value="yes" onchange="toggleVendorSection(this.value)">
+                                <label for="vendorYes">Yes</label>
+                                <input type="radio" id="vendorNo" name="vendor1" value="no" onchange="toggleVendorSection(this.value)">
+                                <label for="vendorNo">No</label>
+                            </div>
+                        </div>
+                        <!-- Hidden Vendor Name input, shown inline when Yes -->
+                        <div id="VendorSection" style="display: none; align-items: center; margin-top: 3%;">
+                            <div style="display: flex; flex-direction: column;">    
+                                <label for="Vendorno" style="font-size: 13px;">Vendor Name</label>
+                                <div class="dashed-underline" style="width: 120px; margin-top: 0%;"></div>
+                                <input type="text" id="Vendorno" name="Vendorno" style="width: 60%;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>  
+
+                <div class="form-section-row" style="display: flex; flex-wrap: wrap; gap: 1px;">
+
+                    <!-- IRB Protocol -->
+                    <div class="form-row" style="display: flex; flex-direction: column; flex: 1;"> 
+                        <div id="irbpro" style="display: flex; align-items: center; margin-top: 3%;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label style="font-size: 13px; margin-right: 16px;">IRB Protocol?</label>
+                                <div class="dashed-underline" style="width:100px; margin-top: -1%;"></div>
+                                <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
+                                    <input type="radio" id="protocolYes" name="protocol1" value="yes" onchange="toggleIRBSection(this.value)">
+                                    <label for="protocolYes">Yes</label>
+                                    <input type="radio" id="protocolNo" name="protocol1" value="no" onchange="toggleIRBSection(this.value)">
+                                    <label for="protocolNo">No</label>
+                                </div>
+                            </div>        
+
+                            <div id="IRBSection" style="display: none; align-items: center; gap: 8px; margin-top: 3%;">
+                                <div style="display: flex; flex-direction: column;">    
+                                    <label for="IRBno" style="font-size: 13px;">IRB #</label>
+                                    <div class="dashed-underline" style="width: 60px; margin-top: 0%;"></div>
+                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%;">
+                                </div>
+                            </div>    
+                        </div>
+                    </div>    
+                    <!-- Sepsis Related -->
+                    <div class="form-row" style="display: flex; flex-direction: column; flex: 1; margin-right: 10%;"> 
+                        <div class="form-row" style="display: flex; align-items: center; margin-top: 3%;">
+                            <div style="display: flex; flex-direction: column;">
+                                <label style="font-size: 13px;">Sepsis Related</label>
+                                <div class="dashed-underline" style="width:120px; margin-top: -1%;"></div>
+                                <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px; margin-top: 8px;">
+                                    <input type="radio" id="sepsisYes" name="sepsisRelated" value="yes" onchange="toggleSepsisSection(this.value)">
+                                    <label for="sepsisYes">Yes</label>
+                                    <input type="radio" id="sepsisNo" name="sepsisRelated" value="no" onchange="toggleSepsisSection(this.value)">
+                                    <label for="sepsisNo">No</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                      
+                <!-- Add form content for the confidential section here -->
+                <div class="popup" id="servicesPopup">
+                    <div class="options">
+                        <button class="collapsible">1275</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Admitting"> Admitting</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Anesthesiology"> Anesthesiology</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cardiology Tests"> Cardiology Tests</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Case Management"> Case Management</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo Admission Unit"> Chemo Admission Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo BMT"> Chemo BMT</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo/Verification Inpatient"> Chemo/Verification Inpatient</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Clinical Decidsion Unit"> Clinical Decidsion Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - CPD"> CPD</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cyclotro"> Cyclotron</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Donor Room"> Donor Room</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Endoscopy Suite"> Endoscopy Suite</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Food and Nutrition"> Food and Nutrition</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - ICU"> ICU</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - IV Team"> IV Team</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Blood Bank"> Labs - Blood Bank</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Cell Therapy"> Labs - Cell Therapy</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Chemistry"> Labs - Chemistry</label>
+                        </div>
+                        <button class="collapsible">53rd Street OP</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 4th Floor chemo unit">4th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 5th Floor chemo unit">5th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 6th Floor chemo unit">6th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 7th Floor chemo unit">7th Floor chemo unit</label>
+                        </div>
+                        <button class="collapsible">72nd Street</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Cyclotron"> Cyclotron</label>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('servicesPopup', 'selectedServices')">OK</button>
+                        <button onclick="closePopup('servicesPopup')">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">Details of the Event</span>
+            <div class="arrow-box" id="arrowBox3" onclick="toggleContent('collapsibleContent3', 'arrowBox3')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent3">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="eventDescription" style="margin-top: 30px; font-size: 13px; white-space: nowrap;">
+                            Event description (Use titles instead of names, i.e. nurses, physician, etc.)
+                            <span id="micButton" onclick="toggleSpeech()" style="cursor: pointer; margin-left: 10px; font-size: 24px;">
+                                <i id="micIcon" class="fas fa-microphone" style="color: #333;"></i>
+                            </span>
+                        </label>
+                        <div class="dashed-underline" style="width: 440px;"></div>
+                        <textarea id="eventDescription" name="eventDescription" style="width: 700px; height: 150px; font-size: 13px;"></textarea>
+                        
+                    </div>
+                </div> 
+                
+                <div class="form-row contributing-factors-row" style="margin-top: 0%;"> 
+                    <!-- <div style="display: flex; align-items: center; width: 100%;"> -->
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="contributingFactors" style="font-size: 13px; margin-right: 8%;">Contributing Factors</label>
+                        <div class="dashed-underline" style="width: 140px; margin-top: 0%;"></div>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedContributingFactors" class="selected-services" style="margin-top: 2%;">Not Specified</div>
+                            <a href="#" onclick="openPopup('contributingFactorsPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>            
+                    <div class="popup" id="contributingFactorsPopup">
+                        <div class="options">
+                            <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 1"> Factor 1</label>
+                            <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 2"> Factor 2</label>
+                            <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 3"> Factor 3</label>
+                            <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 4"> Factor 4</label>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button onclick="confirmSelection('contributingFactorsPopup', 'selectedContributingFactors')">OK</button>
+                            <button onclick="closePopup('contributingFactorsPopup')">Cancel</button>
+                        </div>
+                    </div>
+                </div>    
+            </form>
+        </div>
+
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">Attachments and Notes</span>
+            <div class="arrow-box" id="arrowBox4" onclick="toggleContent('collapsibleContent4', 'arrowBox4')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent4">
+            <!-- Collapsible content goes here -->
+            <form>
+                <!-- Add/Edit link for Attachments -->
+                <!-- Attachments label -->
+                <div class="form-row attachments-row">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="attachments" style="font-size: 13px; margin-right: 10px; margin-top: 5%;">Attachments</label>
+                    </div>
+                </div>
+
+                <!-- Add link in a new form row -->
+                <div class="form-row add-attachments-row">
+                    <div style="width: 100%; margin-top: 5px;">
+                        <a href="#" onclick="openPopup('attachmentsPopup')" style="display: block;">Add</a>
+                    </div>
+                </div>
+
+               <!-- Popup for Attachments -->
+                <div class="popup" id="attachmentsPopup">
+                    <div class="popup-header">
+                        <span>Add Attachment</span>
+                    </div>
+                    <div class="drop-area" id="dropArea">
+                        <p>Drop files here</p>
+                        <input type="file" id="fileInput" style="display: none;" multiple>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmAttachment()">OK</button>
+                        <button onclick="closePopup('attachmentsPopup')">Cancel</button>
+                    </div>
+                </div>
+                
+                <!-- Additional form content goes here -->
+            </form>
+    </div>
+</div>
+
+<!-- Bottom bar -->
+<div class="bottom-nav">
+    <button class="btn btn-delete" onclick="deleteAction()">Delete</button>
+    <button class="btn btn-exit" onclick="exitAction()">Exit</button>
+    <div class="dropup">
+        <button class="btn btn-more-actions dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            More Actions
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+            <li><a class="dropdown-item" href="#">Option 3</a></li>
+        </ul>
+    </div>
+    <button class="btn btn-submit" onclick="submitAction()">Submit</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+// Load the second CSV for MRN-location mapping
+let patientMaster = [];
+Papa.parse('LocationDetails.csv', {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: res => { patientMaster = res.data; }
+});
+
+let excelData=[];
+Papa.parse('Locations.csv',{
+    download:true,
+    header:true,
+    complete:res=>{
+        excelData = res.data;
+        buildPatientDropdown();
+    }
+});
+
+
+// MRN change handler
+document.getElementById('mrn').addEventListener('change', handleMRNInput);
+
+function handleMRNInput() {
+  const mrnInput = document.getElementById('mrn').value.trim();
+  const match = mrnLocationData.find(row => row.MRN?.trim() === mrnInput);
+
+  if (match) {
+    // Autofill the dropdown
+    const siteLocationArea = `${match.Site} | ${match.Location} | ${match.Area}`;
+    const slaField = document.getElementById('siteLocationArea'); // assuming this is your unified dropdown
+    slaField.value = siteLocationArea;
+
+    // Show confirmation message
+    showConfirmationNote(siteLocationArea);
+  }
+}
+
+function showConfirmationNote(autofilledLocation) {
+  const noteContainer = document.getElementById('confirmationNote');
+  noteContainer.innerHTML = `
+    <div style="margin-top: 10px; background: #f1f1f1; padding: 10px; border-left: 4px solid #007bff;">
+      <p><strong>This is the last known location of the patient.</strong> Is this where the event occurred?</p>
+      <button onclick="confirmLocation(true)">Yes</button>
+      <button onclick="confirmLocation(false)">No</button>
+    </div>
+  `;
+}
+
+function confirmLocation(isConfirmed) {
+  const slaField = document.getElementById('siteLocationArea');
+
+  if (isConfirmed) {
+    slaField.disabled = true;
+    slaField.style.backgroundColor = ""; // normal
+  } else {
+    slaField.disabled = false;
+    slaField.style.backgroundColor = "#fff3cd"; // light yellow highlight
+  }
+
+  document.getElementById('confirmationNote').innerHTML = ""; // clear message
+}
+
+function buildPatientDropdown(){
+    const patientSet = new Set();
+    excelData.forEach(r=>{
+        const pat = r['Patient/Person Involved']?.trim();
+        if(pat) patientSet.add(pat);
+    });
+
+    const sel = document.getElementById('PatientPersonInvolved');
+    patientSet.forEach(p=>{
+        const opt=document.createElement('option'); opt.value=p; opt.textContent=p;
+        sel.appendChild(opt);
+    });
+
+    sel.addEventListener('change',()=>{
+        const map={};
+        excelData.forEach(r=>{
+            if(r['Patient/Person Involved']?.trim()===sel.value){
+                const site = r.Site?.trim();
+                const loc  = r.Location?.trim();
+                const area = r.Area?.trim();
+                if(site&&loc&&area){
+                    if(!map[site]) map[site]={};
+                    if(!map[site][loc]) map[site][loc]=new Set();
+                    map[site][loc].add(area);
+                }
+            }
+        });
+        buildLocationMenu(map);
+    });
+}
+
+function buildLocationMenu(menuMap){
+    const menu=document.getElementById('dynamicMenu');
+    menu.innerHTML='';
+    for(const site in menuMap){
+        const siteLi=document.createElement('li');
+        siteLi.classList.add('dropdown-submenu');
+        const siteA=document.createElement('a');
+        siteA.className='dropdown-item dropdown-toggle'; siteA.href='#'; siteA.textContent=site;
+        const locUl=document.createElement('ul');
+        locUl.classList.add('dropdown-menu');
+
+        for(const loc in menuMap[site]){
+            const locLi=document.createElement('li');
+            locLi.classList.add('dropdown-submenu');
+            const locA=document.createElement('a');
+            locA.className='dropdown-item dropdown-toggle'; locA.href='#'; locA.textContent=loc;
+            const areaUl=document.createElement('ul'); areaUl.classList.add('dropdown-menu');
+            menuMap[site][loc].forEach(area=>{
+                const areaLi=document.createElement('li');
+                const areaA=document.createElement('a');
+                areaA.className='dropdown-item'; areaA.href='#'; areaA.textContent=area;
+                areaA.onclick=()=>{ setLocationDropdown(site,loc,area); };
+                areaLi.appendChild(areaA); areaUl.appendChild(areaLi);
+            });
+            locLi.appendChild(locA); locLi.appendChild(areaUl); locUl.appendChild(locLi);
+        }
+        siteLi.appendChild(siteA); siteLi.appendChild(locUl); menu.appendChild(siteLi);
+    }
+}
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    let isRecording = false;
+
+    function toggleSpeech() {
+    const micIcon = document.getElementById('micIcon');
+    if (!isRecording) {
+        recognition.start();
+        micIcon.style.color = 'red';
+        isRecording = true;
+    } else {
+        recognition.stop();
+        micIcon.style.color = '#333';
+        isRecording = false;
+    }
+    }
+
+    recognition.onresult = function(event) {
+    const textarea = document.getElementById('eventDescription');
+    let interim = '';
+    let finalText = '';
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+        const transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+        finalText += transcript + ' ';
+        } else {
+        interim += transcript;
+        }
+    }
+
+    textarea.value = textarea.value.replace(/\[.*?\]$/, '') + finalText + (interim ? `[${interim}]` : '');
+    };
+
+    recognition.onend = function() {
+    if (isRecording) {
+        document.getElementById('micIcon').style.color = '#333';
+        isRecording = false;
+    }
+    };
+
+     // Override the default behavior after a date is selected
+     const militaryTimeInput = document.getElementById("militaryTime");
+
+    // Allow input in military time format (HH:MM) only
+    militaryTimeInput.addEventListener("input", function () {
+        // Only allow numbers and the colon
+        this.value = this.value.replace(/[^0-9:]/g, "");
+
+        // Ensure correct format (HH:MM)
+        if (this.value.length === 2) {
+            this.value += ":";
+        }
+
+        if (this.value.length > 5) {
+            this.value = this.value.slice(0, 5);
+        }
+    });
+
+    // Set focus on the military time input when the date is picked
+    const dateInput = document.getElementById("eventDate");
+    dateInput.addEventListener("change", function() {
+        militaryTimeInput.focus();
+    });
+
+    function toggleContent(contentId, arrowBoxId) {
+        var content = document.getElementById(contentId);
+        var arrowBox = document.getElementById(arrowBoxId);
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            arrowBox.innerHTML = "&#9660;"; // Down arrow
+        } else {
+            content.style.display = "block";
+            arrowBox.innerHTML = "&#9650;"; // Up arrow
+        }
+    }
+
+
+    // Example JavaScript to update the progress bars
+    function updateProgressBar(id, percentage) {
+        const progressBar = document.getElementById(id);
+        progressBar.style.width = percentage + '%';
+    }
+
+    // Update the progress bars (example values)
+    updateProgressBar('fileProgressBar', 0); // 50% completed
+    updateProgressBar('mandatoryProgressBar', 0); // 50% completed
+
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "flex") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "flex";
+            }
+        });
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+        // Open all collapsible sections by default
+        const contentDivs = document.querySelectorAll(".content");
+        contentDivs.forEach(div => {
+            div.style.display = "flex"; // or whatever display you use when open
+        });
+
+        // Update arrow direction to up if it's meant to reflect open state
+        const arrowBoxes = document.querySelectorAll(".arrow-box");
+        arrowBoxes.forEach(box => {
+            box.innerHTML = "&#9650;"; // ▲ up arrow
+        });
+    });
+
+    // Function to open a popup
+    function openPopup(popupId) {
+        document.getElementById(popupId).style.display = 'block';
+    }
+
+    // Function to close a popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
+    // Function to confirm selection and update the display
+    function confirmSelection(popupId, selectedId) {
+        const popup = document.getElementById(popupId);
+        const selectedOptions = Array.from(popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked'))
+            .map(input => {
+                const label = input.closest('.form-group').querySelector('label').innerText;
+                return `${label} - ${input.value}`;
+            })
+            .join('\n');
+
+        document.getElementById(selectedId).innerText = selectedOptions || 'Not Specified';
+        closePopup(popupId);
+}
+
+    // Prevent form submission and page reload
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        });
+    });
+
+    // Function to confirm attachment selection
+    function confirmAttachment() {
+        var fileInput = document.getElementById('fileInput');
+        var files = fileInput.files;
+        if (files.length > 0) {
+            alert('Files selected: ' + files.length);
+        } else {
+            alert('No files selected');
+        }
+        closePopup('attachmentsPopup');
+    }
+
+    // Add event listeners for drag and drop functionality
+    var dropArea = document.getElementById('dropArea');
+    dropArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#000';
+    });
+    dropArea.addEventListener('dragleave', function() {
+        dropArea.style.borderColor = '#ccc';
+    });
+    dropArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#ccc';
+        var files = e.dataTransfer.files;
+        document.getElementById('fileInput').files = files;
+    });
+
+    // Add event listener to open file dialog when drop area is clicked
+    dropArea.addEventListener('click', function() {
+        document.getElementById('fileInput').click();
+    });
+
+    // Function to handle delete action
+    function deleteAction() {
+        alert('Delete action triggered');
+    }
+
+    // Function to handle exit action
+    function exitAction() {
+        alert('Exit action triggered');
+    }
+
+    // Function to handle submit action
+    function submitAction() {
+        alert('Submit action triggered');
+    }
+
+    // Function to toggle the visibility of sections based on the post huddle selection
+    document.querySelectorAll('input[name="malfunction1"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            malfunctionSection(this.value);
+        });
+    });
+
+function malfunctionSection(value) {
+    const initial = document.getElementById('malfunctionInitial');
+    const grid = document.getElementById('malfunctionGrid');
+    const radios = document.getElementById('malfunctionRadios');
+
+    if (value === 'yes' || value === 'unknown') {
+        initial.style.display = 'none';
+        grid.style.display = 'grid';
+        grid.children[0].appendChild(radios);
+        radios.style.marginTop = '8px';
+        radios.style.flexDirection = 'row';
+    } else {
+        initial.style.display = 'flex';
+        grid.style.display = 'none';
+        initial.appendChild(radios);
+        radios.style.marginTop = '0';
+        radios.style.flexDirection = 'row';
+    }
+}
+
+
+function systemSection(value) {
+    const initial = document.getElementById('systemInitial');
+    const grid = document.getElementById('systemGrid');
+    const radios = document.getElementById('systemRadios');
+
+    if (value === 'yes' || value === 'unknown') {
+        initial.style.display = 'none';
+        grid.style.display = 'grid';
+        grid.children[0].appendChild(radios);
+        radios.style.marginTop = '8px';
+        radios.style.flexDirection = 'row';
+    } else {
+        initial.style.display = 'flex';
+        grid.style.display = 'none';
+        initial.appendChild(radios);
+        radios.style.marginTop = '0';
+        radios.style.flexDirection = 'row';
+    }
+}
+
+
+function toggleVendorSection(value) {
+    const VendorSection = document.getElementById('VendorSection');
+    if (value === 'yes') {
+        VendorSection.style.display = 'flex';
+    } else {
+        VendorSection.style.display = 'none';
+    }
+}
+
+function toggleIRBSection(value) {
+    const IRBSection = document.getElementById('IRBSection');        
+    if (value === 'yes') {
+        IRBSection.style.display = 'flex';
+        IRBSection.style.flexDirection = 'column'; // Label on top of input
+    } else {
+        IRBSection.style.display = 'none';
+    }
+}
+
+function toggleSepsisSection(value) {
+    const sepsisSection = document.getElementById('sepsisSection');
+    if (value === 'yes') {
+        sepsisSection.style.display = 'flex';
+    } else {
+        sepsisSection.style.display = 'none';
+    }
+}
+
+
+// Prevent form submission and page reload
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+    });
+});
+
+function openPopup(id){ document.getElementById(id).style.display='block'; }
+function closePopup(id){ document.getElementById(id).style.display='none'; }
+
+function toggleContent(contentId,arrowBoxId){
+    const c=document.getElementById(contentId), a=document.getElementById(arrowBoxId);
+    if(c.style.display==='block'){ c.style.display='none'; a.innerHTML='&#9660;'; }
+    else{ c.style.display='block'; a.innerHTML='&#9650;'; }
+}
+
+function clearSearchFields(){
+    ['searchMrn','searchLast','searchFirst'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('patientList').innerHTML='';
+}
+
+function searchPatient(){
+    const mrn  = document.getElementById('searchMrn').value.trim();
+    const last = document.getElementById('searchLast').value.trim().toLowerCase();
+    const first= document.getElementById('searchFirst').value.trim().toLowerCase();
+
+    const hits = patientMaster.filter(r=>{
+        const byMrn  = !mrn  || r.MRN === mrn;
+        const byLast = !last || (r['Last Name']||'').toLowerCase().includes(last);
+        const byFirst= !first|| (r['First Name']||'').toLowerCase().includes(first);
+        return byMrn && byLast && byFirst;
+    });
+
+    if(!hits.length){
+        document.getElementById('patientList').innerHTML = '<p>No matching patients found.</p>';
+        return;
+    }
+
+    const rows = hits.map(p=>`
+        <tr>
+          <td><input type="radio" name="patientPick" value="${p.MRN}"></td>
+          <td>${p.MRN}</td><td>${p['First Name']}</td>
+          <td>${p['Last Name']}</td><td>${p.DOB}</td>
+        </tr>
+    `).join('');
+
+    document.getElementById('patientList').innerHTML = `
+      <table><thead><tr>
+         <th></th><th>MRN</th><th>First</th><th>Last</th><th>DOB</th>
+      </tr></thead><tbody>${rows}</tbody></table>`;
+}    
+
+
+function selectPatient(){
+    const pick = document.querySelector('input[name="patientPick"]:checked');
+    if(!pick){ alert('Please select a patient.'); return; }
+
+    const p = patientMaster.find(r=>r.MRN===pick.value);
+    if(!p){ alert('Unexpected error.'); return; }
+
+    /* demographics */
+    document.getElementById('mrn'      ).value = p.MRN;
+    document.getElementById('lastname' ).value = p['Last Name'];
+    document.getElementById('firstname').value = p['First Name'];
+    document.getElementById('dob'      ).value = p.DOB;
+    document.getElementById('age'      ).value = p.Age;
+    document.getElementById('gender'   ).value = p.Gender;
+    document.getElementById('language' ).value = p.Language || '';
+
+    /* location dropdown */
+    setLocationDropdown(p.Site, p['Location '], p.Area);
+
+    /* reveal confirmation */
+    document.getElementById('lastLocationPrompt').style.display='block';
+
+    closePopup('searchPopup');
+}
+
+function setLocationDropdown(site, location, area){
+    const btn = document.getElementById('dropdownMenuButton');
+    btn.textContent = `${site} - ${location} - ${area}`;
+    btn.dataset.autofilled='true';
+    btn.style.border='1px solid black';
+}
+
+function locationConfirmed(isYes){
+    const btn = document.getElementById('dropdownMenuButton');
+    if(isYes){
+        btn.style.border='1px solid black';
+    }else{
+        btn.style.border='2px solid red';
+    }
+    document.getElementById('lastLocationPrompt').style.display='none';
+}
+
+/* remove red border once user actively chooses a different area */
+document.getElementById('dynamicMenu').addEventListener('click',()=>{
+   const btn = document.getElementById('dropdownMenuButton');
+   if(btn.style.border.includes('red')) btn.style.border='1px solid black';
+});
+
+
+</script>
+
+
+</body>
+</html>
+
+    

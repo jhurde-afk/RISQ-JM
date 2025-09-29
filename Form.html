@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Navigation Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+
+<div class="topnav">
+    RLDatix
+</div>
+
+<div class="secondnav">
+    Fall Submission Form
+</div>
+
+<div class="sidenav">
+    <!-- Sidebar content -->
+</div>
+
+<div class="main">
+    <div class="left-container">
+        <div class="content-title">Table of Contents</div>
+        <div class="content-section">General Event Information</div>
+        <div class="content-section">Event Information</div>
+        <div class="content-section">Details of the Event</div>
+        <div class="content-section">Attachments and Notes</div>
+
+        <div class="progress-title">File Status</div>
+        <div class="content-section">0 out of 32 total files completed.</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="fileProgressBar"></div>
+        </div>
+
+        <div class="progress-title">Mandatory Fields Status</div>
+        <div class="content-section">0 out of 23 mandatory fields completed.</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="mandatoryProgressBar"></div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <img src="RISQForm.png" alt="Form Image">
+        <div style="margin-right: 5%; margin-top: 5%; text-align: right; font-weight: bold;">
+            For help, call 646-888-5630 or e-mail RISQ@mskcc.org
+        </div>
+        <div style="margin-right: 5%; text-align: right; font-weight: bold; color: red;">
+            Fields labeled with an asterisk(*) are required.
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">General Event Information</span>
+            <div class="arrow-box" id="arrowBox1" onclick="toggleContent('collapsibleContent', 'arrowBox1')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="patientInvolved" style="margin-top: 20px; font-size: 13px;">Patient/Person Involved</label>
+                        <div class="dashed-underline"></div>
+                        <select id="patientInvolved" name="patientInvolved">
+                            <option value=""> </option>
+                            <option value="patient1">AXR</option>
+                            <option value="patient2">CDU-Observation</option>
+                            <option value="patient3">Observation</option>
+                            <option value="patient4">Inpatient</option>
+                            <option value="patient5">Outpatient</option>
+                            <option value="patient6">Not Applicable</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="mrn" style="margin-top: 20px; font-size: 13px; white-space: nowrap;">MRN (Lookup # with magnifying glass)</label>
+                        <div class="dashed-underline" style="width: 240px;"></div>
+                        <input type="text" id="mrn" name="mrn" style="width: 100%;">
+                    </div>
+                    <div>
+                        <label for="patientService" style="margin-top: 20px; font-size: 13px;">Patient Service</label>
+                        <div class="dashed-underline" style="width: 100px;"></div>
+                        <select id="patientService" name="patientService">
+                            <option value=""> </option>
+                            <option value="service1">Anesthesiology</option>
+                            <option value="service2">Behavioral Sciences</option>
+                            <option value="service3">Bone Marrow Transplant</option>
+                            <option value="service4">Breast Medicine Service</option>
+                            <option value="service5">Breast Surgery</option>
+                            <option value="service6">Cardiology</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="lastName" style=" font-size: 13px;">Last Name</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="text" id="lastName" name="lastName">
+                    </div>
+                    <div>
+                        <label for="firstName" style="font-size: 13px;">First Name</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="text" id="firstName" name="firstName">
+                    </div>
+                    <div>
+                        <label for="dob" style="font-size: 13px;">DOB</label>
+                        <div class="dashed-underline"style="width: 40px;"></div>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+                    <div>
+                        <label for="age" style="font-size: 13px;">Age</label>
+                        <div class="dashed-underline" style="width: 40px;"></div>
+                        <input type="number" id="age" name="age">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="gender" style="font-size: 13px;">Gender</label>
+                        <div class="dashed-underline" style="width: 45px;"></div>
+                        <select id="gender" name="gender" style="width: 20%;">
+                            <option value=""> </option>
+                            <option value="patient1">Female</option>
+                            <option value="patient2">Male</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Additional form content goes here -->
+            </form>
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: 17px; font-weight: bold;">Event Information - Confidential and Privileged File To be Used For QA Purposes Only</span>
+            <div class="arrow-box" id="arrowBox2" onclick="toggleContent('collapsibleContentConfidential', 'arrowBox2')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContentConfidential">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="eventDate" style="margin-top: 24px; font-size: 13px;">Event Date</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="date" id="eventdate" name="eventdate">
+                    </div>
+                    <div>
+                        <label for="time" style="margin-top: 24px; font-size: 13px;">Time (Military)</label>
+                        <div class="dashed-underline" style="width: 80px;"></div>
+                        <input type="text" id="time" name="time">
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Specific Event Type</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="type1">During transfer/lift</option>
+                            <option value="type2">From bed/exam table/operating table/stretcher</option>
+                            <option value="type3">From chair/wheelchair</option>
+                            <option value="type4">From crib</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="severityLevel" style="margin-top: 20px; font-size: 13px;">Severity Level</label>
+                        <div class="dashed-underline"></div>
+                        <select id="severityLevel" name="severityLevel">
+                            <option value=""> </option>
+                            <option value="level1">Level 1-No Harm</option>
+                            <option value="level2">Level 2-Temp Harm</option>
+                            <option value="level3">Level 3-Permanent Harm</option>
+                            <option value="level4">Level 4-Death</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="site" style="margin-top: 20px; font-size: 13px;">Site</label>
+                        <div class="dashed-underline"></div>
+                        <select id="site" name="site">
+                            <option value=""> </option>
+                            <option value="patient1">No Harm</option>
+                            <option value="patient2">Temp Harm</option>
+                            <option value="patient3">Permanent Harm</option>
+                            <option value="patient4">Death</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="container mt-5">
+                            <div class="dropdown">
+                                <label for="loc" style="margin-top: 10px; font-size: 13px;">Location & Area/Unit</label>
+                                <div class="dashed-underline" style="width: 130px;"></div>
+                                <!-- Use the custom button class here -->
+                                <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Location
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Ambulatory/Clinic</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Ambulatory/Clinic', '11th floor')">11th floor</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Ambulatory/Clinic', '12th floor')">12th floor</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Ambulatory/Clinic', '14th floor')">14th floor</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Ambulatory/Clinic', '15th floor')">15th floor</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Cardiopulmonary Testing</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Cardiopulmonary Testing', 'Cardiopulmonary Testing')">Cardiopulmonary Testing</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">CPD</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('CPD', 'CPD')">CPD</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">East River Imaging - Westchester</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('East River Imaging - Westchester', 'Outpatient')">Outpatient</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Flatbush Brooklyn-MMC</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Flatbush Brooklyn-MMC', 'Clinic')">Clinic</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Flatbush Brooklyn-MMC', 'Other')">Other</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item dropdown-toggle" href="#">Perioperative</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'Anesthesia - Pain')">Anesthesia - Pain</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'Anesthesiology')">Anesthesiology</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'Brachytherapy - OR')">Brachytherapy - OR</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'CPD')">CPD</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'Anesthesia - Pain')">Endoscopy Suite</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'K5 Endo Suite')">K5 Endo Suite</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'K5 PACU')">K5 PACU</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'K5 PSC')">K5 PSC</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="selectItem('Perioperative', 'Main OR')">Main OR</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Where did the fall occur?</label>
+                        <div class="dashed-underline"></div>
+                            <select id="eventType" name="eventType">
+                                <option value=""> </option>
+                                <option value="patient1">During transfer/lift</option>
+                                <option value="patient2">From bed/examination table</option>
+                                <option value="patient3">While standing</option>
+                                <option value="patient4">Other</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="form-row additional-services-row">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="services" style="font-size: 13px; margin-right: 10px;">Select Additional Services</label>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedServices" class="selected-services">Not Specified</div>
+                            <a href="#" onclick="openPopup('servicesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                    <div class="dashed-underline" style="width: 150px;"></div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">EHR/System Related</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Equipment Malfunction</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="no">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">Outside Vendor Involved?</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="no">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row" style="width: 20%;">
+                    <div>
+                        <label for="eventType" style="margin-top: 20px; font-size: 13px;">IRB Protocol?</label>
+                        <div class="dashed-underline"></div>
+                        <select id="eventType" name="eventType">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Add form content for the confidential section here -->
+                <div class="popup" id="servicesPopup">
+                    <div class="options">
+                        <button class="collapsible">1275</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Admitting"> Admitting</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Anesthesiology"> Anesthesiology</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cardiology Tests"> Cardiology Tests</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Case Management"> Case Management</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo Admission Unit"> Chemo Admission Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo BMT"> Chemo BMT</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Chemo/Verification Inpatient"> Chemo/Verification Inpatient</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Clinical Decidsion Unit"> Clinical Decidsion Unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - CPD"> CPD</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Cyclotro"> Cyclotron</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Donor Room"> Donor Room</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Endoscopy Suite"> Endoscopy Suite</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Food and Nutrition"> Food and Nutrition</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - ICU"> ICU</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - IV Team"> IV Team</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Blood Bank"> Labs - Blood Bank</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Cell Therapy"> Labs - Cell Therapy</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="1275 - Labs - Chemistry"> Labs - Chemistry</label>
+                        </div>
+                        <button class="collapsible">53rd Street OP</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 4th Floor chemo unit">4th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 5th Floor chemo unit">5th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 6th Floor chemo unit">6th Floor chemo unit</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="53rd Street - 7th Floor chemo unit">7th Floor chemo unit</label>
+                        </div>
+                        <button class="collapsible">72nd Street</button>
+                        <div class="content">
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Environmental Services"> Environmental Services</label>
+                            <label><input type="checkbox" class="sub-checkbox" value="72nd Street - Cyclotron"> Cyclotron</label>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('servicesPopup', 'selectedServices')">OK</button>
+                        <button onclick="closePopup('servicesPopup')">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">Details of the Event</span>
+            <div class="arrow-box" id="arrowBox3" onclick="toggleContent('collapsibleContent3', 'arrowBox3')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent3">
+            <!-- Collapsible content goes here -->
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="eventDescription" style="margin-top: 30px; font-size: 13px; white-space: nowrap;">
+                            Event description (Use titles instead of names, i.e. nurses, physician, etc.)
+                        </label>
+                        <div class="dashed-underline" style="width: 240px;"></div>
+                        <textarea id="eventDescription" name="eventDescription" style="width: 100%; height: 150px;"></textarea>
+                    </div>
+                </div>
+                <div class="form-row" style="display: flex; align-items: center;">
+                    <div style="flex: 1;">
+                        <label for="postHuddle" style="margin-top: 2%; font-size: 13px;">Was a post fall huddle performed?</label>
+                        <div class="dashed-underline" style="width: 200px;"></div>
+                        <select id="postHuddle" name="postHuddle" onchange="togglePostHuddleSections(this.value)" style="width: auto; margin-top: 10px;">
+                            <option value=""> </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="unsure">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                    <div class="form-row" id="postHuddleSections" style="display: none; flex: 1;">
+                        <div>
+                            <label for="huddle" style="margin-top: -2%; font-size: 13px;">No. of staff in huddle?</label>
+                            <div class="dashed-underline" style="width: 160px;"></div>
+                            <input type="text" id="huddle" name="huddle" style="width: 140px; margin-top: 10px;">
+                        </div>
+                    </div>
+                </div>
+                <div id="postHuddleParticipants" style="display: none;">
+                    <div class="form-row notified-row" style="margin-top: 3%;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <label for="huddleParticipants" style="font-size: 13px; margin-right: 10px;">Huddle Participants (select all that apply)</label>
+                            <div style="flex-grow: 1;">
+                                <div id="selectedHuddleParticipants" class="selected-services" style="margin-top: 5px;">Not Specified</div>
+                                <a href="#" onclick="openPopup('huddleParticipantsPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                            </div>
+                        </div>
+                        <div class="dashed-underline" style="width: 230px; margin-top: -6px;"></div>
+                    </div>
+                    <div class="popup" id="huddleParticipantsPopup">
+                        <div class="options">
+                            <label><input type="checkbox" class="notified-checkbox" value="Nurse"> Nurse</label>
+                            <label><input type="checkbox" class="notified-checkbox" value="Physician"> Physician</label>
+                            <label><input type="checkbox" class="notified-checkbox" value="Therapist"> Therapist</label>
+                            <label><input type="checkbox" class="notified-checkbox" value="Other"> Other</label>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button onclick="confirmSelection('huddleParticipantsPopup', 'selectedHuddleParticipants')">OK</button>
+                            <button onclick="closePopup('huddleParticipantsPopup')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="form-row notified-row" style="margin-top: 3%;">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="notified" style="font-size: 13px; margin-right: 10%;">Who was notified about the fall?</label>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedNotified" class="selected-services" style="margin-top: 5px;">Not Specified</div>
+                            <a href="#" onclick="openPopup('notifiedPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                    <div class="dashed-underline" style="width: 170px; margin-top: -6px;"></div>
+                </div>
+                <div class="popup" id="notifiedPopup">
+                    <div class="options">
+                        <label><input type="checkbox" class="notified-checkbox" value="Charge Nurse"> Charge Nurse</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="CNS"> CNS</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="LIP/PA"> LIP/PA</label>
+                        <label><input type="checkbox" class="notified-checkbox" value="Nurse Leader"> Nurse Leader</label>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('notifiedPopup', 'selectedNotified')">OK</button>
+                        <button onclick="closePopup('notifiedPopup')">Cancel</button>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="eventType" style="margin-top: 4%; font-size: 13px;">Fall Risk Assessment?</label>
+                        <div class="dashed-underline" style="width: 140px;"></div>
+                        <select id="eventType" name="eventType" style="width: auto; font-size: 13px;">
+                            <option value=""> </option>
+                            <option value="yes">Yes, we assessed but not found to be high</option>
+                            <option value="yes2">Yes, assessed to be high risk</option>
+                            <option value="no">No, not assessed</option>
+                            <option value="not">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                    <div style="margin-right: 55%;">
+                        <label for="huddle" style="margin-top: 4%; font-size: 13px;">Arriving or leaving appointment?</label>
+                        <div class="dashed-underline" style="width: 150px;"></div>
+                        <select id="eventType" name="eventType" style="width: auto;">
+                            <option value=""> </option>
+                            <option value="arrive">Arriving for appointments</option>
+                            <option value="leave">Leaving Appointment</option>
+                            <option value="no">Not Applicable</option>
+                            <option value="not">Unknown/UnSure</option>
+                        </select>
+                    </div>
+                </div> 
+                <!-- Additional form content goes here -->
+                <div class="form-row high-risk-row" style="margin-top: 4%;">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="highRisk" style="font-size: 13px; margin-right: 12%;">High Risk Criteria</label>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedHighRisk" class="selected-services">Not Specified</div>
+                            <a href="#" onclick="openPopup('highRiskPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashed-underline" style="width: 120px; margin-top: -2%;"></div>
+                <div class="popup" id="highRiskPopup">
+                    <div class="options">
+                        <label><input type="checkbox" class="high-risk-checkbox" value="Criteria 1"> Gait Imbalnce</label>
+                        <label><input type="checkbox" class="high-risk-checkbox" value="Criteria 2"> History Falls  </label>
+                        <label><input type="checkbox" class="high-risk-checkbox" value="Criteria 3"> Lower Extremity Weakness</label>
+                        <label><input type="checkbox" class="high-risk-checkbox" value="Criteria 4"> Needs help moving</label>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('highRiskPopup', 'selectedHighRisk')">OK</button>
+                        <button onclick="closePopup('highRiskPopup')">Cancel</button>
+                    </div>
+                </div> 
+                <div class="form-row contributing-factors-row" style="margin-top: 4%;">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="contributingFactors" style="font-size: 13px; margin-right: 8%;">Contributing Factors</label>
+                        <div style="flex-grow: 1;">
+                            <div id="selectedContributingFactors" class="selected-services" style="margin-top: 5%;">Not Specified</div>
+                            <a href="#" onclick="openPopup('contributingFactorsPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashed-underline" style="width: 140px; margin-top: -3%;"></div>         
+                <div class="popup" id="contributingFactorsPopup">
+                    <div class="options">
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 1"> Factor 1</label>
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 2"> Factor 2</label>
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 3"> Factor 3</label>
+                        <label><input type="checkbox" class="contributing-factors-checkbox" value="Factor 4"> Factor 4</label>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmSelection('contributingFactorsPopup', 'selectedContributingFactors')">OK</button>
+                        <button onclick="closePopup('contributingFactorsPopup')">Cancel</button>
+                    </div>
+                </div>
+                <!-- New section for Recent Clinical Changes -->
+                <div id="recentClinicalChanges" style="display: none;">
+                    <div class="form-row recent-clinical-changes-row" style="margin-top: 4%;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <label for="recentClinicalChanges" style="font-size: 13px; margin-right: 8%;">Recent Clinical Changes</label>
+                            <div style="flex-grow: 1;">
+                                <div id="selectedRecentClinicalChanges" class="selected-services" style="margin-top: 5%;">Not Specified</div>
+                                <a href="#" onclick="openPopup('recentClinicalChangesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashed-underline" style="width: 140px; margin-top: -3%;"></div>
+                    <div class="popup" id="recentClinicalChangesPopup">
+                        <div class="options">
+                            <label><input type="checkbox" class="recent-clinical-changes-checkbox" value="Change 1"> Change 1</label>
+                            <label><input type="checkbox" class="recent-clinical-changes-checkbox" value="Change 2"> Change 2</label>
+                            <label><input type="checkbox" class="recent-clinical-changes-checkbox" value="Change 3"> Change 3</label>
+                            <label><input type="checkbox" class="recent-clinical-changes-checkbox" value="Change 4"> Change 4</label>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button onclick="confirmSelection('recentClinicalChangesPopup', 'selectedRecentClinicalChanges')">OK</button>
+                            <button onclick="closePopup('recentClinicalChangesPopup')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="additionalSections" style="display: none;">
+                    <div class="form-row">
+                        <div>
+                            <label for="eventType" style="margin-top: 20px; font-size: 13px;">Patient's preferred language</label>
+                            <div class="dashed-underline"></div>
+                            <select id="eventType" name="eventType">
+                                <option value=""> </option>
+                                <option value="type1">Declined To Answer</option>
+                                <option value="type2">English</option>
+                                <option value="type3">Spanish</option>
+                                <option value="type4">French</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="required" style="margin-top: 20px; font-size: 13px;">Interpreter required?</label>
+                            <div class="dashed-underline"></div>
+                            <select id="required" name="required">
+                                <option value=""> </option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="eventType" style="margin-top: 20px; font-size: 13px;">Purpose of last interaction?</label>
+                            <div class="dashed-underline"></div>
+                            <select id="eventType" name="eventType">
+                                <option value=""> </option>
+                                <option value="type1">Chemo</option>
+                                <option value="type2">Lab Work</option>
+                                <option value="type3">Rounding</option>
+                                <option value="type4">Toileting</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="time" style="margin-top: 24px; font-size: 13px;">Time of last interaction?</label>
+                            <div class="dashed-underline" style="width: 80px;"></div>
+                            <input type="text" id="time" name="time">
+                        </div>
+                    </div>
+                </div>
+                <div class="container mt-5" style="margin-top: -8%;">
+                    <label for="loc" style="font-size: 16px; font-weight: bold;">Requirements for Fall</label>
+                    <div class="dashed-underline" style="width: 130px;"></div>
+                    <div class="form-row">
+                        <label style="font-size: 14px;">Require blood products for fall?</label>
+                        <div class="radio-group" style="margin-left: 26%;">
+                            <input type="radio" id="requirement1Yes" name="requirement1" value="Yes">
+                            <label for="requirement1Yes">Yes</label>
+                            <input type="radio" id="requirement1No" name="requirement1" value="No">
+                            <label for="requirement1No">No</label>
+                            <input type="radio" id="requirement1Unsure" name="requirement1" value="Unsure">
+                            <label for="requirement1Unsure">Unsure</label>
+                        </div>
+                    </div>
+                    <div class="form-row">   
+                        <label style="font-size: 14px;">Require suturing, steri-strips/skin-glue or splinting?</label>
+                        <div class="radio-group" style="margin-left: 11%;">
+                            <input type="radio" id="requirement2Yes" name="requirement2" value="Yes">
+                            <label for="requirement2Yes">Yes</label>
+                            <input type="radio" id="requirement2No" name="requirement2" value="No">
+                            <label for="requirement2No">No</label>
+                            <input type="radio" id="requirement2Unsure" name="requirement2" value="Unsure">
+                            <label for="requirement2Unsure">Unsure</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label style="font-size: 14px;">Require radiological testing?</label>
+                        <div class="radio-group" style="margin-left: 28%;">
+                            <input type="radio" id="requirement3Yes" name="requirement3" value="Yes">
+                            <label for="requirement3Yes">Yes</label>
+                            <input type="radio" id="requirement3No" name="requirement3" value="No">
+                            <label for="requirement3No">No</label>
+                            <input type="radio" id="requirement3Unsure" name="requirement3" value="Unsure">
+                            <label for="requirement3Unsure">Unsure</label>
+                        </div>
+                    </div>
+                </div>                   
+                <div class="container mt-5" style="margin-top: -4%;">
+                    <label for="loc" style="font-size: 16px; font-weight: bold;">Types of Falls</label>
+                    <div class="dashed-underline" style="width: 130px;"></div>
+                    <div class="form-group">
+                        <label style="margin-top: 10px; font-size: 14px;">Suspected Fall</label>
+                        <div class="radio-group">
+                            <input type="radio" id="suspectedFallYes" name="suspectedFall" value="Yes">
+                            <label for="suspectedFallYes">Yes</label>
+                            <input type="radio" id="suspectedFallNo" name="suspectedFall" value="No">
+                            <label for="suspectedFallNo">No</label>
+                            <input type="radio" id="suspectedFallUnsure" name="suspectedFall" value="Unsure">
+                            <label for="suspectedFallUnsure">Unsure</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 16px; font-size: 14px;">Intentional Fall</label>
+                        <div class="radio-group">
+                            <input type="radio" id="intentionalFallYes" name="intentionalFall" value="Yes">
+                            <label for="intentionalFallYes">Yes</label>
+                            <input type="radio" id="intentionalFallNo" name="intentionalFall" value="No">
+                            <label for="intentionalFallNo">No</label>
+                            <input type="radio" id="intentionalFallUnsure" name="intentionalFall" value="Unsure">
+                            <label for="intentionalFallUnsure">Unsure</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 16px; font-size: 14px;">Physiological Fall</label>
+                        <div class="radio-group">
+                            <input type="radio" id="physiologicalFallYes" name="physiologicalFall" value="Yes">
+                            <label for="physiologicalFallYes">Yes</label>
+                            <input type="radio" id="physiologicalFallNo" name="physiologicalFall" value="No">
+                            <label for="physiologicalFallNo">No</label>
+                            <input type="radio" id="physiologicalFallUnsure" name="physiologicalFall" value="Unsure">
+                            <label for="physiologicalFallUnsure">Unsure</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="additionalSections2" style="display: none;">
+                    <div class="form-row">
+                        <div>
+                            <label for="falls" style="margin-top: 20px; font-size: 13px;">Revise plan of care to prevent future falls?</label>
+                            <div class="dashed-underline"></div>
+                            <select id="falls" name="falls">
+                                <option value=""> </option>
+                                <option value="f1">Yes</option>
+                                <option value="f2">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="fallDescription" style="margin-top: 30px; font-size: 13px; white-space: nowrap;">Provide steps taken to prevent a future fall:</label>
+                            <div class="dashed-underline" style="width: 240px;"></div>
+                            <textarea id="fallDescription" name="fallDescription" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="line">
+            <span style="margin-left: 5%; margin-top: 15%; font-size: larger; font-weight: bold;">Attachments and Notes</span>
+            <div class="arrow-box" id="arrowBox4" onclick="toggleContent('collapsibleContent4', 'arrowBox4')">&#9660;</div>
+        </div>
+        <div class="content" id="collapsibleContent4">
+            <!-- Collapsible content goes here -->
+            <form>
+                <!-- Add/Edit link for Attachments -->
+                <!-- Attachments label -->
+                <div class="form-row attachments-row">
+                    <div style="display: flex; align-items: center; width: 100%;">
+                        <label for="attachments" style="font-size: 13px; margin-right: 10px; margin-top: 5%;">Attachments</label>
+                    </div>
+                </div>
+
+                <!-- Add link in a new form row -->
+                <div class="form-row add-attachments-row">
+                    <div style="width: 100%; margin-top: 5px;">
+                        <a href="#" onclick="openPopup('attachmentsPopup')" style="display: block;">Add</a>
+                    </div>
+                </div>
+
+               <!-- Popup for Attachments -->
+                <div class="popup" id="attachmentsPopup">
+                    <div class="popup-header">
+                        <span>Add Attachment</span>
+                    </div>
+                    <div class="drop-area" id="dropArea">
+                        <p>Drop files here</p>
+                        <input type="file" id="fileInput" style="display: none;" multiple>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <button onclick="confirmAttachment()">OK</button>
+                        <button onclick="closePopup('attachmentsPopup')">Cancel</button>
+                    </div>
+                </div>
+                
+                <!-- Additional form content goes here -->
+            </form>
+    </div>
+</div>
+
+<!-- Bottom bar -->
+<!-- Bottom bar -->
+<div class="bottom-nav">
+    <button class="btn btn-delete" onclick="deleteAction()">Delete</button>
+    <button class="btn btn-exit" onclick="exitAction()">Exit</button>
+    <div class="dropup">
+        <button class="btn btn-more-actions dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            More Actions
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Option 1</a></li>
+            <li><a class="dropdown-item" href="#">Option 2</a></li>
+            <li><a class="dropdown-item" href="#">Option 3</a></li>
+        </ul>
+    </div>
+    <button class="btn btn-submit" onclick="submitAction()">Submit</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+
+    function toggleContent(contentId, arrowBoxId) {
+        var content = document.getElementById(contentId);
+        var arrowBox = document.getElementById(arrowBoxId);
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            arrowBox.innerHTML = "&#9660;"; // Down arrow
+        } else {
+            content.style.display = "block";
+            arrowBox.innerHTML = "&#9650;"; // Up arrow
+        }
+    }
+
+
+    // Example JavaScript to update the progress bars
+    function updateProgressBar(id, percentage) {
+        const progressBar = document.getElementById(id);
+        progressBar.style.width = percentage + '%';
+    }
+
+    // Update the progress bars (example values)
+    updateProgressBar('fileProgressBar', 0); // 50% completed
+    updateProgressBar('mandatoryProgressBar', 0); // 50% completed
+
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "flex") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "flex";
+            }
+        });
+    }
+
+    // Function to open a popup
+    function openPopup(popupId) {
+        document.getElementById(popupId).style.display = 'block';
+    }
+
+    // Function to close a popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
+    // Function to confirm selection and update the display
+    function confirmSelection(popupId, selectedId) {
+        const popup = document.getElementById(popupId);
+        const selectedOptions = Array.from(popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked'))
+            .map(input => {
+                const label = input.closest('.form-group').querySelector('label').innerText;
+                return `${label} - ${input.value}`;
+            })
+            .join('\n');
+
+        document.getElementById(selectedId).innerText = selectedOptions || 'Not Specified';
+        closePopup(popupId);
+}
+
+    // Prevent form submission and page reload
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        });
+    });
+
+    // Function to confirm attachment selection
+    function confirmAttachment() {
+        var fileInput = document.getElementById('fileInput');
+        var files = fileInput.files;
+        if (files.length > 0) {
+            alert('Files selected: ' + files.length);
+        } else {
+            alert('No files selected');
+        }
+        closePopup('attachmentsPopup');
+    }
+
+    // Add event listeners for drag and drop functionality
+    var dropArea = document.getElementById('dropArea');
+    dropArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#000';
+    });
+    dropArea.addEventListener('dragleave', function() {
+        dropArea.style.borderColor = '#ccc';
+    });
+    dropArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        dropArea.style.borderColor = '#ccc';
+        var files = e.dataTransfer.files;
+        document.getElementById('fileInput').files = files;
+    });
+
+    // Add event listener to open file dialog when drop area is clicked
+    dropArea.addEventListener('click', function() {
+        document.getElementById('fileInput').click();
+    });
+
+    // Function to handle delete action
+    function deleteAction() {
+        alert('Delete action triggered');
+    }
+
+    // Function to handle exit action
+    function exitAction() {
+        alert('Exit action triggered');
+    }
+
+    // Function to handle submit action
+    function submitAction() {
+        alert('Submit action triggered');
+    }
+
+    // Function to toggle the visibility of sections based on the post huddle selection
+    function togglePostHuddleSections(value) {
+        const postHuddleSections = document.getElementById('postHuddleSections');
+        const postHuddleParticipants = document.getElementById('postHuddleParticipants');
+        const recentClinicalChanges = document.getElementById('recentClinicalChanges');
+        const additionalSections = document.getElementById('additionalSections');
+        const additionalSections2 = document.getElementById('additionalSections2');
+        
+        if (value === 'yes') {
+            postHuddleSections.style.display = 'flex';
+            postHuddleParticipants.style.display = 'block';
+            recentClinicalChanges.style.display = 'block';
+            additionalSections.style.display = 'block';
+            additionalSections2.style.display = 'block';
+        } else {
+            postHuddleSections.style.display = 'none';
+            postHuddleParticipants.style.display = 'none';
+            recentClinicalChanges.style.display = 'none';
+            additionalSections.style.display = 'none';
+            additionalSections2.style.display = 'none';
+        }
+    }
+
+    // Prevent form submission and page reload
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+        });
+    });
+</script>
+
+
+</body>
+</html>
+
+    
