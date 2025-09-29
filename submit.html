@@ -28,8 +28,13 @@
     <div class="overlay" id="overlay">
         <div class="card">
             <h2>Submitted</h2>
-            <p id="msg">Your file has been submitted, your file ID is 2494858, thank you!<br>
-            We're working on improving the design of the RISQ Event Forms, but the final version might not look exactly like what’s shown in this experiment.</p>
+            <p id="msg">
+                Your file has been submitted, your file ID is
+                <span id="fileId"></span>, thank you!<br>
+                <br>
+                <strong>We're working on improving the design of the RISQ Event Forms, but the final version might not look exactly like what’s shown in this experiment.</strong>
+            </p>
+
             <div class="actions">
             <a class="btn" href="index.html">Home</a>
             </div>
@@ -51,8 +56,8 @@
         }
 
         const id = urlId || nextCycledId();
-        document.getElementById('msg').textContent =
-            `Your file has been submitted, your file id is ${id}, thank you!`;
+        document.getElementById('fileId').textContent = id; // only set the number
+
 
         // Optional: click the dim background to go back
         document.getElementById('overlay').addEventListener('click', (e)=>{
