@@ -1306,7 +1306,6 @@ document.getElementById('dynamicMenu').addEventListener('click',()=>{
    const btn = document.getElementById('dropdownMenuButton');
    if(btn.style.border.includes('red')) btn.style.border='1px solid black';
 });
-
 // ---------- section open/close ----------
 function setSectionOpen(contentId, headerId, open) {
   const c = document.getElementById(contentId);
@@ -1339,13 +1338,27 @@ function allVisibleFieldsComplete(sec) {
               .every(f => isFieldComplete(f, sec));
 }
 
-function sectionComplete(sec) {
+function sectionComplete(sec){
   const mode = sec.dataset.mode || 'all';
-  if (mode === 'last' && sec.dataset.trigger) {
+  if (mode === 'last' && sec.dataset.trigger){
     const trg = sec.querySelector(sec.dataset.trigger);
     return trg ? isFieldComplete(trg, sec) : false;
   }
-  return allVisibleFieldsComplete(sec);
+  const base = allVisibleFieldsComplete(sec);
+
+  if (sec.id === 'secEvent') {
+    const btn = document.getElementById('processDropdownButton');
+    const processOK = btn ? (btn.dataset.chosen === '1') : true;
+
+    const sv  =
+     document.getElementById('selectedServices');  // L239
+    const svT = (sv && sv.textContent || '').trim().toLowerCase();
+    const servicesOK = sv ? (svT && svT !== 'not specified' && svT !== 'select') : true;
+
+    return base && processOK && servicesOK;
+
+  }
+  return base;
 }
 
 // ---------- auto-close logic ----------
@@ -1537,6 +1550,7 @@ function isSelectEmpty(sel){
   const opt = sel.options[sel.selectedIndex];
   return !!(opt && (opt.disabled || /^(select|choose|\-\-)/.test((opt.text||'').trim().toLowerCase())));
 }
+
 
 // highlight all required bits (call this on timeout)
 window.highlightIncompleteAndOpenSections = function(){
@@ -1852,27 +1866,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(renderProgress, 300);   // after any async fills (Excel/CSV)
   });
 })();
-
-    // Add event listeners for drag and drop functionality
-    var dropArea = document.getElementById('dropArea');
-    dropArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        dropArea.style.borderColor = '#000';
-    });
-    dropArea.addEventListener('dragleave', function() {
-        dropArea.style.borderColor = '#ccc';
-    });
-    dropArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        dropArea.style.borderColor = '#ccc';
-        var files = e.dataTransfer.files;
-        document.getElementById('fileInput').files = files;
-    });
-
-    // Add event listener to open file dialog when drop area is clicked
-    dropArea.addEventListener('click', function() {
-        document.getElementById('fileInput').click();
-    });
 
 </script>
 
