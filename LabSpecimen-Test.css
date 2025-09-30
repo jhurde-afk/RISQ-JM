@@ -896,3 +896,29 @@ select.is-invalid,
   display: flex !important;   /* flex so the footer can pin to bottom */
   flex-direction: column;
 }
+
+
+/* Buttons (shared look) */
+.action-cancel{
+  background:transparent; border:0; color:#666;
+  font-size:14px; padding:6px 8px; cursor:pointer;
+}
+.action-cancel:hover{ color:#333; text-decoration:underline; }
+.action-ok{
+  background:#487f28; color:#fff; border:0; border-radius:6px;
+  font-weight:600; font-size:14px; padding:6px 12px; cursor:pointer;
+}
+.action-ok:hover{ background:#3d6e22; }
+
+/* Container flush edges like the other modals */
+#popup.popup-overlay .popup-content {
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;   /* so the rounded corners clip the header */
+}
+
+.popup-overlay.is-open {
+  display: flex !important;   /* beat any inline display:block */
+}
+/* Give the inner content some breathing room */
+#popup .popup-body { padding: 12px; }
