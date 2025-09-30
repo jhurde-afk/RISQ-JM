@@ -431,6 +431,46 @@ margin-top: -1px;
     width: 70%;
 }
 
+
+/* Make the popup a column so we can pin the footer at the bottom */
+#searchPopup.patient-search-popup {
+  width: 700px; max-width: 700px; min-width: 700px;
+  height: 60%;                 /* keep the height you want */             /* new */
+  flex-direction: column;       /* new */
+}
+
+/* Row with avatar + fields → move both to the RIGHT together */
+#searchPopup .gray-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  justify-content: flex-end;    /* push image + fields to the right */
+}
+
+#searchPopup .gray-container .contact-icon {
+  margin: 0 16px 0 0 !important;
+  width: 140px !important; height: auto !important; flex: 0 0 140px;
+}
+#searchPopup .gray-container .form-group {
+  margin: 0 !important; display: flex; flex-direction: column;
+}
+
+/* RESULTS area grows; whitespace stays ABOVE the footer */
+#searchPopup #patientList { flex: 1 1 auto; min-height: 0; overflow: auto; }
+
+/* FOOTER pinned to the bottom; buttons aligned right */
+#searchPopup .popup-actions {
+  margin-top: auto !important;        /* <-- critical */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  background: #f5f5f5;
+  border-top: 1px solid #e6e6e6;
+  padding: 10px 14px;
+}
+
+
 /* Gray Container for Image + Text Fields */
 .gray-container {
     background-color: #f0f0f0; /* Light gray */
@@ -470,7 +510,6 @@ margin-top: -1px;
     text-align: center;
     margin-top: 15px;
 }
-
 .mrn-label{
     display:inline-flex !important;  /* override label{display:block;} */
     align-items:center;
@@ -830,3 +869,34 @@ table td:first-child {
   border-radius: 8px;
   overflow: hidden;
 }
+
+/* show ONLY when opened */
+#searchPopup.is-open {
+  display: flex !important;   /* flex so the footer can pin to bottom */
+  flex-direction: column;
+}
+
+/* Buttons (shared look) */
+.action-cancel{
+  background:transparent; border:0; color:#666;
+  font-size:14px; padding:6px 8px; cursor:pointer;
+}
+.action-cancel:hover{ color:#333; text-decoration:underline; }
+.action-ok{
+  background:#487f28; color:#fff; border:0; border-radius:6px;
+  font-weight:600; font-size:14px; padding:6px 12px; cursor:pointer;
+}
+.action-ok:hover{ background:#3d6e22; }
+
+/* Container flush edges like the other modals */
+#popup.popup-overlay .popup-content {
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;   /* so the rounded corners clip the header */
+}
+
+.popup-overlay.is-open {
+  display: flex !important;   /* beat any inline display:block */
+}
+/* Give the inner content some breathing room */
+#popup .popup-body { padding: 12px; }
