@@ -118,7 +118,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-row">
                     <div style="margin-top: -1.6%;">
                         <label for="lastname" style="font-size:13px;">Last Name<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
@@ -153,7 +152,7 @@
                 </div>
                 <!-- Additional form content goes here -->
             </form>
-        </div>
+        </div>      
         <div id="hdrEvent" class="section-header" data-target="secEvent">
             <span class="chev" aria-hidden="true"></span>
             <span>Event Information — Confidential</span>
@@ -597,7 +596,12 @@
                               <input type="text" id="drugClass">
                           </div>
                   
-                          <div class="search-medication" onclick="performSearch()" style="margin-top: 2%;">Search Medication</div>
+                          <button style="margin-top: 2%;" type="button"
+                                  class="btn btn-primary btn-sm search-medication"
+                                  onclick="performSearch()">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Search Medication
+                          </button>
                   
                           <table id="searchResults" class="search-table">
                               <thead>
@@ -731,402 +735,6 @@
 
 
 <script>
-
-let selectedRowIndex = null;
-
-let processData = [];
-
-/* ===================== CONFIG ===================== */
-const MED_DEFAULTS_XLS = 'Extrava-Infil.xlsx'; // MRN-based defaults
-const MED_CATALOG_XLS  = 'Medication.xlsx';    // master catalog for search
-
-/* ===================== STATE ====================== */
-window.medDefaults  = [];   // rows from Extrava-Infil.xlsx
-window.medCatalog   = [];   // rows from Medication.xlsx
-window.selectedDrug = null; // popup "selected" drug { Drug Name, Drug Class }
-
-/* ===================== LOADERS ==================== */
-async function loadSheet(path){
-  const res = await fetch(path);
-  const buf = await res.arrayBuffer();
-  const wb  = XLSX.read(buf, { type: 'array' });
-  const sheet = wb.SheetNames[0];
-  const raw = XLSX.utils.sheet_to_json(wb.Sheets[sheet], { defval: '' });
-  // trim headers & values
-  return raw.map(row => {
-    const out = {};
-    for (const k in row) out[k.trim()] = (row[k] ?? '').toString().trim();
-    return out;
-  });
-}
-async function loadMedDefaults(){
-  window.medDefaults = await loadSheet(MED_DEFAULTS_XLS);
-  document.dispatchEvent(new Event('medDefaultsLoaded'));
-}
-async function loadMedCatalog(){
-  window.medCatalog = await loadSheet(MED_CATALOG_XLS);
-}
-
-/* ===================== HELPERS ==================== */
-function getMRN(){
-  return (document.getElementById('mrn')?.value || '').toString().trim();
-}
-function setSelect(id, val){
-  const sel = document.getElementById(id);
-  if (!sel) return;
-  const v = (val ?? '').toString().trim();
-  if (!v){ sel.value = ''; return; }
-  if (![...sel.options].some(o => (o.value || o.textContent).trim() === v)){
-    sel.insertBefore(new Option(v, v, true, true), sel.options[0] || null);
-  }
-  sel.value = v;
-}
-
-/* ========= PREFILL FROM EXTRAVA-INFIL BY MRN ====== */
-/* Fields expected in the sheet: 
-   MRN, Amount in mL, Method of Administration, Type of Access, Drug Name, Drug Class */
-function prefillFromMRNDefaults(){
-  const mrn = getMRN();
-  if (!mrn || !Array.isArray(window.medDefaults) || !window.medDefaults.length) return;
-
-  // if multiple rows per MRN, use the LAST one
-  const rows = window.medDefaults.filter(r => String(r?.MRN ?? '').trim() === mrn);
-  const row  = rows[rows.length - 1];
-  if (!row) return;
-
-  // main form fields
-  const amt = document.getElementById('amount');
-  if (amt) amt.value = row['Amount in mL'] || '';
-
-  setSelect('method',     row['Method of Administration']);
-  setSelect('accessType', row['Type of Access']);
-
-  // popup inputs
-  const dn = document.getElementById('drugName');
-  const dc = document.getElementById('drugClass');
-  if (dn) dn.value = row['Drug Name']  || '';
-  if (dc) dc.value = row['Drug Class'] || '';
-
-  // also prime selectedDrug so OK works even if user doesn't re-search
-  window.selectedDrug = {
-    'Drug Name' : row['Drug Name']  || '',
-    'Drug Class': row['Drug Class'] || ''
-  };
-}
-
-/* ========== SEARCH (uses Medication.xlsx) ========= */
-/* If your page already had performSearch, we replace it on purpose so it uses the catalog. */
-window.performSearch = function(){
-  const term = (document.getElementById('drugName')?.value || '').toLowerCase();
-  const tb   = document.querySelector('#searchResults tbody');
-  if (!tb) return;
-  tb.innerHTML = '';
-
-  const rows = (window.medCatalog || []).filter(r =>
-    (r['Drug Name'] || '').toLowerCase().includes(term)
-  );
-
-  rows.forEach(item => {
-    const tr = document.createElement('tr');
-
-    const tdSel = document.createElement('td');
-    const r = document.createElement('input');
-    r.type = 'radio'; r.name = 'searchSelect';
-    r.addEventListener('change', () => selectDrugFromCatalog(item));
-    tdSel.appendChild(r);
-
-    const tdName  = document.createElement('td'); tdName.textContent  = item['Drug Name']  || '';
-    const tdClass = document.createElement('td'); tdClass.textContent = item['Drug Class'] || '';
-
-    tr.appendChild(tdSel); tr.appendChild(tdName); tr.appendChild(tdClass);
-    tb.appendChild(tr);
-  });
-};
-function selectDrugFromCatalog(item){
-  const dn = document.getElementById('drugName');
-  const dc = document.getElementById('drugClass');
-  if (dn) dn.value = item['Drug Name']  || '';
-  if (dc) dc.value = item['Drug Class'] || '';
-  window.selectedDrug = {
-    'Drug Name' : item['Drug Name']  || '',
-    'Drug Class': item['Drug Class'] || ''
-  };
-}
-
-/* ===================== HOOKS ====================== */
-document.addEventListener('DOMContentLoaded', () => {
-  // Load both sheets
-  loadMedDefaults();
-  loadMedCatalog();
-
-  // Prefill as soon as defaults are loaded (if MRN already present)
-  document.addEventListener('medDefaultsLoaded', () => prefillFromMRNDefaults());
-
-  // Prefill whenever MRN changes (typed/pasted)
-  const mrnEl = document.getElementById('mrn');
-  if (mrnEl && !mrnEl._medPrefillHooked){
-    const fn = () => prefillFromMRNDefaults();
-    mrnEl.addEventListener('change', fn);
-    mrnEl.addEventListener('input',  fn);
-    mrnEl._medPrefillHooked = true;
-  }
-
-  // Prefill right after a patient is selected from your search popup
-  if (typeof window.selectPatient === 'function' && !window.selectPatient._medPrefillHooked){
-    const _orig = window.selectPatient;
-    window.selectPatient = function(){
-      const ret = _orig.apply(this, arguments);
-      // ensure MRN is set before running prefill
-      setTimeout(prefillFromMRNDefaults, 0);
-      return ret;
-    };
-    window.selectPatient._medPrefillHooked = true;
-  }
-
-  // Also prefill just before opening the Medication popup via "Add"
-  document.querySelectorAll('.med-actions a, .attachments-actions a').forEach(a => {
-    if (a.textContent.trim().toLowerCase() === 'add' && !a._medPrefillHooked){
-      a.addEventListener('click', () => { prefillFromMRNDefaults(); }, { capture: true });
-      a._medPrefillHooked = true;
-    }
-  });
-});
-
-// Add or update the main table and close popup
-function saveEntry() {
-  // Use selected drug if chosen from results; otherwise free-typed fields
-  if (!selectedDrug) {
-    const chosen = document.querySelector('input[name="searchSelect"]:checked');
-    if (chosen) {
-      const row = chosen.closest("tr");
-      const cells = row.querySelectorAll("td");
-      selectedDrug = {
-        "Drug Name": cells[1]?.textContent?.trim() || "",
-        "Drug Class": cells[2]?.textContent?.trim() || ""
-      };
-    }
-  }
-
-  let drugName, drugClass;
-  if (selectedDrug) {
-    drugName = selectedDrug["Drug Name"];
-    drugClass = selectedDrug["Drug Class"];
-  } else {
-    drugName = (document.getElementById("drugName")?.value || "").trim();
-    drugClass = (document.getElementById("drugClass")?.value || "").trim();
-  }
-  if (!drugName) { alert("Please enter or select a drug name."); return; }
-
-  const body = document.getElementById("tableBody");
-  if (!body) return;
-  // remove "Not Specified"
-  if (body.querySelector("i")) body.innerHTML = "";
-
-  if (selectedRowIndex !== null) {
-    const tr = body.rows[selectedRowIndex];
-    tr.cells[1].textContent = drugName;
-    tr.cells[2].textContent = drugClass;
-  } else {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><input type="radio" name="selectRow"></td>
-      <td>${drugName}</td>
-      <td>${drugClass}</td>`;
-    body.appendChild(tr);
-  }
-
-  addRowSelectionListeners();
-  enableMedEditDelete();
-  closePopup('popup');        // <-- close correctly
-  selectedDrug = null;
-  selectedRowIndex = null;
-}
-
-function addRowSelectionListeners() {
-  document.querySelectorAll('input[name="selectRow"]').forEach(radio => {
-    if (!radio._hooked) {
-      radio.addEventListener("change", enableMedEditDelete);
-      radio._hooked = true;
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const wrap = document.querySelector('.med-actions');
-  const table = document.getElementById('medTable');
-  if (!wrap || !table) return;
-
-  const edit = wrap.querySelector('[data-action="edit"]');
-  const del  = wrap.querySelector('[data-action="delete"]');
-
-  // ensure start state
-  edit.classList.add('disabled');
-  del.classList.add('disabled');
-
-  // when a row radio is selected, enable; otherwise keep disabled
-  table.addEventListener('click', () => {
-    const chosen = table.querySelector('input[name="selectRow"]:checked');
-    edit.classList.toggle('disabled', !chosen);
-    del.classList.toggle('disabled', !chosen);
-  });
-});
-
-
-function enableMedEditDelete() {
-  const selected = document.querySelector('input[name="selectRow"]:checked');
-  // if you’re using the link UI, toggle classes there:
-  document.querySelector('.med-actions [data-action="edit"]')?.classList.toggle('disabled', !selected);
-  document.querySelector('.med-actions [data-action="delete"]')?.classList.toggle('disabled', !selected);
-}
-
-function deleteSelected() {
-  const sel = document.querySelector('input[name="selectRow"]:checked');
-  if (!sel) return;
-  const tr = sel.closest("tr");
-  const body = document.getElementById("tableBody");
-  tr.remove();
-  if (!body.querySelector("tr")) {
-    body.innerHTML = `<tr><td colspan="3"><i>Not Specified</i></td></tr>`;
-  }
-  enableMedEditDelete();
-}
-
-function getSelectedRowIndex() {
-  const sel = document.querySelector('input[name="selectRow"]:checked');
-  if (!sel) return null;
-  const tr = sel.closest("tr");
-  const body = document.getElementById("tableBody");
-  return Array.from(body.rows).indexOf(tr);
-}
-
-function openMedPopup(mode) {
-  if (mode === "edit") {
-    selectedRowIndex = getSelectedRowIndex();
-    if (selectedRowIndex === null) { alert("Please select a row to edit."); return; }
-    const body = document.getElementById("tableBody");
-    const tr = body.rows[selectedRowIndex];
-    document.getElementById("drugName").value  = tr.cells[1].textContent;
-    document.getElementById("drugClass").value = tr.cells[2].textContent;
-    // also set selectedDrug so OK works even if they don't re-search
-    selectedDrug = { "Drug Name": tr.cells[1].textContent, "Drug Class": tr.cells[2].textContent };
-  } else {
-    selectedRowIndex = null;
-    selectedDrug = null;
-    if (document.getElementById("drugName"))  document.getElementById("drugName").value  = "";
-    if (document.getElementById("drugClass")) document.getElementById("drugClass").value = "";
-    // clear prior search results
-    const rb = document.querySelector("#searchResults tbody");
-    if (rb) rb.innerHTML = "";
-  }
-  // show the medication popup
-  const modal = document.getElementById('popup');
-  if (modal) modal.style.display = 'flex';
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const wrap = document.querySelector('.med-actions');
-  if (!wrap) return;
-
-  const addLink = wrap.querySelector('[data-action="add"]');
-  const editLink = wrap.querySelector('[data-action="edit"]');
-  const delLink  = wrap.querySelector('[data-action="delete"]');
-
-  // Start state: Add active, Edit/Delete disabled
-  editLink.classList.add('disabled');
-  delLink.classList.add('disabled');
-
-  // Add → open existing Medication popup (#popup)
-  addLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    const modal = document.getElementById('popup');   // your Medication popup
-    if (modal) modal.style.display = 'flex';          // matches .popup-overlay layout
-  });
-
-  // When a real row is selected, enable Edit/Delete
-  const tbody = document.querySelector('#medTable tbody');
-  if (tbody) {
-    tbody.addEventListener('click', (ev) => {
-      const tr = ev.target.closest('tr'); if (!tr) return;
-      // ignore the "Not Specified" placeholder row
-      if (tr.querySelector('td[colspan]')) return;
-
-      // visual select
-      tbody.querySelectorAll('tr').forEach(r => r.classList.remove('selected'));
-      tr.classList.add('selected');
-
-      editLink.classList.remove('disabled');
-      delLink.classList.remove('disabled');
-    });
-  }
-});
-
-async function loadProcessExcel(filePath) {
-    try {
-        const response = await fetch(filePath);
-        if (!response.ok) throw new Error(`HTTP ${response.status} - ${response.statusText}`);
-        const arrayBuffer = await response.arrayBuffer();
-        const workbook = XLSX.read(arrayBuffer, { type: "array" });
-        const sheetName = workbook.SheetNames[0];
-        processData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-        buildProcessDropdown();
-    } catch (err) {
-        console.error("❌ Failed to load Process Excel file:", err);
-    }
-}
-
-function buildProcessDropdown() {
-    // Group by area
-    const menuMap = {};
-    processData.forEach(row => {
-        const area = row['Area']?.trim();
-        const place = row['Place']?.trim();
-        if (area && place) {
-            if (!menuMap[area]) menuMap[area] = new Set();
-            menuMap[area].add(place);
-        }
-    });
-
-    const menu = document.getElementById('processDynamicMenu');
-    menu.innerHTML = '';
-    for (const area in menuMap) {
-        const areaLi = document.createElement('li');
-        areaLi.classList.add('dropdown-submenu');
-        const areaA = document.createElement('a');
-        areaA.className = 'dropdown-item dropdown-toggle';
-        areaA.href = '#';
-        areaA.textContent = area;
-
-        const placeUl = document.createElement('ul');
-        placeUl.classList.add('dropdown-menu');
-        menuMap[area].forEach(place => {
-            const placeLi = document.createElement('li');
-            const placeA = document.createElement('a');
-            placeA.className = 'dropdown-item';
-            placeA.href = '#';
-            placeA.textContent = place;
-            placeA.onclick = () => { setProcessDropdown(area, place); };
-            placeLi.appendChild(placeA);
-            placeUl.appendChild(placeLi);
-        });
-
-        areaLi.appendChild(areaA);
-        areaLi.appendChild(placeUl);
-        menu.appendChild(areaLi);
-    }
-}
-
-function setProcessDropdown(area, place) {
-    const btn = document.getElementById('processDropdownButton');
-    btn.textContent = `${area} - ${place}`;
-    btn.style.border = '1px solid black';
-}
-
-// Load the Process Excel file on page load
-document.addEventListener('DOMContentLoaded', () => {
-    loadProcessExcel('Process.xlsx');
-});
-
 // Load the second CSV for MRN-location mapping
 let patientMaster = [];
 Papa.parse('LocationDetails.csv', {
@@ -1163,73 +771,6 @@ function buildServiceDropdown() {
     });
 }
 
-function clearSearchFields(){
-    ['searchMrn','searchLast','searchFirst'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('patientList').innerHTML='';
-}
-
-function searchPatient(){
-    const mrn  = document.getElementById('searchMrn').value.trim();
-    const last = document.getElementById('searchLast').value.trim().toLowerCase();
-    const first= document.getElementById('searchFirst').value.trim().toLowerCase();
-
-    const hits = patientMaster.filter(r=>{
-        const byMrn  = !mrn  || r.MRN === mrn;
-        const byLast = !last || (r['Last Name']||'').toLowerCase().includes(last);
-        const byFirst= !first|| (r['First Name']||'').toLowerCase().includes(first);
-        return byMrn && byLast && byFirst;
-    });
-
-    if(!hits.length){
-        document.getElementById('patientList').innerHTML = '<p>No matching patients found.</p>';
-        return;
-    }
-
-    const rows = hits.map(p=>`
-        <tr>
-          <td><input type="radio" name="patientPick" value="${p.MRN}"></td>
-          <td>${p.MRN}</td><td>${p['First Name']}</td>
-          <td>${p['Last Name']}</td><td>${p.DOB}</td>
-        </tr>
-    `).join('');
-
-    document.getElementById('patientList').innerHTML = `
-      <table><thead><tr>
-         <th></th><th>MRN</th><th>First</th><th>Last</th><th>DOB</th>
-      </tr></thead><tbody>${rows}</tbody></table>`;
-}    
-
-function selectPatient(){
-  const pick = document.querySelector('input[name="patientPick"]:checked');
-  if(!pick){ alert('Please select a patient.'); return; }
-
-  const p = patientMaster.find(r => String(r.MRN) === String(pick.value));
-
-
-  // demographics
-  document.getElementById('mrn').value       = p.MRN;
-  document.getElementById('lastname').value  = p['Last Name'];
-  document.getElementById('firstname').value = p['First Name'];
-  document.getElementById('dob').value       = p.DOB;
-  document.getElementById('age').value       = p.Age;
-  document.getElementById('gender').value    = p.Gender;
-  document.getElementById('language').value  = p.Language || '';
-  document.getElementById('patientService').value = p['Patient Service'];
-
-  // location dropdown (your existing flow)
-  setLocationDropdown(p.Site, p['Location '], p.Area);
-  // reveal confirmation
-  document.getElementById('lastLocationPrompt').style.display='block';
-
-  document.getElementById('mrn').value = p.MRN || '';
-  handleMRNInput();           // run the autofill immediately
-
-  closePopup('searchPopup');
-}
-
-// MRN change handler
-document.getElementById('mrn').addEventListener('change', handleMRNInput);
-
 // After patientMaster is loaded
 Papa.parse('LocationDetails.csv', {
     download: true,
@@ -1240,6 +781,10 @@ Papa.parse('LocationDetails.csv', {
         buildServiceDropdown(); // build services list once CSV is ready
     }
 });
+
+
+// MRN change handler
+document.getElementById('mrn').addEventListener('change', handleMRNInput);
 
 function handleMRNInput() {
   const mrnInput = document.getElementById('mrn').value.trim();
@@ -1384,8 +929,7 @@ function buildLocationMenu(menuMap){
         isRecording = false;
     }
     };
-
-    // --- Elements
+// --- Elements
   const militaryTimeInput = document.getElementById("militaryTime");
   const dateInput = document.getElementById("eventDate");
   const yesToday = document.getElementById("eventTodayYes");
@@ -1457,20 +1001,29 @@ function buildLocationMenu(menuMap){
   dateInput.addEventListener("change", function () {
     militaryTimeInput.focus();
     militaryTimeInput.setSelectionRange(0, 0);
-  });
-    
+  }); 
 
-    function toggleContent(contentId, arrowBoxId) {
-        var content = document.getElementById(contentId);
-        var arrowBox = document.getElementById(arrowBoxId);
-        if (content.style.display === "block") {
-            content.style.display = "none";
-            arrowBox.innerHTML = "&#9660;"; // Down arrow
-        } else {
-            content.style.display = "block";
-            arrowBox.innerHTML = "&#9650;"; // Up arrow
-        }
+function toggleContent(contentId, arrowBoxId) {
+    var content = document.getElementById(contentId);
+    var arrowBox = document.getElementById(arrowBoxId);
+    if (content.style.display === "block") {
+        content.style.display = "none";
+        arrowBox.innerHTML = "&#9660;"; // Down arrow
+    } else {
+        content.style.display = "block";
+        arrowBox.innerHTML = "&#9650;"; // Up arrow
     }
+}
+
+    // Example JavaScript to update the progress bars
+    function updateProgressBar(id, percentage) {
+        const progressBar = document.getElementById(id);
+        progressBar.style.width = percentage + '%';
+    }
+
+    // Update the progress bars (example values)
+    updateProgressBar('fileProgressBar', 0); // 50% completed
+    updateProgressBar('mandatoryProgressBar', 0); // 50% completed
 
     var coll = document.getElementsByClassName("collapsible");
     for (var i = 0; i < coll.length; i++) {
@@ -1485,20 +1038,6 @@ function buildLocationMenu(menuMap){
         });
     }
 
-    window.addEventListener("DOMContentLoaded", function () {
-        // Open all collapsible sections by default
-        const contentDivs = document.querySelectorAll(".content");
-        contentDivs.forEach(div => {
-            div.style.display = "flex"; // or whatever display you use when open
-        });
-
-        // Update arrow direction to up if it's meant to reflect open state
-        const arrowBoxes = document.querySelectorAll(".arrow-box");
-        arrowBoxes.forEach(box => {
-            box.innerHTML = "&#9650;"; // ▲ up arrow
-        });
-    });
-
     // Function to open a popup
     function openPopup(popupId) {
         document.getElementById(popupId).style.display = 'block';
@@ -1508,32 +1047,6 @@ function buildLocationMenu(menuMap){
     function closePopup(popupId) {
         document.getElementById(popupId).style.display = 'none';
     }
-
-  function confirmSelection(popupId, selectedId) {
-    const popup = document.getElementById(popupId);
-    if (!popup) return;
-
-    // collect checked boxes/radios inside this popup
-    const checked = popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
-
-    const items = Array.from(checked).map(inp => {
-      const lbl = inp.closest('label');
-      if (lbl) {
-        const text = Array.from(lbl.childNodes)
-          .filter(n => n.nodeType === Node.TEXT_NODE)
-          .map(n => n.textContent)
-          .join(' ')
-          .trim();
-        return text || inp.value;
-      }
-      return inp.value;
-    });
-
-    const out = document.getElementById(selectedId);
-    if (out) out.innerText = items.length ? items.join(', ') : 'Not Specified';
-
-    closePopup(popupId); // actually closes the popup
-  }
 
     // Prevent form submission and page reload
     document.querySelectorAll('form').forEach(form => {
@@ -1553,6 +1066,14 @@ function buildLocationMenu(menuMap){
         }
         closePopup('attachmentsPopup');
     }
+
+    // Also prefill just before opening the Medication popup via "Add"
+    document.querySelectorAll('.med-actions a, .attachments-actions a').forEach(a => {
+      if (a.textContent.trim().toLowerCase() === 'add' && !a._medPrefillHooked){
+        a.addEventListener('click', () => { prefillFromMRNDefaults(); }, { capture: true });
+        a._medPrefillHooked = true;
+      }
+    });
 
     // Add event listeners for drag and drop functionality
     var dropArea = document.getElementById('dropArea');
@@ -1638,16 +1159,6 @@ function systemSection(value) {
     }
 }
 
-
-function toggleVendorSection(value) {
-    const VendorSection = document.getElementById('VendorSection');
-    if (value === 'yes') {
-        VendorSection.style.display = 'flex';
-    } else {
-        VendorSection.style.display = 'none';
-    }
-}
-
 function toggleIRBSection(value) {
     const IRBSection = document.getElementById('IRBSection');        
     if (value === 'yes') {
@@ -1655,15 +1166,6 @@ function toggleIRBSection(value) {
         IRBSection.style.flexDirection = 'column'; // Label on top of input
     } else {
         IRBSection.style.display = 'none';
-    }
-}
-
-function toggleSepsisSection(value) {
-    const sepsisSection = document.getElementById('sepsisSection');
-    if (value === 'yes') {
-        sepsisSection.style.display = 'flex';
-    } else {
-        sepsisSection.style.display = 'none';
     }
 }
 
@@ -1676,23 +1178,49 @@ document.querySelectorAll('form').forEach(form => {
 });
 
 function openPopup(id){
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.add('is-open');      // see CSS note below
-  el.style.display = 'block';
-}
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('is-open');      // see CSS note below
+    el.style.display = 'block';
 
-function closePopup(id){
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.remove('is-open');
-  el.style.display = 'none';
-}
+    if (id === 'popup') {
+    window.dispatchEvent(new Event('open-med-popup'));
+    }
+  }
+  function closePopup(id){
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('is-open');
+    el.style.display = 'none';
+  }
 
-function toggleContent(contentId,arrowBoxId){
-    const c=document.getElementById(contentId), a=document.getElementById(arrowBoxId);
-    if(c.style.display==='block'){ c.style.display='none'; a.innerHTML='&#9660;'; }
-    else{ c.style.display='block'; a.innerHTML='&#9650;'; }
+function confirmSelection(popupId, selectedId) {
+  const popup = document.getElementById(popupId);
+  if (!popup) return;
+
+  const checked = popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+  const items = Array.from(checked).map(inp => {
+    const label = inp.closest('label');
+    if (!label) return inp.value;
+    // get label text without child elements
+    const text = Array.from(label.childNodes).filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent).join(' ').trim();
+    return text || inp.value;
+  });
+
+  const out = document.getElementById(selectedId);
+  if (out) {
+    out.innerText = items.length ? items.join(', ') : 'Not Specified';
+    // ensure multi-line lists render nicely if you prefer:
+    // out.style.whiteSpace = 'pre-line';
+  }
+
+  // re-evaluate surrounding section so it can auto-close if now complete
+  const sec = popup.closest('.section-content') || document.getElementById('secEvent') || document.getElementById('secDetails');
+  if (sec && typeof maybeCloseSection === 'function') {
+    maybeCloseSection(sec);
+  }
+
+  closePopup(popupId);
 }
 
 function clearSearchFields(){
@@ -1731,31 +1259,33 @@ function searchPatient(){
       </tr></thead><tbody>${rows}</tbody></table>`;
 }    
 
-
 function selectPatient(){
-    const pick = document.querySelector('input[name="patientPick"]:checked');
-    if(!pick){ alert('Please select a patient.'); return; }
+  const pick = document.querySelector('input[name="patientPick"]:checked');
+  if(!pick){ alert('Please select a patient.'); return; }
 
-    const p = patientMaster.find(r=>r.MRN===pick.value);
-    if(!p){ alert('Unexpected error.'); return; }
+  const p = patientMaster.find(r => r.MRN === pick.value);
+  if(!p){ alert('Unexpected error.'); return; }
 
-    /* demographics */
-    document.getElementById('mrn'      ).value = p.MRN;
-    document.getElementById('lastname' ).value = p['Last Name'];
-    document.getElementById('firstname').value = p['First Name'];
-    document.getElementById('dob'      ).value = p.DOB;
-    document.getElementById('age'      ).value = p.Age;
-    document.getElementById('gender'   ).value = p.Gender;
-    document.getElementById('language' ).value = p.Language || '';
+  // demographics
+  document.getElementById('mrn').value       = p.MRN;
+  document.getElementById('lastname').value  = p['Last Name'];
+  document.getElementById('firstname').value = p['First Name'];
+  document.getElementById('dob').value       = p.DOB;
+  document.getElementById('age').value       = p.Age;
+  document.getElementById('gender').value    = p.Gender;
+  document.getElementById('language').value  = p.Language || '';
+  document.getElementById('patientService').value = p['Patient Service'];
 
-    /* location dropdown */
-    setLocationDropdown(p.Site, p['Location '], p.Area);
 
-    /* reveal confirmation */
-    document.getElementById('lastLocationPrompt').style.display='block';
+  // location dropdown (your existing flow)
+  setLocationDropdown(p.Site, p['Location '], p.Area);
 
-    closePopup('searchPopup');
+  // reveal confirmation
+  document.getElementById('lastLocationPrompt').style.display='block';
+
+  closePopup('searchPopup');
 }
+
 
 function setLocationDropdown(site, location, area){
     const btn = document.getElementById('dropdownMenuButton');
@@ -1763,7 +1293,6 @@ function setLocationDropdown(site, location, area){
     btn.dataset.autofilled='true';
     btn.style.border='1px solid black';
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const prompt = document.getElementById('lastLocationPrompt');
@@ -1801,34 +1330,33 @@ document.getElementById('dynamicMenu').addEventListener('click',()=>{
    const btn = document.getElementById('dropdownMenuButton');
    if(btn.style.border.includes('red')) btn.style.border='1px solid black';
 });
-
 // ---------- section open/close ----------
 function setSectionOpen(contentId, headerId, open) {
   const c = document.getElementById(contentId);
   const h = document.getElementById(headerId);
   if (!c) return;
-  c.setAttribute('data-open', open ? 'true' : 'false');
-  if (h) h.setAttribute('data-expanded', open ? 'true' : 'false');
-}
+  const isOpen = !!open;
 
-// ---------- visibility & completeness ----------
-function isVisible(el) {
-  if (!el) return false;
-  for (let p = el; p; p = p.parentElement) {
-    const cs = getComputedStyle(p);
-    if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+  // state attributes
+  c.setAttribute('data-open', isOpen ? 'true' : 'false');
+  if (h) h.setAttribute('data-expanded', isOpen ? 'true' : 'false');
+
+  // actual visibility (the missing piece)
+  c.style.display = isOpen ? 'block' : 'none';
+
+  // optional a11y niceties
+  if (h) {
+    h.setAttribute('aria-controls', contentId);
+    h.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
-  return true;
 }
 
-// ---------- section open/close ----------
-function setSectionOpen(contentId, headerId, open) {
-  const c = document.getElementById(contentId);
-  const h = document.getElementById(headerId);
-  if (!c) return;
-  c.setAttribute('data-open', open ? 'true' : 'false');
-  if (h) h.setAttribute('data-expanded', open ? 'true' : 'false');
-}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.section-content').forEach(sec => {
+    const open = sec.getAttribute('data-open') === 'true';
+    setSectionOpen(sec.id, sec.getAttribute('data-header'), open);
+  });
+});
 
 // ---------- visibility & completeness ----------
 function isVisible(el) {
@@ -1853,40 +1381,53 @@ function allVisibleFieldsComplete(sec) {
               .every(f => isFieldComplete(f, sec));
 }
 
-function processWhereChosen(){
-  const btn = document.getElementById('processDropdownButton');
-  if (!btn) return true;                    // fail-open if not present
-  const placeholder = btn.dataset.placeholder || 'Select Where';
-  return btn.dataset.chosen === '1' || btn.textContent.trim() !== placeholder;
-}
-
 function sectionComplete(sec){
   const mode = sec.dataset.mode || 'all';
   if (mode === 'last' && sec.dataset.trigger){
-    const trg = sec.querySelector(sec.dataset.trigger);
-    return trg ? isFieldComplete(trg, sec) : false;
+    const el = document.querySelector(sec.dataset.trigger);
+    if (!el) return false;
   }
+
   const base = allVisibleFieldsComplete(sec);
 
+  // Event Info rules (keep your existing logic here, unchanged)
   if (sec.id === 'secEvent') {
-    const btn = document.getElementById('processDropdownButton');
-    const processOK = btn ? (btn.dataset.chosen === '1') : true;
+  const processVal = (document.getElementById('process')?.value || '').trim().toLowerCase();
+  const servicesTxt = (document.getElementById('selectedServices')?.textContent || '').trim().toLowerCase();
 
-    const sv  =
-     document.getElementById('selectedServices');  // L239
-    const svT = (sv && sv.textContent || '').trim().toLowerCase();
-    const servicesOK = sv ? (svT && svT !== 'not specified' && svT !== 'select') : true;
+  const processOK  = !!processVal; // any non-empty selection
+  const servicesOK = servicesTxt && servicesTxt !== 'not specified' && servicesTxt !== 'select';
 
-    return base && processOK && servicesOK;
+  return base && processOK && servicesOK;
+}
 
+
+  // ✅ Details of the Event must have BOTH contributing factors and ≥1 medication
+  if (sec.id === 'secDetails') {
+  // textarea already covered by `base`; now require CF + ≥1 real med row
+  const tb = document.querySelector('#medTable tbody');
+  const hasMed = !!tb && Array.from(tb.querySelectorAll('tr')).some(tr => {
+    // ignore the placeholder <i>Not Specified</i> row
+    return !tr.querySelector('i');
+  });
+
+  const cfTxt = (document.getElementById('selectedContributingFactors')?.textContent || '')
+                  .trim().toLowerCase();
+  const cfOK  = cfTxt && cfTxt !== 'not specified' && cfTxt !== 'select';
+
+  return base && hasMed && cfOK;
   }
+
+
   return base;
 }
+
 
 // ---------- auto-close logic ----------
 function maybeCloseSection(sec) {
   if (sec.dataset.lock === 'true') return;     // ignore during manual open
-  if (sec.dataset.sticky === 'true') return;   // ignore if manually reopened & sticky
+  if (sec.dataset.sticky === 'true' && !sectionComplete(sec)) return;
+
 
   const delay = +(sec.dataset.delay || 0);
   if (sectionComplete(sec)) {
@@ -2072,6 +1613,7 @@ function isSelectEmpty(sel){
   const opt = sel.options[sel.selectedIndex];
   return !!(opt && (opt.disabled || /^(select|choose|\-\-)/.test((opt.text||'').trim().toLowerCase())));
 }
+
 
 // highlight all required bits (call this on timeout)
 window.highlightIncompleteAndOpenSections = function(){
@@ -2388,365 +1930,226 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-(function () {
-  const BTN_ID = 'processDropdownButton';
-  const DEFAULT_TEXT = 'Select Where';
+function validateMedPopup() {
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+  let ok = true;
 
-  // Remember the default label so we can compare later
-  const btn0 = document.getElementById(BTN_ID);
-  if (btn0 && !btn0.dataset.placeholder) {
-    btn0.dataset.placeholder = btn0.textContent.trim() || DEFAULT_TEXT;
-    btn0.dataset.chosen = '0';
-  }
-
-  // Extend your existing setter
-  const _set = window.setProcessDropdown; // your current function
-  window.setProcessDropdown = function (area, place) {
-    if (typeof _set === 'function') _set(area, place);
-
-    const btn = document.getElementById(BTN_ID);
-    if (!btn) return;
-    btn.textContent = `${area} - ${place}`;
-    btn.style.border = '1px solid black';
-
-    // mark as selected and notify listeners
-    btn.dataset.chosen = '1';
-    btn.dispatchEvent(new Event('change', { bubbles: true }));
-  };
-})();
-
-function setProcessDropdown(area, place) {
-  const btn = document.getElementById('processDropdownButton');
-  if (!btn) return;
-  btn.textContent = `${area} - ${place}`;
-  btn.style.border = '1px solid black';
-  btn.dataset.chosen = '1';                               // mark as selected
-  btn.dispatchEvent(new Event('change', { bubbles: true })); // notify listeners
-}
-
-
-// Example: augment your existing completeness check for the Event section
-function isEventSectionComplete(sectionEl) {
-  // native required controls (what you already have)
-  const nativeOK = Array.from(
-    sectionEl.querySelectorAll('input[required], select[required], textarea[required]')
-  ).every(el => {
-    if (el.type === 'radio' || el.type === 'checkbox') {
-      return !!sectionEl.querySelector(`[name="${el.name}"]:checked`);
-    }
-    return (el.value || '').trim() !== '';
+  [dn, dc].forEach(el => {
+    const valid = el && el.value.trim().length > 0;
+    el.classList.toggle('needs-attn', !valid);   // uses your red border style
+    ok = ok && valid;
   });
 
-  // add the dropdown button requirement
-  return nativeOK && processWhereChosen();
+  if (!ok) {
+    // focus the first missing field
+    (dn.value.trim() ? dc : dn).focus();
+  }
+  return ok;
 }
 
-// Re-evaluate completeness when anything changes in the section (incl. the button)
-(function () {
-  const sec = document.getElementById('secEvent');     // Event Information section
-  const hdr = document.getElementById('hdrEvent');     // its header/collapser
-  if (!sec || !hdr) return;
 
-  function maybeAutoClose() {
-    if (isEventSectionComplete(sec)) {
-      // close however you normally do (often header click toggles it)
-      if (hdr.classList.contains('active')) hdr.click();
+// Add or update the main table and close popup
+function saveEntry() {
+  if (!validateMedPopup()) return;
+  // Use selected drug if chosen from results; otherwise free-typed fields
+  if (!selectedDrug) {
+    const chosen = document.querySelector('input[name="searchSelect"]:checked');
+    if (chosen) {
+      const row = chosen.closest("tr");
+      const cells = row.querySelectorAll("td");
+      selectedDrug = {
+        "Drug Name": cells[1]?.textContent?.trim() || "",
+        "Drug Class": cells[2]?.textContent?.trim() || ""
+      };
     }
   }
 
-  sec.addEventListener('change', maybeAutoClose, true);
-  // also catch the dropdown selection (we dispatch 'change' on the button above)
-  let _t;
-  sec.addEventListener('input', function () {
-    clearTimeout(_t);
-    _t = setTimeout(maybeAutoClose, 600);
-  }, true);
+  let drugName, drugClass;
+  if (selectedDrug) {
+    drugName = selectedDrug["Drug Name"];
+    drugClass = selectedDrug["Drug Class"];
+  } else {
+    drugName = (document.getElementById("drugName")?.value || "").trim();
+    drugClass = (document.getElementById("drugClass")?.value || "").trim();
+  }
+  if (!drugName) { alert("Please enter or select a drug name."); return; }
 
-  const btn = document.getElementById('processDropdownButton');
-  if (btn) btn.addEventListener('change', maybeAutoClose);
-})();
+  const body = document.getElementById("tableBody");
+  if (!body) return;
+  // remove "Not Specified"
+  if (body.querySelector("i")) body.innerHTML = "";
 
-// ---- Keep "Details of the Event" open while typing / picking factors ----
-(function () {
-  const secDetails = document.getElementById('secDetails');
-  const hdrDetails = document.getElementById('hdrDetails');
-  const desc = document.getElementById('eventDescription');
+  if (selectedRowIndex !== null) {
+    const tr = body.rows[selectedRowIndex];
+    tr.cells[1].textContent = drugName;
+    tr.cells[2].textContent = drugClass;
+  } else {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><input type="radio" name="selectRow"></td>
+      <td>${drugName}</td>
+      <td>${drugClass}</td>`;
+    body.appendChild(tr);
+  }
 
-  if (!secDetails || !hdrDetails || !desc) return;
+  addRowSelectionListeners();
+  enableMedEditDelete();
+  closePopup('popup');
+  selectedDrug = null;
+  selectedRowIndex = null;
 
-  // 1) Don't auto-close on blur from the description textarea.
-  document.addEventListener('blur', (e) => {
-    if (e.target === desc) return; // let focus leave without closing
-  }, true);
+  // at the end of saveEntry(), after you update #medTable:
+  const detailsSec = document.getElementById('secDetails');
+  if (detailsSec && typeof maybeCloseSection === 'function') {
+    maybeCloseSection(detailsSec);
+  }
 
-  // 2) Make section "sticky" while the Contributing Factors popup is open.
-  const _openPopup = window.openPopup;
-  window.openPopup = function(id){
-    if (typeof _openPopup === 'function') _openPopup(id);
-    if (id === 'contributingFactorsPopup') {
-      secDetails.dataset.sticky = 'true';
+
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const okBtn = document.querySelector('#popup .action-ok');
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+
+  function updateOK() {
+    const ready = dn.value.trim() && dc.value.trim();
+    okBtn.disabled = !ready;
+  }
+  dn.addEventListener('input', updateOK);
+  dc.addEventListener('input', updateOK);
+
+  // when the modal opens, reset state
+  window.addEventListener('open-med-popup', () => {
+    dn.classList.remove('needs-attn');
+    dc.classList.remove('needs-attn');
+    updateOK();
+    dn.focus();
+  });
+});
+
+
+function addRowSelectionListeners() {
+  document.querySelectorAll('input[name="selectRow"]').forEach(radio => {
+    if (!radio._hooked) {
+      radio.addEventListener("change", enableMedEditDelete);
+      radio._hooked = true;
     }
-  };
+  });
+}
 
-  // 3) On OK, clear sticky and try to close if truly complete.
-  const _confirmSelection = window.confirmSelection;
-  window.confirmSelection = function(popupId, selectedId){
-    if (typeof _confirmSelection === 'function') _confirmSelection(popupId, selectedId);
-    if (popupId === 'contributingFactorsPopup') {
-      delete secDetails.dataset.sticky;
-      // If your global maybeCloseSection is defined, re-evaluate now:
-      if (typeof window.maybeCloseSection === 'function') {
-        window.maybeCloseSection(secDetails);
-      }
-    }
-  };
+document.addEventListener('DOMContentLoaded', () => {
+  const wrap = document.querySelector('.med-actions');
+  const table = document.getElementById('medTable');
+  if (!wrap || !table) return;
 
-  // Optional: require at least one factor selected before the section can auto-close.
-  secDetails.addEventListener('change', (e) => {
-    if (e.target.classList && e.target.classList.contains('contributing-factors-checkbox')) {
-      secDetails.dataset.factorsPicked = '1';
-    }
-  }, true);
+  const edit = wrap.querySelector('[data-action="edit"]');
+  const del  = wrap.querySelector('[data-action="delete"]');
 
-  // Patch sectionComplete() so secDetails waits for factors (only if the function exists).
-  if (typeof window.sectionComplete === 'function') {
-    const _sectionComplete = window.sectionComplete;
-    window.sectionComplete = function (sec) {
-      if (sec === secDetails) {
-        const baseDone = _sectionComplete(sec);
-        return baseDone && !!secDetails.dataset.factorsPicked; // remove this line if not required
-      }
-      return _sectionComplete(sec);
-    };
+  // ensure start state
+  edit.classList.add('disabled');
+  del.classList.add('disabled');
+
+  // when a row radio is selected, enable; otherwise keep disabled
+  table.addEventListener('click', () => {
+    const chosen = table.querySelector('input[name="selectRow"]:checked');
+    edit.classList.toggle('disabled', !chosen);
+    del.classList.toggle('disabled', !chosen);
+  });
+});
+
+
+function enableMedEditDelete() {
+  const selected = document.querySelector('input[name="selectRow"]:checked');
+  // if you’re using the link UI, toggle classes there:
+  document.querySelector('.med-actions [data-action="edit"]')?.classList.toggle('disabled', !selected);
+  document.querySelector('.med-actions [data-action="delete"]')?.classList.toggle('disabled', !selected);
+}
+
+function deleteSelected() {
+  const sel = document.querySelector('input[name="selectRow"]:checked');
+  if (!sel) return;
+  const tr = sel.closest("tr");
+  const body = document.getElementById("tableBody");
+  tr.remove();
+  if (!body.querySelector("tr")) {
+    body.innerHTML = `<tr><td colspan="3"><i>Not Specified</i></td></tr>`;
   }
-})();
+  enableMedEditDelete();
+}
+
+function getSelectedRowIndex() {
+  const sel = document.querySelector('input[name="selectRow"]:checked');
+  if (!sel) return null;
+  const tr = sel.closest("tr");
+  const body = document.getElementById("tableBody");
+  return Array.from(body.rows).indexOf(tr);
+}
 
 
-(function(){
-  // ==== Config ====
-  const INACTIVITY_MS = 10 * 1000; // 10 minutes idle before timeout appears (change as needed)
-  const COUNTDOWN_SECONDS = 30;          // grace period before we could auto-logout (you can keep it at 30)
+document.addEventListener('DOMContentLoaded', () => {
+  const wrap = document.querySelector('.med-actions');
+  if (!wrap) return;
 
-  // ==== Create overlay once ====
-  const overlay = document.createElement('div');
-  overlay.id = 'sys-timeout-overlay';
-  overlay.innerHTML = `
-    <div id="sys-timeout-card" role="dialog" aria-modal="true" aria-labelledby="sys-timeout-title">
-      <h2 id="sys-timeout-title">System Timeout</h2>
-      <p>Your session has been idle. Click reset to continue.</p>
-      <div id="sys-timeout-countdown">00:${String(COUNTDOWN_SECONDS).padStart(2,'0')}</div>
-      <button id="sys-timeout-reset" type="button">Reset Now</button>
-    </div>`;
-  document.body.appendChild(overlay);
+  const addLink = wrap.querySelector('[data-action="add"]');
+  const editLink = wrap.querySelector('[data-action="edit"]');
+  const delLink  = wrap.querySelector('[data-action="delete"]');
 
-  const countdownEl = overlay.querySelector('#sys-timeout-countdown');
-  const resetBtn     = overlay.querySelector('#sys-timeout-reset');
+  // Start state: Add active, Edit/Delete disabled
+  editLink.classList.add('disabled');
+  delLink.classList.add('disabled');
 
-  let idleTimer = null;
-  let countdownTimer = null;
-  let remaining = COUNTDOWN_SECONDS;
-
-  // ==== Idle tracking ====
-  const activityEvents = ['mousemove','mousedown','keydown','scroll','touchstart','pointerdown','wheel','click'];
-  activityEvents.forEach(ev => document.addEventListener(ev, bumpIdle, {passive:true}));
-
-  function bumpIdle() {
-    // If overlay is visible, we don't auto-dismiss on random activity
-    if (overlay.style.display !== 'flex') {
-      startIdleTimer();
-    }
-  }
-
-  function startIdleTimer() {
-    if (idleTimer) clearTimeout(idleTimer);
-    idleTimer = setTimeout(showTimeout, INACTIVITY_MS);
-  }
-
-  // Start tracking immediately
-  startIdleTimer();
-
-  // ==== Timeout / countdown flow ====
-  function showTimeout() {
-    overlay.style.display = 'flex';
-    remaining = COUNTDOWN_SECONDS;
-    updateCountdownText();
-    if (countdownTimer) clearInterval(countdownTimer);
-    countdownTimer = setInterval(() => {
-      remaining -= 1;
-      updateCountdownText();
-      if (remaining <= 0) {
-        clearInterval(countdownTimer);
-        // Optional: hard logout / clear form / redirect. For now, just keep overlay up.
-        // window.location.reload(); // if you want a hard reset
-      }
-    }, 1000);
-  }
-
-  function hideTimeout() {
-    overlay.style.display = 'none';
-    if (countdownTimer) clearInterval(countdownTimer);
-  }
-
-  function updateCountdownText() {
-    countdownEl.textContent = `00:${String(Math.max(0, remaining)).padStart(2,'0')}`;
-  }
-
-  // ==== Reset button handler ====
-  resetBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  // Add → open existing Medication popup (#popup)
+  addLink.addEventListener('click', (e) => {
     e.preventDefault();
-
-    // 1) Reactivate session timers
-    hideTimeout();
-    startIdleTimer();
-
-    // 2) Highlight incomplete fields and open their sections
-    highlightIncompleteAndOpenSections();
-
-    // 3) Scroll to the first incomplete field (if any)
-    const first = document.querySelector('.needs-attn');
-    if (first) {
-      first.scrollIntoView({behavior: 'smooth', block: 'center'});
-      // brief focus for accessibility
-      if (first.focus) { try { first.focus({preventScroll:true}); } catch(_){} }
-    }
+    const modal = document.getElementById('popup');   // your Medication popup
+    if (modal) modal.style.display = 'flex';          // matches .popup-overlay layout
   });
 
-  function highlightIncompleteAndOpenSections() {
-  // clear old highlights
-  document.querySelectorAll('.needs-attn').forEach(el => el.classList.remove('needs-attn'));
+  // When a real row is selected, enable Edit/Delete
+  const tbody = document.querySelector('#medTable tbody');
+  if (tbody) {
+    tbody.addEventListener('click', (ev) => {
+      const tr = ev.target.closest('tr'); if (!tr) return;
+      // ignore the "Not Specified" placeholder row
+      if (tr.querySelector('td[colspan]')) return;
 
-  const sections = document.querySelectorAll('.section-content');
-  sections.forEach(sec => {
-    const incompleteFields = getIncompleteFieldsInSection(sec);
+      // visual select
+      tbody.querySelectorAll('tr').forEach(r => r.classList.remove('selected'));
+      tr.classList.add('selected');
 
-    if (incompleteFields.length > 0) {
-      // Open the section if it isn't already open
-      const headerId = sec.dataset.header;
-      if (headerId) {
-        if (typeof window.setSectionOpen === 'function') {
-          window.setSectionOpen(sec.id, headerId, true);
-        } else {
-          sec.setAttribute('data-open','true');
-          const hdr = document.getElementById(headerId);
-          if (hdr) hdr.setAttribute('data-expanded','true');
-        }
-        sec.dataset.sticky = 'true';
-      }
+      editLink.classList.remove('disabled');
+      delLink.classList.remove('disabled');
+    });
+  }
+});
 
-      // ✅ Apply the red border + auto-remove logic
-      incompleteFields.forEach(applyNeedsAttn);
-    }
-  });
-}
-
-// Treat placeholder-y values as empty
-function isSelectEmpty(sel){
-  if (!sel) return false;
-  const v = (sel.value || '').trim().toLowerCase();
-  if (!v || v === 'default' || v === 'none' || v === 'select' || v === 'choose') return true;
-  const opt = sel.options[sel.selectedIndex];
-  return !!(opt && (opt.disabled || /^(select|choose|\-\-)/.test(opt.text.trim().toLowerCase())));
-}
-
-function getIncompleteFieldsInSection(sec){
-  const fields = [];
-  const elements = sec.querySelectorAll('input, select, textarea, [data-required="true"]');
-
-  const radioGroups = new Map();
-  const checkboxGroups = new Map();
-
-  const visible = el =>
-    !el.disabled &&
-    el.offsetParent !== null &&
-    getComputedStyle(el).visibility !== 'hidden';
-
-  const checkboxKey = el => {
-    const wrap = el.closest('.checkbox-group, .field-row, [data-group]');
-    if (wrap?.dataset?.group) return `ds:${wrap.dataset.group}`;
-    if (wrap?.id) return `id:${wrap.id}`;
-    if (el.name) return `name:${el.name}`;
-    return `node:${(wrap || el.parentElement)?.outerHTML?.length || 0}-${(wrap || el.parentElement)}`;
-  };
-
-  elements.forEach(el => {
-    const isRequired = true;                 // timeout highlight considers all
-    if (!isRequired || !visible(el)) return;
-
-    if (el.type === 'radio') {
-      const name = el.name || `(anon-radio-${Math.random()})`;
-      if (!radioGroups.has(name)) radioGroups.set(name, []);
-      radioGroups.get(name).push(el);
-    } else if (el.type === 'checkbox') {
-      const key = checkboxKey(el);
-      if (!checkboxGroups.has(key)) checkboxGroups.set(key, []);
-      checkboxGroups.get(key).push(el);
-    } else if (el.tagName === 'SELECT') {
-      const v = (el.value || '').trim().toLowerCase();
-      if (!v || v === 'default' || v === 'none') fields.push(el);
-    } else {
-      if (!el.value || String(el.value).trim() === '') fields.push(el);
-    }
-  });
-
-  // 🔴 special-case: the Interventions multiselect wrapper
-  sec.querySelectorAll('.ms-multiselect[data-required="true"]').forEach(wrap => {
-    if (!visible(wrap)) return;
-    const anyChecked = wrap.querySelector('.ms-list input[type="checkbox"]:checked');
-    if (!anyChecked) {
-      // push its trigger so we can style/clear it easily
-      fields.push(wrap.querySelector('.ms-trigger') || wrap);
-    }
-  });
-
-  // finish radios/checkbox groups
-  radioGroups.forEach(group => { if (!group.some(r => r.checked)) fields.push(group[0]); });
-  checkboxGroups.forEach(group => { if (!group.some(c => c.checked)) fields.push(group[0]); });
-
-  return fields;
-}
-
-})();
-
-function applyNeedsAttn(el){
+function applyNeedsAttn(el) {
+  // Add to the control
   el.classList.add('needs-attn');
-  const wrapper = el.closest('.radio-group, .checkbox-group, .field-row, .ms-multiselect');
-  if (wrapper) wrapper.classList.add('needs-attn');
 
+  // If it's a radio/checkbox, also highlight the group wrapper
+  if (el.type === 'radio' || el.type === 'checkbox') {
+    const group = el.closest('.radio-group, .checkbox-group, .field-row');
+    if (group) group.classList.add('needs-attn');
+  }
+
+  // Attach a one-time listener to clear the highlight when valid
   const clear = () => {
     if (isFieldAnswered(el)) {
       el.classList.remove('needs-attn');
-      if (wrapper) wrapper.classList.remove('needs-attn');
+      const group = el.closest('.radio-group, .checkbox-group, .field-row');
+      if (group) group.classList.remove('needs-attn');
       el.removeEventListener('input', clear);
       el.removeEventListener('change', clear);
-      if (wrapper && wrapper.classList.contains('ms-multiselect')) {
-        wrapper.removeEventListener('change', clear);
-      }
     }
   };
-
   el.addEventListener('input', clear);
   el.addEventListener('change', clear);
-  // 🔄 for the multiselect: listen to its checkbox changes
-  if (wrapper && wrapper.classList.contains('ms-multiselect')) {
-    wrapper.addEventListener('change', clear);
-  }
-
-  // NEW: if the thing that’s incomplete is a hidden proxy, style the widget’s field
-  if (el.type === 'hidden') {
-    const ms = el.closest('.ms-multiselect');
-    ms?.querySelector('.ms-trigger')?.classList.add('is-invalid');
-    return;
-  }
 }
 
 function isFieldAnswered(el) {
-  // ✅ multiselect trigger = answered if any option is checked
-  if (el.classList && el.classList.contains('ms-trigger')) {
-    const wrap = el.closest('.ms-multiselect');
-    return !!wrap && !!wrap.querySelector('.ms-list input[type="checkbox"]:checked');
-  }
-
   if (el.type === 'radio') {
     const name = el.name;
     if (!name) return el.checked;
@@ -2754,7 +2157,7 @@ function isFieldAnswered(el) {
     return Array.from(group).some(r => r.checked);
   }
   if (el.type === 'checkbox') {
-    // Treat any box in the same wrapper as a group
+    // If any checkbox in the same group is checked, treat as answered
     const group = el.closest('.checkbox-group, .field-row') || el.parentElement;
     if (group) {
       const boxes = group.querySelectorAll('input[type="checkbox"]');
@@ -2763,52 +2166,243 @@ function isFieldAnswered(el) {
     return el.checked;
   }
   if (el.tagName === 'SELECT') {
-    const v = (el.value || '').trim().toLowerCase();
-    return !!(v && v !== 'default' && v !== 'none' && v !== 'select' && v !== 'choose');
+    return !!(el.value && el.value !== 'default' && el.value !== 'none');
   }
-  // text/textarea/date/etc.
   return !!(el.value && String(el.value).trim() !== '');
 }
 
 
+let selectedRowIndex = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const mrnEl = document.getElementById('mrn');
-  if (mrnEl) {
-    mrnEl.addEventListener('change', handleMRNInput);
+let processData = [];
+
+/* ===================== CONFIG ===================== */
+const MED_DEFAULTS_XLS = 'Extrava-Infil.xlsx'; // MRN-based defaults
+const MED_CATALOG_XLS  = 'Medication.xlsx';    // master catalog for search
+
+/* ===================== STATE ====================== */
+window.medDefaults  = [];   // rows from Extrava-Infil.xlsx
+window.medCatalog   = [];   // rows from Medication.xlsx
+window.selectedDrug = null; // popup "selected" drug { Drug Name, Drug Class }
+
+/* ===================== LOADERS ==================== */
+async function loadSheet(path){
+  const res = await fetch(path);
+  const buf = await res.arrayBuffer();
+  const wb  = XLSX.read(buf, { type: 'array' });
+  const sheet = wb.SheetNames[0];
+  const raw = XLSX.utils.sheet_to_json(wb.Sheets[sheet], { defval: '' });
+  // trim headers & values
+  return raw.map(row => {
+    const out = {};
+    for (const k in row) out[k.trim()] = (row[k] ?? '').toString().trim();
+    return out;
+  });
+}
+async function loadMedDefaults(){
+  window.medDefaults = await loadSheet(MED_DEFAULTS_XLS);
+  document.dispatchEvent(new Event('medDefaultsLoaded'));
+}
+async function loadMedCatalog(){
+  window.medCatalog = await loadSheet(MED_CATALOG_XLS);
+}
+
+/* ===================== HELPERS ==================== */
+function getMRN(){
+  return (document.getElementById('mrn')?.value || '').toString().trim();
+}
+function setSelect(id, val){
+  const sel = document.getElementById(id);
+  if (!sel) return;
+  const v = (val ?? '').toString().trim();
+  if (!v){ sel.value = ''; return; }
+  if (![...sel.options].some(o => (o.value || o.textContent).trim() === v)){
+    sel.insertBefore(new Option(v, v, true, true), sel.options[0] || null);
   }
+  sel.value = v;
+}
+
+/* ========= PREFILL FROM EXTRAVA-INFIL BY MRN ====== */
+/* Fields expected in the sheet: 
+   MRN, Amount in mL, Method of Administration, Type of Access, Drug Name, Drug Class */
+function prefillFromMRNDefaults(){
+  const mrn = getMRN();
+  if (!mrn || !Array.isArray(window.medDefaults) || !window.medDefaults.length) return;
+
+  // if multiple rows per MRN, use the LAST one
+  const rows = window.medDefaults.filter(r => String(r?.MRN ?? '').trim() === mrn);
+  const row  = rows[rows.length - 1];
+  if (!row) return;
+
+  // main form fields
+  const amt = document.getElementById('amount');
+  if (amt) amt.value = row['Amount in mL'] || '';
+
+  setSelect('method',     row['Method of Administration']);
+  setSelect('accessType', row['Type of Access']);
+
+  // popup inputs
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+  if (dn) dn.value = row['Drug Name']  || '';
+  if (dc) dc.value = row['Drug Class'] || '';
+
+  // also prime selectedDrug so OK works even if user doesn't re-search
+  window.selectedDrug = {
+    'Drug Name' : row['Drug Name']  || '',
+    'Drug Class': row['Drug Class'] || ''
+  };
+}
+
+/* ========== SEARCH (uses Medication.xlsx) ========= */
+/* If your page already had performSearch, we replace it on purpose so it uses the catalog. */
+window.performSearch = function(){
+  const term = (document.getElementById('drugName')?.value || '').toLowerCase();
+  const tb   = document.querySelector('#searchResults tbody');
+  if (!tb) return;
+  tb.innerHTML = '';
+
+  const rows = (window.medCatalog || []).filter(r =>
+    (r['Drug Name'] || '').toLowerCase().includes(term)
+  );
+
+  rows.forEach(item => {
+    const tr = document.createElement('tr');
+
+    const tdSel = document.createElement('td');
+    const r = document.createElement('input');
+    r.type = 'radio'; r.name = 'searchSelect';
+    r.addEventListener('change', () => selectDrugFromCatalog(item));
+    tdSel.appendChild(r);
+
+    const tdName  = document.createElement('td'); tdName.textContent  = item['Drug Name']  || '';
+    const tdClass = document.createElement('td'); tdClass.textContent = item['Drug Class'] || '';
+
+    tr.appendChild(tdSel); tr.appendChild(tdName); tr.appendChild(tdClass);
+    tb.appendChild(tr);
+  });
+};
+function selectDrugFromCatalog(item){
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+  if (dn) dn.value = item['Drug Name']  || '';
+  if (dc) dc.value = item['Drug Class'] || '';
+  window.selectedDrug = {
+    'Drug Name' : item['Drug Name']  || '',
+    'Drug Class': item['Drug Class'] || ''
+  };
+}
+
+/* ===================== HOOKS ====================== */
+document.addEventListener('DOMContentLoaded', () => {
+  // Load both sheets
+  loadMedDefaults();
+  loadMedCatalog();
+
+  // Prefill as soon as defaults are loaded (if MRN already present)
+  document.addEventListener('medDefaultsLoaded', () => prefillFromMRNDefaults());
+
+  // Prefill whenever MRN changes (typed/pasted)
+  const mrnEl = document.getElementById('mrn');
+  if (mrnEl && !mrnEl._medPrefillHooked){
+    const fn = () => prefillFromMRNDefaults();
+    mrnEl.addEventListener('change', fn);
+    mrnEl.addEventListener('input',  fn);
+    mrnEl._medPrefillHooked = true;
+  }
+
+  // Prefill right after a patient is selected from your search popup
+  if (typeof window.selectPatient === 'function' && !window.selectPatient._medPrefillHooked){
+    const _orig = window.selectPatient;
+    window.selectPatient = function(){
+      const ret = _orig.apply(this, arguments);
+      // ensure MRN is set before running prefill
+      setTimeout(prefillFromMRNDefaults, 0);
+      return ret;
+    };
+    window.selectPatient._medPrefillHooked = true;
+  }
+
+  // Also prefill just before opening the Medication popup via "Add"
+  document.querySelectorAll('.med-actions a, .attachments-actions a').forEach(a => {
+    if (a.textContent.trim().toLowerCase() === 'add' && !a._medPrefillHooked){
+      a.addEventListener('click', () => { prefillFromMRNDefaults(); }, { capture: true });
+      a._medPrefillHooked = true;
+    }
+  });
 });
 
-/* --- SAFETY PATCH: make OK close again and prefill from Excel --- */
-(function () {
-  // Override selectPatient with a safe version
-  const originalSelect = window.selectPatient;
-  window.selectPatient = function () {
-    try {
-      // run your original logic if it exists
-      if (typeof originalSelect === 'function') {
-        originalSelect.apply(this, arguments);
-      } else {
-        // minimal fallback if original isn't present
-        const pick = document.querySelector('input[name="patientPick"]:checked');
-        if (!pick) { alert('Please select a patient.'); return; }
-        const p = (window.patientMaster || []).find(r => String(r.MRN) === String(pick.value)) || {};
-        if (document.getElementById('mrn')) document.getElementById('mrn').value = p.MRN || '';
-      }
+document.addEventListener('DOMContentLoaded', () => {
+  const wrap = document.querySelector('.med-actions');
+  const table = document.getElementById('medTable');
+  if (!wrap || !table) return;
 
-      // DO NOT call handleMRNInput() here (not defined on this page).
-      // Instead, prefill from your Excel defaults if available:
-      if (typeof window.prefillFromMRNDefaults === 'function') {
-        try { window.prefillFromMRNDefaults(); } catch (e) { console.warn('prefillFromMRNDefaults failed:', e); }
-      }
-    } catch (e) {
-      console.warn('selectPatient error (continuing to close popup):', e);
-    }
-    // Always close the patient search popup
-    try { window.closePopup && closePopup('searchPopup'); } catch (e) {}
-  };
-})();
+  const edit = wrap.querySelector('[data-action="edit"]');
+  const del  = wrap.querySelector('[data-action="delete"]');
 
+  // ensure start state
+  edit.classList.add('disabled');
+  del.classList.add('disabled');
+
+  // when a row radio is selected, enable; otherwise keep disabled
+  table.addEventListener('click', () => {
+    const chosen = table.querySelector('input[name="selectRow"]:checked');
+    edit.classList.toggle('disabled', !chosen);
+    del.classList.toggle('disabled', !chosen);
+  });
+});
+
+
+function enableMedEditDelete() {
+  const selected = document.querySelector('input[name="selectRow"]:checked');
+  // if you’re using the link UI, toggle classes there:
+  document.querySelector('.med-actions [data-action="edit"]')?.classList.toggle('disabled', !selected);
+  document.querySelector('.med-actions [data-action="delete"]')?.classList.toggle('disabled', !selected);
+}
+
+function deleteSelected() {
+  const sel = document.querySelector('input[name="selectRow"]:checked');
+  if (!sel) return;
+  const tr = sel.closest("tr");
+  const body = document.getElementById("tableBody");
+  tr.remove();
+  if (!body.querySelector("tr")) {
+    body.innerHTML = `<tr><td colspan="3"><i>Not Specified</i></td></tr>`;
+  }
+  enableMedEditDelete();
+}
+
+function getSelectedRowIndex() {
+  const sel = document.querySelector('input[name="selectRow"]:checked');
+  if (!sel) return null;
+  const tr = sel.closest("tr");
+  const body = document.getElementById("tableBody");
+  return Array.from(body.rows).indexOf(tr);
+}
+
+function openMedPopup(mode) {
+  if (mode === "edit") {
+    selectedRowIndex = getSelectedRowIndex();
+    if (selectedRowIndex === null) { alert("Please select a row to edit."); return; }
+    const body = document.getElementById("tableBody");
+    const tr = body.rows[selectedRowIndex];
+    document.getElementById("drugName").value  = tr.cells[1].textContent;
+    document.getElementById("drugClass").value = tr.cells[2].textContent;
+    // also set selectedDrug so OK works even if they don't re-search
+    selectedDrug = { "Drug Name": tr.cells[1].textContent, "Drug Class": tr.cells[2].textContent };
+  } else {
+    selectedRowIndex = null;
+    selectedDrug = null;
+    if (document.getElementById("drugName"))  document.getElementById("drugName").value  = "";
+    if (document.getElementById("drugClass")) document.getElementById("drugClass").value = "";
+    // clear prior search results
+    const rb = document.querySelector("#searchResults tbody");
+    if (rb) rb.innerHTML = "";
+  }
+  // show the medication popup
+  const modal = document.getElementById('popup');
+  if (modal) modal.style.display = 'flex';
+}
 
 (function () {
   // visible & enabled, and not inside a popup
@@ -2926,87 +2520,52 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-
-(function initInterventions(){
-  const wrap   = document.getElementById('interventionsGroup');
-  if (!wrap) return;
-
-  const trigger= wrap.querySelector('.ms-trigger');
-  const panel  = wrap.querySelector('.ms-panel');
-  const chips  = wrap.querySelector('.ms-chips');
-  const list   = wrap.querySelector('.ms-list');
-  const sink   = wrap.querySelector('.ms-hidden');
-  const proxy  = document.getElementById('interventionsProxy');
-
-  function open(){ panel.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
-  function close(){ panel.classList.remove('open'); trigger.setAttribute('aria-expanded','false'); }
-  function toggle(){ panel.classList.contains('open') ? close() : open(); }
-
-  function syncUI(){
-    chips.innerHTML = '';
-    sink.innerHTML  = '';
-
-    const checked = Array.from(list.querySelectorAll('input[type="checkbox"]:checked'));
-
-    // UPDATE PROXY (so timeout/progress can see answered state)
-    const proxy = wrap.querySelector('#interventionsProxy');
-    if (proxy) {
-      proxy.checked = checked.length > 0;
-      proxy.dispatchEvent(new Event('change', { bubbles: true }));
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Prevent accidental form submit on Enter (except in <textarea>)
+  document.addEventListener('keydown', (e) => {
+    const tag = e.target.tagName;
+    if (e.key === 'Enter' && tag !== 'TEXTAREA' && !e.shiftKey) {
+      // allow explicit submit buttons, block implicit submit
+      const isExplicitSubmit =
+        e.target.type === 'submit' ||
+        e.target.closest('button[type=submit], input[type=submit]');
+      if (!isExplicitSubmit) e.preventDefault();
     }
+  });
 
-    if (!checked.length){
-      chips.innerHTML = '<span class="ms-placeholder">Select interventions</span>';
-      if (proxy) proxy.checked = false;
-    } else {
-      if (proxy) proxy.checked = true;
-      checked.forEach(cb => {
-        const label = cb.parentElement.textContent.trim();
-        const chip  = document.createElement('span');
-        chip.className = 'ms-chip';
-        chip.innerHTML = `${label} <button type="button" aria-label="Remove">×</button>`;
-        chip.querySelector('button').addEventListener('click', () => { cb.checked = false; syncUI(); });
-        chips.appendChild(chip);
+  // 2) Keep keystrokes in Event Description from bubbling up (which can collapse the section)
+  const desc = document.getElementById('eventDescription');
+  if (desc) {
+    ['keydown','keypress','keyup','input'].forEach(evt =>
+      desc.addEventListener(evt, ev => ev.stopPropagation())
+    );
+  }
+});
 
-        const hid = document.createElement('input');
-        hid.type = 'hidden'; hid.name = 'interventions[]'; hid.value = cb.value;
-        sink.appendChild(hid);
-      });
-    }
-    if (typeof window.renderProgress === 'function') window.renderProgress();
+document.addEventListener('DOMContentLoaded', () => {
+  const okBtn = document.querySelector('#popup .action-ok');
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+
+  function updateOK() {
+    const typedReady = dn?.value.trim() && dc?.value.trim();
+    const picked     = document.querySelector('input[name="searchSelect"]:checked');
+    if (okBtn) okBtn.disabled = !(typedReady || picked);
   }
 
-  trigger.addEventListener('click', (e)=>{ e.stopPropagation(); toggle(); });
-  document.addEventListener('click', (e)=>{ if (!wrap.contains(e.target)) close(); });
-  list.addEventListener('change', syncUI);
+  dn?.addEventListener('input', updateOK);
+  dc?.addEventListener('input', updateOK);
+  document.getElementById('searchResults')?.addEventListener('change', updateOK);
 
-  // keep neutral; your timeout code will add needs-attn to the wrapper if required
-  trigger.classList.remove('is-invalid');
-
-  syncUI();
-})();
-
-
-    // Add event listeners for drag and drop functionality
-    var dropArea = document.getElementById('dropArea');
-    dropArea.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        dropArea.style.borderColor = '#000';
-    });
-    dropArea.addEventListener('dragleave', function() {
-        dropArea.style.borderColor = '#ccc';
-    });
-    dropArea.addEventListener('drop', function(e) {
-        e.preventDefault();
-        dropArea.style.borderColor = '#ccc';
-        var files = e.dataTransfer.files;
-        document.getElementById('fileInput').files = files;
-    });
-
-    // Add event listener to open file dialog when drop area is clicked
-    dropArea.addEventListener('click', function() {
-        document.getElementById('fileInput').click();
-    });
+  // reset state every time the Medication popup opens
+  window.addEventListener('open-med-popup', () => {
+    if (okBtn) okBtn.disabled = true;
+    if (dn) dn.classList.remove('needs-attn'), dn.value = '';
+    if (dc) dc.classList.remove('needs-attn'), dc.value = '';
+    const picked = document.querySelector('input[name="searchSelect"]:checked');
+    if (picked) picked.checked = false;
+  });
+});
 
 </script>
 
