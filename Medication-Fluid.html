@@ -579,8 +579,13 @@
                               <input type="text" id="drugClass">
                           </div>
                   
-                          <div class="search-medication" onclick="performSearch()" style="margin-top: 2%;">Search Medication</div>
-                  
+                          <button style="margin-top: 2%;" type="button"
+                                  class="btn btn-primary btn-sm search-medication"
+                                  onclick="performSearch()">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Search Medication
+                          </button>
+
                           <table id="searchResults" class="search-table">
                               <thead>
                                   <tr>
@@ -1025,20 +1030,6 @@ function toggleContent(contentId, arrowBoxId) {
         document.getElementById(popupId).style.display = 'none';
     }
 
-    // Function to confirm selection and update the display
-    function confirmSelection(popupId, selectedId) {
-        const popup = document.getElementById(popupId);
-        const selectedOptions = Array.from(popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked'))
-            .map(input => {
-                const label = input.closest('.form-group').querySelector('label').innerText;
-                return `${label} - ${input.value}`;
-            })
-            .join('\n');
-
-        document.getElementById(selectedId).innerText = selectedOptions || 'Not Specified';
-        closePopup(popupId);
-}
-
     // Prevent form submission and page reload
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', event => {
@@ -1173,6 +1164,10 @@ function openPopup(id){
     if (!el) return;
     el.classList.add('is-open');      // see CSS note below
     el.style.display = 'block';
+
+    if (id === 'popup') {
+    window.dispatchEvent(new Event('open-med-popup'));
+    }
   }
   function closePopup(id){
     const el = document.getElementById(id);
@@ -1181,31 +1176,34 @@ function openPopup(id){
     el.style.display = 'none';
   }
 
-    function confirmSelection(popupId, selectedId) {
-    const popup = document.getElementById(popupId);
-    if (!popup) return;
+function confirmSelection(popupId, selectedId) {
+  const popup = document.getElementById(popupId);
+  if (!popup) return;
 
-    // collect checked boxes/radios inside this popup
-    const checked = popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+  const checked = popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+  const items = Array.from(checked).map(inp => {
+    const label = inp.closest('label');
+    if (!label) return inp.value;
+    // get label text without child elements
+    const text = Array.from(label.childNodes).filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent).join(' ').trim();
+    return text || inp.value;
+  });
 
-    const items = Array.from(checked).map(inp => {
-      const lbl = inp.closest('label');
-      if (lbl) {
-        const text = Array.from(lbl.childNodes)
-          .filter(n => n.nodeType === Node.TEXT_NODE)
-          .map(n => n.textContent)
-          .join(' ')
-          .trim();
-        return text || inp.value;
-      }
-      return inp.value;
-    });
-
-    const out = document.getElementById(selectedId);
-    if (out) out.innerText = items.length ? items.join(', ') : 'Not Specified';
-
-    closePopup(popupId); // actually closes the popup
+  const out = document.getElementById(selectedId);
+  if (out) {
+    out.innerText = items.length ? items.join(', ') : 'Not Specified';
+    // ensure multi-line lists render nicely if you prefer:
+    // out.style.whiteSpace = 'pre-line';
   }
+
+  // re-evaluate surrounding section so it can auto-close if now complete
+  const sec = popup.closest('.section-content') || document.getElementById('secEvent') || document.getElementById('secDetails');
+  if (sec && typeof maybeCloseSection === 'function') {
+    maybeCloseSection(sec);
+  }
+
+  closePopup(popupId);
+}
 
 function clearSearchFields(){
     ['searchMrn','searchLast','searchFirst'].forEach(id=>document.getElementById(id).value='');
@@ -1314,15 +1312,33 @@ document.getElementById('dynamicMenu').addEventListener('click',()=>{
    const btn = document.getElementById('dropdownMenuButton');
    if(btn.style.border.includes('red')) btn.style.border='1px solid black';
 });
-
 // ---------- section open/close ----------
 function setSectionOpen(contentId, headerId, open) {
   const c = document.getElementById(contentId);
   const h = document.getElementById(headerId);
   if (!c) return;
-  c.setAttribute('data-open', open ? 'true' : 'false');
-  if (h) h.setAttribute('data-expanded', open ? 'true' : 'false');
+  const isOpen = !!open;
+
+  // state attributes
+  c.setAttribute('data-open', isOpen ? 'true' : 'false');
+  if (h) h.setAttribute('data-expanded', isOpen ? 'true' : 'false');
+
+  // actual visibility (the missing piece)
+  c.style.display = isOpen ? 'block' : 'none';
+
+  // optional a11y niceties
+  if (h) {
+    h.setAttribute('aria-controls', contentId);
+    h.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.section-content').forEach(sec => {
+    const open = sec.getAttribute('data-open') === 'true';
+    setSectionOpen(sec.id, sec.getAttribute('data-header'), open);
+  });
+});
 
 // ---------- visibility & completeness ----------
 function isVisible(el) {
@@ -1350,30 +1366,50 @@ function allVisibleFieldsComplete(sec) {
 function sectionComplete(sec){
   const mode = sec.dataset.mode || 'all';
   if (mode === 'last' && sec.dataset.trigger){
-    const trg = sec.querySelector(sec.dataset.trigger);
-    return trg ? isFieldComplete(trg, sec) : false;
+    const el = document.querySelector(sec.dataset.trigger);
+    if (!el) return false;
   }
+
   const base = allVisibleFieldsComplete(sec);
 
+  // Event Info rules (keep your existing logic here, unchanged)
   if (sec.id === 'secEvent') {
-    const btn = document.getElementById('processDropdownButton');
-    const processOK = btn ? (btn.dataset.chosen === '1') : true;
+  const processVal = (document.getElementById('process')?.value || '').trim().toLowerCase();
+  const servicesTxt = (document.getElementById('selectedServices')?.textContent || '').trim().toLowerCase();
 
-    const sv  =
-     document.getElementById('selectedServices');  // L239
-    const svT = (sv && sv.textContent || '').trim().toLowerCase();
-    const servicesOK = sv ? (svT && svT !== 'not specified' && svT !== 'select') : true;
+  const processOK  = !!processVal; // any non-empty selection
+  const servicesOK = servicesTxt && servicesTxt !== 'not specified' && servicesTxt !== 'select';
 
-    return base && processOK && servicesOK;
+  return base && processOK && servicesOK;
+}
 
+
+  // ✅ Details of the Event must have BOTH contributing factors and ≥1 medication
+  if (sec.id === 'secDetails') {
+  // textarea already covered by `base`; now require CF + ≥1 real med row
+  const tb = document.querySelector('#medTable tbody');
+  const hasMed = !!tb && Array.from(tb.querySelectorAll('tr')).some(tr => {
+    // ignore the placeholder <i>Not Specified</i> row
+    return !tr.querySelector('i');
+  });
+
+  const cfTxt = (document.getElementById('selectedContributingFactors')?.textContent || '')
+                  .trim().toLowerCase();
+  const cfOK  = cfTxt && cfTxt !== 'not specified' && cfTxt !== 'select';
+
+  return base && hasMed && cfOK;
   }
+
+
   return base;
 }
+
 
 // ---------- auto-close logic ----------
 function maybeCloseSection(sec) {
   if (sec.dataset.lock === 'true') return;     // ignore during manual open
-  if (sec.dataset.sticky === 'true') return;   // ignore if manually reopened & sticky
+  if (sec.dataset.sticky === 'true' && !sectionComplete(sec)) return;
+
 
   const delay = +(sec.dataset.delay || 0);
   if (sectionComplete(sec)) {
@@ -1876,8 +1912,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
+function validateMedPopup() {
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+  let ok = true;
+
+  [dn, dc].forEach(el => {
+    const valid = el && el.value.trim().length > 0;
+    el.classList.toggle('needs-attn', !valid);   // uses your red border style
+    ok = ok && valid;
+  });
+
+  if (!ok) {
+    // focus the first missing field
+    (dn.value.trim() ? dc : dn).focus();
+  }
+  return ok;
+}
+
+
 // Add or update the main table and close popup
 function saveEntry() {
+  if (!validateMedPopup()) return;
   // Use selected drug if chosen from results; otherwise free-typed fields
   if (!selectedDrug) {
     const chosen = document.querySelector('input[name="searchSelect"]:checked');
@@ -1921,10 +1977,40 @@ function saveEntry() {
 
   addRowSelectionListeners();
   enableMedEditDelete();
-  closePopup('popup');        // <-- close correctly
+  closePopup('popup');
   selectedDrug = null;
   selectedRowIndex = null;
+
+  // at the end of saveEntry(), after you update #medTable:
+  const detailsSec = document.getElementById('secDetails');
+  if (detailsSec && typeof maybeCloseSection === 'function') {
+    maybeCloseSection(detailsSec);
+  }
+
+
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const okBtn = document.querySelector('#popup .action-ok');
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+
+  function updateOK() {
+    const ready = dn.value.trim() && dc.value.trim();
+    okBtn.disabled = !ready;
+  }
+  dn.addEventListener('input', updateOK);
+  dc.addEventListener('input', updateOK);
+
+  // when the modal opens, reset state
+  window.addEventListener('open-med-popup', () => {
+    dn.classList.remove('needs-attn');
+    dc.classList.remove('needs-attn');
+    updateOK();
+    dn.focus();
+  });
+});
+
 
 function addRowSelectionListeners() {
   document.querySelectorAll('input[name="selectRow"]').forEach(radio => {
@@ -1983,30 +2069,6 @@ function getSelectedRowIndex() {
   return Array.from(body.rows).indexOf(tr);
 }
 
-function openMedPopup(mode) {
-  if (mode === "edit") {
-    selectedRowIndex = getSelectedRowIndex();
-    if (selectedRowIndex === null) { alert("Please select a row to edit."); return; }
-    const body = document.getElementById("tableBody");
-    const tr = body.rows[selectedRowIndex];
-    document.getElementById("drugName").value  = tr.cells[1].textContent;
-    document.getElementById("drugClass").value = tr.cells[2].textContent;
-    // also set selectedDrug so OK works even if they don't re-search
-    selectedDrug = { "Drug Name": tr.cells[1].textContent, "Drug Class": tr.cells[2].textContent };
-  } else {
-    selectedRowIndex = null;
-    selectedDrug = null;
-    if (document.getElementById("drugName"))  document.getElementById("drugName").value  = "";
-    if (document.getElementById("drugClass")) document.getElementById("drugClass").value = "";
-    // clear prior search results
-    const rb = document.querySelector("#searchResults tbody");
-    if (rb) rb.innerHTML = "";
-  }
-  // show the medication popup
-  const modal = document.getElementById('popup');
-  if (modal) modal.style.display = 'flex';
-}
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const wrap = document.querySelector('.med-actions');
@@ -2044,182 +2106,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-
-(function(){
-  // ==== Config ====
-  const INACTIVITY_MS = 50 * 1000; // 10 minutes idle before timeout appears (change as needed)
-  const COUNTDOWN_SECONDS = 30;          // grace period before we could auto-logout (you can keep it at 30)
-
-  // ==== Create overlay once ====
-  const overlay = document.createElement('div');
-  overlay.id = 'sys-timeout-overlay';
-  overlay.innerHTML = `
-    <div id="sys-timeout-card" role="dialog" aria-modal="true" aria-labelledby="sys-timeout-title">
-      <h2 id="sys-timeout-title">System Timeout</h2>
-      <p>Your session has been idle. Click reset to continue.</p>
-      <div id="sys-timeout-countdown">00:${String(COUNTDOWN_SECONDS).padStart(2,'0')}</div>
-      <button id="sys-timeout-reset" type="button">Reset Now</button>
-    </div>`;
-  document.body.appendChild(overlay);
-
-  const countdownEl = overlay.querySelector('#sys-timeout-countdown');
-  const resetBtn     = overlay.querySelector('#sys-timeout-reset');
-
-  let idleTimer = null;
-  let countdownTimer = null;
-  let remaining = COUNTDOWN_SECONDS;
-
-  // ==== Idle tracking ====
-  const activityEvents = ['mousemove','mousedown','keydown','scroll','touchstart','pointerdown','wheel','click'];
-  activityEvents.forEach(ev => document.addEventListener(ev, bumpIdle, {passive:true}));
-
-  function bumpIdle() {
-    // If overlay is visible, we don't auto-dismiss on random activity
-    if (overlay.style.display !== 'flex') {
-      startIdleTimer();
-    }
-  }
-
-  function startIdleTimer() {
-    if (idleTimer) clearTimeout(idleTimer);
-    idleTimer = setTimeout(showTimeout, INACTIVITY_MS);
-  }
-
-  // Start tracking immediately
-  startIdleTimer();
-
-  // ==== Timeout / countdown flow ====
-  function showTimeout() {
-    overlay.style.display = 'flex';
-    remaining = COUNTDOWN_SECONDS;
-    updateCountdownText();
-    if (countdownTimer) clearInterval(countdownTimer);
-    countdownTimer = setInterval(() => {
-      remaining -= 1;
-      updateCountdownText();
-      if (remaining <= 0) {
-        clearInterval(countdownTimer);
-        // Optional: hard logout / clear form / redirect. For now, just keep overlay up.
-        // window.location.reload(); // if you want a hard reset
-      }
-    }, 1000);
-  }
-
-  function hideTimeout() {
-    overlay.style.display = 'none';
-    if (countdownTimer) clearInterval(countdownTimer);
-  }
-
-  function updateCountdownText() {
-    countdownEl.textContent = `00:${String(Math.max(0, remaining)).padStart(2,'0')}`;
-  }
-
-  // ==== Reset button handler ====
-  resetBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    // 1) Reactivate session timers
-    hideTimeout();
-    startIdleTimer();
-
-    // 2) Highlight incomplete fields and open their sections
-    highlightIncompleteAndOpenSections();
-
-    // 3) Scroll to the first incomplete field (if any)
-    const first = document.querySelector('.needs-attn');
-    if (first) {
-      first.scrollIntoView({behavior: 'smooth', block: 'center'});
-      // brief focus for accessibility
-      if (first.focus) { try { first.focus({preventScroll:true}); } catch(_){} }
-    }
-  });
-
-  function highlightIncompleteAndOpenSections() {
-  // clear old highlights
-  document.querySelectorAll('.needs-attn').forEach(el => el.classList.remove('needs-attn'));
-
-  const sections = document.querySelectorAll('.section-content');
-  sections.forEach(sec => {
-    const incompleteFields = getIncompleteFieldsInSection(sec);
-
-    if (incompleteFields.length > 0) {
-      // Open the section if it isn't already open
-      const headerId = sec.dataset.header;
-      if (headerId) {
-        if (typeof window.setSectionOpen === 'function') {
-          window.setSectionOpen(sec.id, headerId, true);
-        } else {
-          sec.setAttribute('data-open','true');
-          const hdr = document.getElementById(headerId);
-          if (hdr) hdr.setAttribute('data-expanded','true');
-        }
-        sec.dataset.sticky = 'true';
-      }
-
-      // ✅ Apply the red border + auto-remove logic
-      incompleteFields.forEach(applyNeedsAttn);
-    }
-  });
-}
-
-  function getIncompleteFieldsInSection(sec) {
-    const fields = [];
-
-    // Prefer your existing completeness function if available
-    if (typeof window.sectionComplete === 'function') {
-      // We assume sectionComplete returns boolean;
-      // if false, we’ll still need to collect per-field misses.
-      // So we fall through to the per-field check below.
-    }
-
-    // Per-field heuristic:
-    // - any [required] or [data-required="true"] input/select/textarea
-    // - empty radios/checkbox groups if none selected
-    const elements = sec.querySelectorAll('input, select, textarea, [data-required="true"]');
-
-    // group radios by name to evaluate as a group
-    const radioGroups = new Map();
-
-    elements.forEach(el => {
-      const isRequired = true; // treat all fields as required for highlight purposes
-
-      if (!isRequired) return;
-
-      if (el.type === 'radio') {
-        const name = el.name || `(anon-radio-${Math.random()})`;
-        if (!radioGroups.has(name)) radioGroups.set(name, []);
-        radioGroups.get(name).push(el);
-      } else if (el.type === 'checkbox') {
-        // If you require at least one checkbox per logical group, add a data-group and handle similarly.
-        if (!el.checked) {
-          // We can’t decide per single checkbox; skip here and rely on a group if you add one.
-        }
-      } else if (el.tagName === 'SELECT') {
-        if (!el.value || el.value === '' || el.value === 'default' || el.value === 'none') {
-          fields.push(el);
-        }
-      } else {
-        // text/textarea/date/etc.
-        if (!el.value || String(el.value).trim() === '') {
-          fields.push(el);
-        }
-      }
-    });
-
-    // Evaluate radio groups
-    radioGroups.forEach(group => {
-      const anyChecked = group.some(r => r.checked);
-      if (!anyChecked) {
-        // highlight the whole group: push the first input (CSS will still show the outline)
-        fields.push(group[0]);
-      }
-    });
-
-    return fields;
-  }
-})();
 
 function applyNeedsAttn(el) {
   // Add to the control
@@ -2428,65 +2314,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Add or update the main table and close popup
-function saveEntry() {
-  // Use selected drug if chosen from results; otherwise free-typed fields
-  if (!selectedDrug) {
-    const chosen = document.querySelector('input[name="searchSelect"]:checked');
-    if (chosen) {
-      const row = chosen.closest("tr");
-      const cells = row.querySelectorAll("td");
-      selectedDrug = {
-        "Drug Name": cells[1]?.textContent?.trim() || "",
-        "Drug Class": cells[2]?.textContent?.trim() || ""
-      };
-    }
-  }
-
-  let drugName, drugClass;
-  if (selectedDrug) {
-    drugName = selectedDrug["Drug Name"];
-    drugClass = selectedDrug["Drug Class"];
-  } else {
-    drugName = (document.getElementById("drugName")?.value || "").trim();
-    drugClass = (document.getElementById("drugClass")?.value || "").trim();
-  }
-  if (!drugName) { alert("Please enter or select a drug name."); return; }
-
-  const body = document.getElementById("tableBody");
-  if (!body) return;
-  // remove "Not Specified"
-  if (body.querySelector("i")) body.innerHTML = "";
-
-  if (selectedRowIndex !== null) {
-    const tr = body.rows[selectedRowIndex];
-    tr.cells[1].textContent = drugName;
-    tr.cells[2].textContent = drugClass;
-  } else {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td><input type="radio" name="selectRow"></td>
-      <td>${drugName}</td>
-      <td>${drugClass}</td>`;
-    body.appendChild(tr);
-  }
-
-  addRowSelectionListeners();
-  enableMedEditDelete();
-  closePopup('popup');        // <-- close correctly
-  selectedDrug = null;
-  selectedRowIndex = null;
-}
-
-function addRowSelectionListeners() {
-  document.querySelectorAll('input[name="selectRow"]').forEach(radio => {
-    if (!radio._hooked) {
-      radio.addEventListener("change", enableMedEditDelete);
-      radio._hooked = true;
-    }
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   const wrap = document.querySelector('.med-actions');
   const table = document.getElementById('medTable');
@@ -2558,44 +2385,6 @@ function openMedPopup(mode) {
   const modal = document.getElementById('popup');
   if (modal) modal.style.display = 'flex';
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const wrap = document.querySelector('.med-actions');
-  if (!wrap) return;
-
-  const addLink = wrap.querySelector('[data-action="add"]');
-  const editLink = wrap.querySelector('[data-action="edit"]');
-  const delLink  = wrap.querySelector('[data-action="delete"]');
-
-  // Start state: Add active, Edit/Delete disabled
-  editLink.classList.add('disabled');
-  delLink.classList.add('disabled');
-
-  // Add → open existing Medication popup (#popup)
-  addLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    const modal = document.getElementById('popup');   // your Medication popup
-    if (modal) modal.style.display = 'flex';          // matches .popup-overlay layout
-  });
-
-  // When a real row is selected, enable Edit/Delete
-  const tbody = document.querySelector('#medTable tbody');
-  if (tbody) {
-    tbody.addEventListener('click', (ev) => {
-      const tr = ev.target.closest('tr'); if (!tr) return;
-      // ignore the "Not Specified" placeholder row
-      if (tr.querySelector('td[colspan]')) return;
-
-      // visual select
-      tbody.querySelectorAll('tr').forEach(r => r.classList.remove('selected'));
-      tr.classList.add('selected');
-
-      editLink.classList.remove('disabled');
-      delLink.classList.remove('disabled');
-    });
-  }
-});
 
 (function () {
   // visible & enabled, and not inside a popup
@@ -2712,6 +2501,53 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(renderProgress, 300);   // after any async fills (Excel/CSV)
   });
 })();
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Prevent accidental form submit on Enter (except in <textarea>)
+  document.addEventListener('keydown', (e) => {
+    const tag = e.target.tagName;
+    if (e.key === 'Enter' && tag !== 'TEXTAREA' && !e.shiftKey) {
+      // allow explicit submit buttons, block implicit submit
+      const isExplicitSubmit =
+        e.target.type === 'submit' ||
+        e.target.closest('button[type=submit], input[type=submit]');
+      if (!isExplicitSubmit) e.preventDefault();
+    }
+  });
+
+  // 2) Keep keystrokes in Event Description from bubbling up (which can collapse the section)
+  const desc = document.getElementById('eventDescription');
+  if (desc) {
+    ['keydown','keypress','keyup','input'].forEach(evt =>
+      desc.addEventListener(evt, ev => ev.stopPropagation())
+    );
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const okBtn = document.querySelector('#popup .action-ok');
+  const dn = document.getElementById('drugName');
+  const dc = document.getElementById('drugClass');
+
+  function updateOK() {
+    const typedReady = dn?.value.trim() && dc?.value.trim();
+    const picked     = document.querySelector('input[name="searchSelect"]:checked');
+    if (okBtn) okBtn.disabled = !(typedReady || picked);
+  }
+
+  dn?.addEventListener('input', updateOK);
+  dc?.addEventListener('input', updateOK);
+  document.getElementById('searchResults')?.addEventListener('change', updateOK);
+
+  // reset state every time the Medication popup opens
+  window.addEventListener('open-med-popup', () => {
+    if (okBtn) okBtn.disabled = true;
+    if (dn) dn.classList.remove('needs-attn'), dn.value = '';
+    if (dc) dc.classList.remove('needs-attn'), dc.value = '';
+    const picked = document.querySelector('input[name="searchSelect"]:checked');
+    if (picked) picked.checked = false;
+  });
+});
 
 </script>
 
