@@ -243,15 +243,17 @@
                     </div>
                 </div>
                 
-                <div class="form-row additional-services-row">
-                    <div style="display: flex; flex-direction: column; min-width: 180px; margin-top: 3%;">
+                <div class="form-row additional-services-row" style="margin-top:4%;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 40px;">
+                    <div style="display:flex; flex-direction:column;">
                         <label for="services" style="font-size: 13px;">Select Additional Services</label>
-                        <div class="dashed-underline" style="width: 160px; margin-top: -1%;"></div>
+                        <div class="dashed-underline" style="width: 160px; margin-top: 0;"></div>
                     </div>
-                    <div style="display: flex; flex-direction: column; justify-content: flex-start;">
-                        <div id="selectedServices" class="selected-services">Not Specified</div>
-                        <a href="#" onclick="openPopup('servicesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                    <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
+                        <div id="selectedServices" class="selected-services" style="margin-left:15%; width: 100%;">Not Specified</div>
+                        <a href="#" onclick="openPopup('servicesPopup')">Add/Edit</a>
                     </div>
+                  </div>
                 </div>
                 
                 <div class="form-section-row" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2%;">
@@ -510,7 +512,7 @@
                       </select>
                   </div>         
                 </div>
-
+          </div>
         <div id="hdrAttach" class="section-header" data-target="secAttach">
             <span class="chev" aria-hidden="true"></span>
             <span>Attachments and Note</span>
@@ -1009,18 +1011,33 @@ function toggleContent(contentId, arrowBoxId) {
         document.getElementById(popupId).style.display = 'none';
     }
 
-    // Function to confirm selection and update the display
     function confirmSelection(popupId, selectedId) {
-        const popup = document.getElementById(popupId);
-        const selectedOptions = Array.from(popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked'))
-            .map(input => {
-                const label = input.closest('.form-group').querySelector('label').innerText;
-                return `${label} - ${input.value}`;
-            })
-            .join('\n');
+      const popup = document.getElementById(popupId);
+      if (!popup) return;
 
-        document.getElementById(selectedId).innerText = selectedOptions || 'Not Specified';
-        closePopup(popupId);
+      const checked = popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+      const items = Array.from(checked).map(inp => {
+        const label = inp.closest('label');
+        if (!label) return inp.value;
+        // get label text without child elements
+        const text = Array.from(label.childNodes).filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent).join(' ').trim();
+        return text || inp.value;
+      });
+
+      const out = document.getElementById(selectedId);
+      if (out) {
+        out.innerText = items.length ? items.join(', ') : 'Not Specified';
+        // ensure multi-line lists render nicely if you prefer:
+        // out.style.whiteSpace = 'pre-line';
+      }
+
+      // re-evaluate surrounding section so it can auto-close if now complete
+      const sec = popup.closest('.section-content') || document.getElementById('secEvent') || document.getElementById('secDetails');
+      if (sec && typeof maybeCloseSection === 'function') {
+        maybeCloseSection(sec);
+      }
+
+      closePopup(popupId);
 }
 
     // Prevent form submission and page reload
@@ -1142,8 +1159,19 @@ document.querySelectorAll('form').forEach(form => {
     });
 });
 
-function openPopup(id){ document.getElementById(id).classList.add('is-open'); }
-function closePopup(id){ document.getElementById(id).classList.remove('is-open'); }
+function openPopup(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.add('is-open');
+  el.style.display = 'block';
+}
+function closePopup(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('is-open');
+  el.style.display = 'none';
+}
+
 
 function clearSearchFields(){
     ['searchMrn','searchLast','searchFirst'].forEach(id=>document.getElementById(id).value='');
@@ -1209,6 +1237,34 @@ function selectPatient(){
   closePopup('searchPopup');
 }
 
+(function () {
+  // Override selectPatient with a safe version
+  const originalSelect = window.selectPatient;
+  window.selectPatient = function () {
+    try {
+      // run your original logic if it exists
+      if (typeof originalSelect === 'function') {
+        originalSelect.apply(this, arguments);
+      } else {
+        // minimal fallback if original isn't present
+        const pick = document.querySelector('input[name="patientPick"]:checked');
+        if (!pick) { alert('Please select a patient.'); return; }
+        const p = (window.patientMaster || []).find(r => String(r.MRN) === String(pick.value)) || {};
+        if (document.getElementById('mrn')) document.getElementById('mrn').value = p.MRN || '';
+      }
+
+      // DO NOT call handleMRNInput() here (not defined on this page).
+      // Instead, prefill from your Excel defaults if available:
+      if (typeof window.prefillFromMRNDefaults === 'function') {
+        try { window.prefillFromMRNDefaults(); } catch (e) { console.warn('prefillFromMRNDefaults failed:', e); }
+      }
+    } catch (e) {
+      console.warn('selectPatient error (continuing to close popup):', e);
+    }
+    // Always close the patient search popup
+    try { window.closePopup && closePopup('searchPopup'); } catch (e) {}
+  };
+})();
 
 function setLocationDropdown(site, location, area){
     const btn = document.getElementById('dropdownMenuButton');
@@ -1254,14 +1310,33 @@ document.getElementById('dynamicMenu').addEventListener('click',()=>{
    if(btn.style.border.includes('red')) btn.style.border='1px solid black';
 });
 
-// ---------- section open/close ----------
+// / ---------- section open/close ----------
 function setSectionOpen(contentId, headerId, open) {
   const c = document.getElementById(contentId);
   const h = document.getElementById(headerId);
   if (!c) return;
-  c.setAttribute('data-open', open ? 'true' : 'false');
-  if (h) h.setAttribute('data-expanded', open ? 'true' : 'false');
+  const isOpen = !!open;
+
+  // state attributes
+  c.setAttribute('data-open', isOpen ? 'true' : 'false');
+  if (h) h.setAttribute('data-expanded', isOpen ? 'true' : 'false');
+
+  // actual visibility (the missing piece)
+  c.style.display = isOpen ? 'block' : 'none';
+
+  // optional a11y niceties
+  if (h) {
+    h.setAttribute('aria-controls', contentId);
+    h.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.section-content').forEach(sec => {
+    const open = sec.getAttribute('data-open') === 'true';
+    setSectionOpen(sec.id, sec.getAttribute('data-header'), open);
+  });
+});
 
 // ---------- visibility & completeness ----------
 function isVisible(el) {
@@ -1286,19 +1361,43 @@ function allVisibleFieldsComplete(sec) {
               .every(f => isFieldComplete(f, sec));
 }
 
-function sectionComplete(sec) {
-  const mode = sec.dataset.mode || 'all';
-  if (mode === 'last' && sec.dataset.trigger) {
-    const trg = sec.querySelector(sec.dataset.trigger);
-    return trg ? isFieldComplete(trg, sec) : false;
+function sectionComplete(sec){
+  const baseOK = allVisibleFieldsComplete(sec); // uses your existing helpers
+
+  if (sec.id === 'secEvent') {
+    // Location must be chosen
+    const locBtn = document.getElementById('dropdownMenuButton');
+    const locOK = locBtn && (
+      locBtn.dataset.autofilled === 'true' ||
+      !/Select Site, Location & Area\/Unit/i.test(locBtn.textContent || '')
+    );
+
+    // OPTIONAL: if you want “Additional Services” to be required, keep this true.
+    const servicesTxt = (document.getElementById('selectedServices')?.textContent || '').trim().toLowerCase();
+    const servicesOK = servicesTxt && servicesTxt !== 'not specified' && servicesTxt !== 'select';
+
+    // make services optional → return baseOK && locOK;
+    return baseOK && locOK && servicesOK; // or drop `&& servicesOK` if not required
   }
-  return allVisibleFieldsComplete(sec);
+
+  if (sec.id === 'secDetails') {
+    const descOK = (document.getElementById('eventDescription')?.value || '').trim().length > 0;
+    const cfTxt  = (document.getElementById('selectedContributingFactors')?.textContent || '')
+                    .trim().toLowerCase();
+    const cfOK   = cfTxt && cfTxt !== 'not specified' && cfTxt !== 'select';
+    const tubeOK = !!document.getElementById('tube')?.value;
+
+    return descOK && cfOK && tubeOK;
+  }
+
+  return baseOK;
 }
 
 // ---------- auto-close logic ----------
 function maybeCloseSection(sec) {
   if (sec.dataset.lock === 'true') return;     // ignore during manual open
-  if (sec.dataset.sticky === 'true') return;   // ignore if manually reopened & sticky
+  if (sec.dataset.sticky === 'true' && !sectionComplete(sec)) return;
+
 
   const delay = +(sec.dataset.delay || 0);
   if (sectionComplete(sec)) {
@@ -1360,7 +1459,7 @@ document.addEventListener('click', (e) => {
 
 (function(){
   // ==== Config ====
-  const INACTIVITY_MS = 1 * 60 * 1000; // 10 minutes idle before timeout appears (change as needed)
+  const INACTIVITY_MS = 40 * 1000; // 10 minutes idle before timeout appears (change as needed)
   const COUNTDOWN_SECONDS = 30;          // grace period before we could auto-logout (you can keep it at 30)
 
   // ==== Create overlay once ====
@@ -1588,34 +1687,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --- SAFETY PATCH: make OK close again and prefill from Excel --- */
-(function () {
-  // Override selectPatient with a safe version
-  const originalSelect = window.selectPatient;
-  window.selectPatient = function () {
-    try {
-      // run your original logic if it exists
-      if (typeof originalSelect === 'function') {
-        originalSelect.apply(this, arguments);
-      } else {
-        // minimal fallback if original isn't present
-        const pick = document.querySelector('input[name="patientPick"]:checked');
-        if (!pick) { alert('Please select a patient.'); return; }
-        const p = (window.patientMaster || []).find(r => String(r.MRN) === String(pick.value)) || {};
-        if (document.getElementById('mrn')) document.getElementById('mrn').value = p.MRN || '';
-      }
-
-      // DO NOT call handleMRNInput() here (not defined on this page).
-      // Instead, prefill from your Excel defaults if available:
-      if (typeof window.prefillFromMRNDefaults === 'function') {
-        try { window.prefillFromMRNDefaults(); } catch (e) { console.warn('prefillFromMRNDefaults failed:', e); }
-      }
-    } catch (e) {
-      console.warn('selectPatient error (continuing to close popup):', e);
-    }
-    // Always close the patient search popup
-    try { window.closePopup && closePopup('searchPopup'); } catch (e) {}
-  };
-})();
 
 (function () {
   // visible & enabled, and not inside a popup
