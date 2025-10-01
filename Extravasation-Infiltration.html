@@ -62,7 +62,7 @@
         <div id="secGEI" class="section-content" data-header="hdrGEI" data-open="true" data-delay="1500">
          <!-- keep ALL the existing inner markup that was inside #collapsibleContent -->
             <form>
-                <div class="form-row">
+               <div class="form-row">
                     <div>
                         <label for="PatientPersonInvolved" style="margin-top: 5px; font-size: 13px; white-space: nowrap;">Patient/Person Involved<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                         <div class="dashed-underline" style="width: 135px;"></div>
@@ -118,7 +118,7 @@
                             <option value=""></option><!-- keeps a blank default -->
                         </select>
                     </div>
-                </div>
+                </div> 
 
                 <div class="form-row">
                     <div style="margin-top: -1.6%;">
@@ -206,6 +206,18 @@
                         <option value="level4">Level 4-Death</option>
                       </select>
                     </div>
+                    <div class="form-row" div id="injuryBanner" style="display: none; flex-direction: column; flex: 1; margin-top: 2%;">
+                        <div id="injuryBanner" style="display: flex; flex-direction: column;">
+                            <label style="font-size: 13px;">Injury incurred?<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                            <div class="dashed-underline" style="width: 100px; margin-top: -4%;"></div>
+                            <div id="injuryRadios" style="display: flex; gap: 10px; font-size: 11px;" required>
+                                <input type="radio" id="injuryYes" name="injuryIncurred" value="yes">
+                                <label for="injuryYes">Yes</label>
+                                <input type="radio" id="injuryNo" name="injuryIncurred" value="no">
+                                <label for="injuryNo">No</label>
+                            </div>
+                        </div>
+                    </div>
  
                 </div>
                
@@ -247,7 +259,7 @@
                   </div>
                 </div>
                 
-                <div class="form-section-row" style="display: flex; margin-top: 4%;">
+                <div class="form-section-row" style="display:flex; flex-wrap:wrap; margin-top:5%;">
                     
                     <!-- EHR/System Related -->
                     <div class="form-row" id="systemRow" style="display: flex; flex-direction: column; flex: 1; margin-top: 1%;">
@@ -298,7 +310,7 @@
                                 <label for="malfunctionUnknown">Unknown/Unsure</label>
                             </div>
                         </div>
-                        <div id="malfunctionGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
+                        <div id="malfunctionGrid" style="display: none;">
                             <div style="display: flex; flex-direction: column;">
                                 <label style="font-size: 13px;">Equipment Malfunction</label>
                                 <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
@@ -306,21 +318,69 @@
                             <div style="display: flex; flex-direction: column;">
                                 <label for="malcategory" style="font-size: 13px;">Equipment Category</label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malcategory" style="margin-top: 1px;">
+                                <select id="malcategory" name="malcategory" style="margin-top: 1px; font-size: 13px;">
                                     <option value=""> </option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="unknown">Unknown/UnSure</option>
+                                    <option value="Medical Device (not disposable)">Medical Device (not disposable)</option>
+                                    <option value="Single Use Items (disposable)">Single Use Items (disposable)</option>
+                                    <option value="Omnicell">Omnicell</option>
+                                    <option value="Furniture (for Beds use Medical Device)">Furniture (for Beds use Medical Device)</option>
+                                    <option value="Pneumatic Tube">Pneumatic Tube</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                             <div style="display: flex; flex-direction: column;">
                                 <label for="malequipment" style="font-size: 13px;">Equipment Type</label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malequipment" style="margin-top: 1px;">
+                                <select id="malequipment" name="malequipment" style="margin-top: 1px; font-size: 13px;">
                                     <option value=""> </option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="unknown">Unknown/UnSure</option>
+                                    <option value="Beds">Beds</option>
+                                    <option value="Blood Pressure (BP)/ Vital Sign Monit.">Blood Pressure (BP)/ Vital Sign Monit.</option>
+                                    <option value="Cardiac - Defibrillators">Cardiac - Defibrillators</option>
+                                    <option value="Cardiac - EKG (Electrocardiographs)">Cardiac - EKG (Electrocardiographs)</option>
+                                    <option value="Cardiac - Other">Cardiac - Other</option>
+                                    <option value="Cardiac - Pacemaker">Cardiac - Pacemaker</option>
+                                    <option value="Collection Tubes">Collection Tubes</option>
+                                    <option value="Dental">Dental</option>
+                                    <option value="Dialysis">Dialysis</option>
+                                    <option value="Endoscope: Flexible scopes and other">Endoscope: Flexible scopes and other</option>
+                                    <option value="Glucometer">Glucometer</option>
+                                    <option value="Lab: Analyzers">Lab: Analyzers</option>
+                                    <option value="Lab: General and Other">Lab: General and Other</option>
+                                    <option value="Laser">Laser</option>
+                                    <option value="Microscope">Microscope</option>
+                                    <option value="Neurological">Neurological</option>
+                                    <option value="Ophthalmologic">Ophthalmologic</option>
+                                    <option value="OR/Surgical: ESU/Ablation">OR/Surgical: ESU/Ablation</option>
+                                    <option value="OR/Surgical: Other">OR/Surgical: Other</option>
+                                    <option value="OR/Surgical: Robot">OR/Surgical: Robot</option>
+                                    <option value="OR/Surgical: Robotic Instrument">OR/Surgical: Robotic Instrument</option>
+                                    <option value="Patient Transport: Lifts, stretchers, wh">Patient Transport: Lifts, stretchers, wh</option>
+                                    <option value="Pharmaceutical Equipment">Pharmaceutical Equipment</option>
+                                    <option value="Physical Therapy">Physical Therapy</option>
+                                    <option value="Physiological Monitoring">Physiological Monitoring</option>
+                                    <option value="Pump: CADD Solis PCA (pain)">Pump: CADD Solis PCA (pain)</option>
+                                    <option value="Pump: CADD Solis VIP (chemo)">Pump: CADD Solis VIP (chemo)</option>
+                                    <option value="Pumps: Infusion Other">Pumps: Infusion Other</option>
+                                    <option value="Pumps: Feeding">Pumps: Feeding</option>
+                                    <option value="Pumps: Infusion">Pumps: Infusion</option>
+                                    <option value="Pumps: Infusion Alaris">Pumps: Infusion Alaris</option>
+                                    <option value="Pumps: Other">Pumps: Other</option>
+                                    <option value="Pumps: PCA">Pumps: PCA</option>
+                                    <option value="Pumps: Syringe">Pumps: Syringe</option>
+                                    <option value="Radiation Oncology">Radiation Oncology</option>
+                                    <option value="Radiology: Imaging and X-Ray">Radiology: Imaging and X-Ray</option>
+                                    <option value="Respiratory: other">Respiratory: other</option>
+                                    <option value="Respiratory: Ventilator">Respiratory: Ventilator</option>
+                                    <option value="Scales">Scales</option>
+                                    <option value="SKI Research">SKI Research</option>
+                                    <option value="Specimen Collection">Specimen Collection</option>
+                                    <option value="Sterilization/High-Level Disinfection">Sterilization/High-Level Disinfection</option>
+                                    <option value="Stirrups">Stirrups</option>
+                                    <option value="Transport Container">Transport Container</option>
+                                    <option value="Ultrasound Units with transducers an.">Ultrasound Units (with transducers an.)</option>
+                                    <option value="Warmers">Warmers</option>
+                                    <option value="Workstations">Workstations</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>
@@ -350,7 +410,7 @@
                     </div>
                 </div>    
 
-                <div class="popup" id="servicesPopup">
+                <div class="popup" id="servicesPopup" data-required="true">
                   <div class="popup-header">
                     <span>Select additional services to receive alerts</span>            
                   </div>
@@ -471,7 +531,7 @@
                   </div>
                 </div>
 
-                <div class="popup" id="contributingFactorsPopup">
+                <div class="popup" id="contributingFactorsPopup" data-required="true">
                   <div class="popup-header">
                     <span>Contributing Factors</span>            
                   </div>
@@ -489,7 +549,7 @@
                   </div>
                 </div>  
                 
-                <div class="popup" id="signsPopup">
+                <div class="popup" id="signsPopup" data-required="true">
                   <div class="popup-header">
                     <span>Signs, Symptoms, and Responses</span>            
                   </div>
@@ -653,7 +713,12 @@
                               <input type="text" id="drugClass">
                           </div>
                   
-                          <div class="search-medication" onclick="performSearch()" style="margin-top: 2%;">Search Medication</div>
+                          <button style="margin-top: 2%;" type="button"
+                                  class="btn btn-primary btn-sm search-medication"
+                                  onclick="performSearch()">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Search Medication
+                          </button>
                   
                           <table id="searchResults" class="search-table">
                               <thead>
@@ -1539,24 +1604,25 @@ function toggleContent(contentId, arrowBoxId) {
         });
     });
 
-function malfunctionSection(value) {
-    const initial = document.getElementById('malfunctionInitial');
-    const grid = document.getElementById('malfunctionGrid');
-    const radios = document.getElementById('malfunctionRadios');
+function malfunctionSection(value){
+  const initial = document.getElementById('malfunctionInitial');
+  const grid    = document.getElementById('malfunctionGrid');
+  const radios  = document.getElementById('malfunctionRadios');
+  const irbCol  = document.querySelector('#irbpro')?.closest('.form-row');
+  const row     = document.querySelector('#malfunctionRow')?.closest('.form-section-row');
 
-    if (value === 'yes' || value === 'unknown') {
-        initial.style.display = 'none';
-        grid.style.display = 'grid';
-        grid.children[0].appendChild(radios);
-        radios.style.marginTop = '8px';
-        radios.style.flexDirection = 'row';
-    } else {
-        initial.style.display = 'flex';
-        grid.style.display = 'none';
-        initial.appendChild(radios);
-        radios.style.marginTop = '0';
-        radios.style.flexDirection = 'row';
-    }
+  if (value === 'yes' || value === 'unknown') {
+    initial.style.display = 'none';
+    grid.style.display = 'grid';                 // show 3-col grid
+    grid.children[0].appendChild(radios);        // keep radios with the label
+    if (row)   row.style.flexWrap = 'wrap';      // safety, ensure wrapping is on
+    if (irbCol) irbCol.style.flex = '0 0 100%';  // IRB takes whole line
+  } else {
+    initial.style.display = 'flex';
+    grid.style.display = 'none';
+    initial.appendChild(radios);
+    if (irbCol) irbCol.style.flex = '1 1 0';     // IRB returns to normal
+  }
 }
 
 
@@ -1634,16 +1700,25 @@ function openPopup(id){
     const popup = document.getElementById(popupId);
     if (!popup) return;
 
-    // collect checked boxes/radios inside this popup
-    const checked = popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+    // gather selections inside this popup
+    const checked = popup.querySelectorAll(
+      'input[type="checkbox"]:checked, input[type="radio"]:checked'
+    );
 
+    // if popup is marked required, enforce at least one selection
+    if (popup.dataset.required === "true" && checked.length === 0) {
+      alert("Please select at least one option.");
+      return; // <-- keep the popup open
+    }
+
+    // build display text from labels (fallback to input values)
     const items = Array.from(checked).map(inp => {
-      const lbl = inp.closest('label');
+      const lbl = inp.closest("label");
       if (lbl) {
         const text = Array.from(lbl.childNodes)
           .filter(n => n.nodeType === Node.TEXT_NODE)
           .map(n => n.textContent)
-          .join(' ')
+          .join(" ")
           .trim();
         return text || inp.value;
       }
@@ -1651,9 +1726,12 @@ function openPopup(id){
     });
 
     const out = document.getElementById(selectedId);
-    if (out) out.innerText = items.length ? items.join(', ') : 'Not Specified';
+    if (out) {
+      out.textContent = items.length ? "• " + items.join("\n• ") : "Not Specified";
+    }
 
-    closePopup(popupId); // actually closes the popup
+
+    closePopup(popupId); // only closes after a valid selection or if not required
   }
 
 
@@ -2198,6 +2276,36 @@ function isFieldAnswered(el) {
   return !!(el.value && String(el.value).trim() !== '');
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const severity   = document.getElementById('severityLevel');
+  const banner     = document.getElementById('injuryBanner');
+  const yes        = document.getElementById('injuryYes');
+  const no         = document.getElementById('injuryNo');
+
+  const TRIGGER = new Set(['level2','level3','level4']);
+
+  function showInjuryRow(show){
+    if (!banner) return;
+    banner.style.display = show ? 'flex' : 'none';  // inline row
+    if (!show) {
+      if (yes) yes.checked = false;
+      if (no)  no.checked  = false;
+    }
+  }
+
+  function onSeverityChange(){
+    showInjuryRow(TRIGGER.has(severity?.value || ''));
+  }
+
+  if (severity) {
+    severity.addEventListener('change', onSeverityChange);
+    onSeverityChange(); // initialize on load
+  }
+
+  // If you previously wired injuryYes/injuryNo to open another section, neutralize it:
+  yes && yes.addEventListener('change', e => e.stopPropagation());
+  no  && no .addEventListener('change', e => e.stopPropagation());
+})
 
 document.addEventListener('DOMContentLoaded', () => {
   const mrnEl = document.getElementById('mrn');
@@ -2483,193 +2591,6 @@ function isEventSectionComplete(sectionEl) {
       return _sectionComplete(sec);
     };
   }
-})();
-
-
-(function(){
-  // ==== Config ====
-  const INACTIVITY_MS = 10 * 1000; // 10 minutes idle before timeout appears (change as needed)
-  const COUNTDOWN_SECONDS = 30;          // grace period before we could auto-logout (you can keep it at 30)
-
-  // ==== Create overlay once ====
-  const overlay = document.createElement('div');
-  overlay.id = 'sys-timeout-overlay';
-  overlay.innerHTML = `
-    <div id="sys-timeout-card" role="dialog" aria-modal="true" aria-labelledby="sys-timeout-title">
-      <h2 id="sys-timeout-title">System Timeout</h2>
-      <p>Your session has been idle. Click reset to continue.</p>
-      <div id="sys-timeout-countdown">00:${String(COUNTDOWN_SECONDS).padStart(2,'0')}</div>
-      <button id="sys-timeout-reset" type="button">Reset Now</button>
-    </div>`;
-  document.body.appendChild(overlay);
-
-  const countdownEl = overlay.querySelector('#sys-timeout-countdown');
-  const resetBtn     = overlay.querySelector('#sys-timeout-reset');
-
-  let idleTimer = null;
-  let countdownTimer = null;
-  let remaining = COUNTDOWN_SECONDS;
-
-  // ==== Idle tracking ====
-  const activityEvents = ['mousemove','mousedown','keydown','scroll','touchstart','pointerdown','wheel','click'];
-  activityEvents.forEach(ev => document.addEventListener(ev, bumpIdle, {passive:true}));
-
-  function bumpIdle() {
-    // If overlay is visible, we don't auto-dismiss on random activity
-    if (overlay.style.display !== 'flex') {
-      startIdleTimer();
-    }
-  }
-
-  function startIdleTimer() {
-    if (idleTimer) clearTimeout(idleTimer);
-    idleTimer = setTimeout(showTimeout, INACTIVITY_MS);
-  }
-
-  // Start tracking immediately
-  startIdleTimer();
-
-  // ==== Timeout / countdown flow ====
-  function showTimeout() {
-    overlay.style.display = 'flex';
-    remaining = COUNTDOWN_SECONDS;
-    updateCountdownText();
-    if (countdownTimer) clearInterval(countdownTimer);
-    countdownTimer = setInterval(() => {
-      remaining -= 1;
-      updateCountdownText();
-      if (remaining <= 0) {
-        clearInterval(countdownTimer);
-        // Optional: hard logout / clear form / redirect. For now, just keep overlay up.
-        // window.location.reload(); // if you want a hard reset
-      }
-    }, 1000);
-  }
-
-  function hideTimeout() {
-    overlay.style.display = 'none';
-    if (countdownTimer) clearInterval(countdownTimer);
-  }
-
-  function updateCountdownText() {
-    countdownEl.textContent = `00:${String(Math.max(0, remaining)).padStart(2,'0')}`;
-  }
-
-  // ==== Reset button handler ====
-  resetBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    // 1) Reactivate session timers
-    hideTimeout();
-    startIdleTimer();
-
-    // 2) Highlight incomplete fields and open their sections
-    highlightIncompleteAndOpenSections();
-
-    // 3) Scroll to the first incomplete field (if any)
-    const first = document.querySelector('.needs-attn');
-    if (first) {
-      first.scrollIntoView({behavior: 'smooth', block: 'center'});
-      // brief focus for accessibility
-      if (first.focus) { try { first.focus({preventScroll:true}); } catch(_){} }
-    }
-  });
-
-  function highlightIncompleteAndOpenSections() {
-  // clear old highlights
-  document.querySelectorAll('.needs-attn').forEach(el => el.classList.remove('needs-attn'));
-
-  const sections = document.querySelectorAll('.section-content');
-  sections.forEach(sec => {
-    const incompleteFields = getIncompleteFieldsInSection(sec);
-
-    if (incompleteFields.length > 0) {
-      // Open the section if it isn't already open
-      const headerId = sec.dataset.header;
-      if (headerId) {
-        if (typeof window.setSectionOpen === 'function') {
-          window.setSectionOpen(sec.id, headerId, true);
-        } else {
-          sec.setAttribute('data-open','true');
-          const hdr = document.getElementById(headerId);
-          if (hdr) hdr.setAttribute('data-expanded','true');
-        }
-        sec.dataset.sticky = 'true';
-      }
-
-      // ✅ Apply the red border + auto-remove logic
-      incompleteFields.forEach(applyNeedsAttn);
-    }
-  });
-}
-
-// Treat placeholder-y values as empty
-function isSelectEmpty(sel){
-  if (!sel) return false;
-  const v = (sel.value || '').trim().toLowerCase();
-  if (!v || v === 'default' || v === 'none' || v === 'select' || v === 'choose') return true;
-  const opt = sel.options[sel.selectedIndex];
-  return !!(opt && (opt.disabled || /^(select|choose|\-\-)/.test(opt.text.trim().toLowerCase())));
-}
-
-function getIncompleteFieldsInSection(sec){
-  const fields = [];
-  const elements = sec.querySelectorAll('input, select, textarea, [data-required="true"]');
-
-  const radioGroups = new Map();
-  const checkboxGroups = new Map();
-
-  const visible = el =>
-    !el.disabled &&
-    el.offsetParent !== null &&
-    getComputedStyle(el).visibility !== 'hidden';
-
-  const checkboxKey = el => {
-    const wrap = el.closest('.checkbox-group, .field-row, [data-group]');
-    if (wrap?.dataset?.group) return `ds:${wrap.dataset.group}`;
-    if (wrap?.id) return `id:${wrap.id}`;
-    if (el.name) return `name:${el.name}`;
-    return `node:${(wrap || el.parentElement)?.outerHTML?.length || 0}-${(wrap || el.parentElement)}`;
-  };
-
-  elements.forEach(el => {
-    const isRequired = true;                 // timeout highlight considers all
-    if (!isRequired || !visible(el)) return;
-
-    if (el.type === 'radio') {
-      const name = el.name || `(anon-radio-${Math.random()})`;
-      if (!radioGroups.has(name)) radioGroups.set(name, []);
-      radioGroups.get(name).push(el);
-    } else if (el.type === 'checkbox') {
-      const key = checkboxKey(el);
-      if (!checkboxGroups.has(key)) checkboxGroups.set(key, []);
-      checkboxGroups.get(key).push(el);
-    } else if (el.tagName === 'SELECT') {
-      const v = (el.value || '').trim().toLowerCase();
-      if (!v || v === 'default' || v === 'none') fields.push(el);
-    } else {
-      if (!el.value || String(el.value).trim() === '') fields.push(el);
-    }
-  });
-
-  // 🔴 special-case: the Interventions multiselect wrapper
-  sec.querySelectorAll('.ms-multiselect[data-required="true"]').forEach(wrap => {
-    if (!visible(wrap)) return;
-    const anyChecked = wrap.querySelector('.ms-list input[type="checkbox"]:checked');
-    if (!anyChecked) {
-      // push its trigger so we can style/clear it easily
-      fields.push(wrap.querySelector('.ms-trigger') || wrap);
-    }
-  });
-
-  // finish radios/checkbox groups
-  radioGroups.forEach(group => { if (!group.some(r => r.checked)) fields.push(group[0]); });
-  checkboxGroups.forEach(group => { if (!group.some(c => c.checked)) fields.push(group[0]); });
-
-  return fields;
-}
-
 })();
 
 function applyNeedsAttn(el){
