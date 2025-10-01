@@ -429,7 +429,7 @@
                 </div>    
 
                 <!-- Add form content for the confidential section here -->
-                <div class="popup" id="servicesPopup">
+                <div class="popup" id="servicesPopup" data-required="true">
                   <div class="popup-header">
                     <span>Select additional services to receive alerts</span>            
                   </div>
@@ -535,7 +535,7 @@
                   </div>
                 </div>
 
-                <div class="popup" id="contributingFactorsPopup">
+                <div class="popup" id="contributingFactorsPopup" data-required="true">
                   <div class="popup-header">
                     <span>Contributing Factors</span>            
                   </div>
@@ -1305,27 +1305,42 @@ function toggleContent(contentId, arrowBoxId) {
         document.getElementById(popupId).style.display = 'none';
     }
 
-    // Function to confirm selection and update the display
-function confirmSelection(popupId, selectedId) {
-  const popup = document.getElementById(popupId);
-  const chosen = Array.from(
-    popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked')
-  ).map(input => {
-    // get the visible text next to the input
-    const labelEl =
-      input.closest('label') ||
-      popup.querySelector(`label[for="${input.id}"]`) ||
-      input.parentElement;
-    const text = (labelEl?.innerText || input.value || '').trim();
-    return text;
-  }).join('\n');
+  function confirmSelection(popupId, selectedId) {
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
 
-  const out = document.getElementById(selectedId);
+    // gather selections inside this popup
+    const checked = popup.querySelectorAll(
+      'input[type="checkbox"]:checked, input[type="radio"]:checked'
+    );
+
+    // if popup is marked required, enforce at least one selection
+    if (popup.dataset.required === "true" && checked.length === 0) {
+      alert("Please select at least one option.");
+      return; // <-- keep the popup open
+    }
+
+    // build display text from labels (fallback to input values)
+    const items = Array.from(checked).map(inp => {
+      const lbl = inp.closest("label");
+      if (lbl) {
+        const text = Array.from(lbl.childNodes)
+          .filter(n => n.nodeType === Node.TEXT_NODE)
+          .map(n => n.textContent)
+          .join(" ")
+          .trim();
+        return text || inp.value;
+      }
+      return inp.value;
+    });
+
+    const out = document.getElementById(selectedId);
     if (out) {
       out.textContent = items.length ? "• " + items.join("\n• ") : "Not Specified";
     }
-  closePopup(popupId);
-}
+
+    closePopup(popupId); // only closes after a valid selection or if not required
+  }
 
 
     // Prevent form submission and page reload
