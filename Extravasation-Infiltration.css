@@ -179,14 +179,18 @@ html, body {
     flex-wrap: wrap;
     align-items: flex-start;
     margin-top: 25px;
+    gap: 10px;
 }
-.form-row div {
-    flex: none;
-    margin-right: 20px;
+/* scope to direct children so nested grid cells aren't affected */
+
+#malfunctionGrid {
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;  /* 3 equal columns */
+  gap: 16px;
+  width: 100%;
+  margin-top: 30px; /* match Surgery */
 }
-.form-row div:last-child {
-    margin-right: 0;
-}
+
 .form-row label {
     display: block;
     margin-bottom: 5px;
