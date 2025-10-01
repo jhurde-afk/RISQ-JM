@@ -992,3 +992,4 @@ select.is-invalid,
   display: flex !important;   /* flex so the footer can pin to bottom */
   flex-direction: column;
 }
+
