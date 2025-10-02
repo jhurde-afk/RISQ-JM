@@ -383,10 +383,27 @@
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="inventorynum" style="font-size: 13px;">MSK Inventory/Optime #<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems" style="height: 40%;">
+                            </div>
+                            <div style="display: flex; flex-direction: column; margin-left: 10%;">
+                              <label style="font-size: 13px;">Device Removed From Use<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                              <div class="dashed-underline" style="width: 120px; margin-top: 0%;"></div>
+                              <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
+                                  <input type="radio" id="intentionalFallYes" name="intentionalFall" value="yes" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallYes">Yes</label>
+                                  <input type="radio" id="intentionalFallNo" name="intentionalFall" value="no" checked onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallNo">No</label>
+                                  <input type="radio" id="intentionalFallUnsure" name="intentionalFall" value="no" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallUnsure">Unknown/Unsure</label>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <!-- IRB Protocol -->
-                    <div class="form-row" style="display: flex; flex-direction: column; flex: 1; margin-left: 25px; margin-top: -1%;"> 
+                    <div class="form-row" style="display: flex; flex-direction: column; flex: 1; margin-left: 25px; margin-top: -1%; gap: 20px;"> 
                         <div id="irbpro" style="display: flex; align-items: center; margin-top: 3%;">
                             <div style="display: flex; flex-direction: column;">
                                 <label style="font-size: 13px;">IRB Protocol?</label>
@@ -399,11 +416,11 @@
                                 </div>
                             </div>        
 
-                            <div id="IRBSection" style="display: none; align-items: center; gap: 8px; margin-top: 3%;">
+                            <div id="IRBSection" style="display: none; align-items: center; gap: 8px; margin-top: 3%; margin-left: 8%;">
                                 <div style="display: flex; flex-direction: column;">    
                                     <label for="IRBno" style="font-size: 13px;">IRB #</label>
                                     <div class="dashed-underline" style="width: 60px; margin-top: 0%;"></div>
-                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%;">
+                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%; height: 40%;">
                                 </div>
                             </div>    
                         </div>
