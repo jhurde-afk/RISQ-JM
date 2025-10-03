@@ -321,13 +321,13 @@
                         </div>
                         <div id="malfunctionGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
                             <div style="display: flex; flex-direction: column;">
-                                <label style="font-size: 13px;">Equipment Malfunction</label>
+                                <label style="font-size: 13px;"> Equipment Malfunction<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <label for="malcategory" style="font-size: 13px;">Equipment Category</label>
+                                <label for="malcategory" style="font-size: 13px;"> Equipment Category<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malcategory" style="margin-top: 1px; font-size: 13px;">
+                                <select name="malcategory" style="margin-top: 1px; font-size: 13px;" required>
                                     <option value=""> </option>
                                     <option value="Medical Device (not disposable)">Medical Device (not disposable)</option>
                                     <option value="Single Use Items (disposable)">Single Use Items (disposable)</option>
@@ -338,9 +338,9 @@
                                 </select>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <label for="malequipment" style="font-size: 13px;">Equipment Type</label>
+                                <label for="malequipment" style="font-size: 13px;"> Equipment Type<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malequipment" style="margin-top: 1px; font-size: 13px;">
+                                <select name="malequipment" style="margin-top: 1px; font-size: 13px;" required>
                                     <option value=""> </option>
                                     <option value="Beds">Beds</option>
                                     <option value="Blood Pressure (BP)/ Vital Sign Monit.">Blood Pressure (BP)/ Vital Sign Monit.</option>
@@ -393,14 +393,14 @@
                                 </select>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <label for="inventorynum" style="font-size: 13px;">MSK Inventory/Optime #<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                                <label for="inventorynum" style="font-size: 13px;"> MSK Inventory/Optime #<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <input type="text" id="systems" name="systems">
+                                <input type="text" id="systems" name="systems" style="height: 40%;" required>
                             </div>
                             <div style="display: flex; flex-direction: column;">
                               <label style="font-size: 13px;">Device Removed From Use<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                               <div class="dashed-underline" style="width: 120px; margin-top: 0%;"></div>
-                              <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
+                              <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;" required>
                                   <input type="radio" id="intentionalFallYes" name="intentionalFall" value="yes" onchange="toggleVendorSection(this.value)">
                                   <label for="intentionalFallYes">Yes</label>
                                   <input type="radio" id="intentionalFallNo" name="intentionalFall" value="no" checked onchange="toggleVendorSection(this.value)">
