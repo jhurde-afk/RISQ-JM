@@ -254,7 +254,7 @@
                   </div>
                 </div>
                 
-                <div class="form-section-row" style="display: flex; margin-top: 4%;">
+                <div class="form-section-row" style="display:flex; flex-wrap:wrap; margin-top:5%;">
                     <div class="form-row" id="processRow" style="display: flex; flex-direction: column; flex: 1; font-size: 11px; margin-top: -0.5%;">
                       <div id="processQues" style="display: flex; flex-direction: column;">
                           <label style="font-size: 13px; white-space:nowrap; display:inline-block; width:max-content;">Where in the process did event occur? <span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
@@ -273,7 +273,7 @@
                       </div>
                     
                     <!-- EHR/System Related -->
-                    <div class="form-row" id="systemRow" style="display: flex; flex-direction: column; flex: 1; margin-top: 1%; margin-left: 4%;">
+                    <div class="form-row" id="systemRow" style="display: flex; flex-direction: column; flex: 1; margin-top: 1%; margin-left: 5%;">
                         <div id="systemInitial" style="display: flex; flex-direction: column;">
                             <label style="font-size: 13px;">EHR/System Related</label>
                             <div class="dashed-underline" style="width: 150px; margin-top: -2%;"></div>
@@ -286,29 +286,55 @@
                                 <label for="systemUnknown">Unknown/Unsure</label>
                             </div>
                         </div>
-                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
+                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px; margin-left: -7%; margin-bottom: 2%;">
                             <div style="display: flex; flex-direction: column;">
                                 <label style="font-size: 13px;">EHR/System Related</label>
-                                <div class="dashed-underline" style="width: 150px; margin-top: -3%;"></div>
+                                <div class="dashed-underline" style="width: 150px; margin-top: -1%;"></div>
                             </div>
-                            <div style="display: flex; flex-direction: column;">
+                            <div style="display: flex; flex-direction: column; margin-top: -2%;">
                                 <label for="sysCategory" style="font-size: 13px;">Help Desk Ticket #</label>
-                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <input type="text" id="systems" name="systems">
+                                <div class="dashed-underline" style="width: 125px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems" style="height: 45%;">
                             </div>
-                            <div style="display: flex; flex-direction: column;">
+                            <div style="display: flex; flex-direction: column; margin-top: -2%;">
                                 <label for="sysType" style="font-size: 13px;">System</label>
-                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="sysType" style="margin-top: 1px;">
+                                <div class="dashed-underline" style="width: 110px; margin-top: -1%;"></div>
+                                <select name="sysType" style="margin-top: 1px; font-size: 13px;">
                                     <option value=""> </option>
-                                    <option value="X">X</option>
-                                    <option value="Y">Y</option>
+                                    <option value="Ambulatory">Ambulatory</option>
+                                    <option value="Anesthesia module">Anesthesia module</option>
+                                    <option value="ASAP">ASAP</option>
+                                    <option value="Beacon">Beacon</option>
+                                    <option value="Beaker">Beaker</option>
+                                    <option value="Bugsy (infection control)">Bugsy (infection control)</option>
+                                    <option value="Cadence">Cadence</option>
+                                    <option value="Care Everywhere & MSKCare Link">Care Everywhere & MSKCare Link</option>
+                                    <option value="ClinDoc">ClinDoc</option>
+                                    <option value="Cupid">Cupid</option>
+                                    <option value="Grand Central">Grand Central</option>
+                                    <option value="Healthy Planet">Healthy Planet</option>
+                                    <option value="HIM">HIM</option>
+                                    <option value="Hospital Billing">Hospital Billing</option>
+                                    <option value="MyChart/Welcome">MyChart/Welcome</option>
+                                    <option value="Optime">Optime</option>
+                                    <option value="Orders">Orders</option>
+                                    <option value="Patient Access">Patient Access</option>
+                                    <option value="Professional Billing">Professional Billing</option>
+                                    <option value="Radiant">Radiant</option>
+                                    <option value="Research">Research</option>
+                                    <option value="Willow Ambulatory">Willow Ambulatory</option>
+                                    <option value="Willow Inpatient">Willow Inpatient</option>
+                                    <option value="Other">Other</option>
+                                    <option value="Unknown">Unknown</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+                    <!-- new placeholder that will sit on the second row -->
+                    <div id="systemSecondRow" class="form-row" style="display:flex; flex-direction:column; flex:1 1 0;"></div>
+
                     <!-- Equipment Malfunction -->
-                    <div class="form-row" id="malfunctionRow" style="display: flex; flex-direction: column; flex: 1; margin-right: 4%; margin-top: -1.5%;">
+                    <div class="form-row" id="malfunctionRow" style="display: flex; flex-direction: column; flex: 1; margin-right: -4%; margin-top: -1%;">
                         <div id="malfunctionInitial" style="display: flex; flex-direction: column;">
                             <label style="font-size: 13px;">Equipment Malfunction<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                             <div class="dashed-underline" style="width: 150px; margin-top: -1%;"></div>
@@ -323,38 +349,99 @@
                         </div>
                         <div id="malfunctionGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
                             <div style="display: flex; flex-direction: column;">
-                                <label style="font-size: 13px;">Equipment Malfunction</label>
+                                <label style="font-size: 13px;"> Equipment Malfunction<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <label for="malcategory" style="font-size: 13px;">Equipment Category</label>
+                                <label for="malcategory" style="font-size: 13px;"> Equipment Category<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malcategory" style="margin-top: 1px;">
+                                <select name="malcategory" style="margin-top: 1px; font-size: 13px;" required>
                                     <option value=""> </option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="unknown">Unknown/UnSure</option>
+                                    <option value="Medical Device (not disposable)">Medical Device (not disposable)</option>
+                                    <option value="Single Use Items (disposable)">Single Use Items (disposable)</option>
+                                    <option value="Omnicell">Omnicell</option>
+                                    <option value="Furniture (for Beds use Medical Device)">Furniture (for Beds use Medical Device)</option>
+                                    <option value="Pneumatic Tube">Pneumatic Tube</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <label for="malequipment" style="font-size: 13px;">Equipment Type</label>
+                                <label for="malequipment" style="font-size: 13px;"> Equipment Type<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malequipment" style="margin-top: 1px;">
+                                <select name="malequipment" style="margin-top: 1px; font-size: 13px;" required>
                                     <option value=""> </option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="unknown">Unknown/UnSure</option>
+                                    <option value="Beds">Beds</option>
+                                    <option value="Blood Pressure (BP)/ Vital Sign Monit.">Blood Pressure (BP)/ Vital Sign Monit.</option>
+                                    <option value="Cardiac - Defibrillators">Cardiac - Defibrillators</option>
+                                    <option value="Cardiac - EKG (Electrocardiographs)">Cardiac - EKG (Electrocardiographs)</option>
+                                    <option value="Cardiac - Other">Cardiac - Other</option>
+                                    <option value="Cardiac - Pacemaker">Cardiac - Pacemaker</option>
+                                    <option value="Collection Tubes">Collection Tubes</option>
+                                    <option value="Dental">Dental</option>
+                                    <option value="Dialysis">Dialysis</option>
+                                    <option value="Endoscope: Flexible scopes and other">Endoscope: Flexible scopes and other</option>
+                                    <option value="Glucometer">Glucometer</option>
+                                    <option value="Lab: Analyzers">Lab: Analyzers</option>
+                                    <option value="Lab: General and Other">Lab: General and Other</option>
+                                    <option value="Laser">Laser</option>
+                                    <option value="Microscope">Microscope</option>
+                                    <option value="Neurological">Neurological</option>
+                                    <option value="Ophthalmologic">Ophthalmologic</option>
+                                    <option value="OR/Surgical: ESU/Ablation">OR/Surgical: ESU/Ablation</option>
+                                    <option value="OR/Surgical: Other">OR/Surgical: Other</option>
+                                    <option value="OR/Surgical: Robot">OR/Surgical: Robot</option>
+                                    <option value="OR/Surgical: Robotic Instrument">OR/Surgical: Robotic Instrument</option>
+                                    <option value="Patient Transport: Lifts, stretchers, wh">Patient Transport: Lifts, stretchers, wh</option>
+                                    <option value="Pharmaceutical Equipment">Pharmaceutical Equipment</option>
+                                    <option value="Physical Therapy">Physical Therapy</option>
+                                    <option value="Physiological Monitoring">Physiological Monitoring</option>
+                                    <option value="Pump: CADD Solis PCA (pain)">Pump: CADD Solis PCA (pain)</option>
+                                    <option value="Pump: CADD Solis VIP (chemo)">Pump: CADD Solis VIP (chemo)</option>
+                                    <option value="Pumps: Infusion Other">Pumps: Infusion Other</option>
+                                    <option value="Pumps: Feeding">Pumps: Feeding</option>
+                                    <option value="Pumps: Infusion">Pumps: Infusion</option>
+                                    <option value="Pumps: Infusion Alaris">Pumps: Infusion Alaris</option>
+                                    <option value="Pumps: Other">Pumps: Other</option>
+                                    <option value="Pumps: PCA">Pumps: PCA</option>
+                                    <option value="Pumps: Syringe">Pumps: Syringe</option>
+                                    <option value="Radiation Oncology">Radiation Oncology</option>
+                                    <option value="Radiology: Imaging and X-Ray">Radiology: Imaging and X-Ray</option>
+                                    <option value="Respiratory: other">Respiratory: other</option>
+                                    <option value="Respiratory: Ventilator">Respiratory: Ventilator</option>
+                                    <option value="Scales">Scales</option>
+                                    <option value="SKI Research">SKI Research</option>
+                                    <option value="Specimen Collection">Specimen Collection</option>
+                                    <option value="Sterilization/High-Level Disinfection">Sterilization/High-Level Disinfection</option>
+                                    <option value="Stirrups">Stirrups</option>
+                                    <option value="Transport Container">Transport Container</option>
+                                    <option value="Ultrasound Units with transducers an.">Ultrasound Units (with transducers an.)</option>
+                                    <option value="Warmers">Warmers</option>
+                                    <option value="Workstations">Workstations</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="inventorynum" style="font-size: 13px;"> MSK Inventory/Optime #<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems" style="height: 40%;" required>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                              <label style="font-size: 13px;">Device Removed From Use<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                              <div class="dashed-underline" style="width: 120px; margin-top: 0%;"></div>
+                              <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;" required>
+                                  <input type="radio" id="intentionalFallYes" name="intentionalFall" value="yes" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallYes">Yes</label>
+                                  <input type="radio" id="intentionalFallNo" name="intentionalFall" value="no" checked onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallNo">No</label>
+                                  <input type="radio" id="intentionalFallUnsure" name="intentionalFall" value="no" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallUnsure">Unknown/Unsure</label>
+                            </div>
                         </div>
-                    </div>
-                </div>    
-
-                <div class="form-section-row" style="display: flex; flex-wrap: wrap; gap: 1px; margin-top: -1%;">
-
-                    <!-- IRB Protocol -->
-                    <div class="form-row" style="display: flex; flex-direction: column; flex: 1; margin-top: 3%;"> 
-                        <div id="irbpro" style="display: flex; align-items: center; margin-top: 3%;">
+                        </div>
+                    </div>    
+                </div>
+                    <div class="form-row" style="display: flex; flex-direction: column;"> 
+                        <div id="irbpro" style="display: flex; align-items: center; margin-top: 1.5%;">
                             <div style="display: flex; flex-direction: column;">
                                 <label style="font-size: 13px;">IRB Protocol?</label>
                                 <div class="dashed-underline" style="width:100px; margin-top: -1%;"></div>
@@ -374,8 +461,7 @@
                                 </div>
                             </div>    
                         </div>
-                    </div>        
-                </div>
+                    </div>    
                       
                 <!-- Add form content for the confidential section here -->
                 <div class="popup" id="servicesPopup">
