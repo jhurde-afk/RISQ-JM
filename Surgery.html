@@ -241,7 +241,7 @@
                     <div class="full-width" id="otherEventTypeRow" style="display:none; margin-top:22px;">
                       <div style="flex:1 1 100%; max-width:100%;">
                         <label for="otherEventType" style="font-size:13px;">
-                          Other Specific Event Type<span style="color:red; font-size:22px; margin-left: 2%;">*</span>
+                          Other Specific Event Type<span style="color:red; font-size:22px; margin-left: 3%;">*</span>
                         </label>
                         <input type="text" id="otherEventType" name="otherEventType"
                               style="width:100%; display:block; font-size:13px;">
@@ -303,23 +303,46 @@
                                 <label for="systemUnknown">Unknown/Unsure</label>
                             </div>
                         </div>
-                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
+                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 14px; margin-bottom: 2%;">
                             <div style="display: flex; flex-direction: column;">
                                 <label style="font-size: 13px;">EHR/System Related</label>
-                                <div class="dashed-underline" style="width: 150px; margin-top: -3%;"></div>
+                                <div class="dashed-underline" style="width: 150px; margin-top: -1%;"></div>
                             </div>
-                            <div style="display: flex; flex-direction: column;">
+                            <div style="display: flex; flex-direction: column; margin-top: -2%;">
                                 <label for="sysCategory" style="font-size: 13px;">Help Desk Ticket #</label>
-                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <input type="text" id="systems" name="systems">
+                                <div class="dashed-underline" style="width: 125px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems" style="height: 45%;">
                             </div>
-                            <div style="display: flex; flex-direction: column;">
+                            <div style="display: flex; flex-direction: column; margin-top: -2%;">
                                 <label for="sysType" style="font-size: 13px;">System</label>
-                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="sysType" style="margin-top: 1px;">
+                                <div class="dashed-underline" style="width: 110px; margin-top: -1%;"></div>
+                                <select name="sysType" style="margin-top: 1px; font-size: 13px;">
                                     <option value=""> </option>
-                                    <option value="X">X</option>
-                                    <option value="Y">Y</option>
+                                    <option value="Ambulatory">Ambulatory</option>
+                                    <option value="Anesthesia module">Anesthesia module</option>
+                                    <option value="ASAP">ASAP</option>
+                                    <option value="Beacon">Beacon</option>
+                                    <option value="Beaker">Beaker</option>
+                                    <option value="Bugsy (infection control)">Bugsy (infection control)</option>
+                                    <option value="Cadence">Cadence</option>
+                                    <option value="Care Everywhere & MSKCare Link">Care Everywhere & MSKCare Link</option>
+                                    <option value="ClinDoc">ClinDoc</option>
+                                    <option value="Cupid">Cupid</option>
+                                    <option value="Grand Central">Grand Central</option>
+                                    <option value="Healthy Planet">Healthy Planet</option>
+                                    <option value="HIM">HIM</option>
+                                    <option value="Hospital Billing">Hospital Billing</option>
+                                    <option value="MyChart/Welcome">MyChart/Welcome</option>
+                                    <option value="Optime">Optime</option>
+                                    <option value="Orders">Orders</option>
+                                    <option value="Patient Access">Patient Access</option>
+                                    <option value="Professional Billing">Professional Billing</option>
+                                    <option value="Radiant">Radiant</option>
+                                    <option value="Research">Research</option>
+                                    <option value="Willow Ambulatory">Willow Ambulatory</option>
+                                    <option value="Willow Inpatient">Willow Inpatient</option>
+                                    <option value="Other">Other</option>
+                                    <option value="Unknown">Unknown</option>
                                 </select>
                             </div>
                         </div>
@@ -430,7 +453,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-row" style="display: flex; flex-direction: column; flex: 1; margin-top: -1%;"> 
+                    <!-- IRB Protocol -->
+                    <div class="form-row" style="display: flex; flex-direction: column; flex: 1; margin-top: -1%; gap: 20px;"> 
                         <div id="irbpro" style="display: flex; align-items: center; margin-top: 3%;">
                             <div style="display: flex; flex-direction: column;">
                                 <label style="font-size: 13px;">IRB Protocol?</label>
@@ -447,7 +471,7 @@
                                 <div style="display: flex; flex-direction: column;">    
                                     <label for="IRBno" style="font-size: 13px;">IRB #</label>
                                     <div class="dashed-underline" style="width: 60px; margin-top: 0%;"></div>
-                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%;">
+                                    <input type="text" id="IRBno" name="IRBno" style="width: 60%; height: 40%;">
                                 </div>
                             </div>    
                         </div>
