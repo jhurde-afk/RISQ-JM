@@ -237,7 +237,16 @@
                         <option value="level4">Level 4-Death</option>
                       </select>
                     </div>
- 
+                    <!-- Shown only when "Unknown/Other (please specify)" is selected -->
+                    <div class="full-width" id="otherEventTypeRow" style="display:none; margin-top:22px;">
+                      <div style="flex:1 1 100%; max-width:100%;">
+                        <label for="otherEventType" style="font-size:13px;">
+                          Other Specific Event Type<span style="color:red; font-size:22px; margin-left: 2%;">*</span>
+                        </label>
+                        <input type="text" id="otherEventType" name="otherEventType"
+                              style="width:100%; display:block; font-size:13px;">
+                      </div>
+                    </div>
                 </div>
                
                 <div id="lastLocationPrompt" style="display:flex; margin-top:5%; align-items:center; gap:12px; padding:8px;
@@ -401,6 +410,23 @@
                                     <option value="Workstations">Workstations</option>
                                     <option value="Other">Other</option>
                                 </select>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="inventorynum" style="font-size: 13px;">MSK Inventory/Optime #<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems" style="height: 40%;">
+                            </div>
+                            <div style="display: flex; flex-direction: column; margin-left: 10%;">
+                              <label style="font-size: 13px;">Device Removed From Use<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                              <div class="dashed-underline" style="width: 120px; margin-top: 0%;"></div>
+                              <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
+                                  <input type="radio" id="intentionalFallYes" name="intentionalFall" value="yes" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallYes">Yes</label>
+                                  <input type="radio" id="intentionalFallNo" name="intentionalFall" value="no" checked onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallNo">No</label>
+                                  <input type="radio" id="intentionalFallUnsure" name="intentionalFall" value="no" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallUnsure">Unknown/Unsure</label>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -1197,6 +1223,26 @@ function buildLocationMenu(menuMap){
         isRecording = false;
     }
     };
+
+  function toggleOtherEventType() {
+    const sel   = document.getElementById('eventType');
+    const row   = document.getElementById('otherEventTypeRow');
+    const input = document.getElementById('otherEventType');
+    if (!sel || !row || !input) return;
+
+    const isOther = sel.value === 'Unknown/Other (please specify)';
+    row.style.display = isOther ? 'flex' : 'none';
+    input.required = isOther;
+    if (!isOther) input.value = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sel = document.getElementById('eventType');
+    if (sel) {
+      sel.addEventListener('change', toggleOtherEventType);
+      toggleOtherEventType(); // initialize on load
+    }
+  });
 // --- Elements
   const militaryTimeInput = document.getElementById("militaryTime");
   const dateInput = document.getElementById("eventDate");
