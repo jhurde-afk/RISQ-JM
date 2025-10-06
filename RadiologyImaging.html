@@ -64,27 +64,24 @@
             <form>
                 <div class="form-row">
                     <div>
-                        <label for="PatientPersonInvolved" style="margin-top: 5px; font-size: 13px;">Patient/Person Involved<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
-                        <div class="dashed-underline" style="width: 160px;"></div>
-                        <select id="PatientPersonInvolved" name="PatientPersonInvolved" style="font-size: 13px;" required>
+                        <label for="PatientPersonInvolved" style="margin-top: 5px; font-size: 13px; white-space: nowrap;">Patient/Person Involved<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                        <div class="dashed-underline" style="width: 135px;"></div>
+                        <select id="PatientPersonInvolved" name="PatientPersonInvolved" style="font-size: 13px; width: 92%;" required>
                             <option value=""> </option>
                         </select>
                     </div>
 
-                    <div style="margin-left: 6%;">
+                    <div style="margin-left: 3%;">
                         <label for="mrn" class="mrn-label" style="margin-top: 5px;">MRN (lookup # with magnifying glass)<span style="color: red; font-size: 22px; margin-left: 3%;">*</span><img src="magnifying-glass-png-icon-11.jpg" alt="Search" onclick="openPopup('searchPopup')">
                         </label>
                         <div class="dashed-underline" style="width:235px; margin-top: -1.5%;"></div>
-                        <input type="text" id="mrn" name="mrn" style="width:100%; font-size: 13px;" required>
+                        <input type="text" id="mrn" name="mrn" style="width:95%; font-size: 13px;" required>
                     </div>
 
-                    <div id="searchPopup" class="popup patient-search-popup">
-                        <div class="popup-header">
-                          <span>Patient Search</span>            
-                        </div>
-                        <div class="gray-container" style="margin-left: 5%;">
-                            <img src="contact.png" alt="Contact" class="contact-icon" style="margin-top: 7%; margin-left: 5%; width: 18%; height: 38%;">
-                            <div class="form-group" style="display: flex; flex-direction: column; margin-left: 40%;">
+                    <div id="searchPopup" class="patient-search-popup">
+                        <div class="gray-container">
+                            <img src="contact.png" style="width: 20%; margin-top: 2%; margin-left: 4%;">
+                            <div class="form-group">
                                <div style="display: flex; align-items: center; margin-bottom: 10px;"> 
                                     <label for="searchMrn" style="width: 80px;">MRN</label>
                                     <input type="text" id="searchMrn" name="searchMrn" style="width: 80%; height:15%;">
@@ -99,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-
+                      
                         <div class="search-controls">
                             <a onclick="searchPatient()" style="color: darkblue;">Search</a> | <a onclick="clearSearchFields()" style="color: darkblue;">Clear Fields</a>
                         </div>
@@ -109,16 +106,16 @@
 
                         <!-- footer -->
                         <div class="popup-actions">
-                            <button type="button" class="action-ok" onclick="selectPatient()">Accept</button>
-                            <button type="button" class="action-cancel" onclick="closePopup('searchPopup')">Cancel</button>
+                          <button type="button" class="action-cancel" onclick="closePopup('searchPopup')">Cancel</button>
+                          <button type="button" class="action-ok" onclick="selectPatient()">OK</button>
                         </div>
                     </div>   
 
-                    <div style="margin-left: 3%;">
-                        <label for="patientService" style="margin-top: 5px; font-size: 13px;">Patient Service<span style="color: red; font-size: 22px; margin-left: 8%;">*</span></label>
+                    <div style="margin-left: 1.5%;">
+                        <label for="patientService" style="margin-top: 1%; font-size: 13px;">Patient Service<span style="color: red; font-size: 22px; margin-left: 8%;">*</span></label>
                         <div class="dashed-underline" style="width: 100px;"></div>
-                        <select id="patientService" name="patientService" style="font-size: 13px; width: 120%;">
-                            <option value=""></option> <!-- keeps a blank default -->
+                        <select id="patientService" name="patientService" style="font-size: 13px; width: 100%;">
+                            <option value=""></option><!-- keeps a blank default -->
                         </select>
                     </div>
                 </div>
@@ -129,7 +126,7 @@
                         <input type="text" id="lastname" name="lastname" style="font-size: 13px;" required>
                     </div>
                     <div style="margin-left: 2%;">
-                        <label for="firstname" style="font-size:13px; ">First Name</label>
+                        <label for="firstname" style="font-size:13px;">First Name</label>
                         <div class="dashed-underline" style="width:80px;"></div>
                         <input type="text" id="firstname" name="firstname" style="font-size: 13px; width: 80%;">
                     </div>
@@ -256,36 +253,39 @@
                     </div>
                 </div>
                 
-                <div class="form-row additional-services-row">
-                    <div style="display: flex; flex-direction: column; min-width: 180px; margin-top: 3%;">
+                <div class="form-row additional-services-row" style="margin-top:4%;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 40px;">
+                    <div style="display:flex; flex-direction:column;">
                         <label for="services" style="font-size: 13px;">Select Additional Services</label>
-                        <div class="dashed-underline" style="width: 160px; margin-top: -1%;"></div>
+                        <div class="dashed-underline" style="width: 160px; margin-top: 0;"></div>
                     </div>
-                    <div style="display: flex; flex-direction: column; justify-content: flex-start;">
-                        <div id="selectedServices" class="selected-services">Not Specified</div>
-                        <a href="#" onclick="openPopup('servicesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                    <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
+                        <div id="selectedServices" class="selected-services" style="margin-left:15%; width: 100%;">Not Specified</div>
+                        <a href="#" onclick="openPopup('servicesPopup')">Add/Edit</a>
                     </div>
+                  </div>
                 </div>
                 
-                <div class="form-section-row" style="display: flex; flex-wrap: wrap; margin-top: 5%;">
+                <div class="form-section-row" style="display:flex; flex-wrap:wrap; margin-top:5%;">
                     <div class="form-row" id="processRow" style="display: flex; flex-direction: column; flex: 1; font-size: 11px; margin-top: -0.5%;">
                       <div id="processQues" style="display: flex; flex-direction: column;">
-                          <label style="font-size: 13px;">Where in the process did event occur? <span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
-                          <div class="dashed-underline" style="width: 220px; margin-top: -3%;"></div>
-                          <!-- Dropdown Button -->
-                          <button class="btn btn-custom dropdown-toggle" type="button"
-                                  id="processDropdownButton" data-bs-toggle="dropdown" aria-expanded="false"
-                                  style="font-size:12px; height: 12px; width: 220px;" required>Select Where
-                          </button>
-                          <!-- Dynamic menu -->
-                          <ul class="dropdown-menu" id="processDynamicMenu" aria-labelledby="processDropdownButton"></ul>
+                          <label style="font-size: 13px; white-space:nowrap; display:inline-block; width:max-content;">Where in the process did event occur? <span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                          <div class="dashed-underline" style="width: 215px; margin-top: -3%;"></div>
+                          <select id="process" name="process" style="font-size: 13px;" required>
+                            <option value=""></option>
+                            <option value="place1">Administration</option>
+                            <option value="place2">Dispensing</option>
+                            <option value="place3">Ordering/Prescribing</option>
+                            <option value="place7">Other</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
+                    
                     <!-- EHR/System Related -->
-                    <div class="form-row" id="systemRow" style="display: flex; flex-direction: column; flex: 1; margin-top: 1%;">
+                    <div class="form-row" id="systemRow" style="display: flex; flex-direction: column; flex: 1; margin-top: 1%; margin-left: 4%;">
                         <div id="systemInitial" style="display: flex; flex-direction: column;">
-                            <label style="font-size: 13px; margin-left: 40px;">EHR/System Related</label>
-                            <div class="dashed-underline" style="width: 130px; margin-top: -2%; margin-left: 40px;"></div>
+                            <label style="font-size: 13px;">EHR/System Related</label>
+                            <div class="dashed-underline" style="width: 150px; margin-top: -2%;"></div>
                             <div id="systemRadios" style="display: flex; gap: 10px; font-size: 11px;">
                                 <input type="radio" id="systemYes" name="system" value="yes" onclick="systemSection(this.value)">
                                 <label for="systemYes">Yes</label>
@@ -295,32 +295,58 @@
                                 <label for="systemUnknown">Unknown/Unsure</label>
                             </div>
                         </div>
-                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 10px; width: 100%; margin-top: 16px;">
+                        <div id="systemGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 14px; margin-left: -7%; margin-bottom: 2%;">
                             <div style="display: flex; flex-direction: column;">
                                 <label style="font-size: 13px;">EHR/System Related</label>
-                                <div class="dashed-underline" style="width: 150px; margin-top: -2%;"></div>
+                                <div class="dashed-underline" style="width: 150px; margin-top: -1%;"></div>
                             </div>
-                            <div style="display: flex; flex-direction: column;">
+                            <div style="display: flex; flex-direction: column; margin-top: -2%;">
                                 <label for="sysCategory" style="font-size: 13px;">Help Desk Ticket #</label>
-                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <input type="text" id="systems" name="systems" style="height: 80%;">
+                                <div class="dashed-underline" style="width: 125px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems" style="height: 45%;">
                             </div>
-                            <div style="display: flex; flex-direction: column;">
+                            <div style="display: flex; flex-direction: column; margin-top: -2%;">
                                 <label for="sysType" style="font-size: 13px;">System</label>
-                                <div class="dashed-underline" style="width: 80px; margin-top: -1%;"></div>
-                                <select name="sysType" style="margin-top: 1px; width: 80%;">
+                                <div class="dashed-underline" style="width: 110px; margin-top: -1%;"></div>
+                                <select name="sysType" style="margin-top: 1px; font-size: 13px;">
                                     <option value=""> </option>
-                                    <option value="X">X</option>
-                                    <option value="Y">Y</option>
+                                    <option value="Ambulatory">Ambulatory</option>
+                                    <option value="Anesthesia module">Anesthesia module</option>
+                                    <option value="ASAP">ASAP</option>
+                                    <option value="Beacon">Beacon</option>
+                                    <option value="Beaker">Beaker</option>
+                                    <option value="Bugsy (infection control)">Bugsy (infection control)</option>
+                                    <option value="Cadence">Cadence</option>
+                                    <option value="Care Everywhere & MSKCare Link">Care Everywhere & MSKCare Link</option>
+                                    <option value="ClinDoc">ClinDoc</option>
+                                    <option value="Cupid">Cupid</option>
+                                    <option value="Grand Central">Grand Central</option>
+                                    <option value="Healthy Planet">Healthy Planet</option>
+                                    <option value="HIM">HIM</option>
+                                    <option value="Hospital Billing">Hospital Billing</option>
+                                    <option value="MyChart/Welcome">MyChart/Welcome</option>
+                                    <option value="Optime">Optime</option>
+                                    <option value="Orders">Orders</option>
+                                    <option value="Patient Access">Patient Access</option>
+                                    <option value="Professional Billing">Professional Billing</option>
+                                    <option value="Radiant">Radiant</option>
+                                    <option value="Research">Research</option>
+                                    <option value="Willow Ambulatory">Willow Ambulatory</option>
+                                    <option value="Willow Inpatient">Willow Inpatient</option>
+                                    <option value="Other">Other</option>
+                                    <option value="Unknown">Unknown</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+                    <!-- new placeholder that will sit on the second row -->
+                    <div id="systemSecondRow" class="form-row" style="display:flex; flex-direction:column; flex:1 1 0;"></div>
+
                     <!-- Equipment Malfunction -->
-                    <div class="form-row" id="malfunctionRow" style="display: flex; flex-direction: column; flex: 1; margin-top: -0.5%;">
+                    <div class="form-row" id="malfunctionRow" style="display: flex; flex-direction: column; flex: 1; margin-right: -4%; margin-top: -1%;">
                         <div id="malfunctionInitial" style="display: flex; flex-direction: column;">
-                            <label style="font-size: 13px; margin-left: 40px;">Equipment Malfunction<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
-                            <div class="dashed-underline" style="width: 138px; margin-top: -4%; margin-left: 40px;"></div>
+                            <label style="font-size: 13px;">Equipment Malfunction<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                            <div class="dashed-underline" style="width: 150px; margin-top: -1%;"></div>
                             <div id="malfunctionRadios" style="display: flex; gap: 10px; font-size: 11px;" required>
                                 <input type="radio" id="malfunctionYes" name="malfunction1" value="yes" onclick="malfunctionSection(this.value)">
                                 <label for="malfunctionYes">Yes</label>
@@ -330,96 +356,124 @@
                                 <label for="malfunctionUnknown">Unknown/Unsure</label>
                             </div>
                         </div>
-                        <div id="malfunctionGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 10px; width: 100%; margin-top: 16px;">
+                        <div id="malfunctionGrid" style="display: none; grid-template-columns: 1fr 1fr 1fr; gap: 16px; width: 100%; margin-top: 16px;">
                             <div style="display: flex; flex-direction: column;">
-                                <label style="font-size: 13px;">Equipment Malfunction</label>
+                                <label style="font-size: 13px;"> Equipment Malfunction<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <label for="malcategory" style="font-size: 13px;">Equipment Category</label>
+                                <label for="malcategory" style="font-size: 13px;"> Equipment Category<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malcategory" style="margin-top: 1px;">
+                                <select name="malcategory" style="margin-top: 1px; font-size: 13px;" required>
                                     <option value=""> </option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="unknown">Unknown/UnSure</option>
+                                    <option value="Medical Device (not disposable)">Medical Device (not disposable)</option>
+                                    <option value="Single Use Items (disposable)">Single Use Items (disposable)</option>
+                                    <option value="Omnicell">Omnicell</option>
+                                    <option value="Furniture (for Beds use Medical Device)">Furniture (for Beds use Medical Device)</option>
+                                    <option value="Pneumatic Tube">Pneumatic Tube</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                             <div style="display: flex; flex-direction: column;">
-                                <label for="malequipment" style="font-size: 13px;">Equipment Type</label>
+                                <label for="malequipment" style="font-size: 13px;"> Equipment Type<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
                                 <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
-                                <select name="malequipment" style="margin-top: 1px;">
+                                <select name="malequipment" style="margin-top: 1px; font-size: 13px;" required>
                                     <option value=""> </option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="unknown">Unknown/UnSure</option>
+                                    <option value="Beds">Beds</option>
+                                    <option value="Blood Pressure (BP)/ Vital Sign Monit.">Blood Pressure (BP)/ Vital Sign Monit.</option>
+                                    <option value="Cardiac - Defibrillators">Cardiac - Defibrillators</option>
+                                    <option value="Cardiac - EKG (Electrocardiographs)">Cardiac - EKG (Electrocardiographs)</option>
+                                    <option value="Cardiac - Other">Cardiac - Other</option>
+                                    <option value="Cardiac - Pacemaker">Cardiac - Pacemaker</option>
+                                    <option value="Collection Tubes">Collection Tubes</option>
+                                    <option value="Dental">Dental</option>
+                                    <option value="Dialysis">Dialysis</option>
+                                    <option value="Endoscope: Flexible scopes and other">Endoscope: Flexible scopes and other</option>
+                                    <option value="Glucometer">Glucometer</option>
+                                    <option value="Lab: Analyzers">Lab: Analyzers</option>
+                                    <option value="Lab: General and Other">Lab: General and Other</option>
+                                    <option value="Laser">Laser</option>
+                                    <option value="Microscope">Microscope</option>
+                                    <option value="Neurological">Neurological</option>
+                                    <option value="Ophthalmologic">Ophthalmologic</option>
+                                    <option value="OR/Surgical: ESU/Ablation">OR/Surgical: ESU/Ablation</option>
+                                    <option value="OR/Surgical: Other">OR/Surgical: Other</option>
+                                    <option value="OR/Surgical: Robot">OR/Surgical: Robot</option>
+                                    <option value="OR/Surgical: Robotic Instrument">OR/Surgical: Robotic Instrument</option>
+                                    <option value="Patient Transport: Lifts, stretchers, wh">Patient Transport: Lifts, stretchers, wh</option>
+                                    <option value="Pharmaceutical Equipment">Pharmaceutical Equipment</option>
+                                    <option value="Physical Therapy">Physical Therapy</option>
+                                    <option value="Physiological Monitoring">Physiological Monitoring</option>
+                                    <option value="Pump: CADD Solis PCA (pain)">Pump: CADD Solis PCA (pain)</option>
+                                    <option value="Pump: CADD Solis VIP (chemo)">Pump: CADD Solis VIP (chemo)</option>
+                                    <option value="Pumps: Infusion Other">Pumps: Infusion Other</option>
+                                    <option value="Pumps: Feeding">Pumps: Feeding</option>
+                                    <option value="Pumps: Infusion">Pumps: Infusion</option>
+                                    <option value="Pumps: Infusion Alaris">Pumps: Infusion Alaris</option>
+                                    <option value="Pumps: Other">Pumps: Other</option>
+                                    <option value="Pumps: PCA">Pumps: PCA</option>
+                                    <option value="Pumps: Syringe">Pumps: Syringe</option>
+                                    <option value="Radiation Oncology">Radiation Oncology</option>
+                                    <option value="Radiology: Imaging and X-Ray">Radiology: Imaging and X-Ray</option>
+                                    <option value="Respiratory: other">Respiratory: other</option>
+                                    <option value="Respiratory: Ventilator">Respiratory: Ventilator</option>
+                                    <option value="Scales">Scales</option>
+                                    <option value="SKI Research">SKI Research</option>
+                                    <option value="Specimen Collection">Specimen Collection</option>
+                                    <option value="Sterilization/High-Level Disinfection">Sterilization/High-Level Disinfection</option>
+                                    <option value="Stirrups">Stirrups</option>
+                                    <option value="Transport Container">Transport Container</option>
+                                    <option value="Ultrasound Units with transducers an.">Ultrasound Units (with transducers an.)</option>
+                                    <option value="Warmers">Warmers</option>
+                                    <option value="Workstations">Workstations</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <label for="inventorynum" style="font-size: 13px;"> MSK Inventory/Optime #<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                                <div class="dashed-underline" style="width: 140px; margin-top: -1%;"></div>
+                                <input type="text" id="systems" name="systems" style="height: 40%;" required>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                              <label style="font-size: 13px;">Device Removed From Use<span style="color: red; font-size: 22px; margin-left: 5%;">*</span></label>
+                              <div class="dashed-underline" style="width: 120px; margin-top: 0%;"></div>
+                              <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;" required>
+                                  <input type="radio" id="intentionalFallYes" name="intentionalFall" value="yes" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallYes">Yes</label>
+                                  <input type="radio" id="intentionalFallNo" name="intentionalFall" value="no" checked onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallNo">No</label>
+                                  <input type="radio" id="intentionalFallUnsure" name="intentionalFall" value="no" onchange="toggleVendorSection(this.value)">
+                                  <label for="intentionalFallUnsure">Unknown/Unsure</label>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Outside Vendor Involved -->
-                    <div class="form-row" style="display: flex; align-items: center; margin-top: 5%;">
+                        </div>
+                    </div>    
+                </div>
+                <div class="form-row" style="display: flex; flex-direction: column;"> 
+                    <div id="irbpro" style="display: flex; align-items: center; margin-top: 1.5%;">
                         <div style="display: flex; flex-direction: column;">
-                            <label style="font-size: 13px;">Outside Vendor Involved?</label>
-                            <div class="dashed-underline" style="width: 150px; margin-top: 0%;"></div>
+                            <label style="font-size: 13px;">IRB Protocol?</label>
+                            <div class="dashed-underline" style="width:100px; margin-top: -1%;"></div>
                             <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
-                                <input type="radio" id="vendorYes" name="vendor1" value="yes" onchange="toggleVendorSection(this.value)">
-                                <label for="vendorYes">Yes</label>
-                                <input type="radio" id="vendorNo" name="vendor1" value="no" checked onchange="toggleVendorSection(this.value)">
-                                <label for="vendorNo">No</label>
+                                <input type="radio" id="protocolYes" name="protocol1" value="yes" onchange="toggleIRBSection(this.value)">
+                                <label for="protocolYes">Yes</label>
+                                <input type="radio" id="protocolNo" name="protocol1" value="no" checked onchange="toggleIRBSection(this.value)">
+                                <label for="protocolNo">No</label>
                             </div>
-                        </div>
-                        <!-- Hidden Vendor Name input, shown inline when Yes -->
-                        <div id="VendorSection" style="display: none; align-items: center; margin-top: 3%;">
-                            <div style="display: flex; flex-direction: column;">    
-                                <label for="Vendorno" style="font-size: 13px;">Vendor Name</label>
-                                <div class="dashed-underline" style="width: 120px; margin-top: 0%;"></div>
-                                <input type="text" id="Vendorno" name="Vendorno" style="width: 60%;" height="80%">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- IRB Protocol -->
-                    <div class="form-row" style="display: flex; flex-direction: column;"> 
-                        <div id="irbpro" style="display: flex; align-items: center; margin-top: 7%;">
-                            <div style="display: flex; flex-direction: column;">
-                                <label style="font-size: 13px;">IRB Protocol?</label>
-                                <div class="dashed-underline" style="width:100px; margin-top: -1%;"></div>
-                                <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
-                                    <input type="radio" id="protocolYes" name="protocol1" value="yes" onchange="toggleIRBSection(this.value)">
-                                    <label for="protocolYes">Yes</label>
-                                    <input type="radio" id="protocolNo" name="protocol1" value="no" checked onchange="toggleIRBSection(this.value)">
-                                    <label for="protocolNo">No</label>
-                                </div>
-                            </div>        
+                        </div>        
 
-                            <div id="IRBSection" style="display: none; align-items: center; gap: 8px; margin-top: 3%;">
-                                <div style="display: flex; flex-direction: column;">    
-                                    <label for="IRBno" style="font-size: 13px;">IRB #</label>
-                                    <div class="dashed-underline" style="width: 60px; margin-top: 0%;"></div>
-                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%; height: 80%;">
-                                </div>
-                            </div>    
-                        </div>
-                    </div>    
-                    <div class="form-row" style="display: flex; flex-direction: column;"> 
-                        <div id="sepsispro" style="display: flex; align-items: center; margin-top: 7%;">
-                            <div style="display: flex; flex-direction: column;">
-                                <label style="font-size: 13px;">Sepsis Related</label>
-                                <div class="dashed-underline" style="width:100px; margin-top: -1%;"></div>
-                                <div class="radio-group" style="font-size: 11px; display: flex; align-items: center; gap: 10px;">
-                                    <input type="radio" id="sepsisYes" name="sepsisRelated" value="yes" onchange="toggleSepsisSection(this.value)">
-                                    <label for="sepsisYes">Yes</label>
-                                    <input type="radio" id="sepsisNo" name="sepsisRelated" value="no" checked onchange="toggleSepsisSection(this.value)">
-                                    <label for="sepsisNo">No</label>
-                                </div>
-                            </div>        
-                        </div>  
-                    </div>    
+                        <div id="IRBSection" style="display: none; align-items: center; gap: 8px; margin-top: 3%;">
+                            <div style="display: flex; flex-direction: column;">    
+                                <label for="IRBno" style="font-size: 13px;">IRB #</label>
+                                <div class="dashed-underline" style="width: 60px; margin-top: 0%;"></div>
+                                <input type="text" id="IRBno" name="IRBno" style="width: 90%;">
+                            </div>
+                        </div>    
+                    </div>
                 </div>
                       
                 <!-- Add form content for the confidential section here -->
-                <div class="popup" id="servicesPopup">
+                <div class="popup" id="servicesPopup" data-required="true">
                   <div class="popup-header">
                     <span>Select additional services to receive alerts</span>            
                   </div>
@@ -485,7 +539,6 @@
                     <button type="button" class="action-cancel" onclick="closePopup('servicesPopup')">Cancel</button>
                     <button type="button" class="action-ok" onclick="confirmSelection('servicesPopup','selectedServices')">OK</button>
                   </div>
-
                 </div>
             </form>
         </div>
@@ -567,7 +620,7 @@
           <div class="attachments-block" style="width:100%; margin-top: 2%;">
             <div class="d-flex justify-content-between align-items-end">
               <div class="attachments-actions med-actions" style="font-size:12px;">
-                <a href="#" data-action="add" onclick="openPopup('attachmentsPopup'); return false;">Add</a> |
+                <a href="#" data-action="add" onclick="openAttachmentsPopup(); return false;">Add</a> |
                 <a href="#" data-action="edit"   class="disabled">Edit</a> |
                 <a href="#" data-action="delete" class="disabled">Delete</a>
               </div>
@@ -600,6 +653,11 @@
               <span class="note">Please select file(s) to upload.</span>
               <input type="file" id="fileInput" multiple style="display:none">
             </div>
+            <!-- Selected files preview -->
+            <div id="selectedFiles" class="selected-files" style="margin:10px 5% 0; font-size:12px;">
+              <em>No file selected</em>
+            </div>
+
 
             <!-- Progress bars (visual only for now) -->
             <div class="bar"></div>
@@ -1153,21 +1211,41 @@ function toggleContent(contentId, arrowBoxId) {
     }
 
 function confirmSelection(popupId, selectedId) {
-  const popup = document.getElementById(popupId);
-  const selectedOptions = Array.from(
-    popup.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked')
-  ).map(input => {
-    const labelText = input.closest('label')?.innerText?.trim() || input.value;
-    return labelText;
-  }).join('\n');
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
 
-  document.getElementById(selectedId).innerText = selectedOptions || 'Not Specified';
-  closePopup(popupId);
+    // gather selections inside this popup
+    const checked = popup.querySelectorAll(
+      'input[type="checkbox"]:checked, input[type="radio"]:checked'
+    );
 
-  // nudge auto-close logic (important for Event Information)
-  const sec = document.getElementById('secEvent');
-  if (sec) sec.dispatchEvent(new Event('change', { bubbles: true }));
-}
+    // if popup is marked required, enforce at least one selection
+    if (popup.dataset.required === "true" && checked.length === 0) {
+      alert("Please select at least one option.");
+      return; // <-- keep the popup open
+    }
+
+    // build display text from labels (fallback to input values)
+    const items = Array.from(checked).map(inp => {
+      const lbl = inp.closest("label");
+      if (lbl) {
+        const text = Array.from(lbl.childNodes)
+          .filter(n => n.nodeType === Node.TEXT_NODE)
+          .map(n => n.textContent)
+          .join(" ")
+          .trim();
+        return text || inp.value;
+      }
+      return inp.value;
+    });
+
+    const out = document.getElementById(selectedId);
+    if (out) {
+      out.textContent = items.length ? "• " + items.join("\n• ") : "Not Specified";
+    }
+
+    closePopup(popupId); // only closes after a valid selection or if not required
+  }
 
 
     // Prevent form submission and page reload
@@ -1177,17 +1255,72 @@ function confirmSelection(popupId, selectedId) {
         });
     });
 
-    // Function to confirm attachment selection
-    function confirmAttachment() {
-        var fileInput = document.getElementById('fileInput');
-        var files = fileInput.files;
-        if (files.length > 0) {
-            alert('Files selected: ' + files.length);
-        } else {
-            alert('No files selected');
-        }
-        closePopup('attachmentsPopup');
+  function confirmAttachment() {
+    const fileInput = document.getElementById('fileInput');
+    const files = Array.from(fileInput.files || []);
+    if (!files.length) { alert('Please select at least one file.'); return; }
+
+    const tbody = document.querySelector('#attachmentsTable tbody');
+    const empty = tbody.querySelector('tr.empty');
+    if (empty) empty.remove();
+
+    files.forEach(f => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${f.name}</td><td>—</td><td></td>`;
+      tbody.appendChild(tr);
+    });
+
+    // enable actions and reset preview, then close
+    const edit = document.querySelector('.attachments-actions [data-action="edit"]');
+    const del  = document.querySelector('.attachments-actions [data-action="delete"]');
+    edit && edit.classList.remove('disabled');
+    del  && del.classList.remove('disabled');
+
+    fileInput.value = '';
+    const preview = document.getElementById('selectedFiles');
+    if (preview) preview.innerHTML = '<em>No file selected</em>';
+    closePopup('attachmentsPopup');
+  }
+
+
+
+  const fileInputEl = document.getElementById('fileInput');
+  const fileListEl  = document.getElementById('selectedFiles');
+  const dropAreaEl  = document.getElementById('dropArea');
+
+  function renderSelectedFiles() {
+    if (!fileInputEl || !fileListEl) return;
+    const files = Array.from(fileInputEl.files || []);
+    if (!files.length) {
+      fileListEl.innerHTML = '<em>No file selected</em>';
+      return;
     }
+    fileListEl.innerHTML = files.map(f =>
+      `<div style="padding:4px 8px; border:1px solid #ddd; border-radius:4px; display:inline-block; margin:4px 6px 0 0;">
+         ${f.name} <span style="color:#666;">(${Math.round(f.size/1024)} KB)</span>
+       </div>`
+    ).join('');
+  }
+
+  // show picks when user chooses via dialog
+  fileInputEl.addEventListener('change', renderSelectedFiles);
+
+  // keep your drop behavior but also render the list
+  dropAreaEl.addEventListener('drop', function(e){
+    e.preventDefault();
+    dropAreaEl.style.borderColor = '#ccc';
+    document.getElementById('fileInput').files = e.dataTransfer.files;
+    renderSelectedFiles();
+  });
+
+  // optional: when opening the popup, clear prior state
+  function openAttachmentsPopup() {
+    if (fileInputEl) fileInputEl.value = '';
+    renderSelectedFiles();
+    openPopup('attachmentsPopup'); // you already have openPopup(...)
+  }
+  // If you want the "Add" link to call this instead:
+  // <a href="#" onclick="openAttachmentsPopup(); return false;">Add</a>
 
     // Function to handle delete action
     function deleteAction() {
@@ -1290,18 +1423,17 @@ document.querySelectorAll('form').forEach(form => {
 });
 
 function openPopup(id){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.add('is-open');      // see CSS note below
-    el.style.display = 'block';
-  }
-  function closePopup(id){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.remove('is-open');
-    el.style.display = 'none';
-  }
-
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.add('is-open');
+  el.style.display = 'block';
+}
+function closePopup(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('is-open');
+  el.style.display = 'none';
+}
 
 function clearSearchFields(){
     ['searchMrn','searchLast','searchFirst'].forEach(id=>document.getElementById(id).value='');
@@ -1452,26 +1584,35 @@ function processWhereChosen(){
 }
 
 function sectionComplete(sec){
-  const mode = sec.dataset.mode || 'all';
-  if (mode === 'last' && sec.dataset.trigger){
-    const trg = sec.querySelector(sec.dataset.trigger);
-    return trg ? isFieldComplete(trg, sec) : false;
-  }
-  const base = allVisibleFieldsComplete(sec);
+  const baseOK = allVisibleFieldsComplete(sec); // uses your existing helpers
 
   if (sec.id === 'secEvent') {
-    const btn = document.getElementById('processDropdownButton');
-    const processOK = btn ? (btn.dataset.chosen === '1') : true;
+    // Location must be chosen
+    const locBtn = document.getElementById('dropdownMenuButton');
+    const locOK = locBtn && (
+      locBtn.dataset.autofilled === 'true' ||
+      !/Select Site, Location & Area\/Unit/i.test(locBtn.textContent || '')
+    );
 
-    const sv  =
-     document.getElementById('selectedServices');  // L239
-    const svT = (sv && sv.textContent || '').trim().toLowerCase();
-    const servicesOK = sv ? (svT && svT !== 'not specified' && svT !== 'select') : true;
+    // OPTIONAL: if you want “Additional Services” to be required, keep this true.
+    const servicesTxt = (document.getElementById('selectedServices')?.textContent || '').trim().toLowerCase();
+    const servicesOK = servicesTxt && servicesTxt !== 'not specified' && servicesTxt !== 'select';
 
-    return base && processOK && servicesOK;
-
+    // make services optional → return baseOK && locOK;
+    return baseOK && locOK && servicesOK; // or drop `&& servicesOK` if not required
   }
-  return base;
+
+  if (sec.id === 'secDetails') {
+    const descOK = (document.getElementById('eventDescription')?.value || '').trim().length > 0;
+    const cfTxt  = (document.getElementById('selectedContributingFactors')?.textContent || '')
+                    .trim().toLowerCase();
+    const cfOK   = cfTxt && cfTxt !== 'not specified' && cfTxt !== 'select';
+    const tubeOK = !!document.getElementById('tube')?.value;
+
+    return descOK && cfOK && tubeOK;
+  }
+
+  return baseOK;
 }
 
 // ---------- auto-close logic ----------
@@ -1488,28 +1629,28 @@ function maybeCloseSection(sec) {
   }
 }
 
+// add this helper once
+function anyPopupOpen(){ return !!document.querySelector('.popup.is-open'); }
+
+// in your global listeners, short-circuit when a popup is open
 document.addEventListener('change', (e) => {
+  if (e.target.closest('.popup')) return;         // existing guard
+  if (anyPopupOpen()) return;                     // <-- add this
   const sec = e.target.closest('.section-content');
   if (!sec) return;
-
-  // remove sticky once complete so it can auto-close
-  if (sectionComplete(sec) && sec.dataset.sticky === 'true') {
-    delete sec.dataset.sticky;
-  }
-
+  if (sectionComplete(sec) && sec.dataset.sticky === 'true') delete sec.dataset.sticky;
   maybeCloseSection(sec);
 });
 
 document.addEventListener('blur', (e) => {
+  if (e.target.closest('.popup')) return;         // existing guard
+  if (anyPopupOpen()) return;                     // <-- add this
   const sec = e.target.closest('.section-content');
   if (!sec) return;
-
-  if (sectionComplete(sec) && sec.dataset.sticky === 'true') {
-    delete sec.dataset.sticky;
-  }
-
+  if (sectionComplete(sec) && sec.dataset.sticky === 'true') delete sec.dataset.sticky;
   maybeCloseSection(sec);
 }, true);
+
 
 
 // Prevent auto-close right after a manual open
@@ -1768,7 +1909,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const yes        = document.getElementById('injuryYes');
   const no         = document.getElementById('injuryNo');
 
-  const TRIGGER = new Set(['level2','level3','level4']);
+  const TRIGGER = new Set(['level1','level2','level3','level4']);
 
   function showInjuryRow(show){
     if (!banner) return;
@@ -1959,32 +2100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 })();
-
-window.confirmSelection = function(popupId, selectedId){
-  const popup = document.getElementById(popupId);
-  if (!popup) return;
-
-  const chosen = Array.from(
-    popup.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked')
-  ).map(inp => {
-    const lbl = inp.closest('label');
-    if (lbl) {
-      return Array.from(lbl.childNodes)
-        .filter(n => n.nodeType === Node.TEXT_NODE)
-        .map(n => n.textContent).join(' ').trim() || inp.value || 'Selected';
-    }
-    if (inp.id) {
-      const forLbl = popup.querySelector(`label[for="${inp.id}"]`);
-      if (forLbl) return forLbl.textContent.trim();
-    }
-    return inp.value || 'Selected';
-  });
-
-  const out = document.getElementById(selectedId);
-  if (out) out.textContent = chosen.length ? chosen.join(', ') : 'Not Specified';
-
-  closePopup(popupId);
-};
 
 
 // 3) Optional: prevent "#" navigation on Add/Edit links
