@@ -462,7 +462,6 @@ margin-top: -1px;
 /* Gray Container for Image + Text Fields */
 .gray-container {
     background-color: #f0f0f0; /* Light gray */
-    width: 90%;
     padding: 15px;
     display: flex;
     align-items: center;
@@ -473,6 +472,46 @@ margin-top: -1px;
     width: 3%; /* Adjust size */
     height: 3%;
     margin-right: 15px;
+}
+
+.gray-container{
+  height: 40%;
+}
+
+/* Make the popup a column so we can pin the footer at the bottom */
+#searchPopup.patient-search-popup {
+  width: 700px; max-width: 700px; min-width: 700px;
+  height: 60%;                 /* keep the height you want */             /* new */
+  flex-direction: column;       /* new */
+}
+
+/* Row with avatar + fields → move both to the RIGHT together */
+#searchPopup .gray-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  justify-content: flex-end;    /* push image + fields to the right */
+}
+
+#searchPopup .gray-container .contact-icon {
+  margin: 0 16px 0 0 !important;
+  width: 140px !important; height: auto !important; flex: 0 0 140px;
+}
+#searchPopup .gray-container .form-group {
+  margin: 0 !important; display: flex; flex-direction: column;
+}
+
+/* RESULTS area grows; whitespace stays ABOVE the footer */
+#searchPopup #patientList { flex: 1 1 auto; min-height: 0; overflow: auto; }
+
+/* FOOTER pinned to the bottom; buttons aligned right */
+#searchPopup .popup-actions {
+  margin-top: auto;             /* pins to bottom of the popup */
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
 }
 
 /* Search and Clear Fields Links */
@@ -800,6 +839,55 @@ table td:first-child {
   transition: width .2s ease;
 }
 
+/* Header bar */
+#contributingFactorsPopup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+#contributingFactorsPopup .options { max-height: 320px; overflow: auto; padding-right: 8px; }
+
+#contributingFactorsPopup .services-grid label { font-size: 13px; display: flex; gap: 8px; align-items: center; }
+
+/* Round the popup and hide overflow so header corners look clean */
+#contributingFactorsPopup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+/* Optional theme vars */
+:root{
+  --popup-footer-bg: #f5f5f5;  /* very light grey */
+  --popup-border:    #e6e6e6;
+  --ok-bg:           #487f28;
+  --ok-bg-hover:     #3d6e22;
+  --ok-text:         #fff;
+  --muted:           #666;
+}
+
 #servicesPopup .options { max-height: 320px; overflow: auto; padding-right: 8px; }
 #servicesPopup .services-grid { 
   display: grid; 
@@ -850,44 +938,6 @@ table td:first-child {
   overflow: hidden;
 }
 
-#contributingFactorsPopup .popup-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #666;           /* dark grey like your screenshot */
-  color: #fff;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 2;
-  padding: 20px 28px;
-  position: sticky;           /* stays visible while options scroll */
-  z-index: 1;
-}
-
-.popup-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #666;           /* dark grey like your screenshot */
-  color: #fff;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 2;
-  padding: 20px 28px;
-  position: sticky;           /* stays visible while options scroll */
-  z-index: 1;
-}
-
-/* Optional theme vars */
-:root{
-  --popup-footer-bg: #f5f5f5;  /* very light grey */
-  --popup-border:    #e6e6e6;
-  --ok-bg:           #487f28;
-  --ok-bg-hover:     #3d6e22;
-  --ok-text:         #fff;
-  --muted:           #666;
-}
-
 /* default: hidden */
 .popup { display: none; }
 
@@ -936,4 +986,74 @@ table td:first-child {
 }
 .popup .action-ok:hover{ background:#3d6e22; }
 
+/* Header bar */
+#popup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
 
+#popup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Footer pinned to the bottom, full width */
+.popup-actions{
+  position:static;        /* not sticky; flex keeps it at the bottom */
+  align-self:stretch;     /* ensures full width */
+  width:100%;
+  margin:0;               /* kill any gaps above/below */
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  background:#f5f5f5;     /* very light grey bar */
+  border-top:1px solid #e6e6e6;
+  padding:10px 14px;      /* set to 0 if you want completely edge-to-edge */
+}
+
+/* Buttons (shared look) */
+.action-cancel{
+  background:transparent; border:0; color:#666;
+  font-size:14px; padding:6px 8px; cursor:pointer;
+}
+.action-cancel:hover{ color:#333; text-decoration:underline; }
+.action-ok{
+  background:#487f28; color:#fff; border:0; border-radius:6px;
+  font-weight:600; font-size:14px; padding:6px 12px; cursor:pointer;
+}
+.action-ok:hover{ background:#3d6e22; }
+
+/* show ONLY when opened */
+#searchPopup.is-open {
+  display: flex !important;   /* flex so the footer can pin to bottom */
+  flex-direction: column;
+}
+/* Keep columns on one line & truncate long names with … */
+#attachmentsTable {
+  table-layout: fixed;      /* needed for ellipsis in table cells */
+  width: 100%;
+}
+#attachmentsTable th,
+#attachmentsTable td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Make the first column wider than the others */
+#attachmentsTable th:nth-child(1),
+#attachmentsTable td:nth-child(1) { width: 55%; }
+#attachmentsTable th:nth-child(2),
+#attachmentsTable td:nth-child(2) { width: 20%; }
+#attachmentsTable th:nth-child(3),
+#attachmentsTable td:nth-child(3) { width: 25%; }
