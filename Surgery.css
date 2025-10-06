@@ -993,3 +993,4 @@ select.is-invalid,
   flex-direction: column;
 }
 
+.form-row .full-width { flex: 1 1 100%; max-width: 100%; }
