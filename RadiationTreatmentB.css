@@ -463,6 +463,46 @@ margin-top: -1px;
     margin-right: 15px;
 }
 
+.gray-container{
+  height: 40%;
+}
+
+/* Make the popup a column so we can pin the footer at the bottom */
+#searchPopup.patient-search-popup {
+  width: 700px; max-width: 700px; min-width: 700px;
+  height: 60%;                 /* keep the height you want */             /* new */
+  flex-direction: column;       /* new */
+}
+
+/* Row with avatar + fields → move both to the RIGHT together */
+#searchPopup .gray-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  justify-content: flex-end;    /* push image + fields to the right */
+}
+
+#searchPopup .gray-container .contact-icon {
+  margin: 0 16px 0 0 !important;
+  width: 140px !important; height: auto !important; flex: 0 0 140px;
+}
+#searchPopup .gray-container .form-group {
+  margin: 0 !important; display: flex; flex-direction: column;
+}
+
+/* RESULTS area grows; whitespace stays ABOVE the footer */
+#searchPopup #patientList { flex: 1 1 auto; min-height: 0; overflow: auto; }
+
+/* FOOTER pinned to the bottom; buttons aligned right */
+#searchPopup .popup-actions {
+  margin-top: auto;             /* pins to bottom of the popup */
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
 /* Search and Clear Fields Links */
 .search-controls {
     text-align: center;
@@ -790,8 +830,8 @@ table td:first-child {
 }
 
   /* Only affect Injury Details */
-  #secInjury .injury-details-form-row { gap: 30px; font-size: bold;}                    /* space between label & field */
-  #secInjury .injury-details-form-row label { min-width: 300px; font-weight: bold;}       /* push fields further right */
+  #secInjury .injury-details-form-row { gap: 30px;}                    /* space between label & field */
+  #secInjury .injury-details-form-row label { min-width: 300px; }       /* push fields further right */
 
 #fileProgressBar,
 #mandatoryProgressBar {
@@ -824,6 +864,8 @@ table td:first-child {
   overflow: hidden;
 }
 
+/* default: hidden */
+.popup { display: none; }
 
 /* Make popups stack header, body, footer */
 .popup.is-open{
@@ -869,6 +911,78 @@ table td:first-child {
   font-weight:600; font-size:14px; padding:6px 12px; cursor:pointer;
 }
 .popup .action-ok:hover{ background:#3d6e22; }
+
+/* Header bar */
+#popup .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #666;           /* dark grey like your screenshot */
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 2;
+  padding: 20px 28px;
+  position: sticky;           /* stays visible while options scroll */
+  z-index: 1;
+}
+
+#popup {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Footer pinned to the bottom, full width */
+.popup-actions{
+  position:static;        /* not sticky; flex keeps it at the bottom */
+  align-self:stretch;     /* ensures full width */
+  width:100%;
+  margin:0;               /* kill any gaps above/below */
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  background:#f5f5f5;     /* very light grey bar */
+  border-top:1px solid #e6e6e6;
+  padding:10px 14px;      /* set to 0 if you want completely edge-to-edge */
+}
+
+/* Buttons (shared look) */
+.action-cancel{
+  background:transparent; border:0; color:#666;
+  font-size:14px; padding:6px 8px; cursor:pointer;
+}
+.action-cancel:hover{ color:#333; text-decoration:underline; }
+.action-ok{
+  background:#487f28; color:#fff; border:0; border-radius:6px;
+  font-weight:600; font-size:14px; padding:6px 12px; cursor:pointer;
+}
+.action-ok:hover{ background:#3d6e22; }
+
+/* show ONLY when opened */
+#searchPopup.is-open {
+  display: flex !important;   /* flex so the footer can pin to bottom */
+  flex-direction: column;
+}
+/* Keep columns on one line & truncate long names with … */
+#attachmentsTable {
+  table-layout: fixed;      /* needed for ellipsis in table cells */
+  width: 100%;
+}
+#attachmentsTable th,
+#attachmentsTable td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Make the first column wider than the others */
+#attachmentsTable th:nth-child(1),
+#attachmentsTable td:nth-child(1) { width: 55%; }
+#attachmentsTable th:nth-child(2),
+#attachmentsTable td:nth-child(2) { width: 20%; }
+#attachmentsTable th:nth-child(3),
+#attachmentsTable td:nth-child(3) { width: 25%; }
 
 #servicesPopup .options { max-height: 320px; overflow: auto; padding-right: 8px; }
 #servicesPopup .services-grid { 
@@ -920,8 +1034,27 @@ table td:first-child {
   overflow: hidden;
 }
 
-#malfunctionRow, #irbCol {
-  flex: 1 1 48%;   /* share the space equally */
-  margin-top: 0;
-  margin-right: 0;
+
+#malIrbRow { display:flex; flex-wrap:wrap; align-items:flex-start; }
+
+/* Default order if nothing special is set */
+#malfunctionRow { order: 1; }
+#systemSlot     { order: 2; }
+#irbCol         { order: 3; }
+
+/* When the System grid is moved beside Malfunction, hide spacer + use 2 cols */
+#systemGrid.moved { grid-template-columns: 1fr 1fr !important; margin-left:0 !important; }
+#systemGrid.moved .grid-spacer { display:none !important; }
+/* Tighten the gap between Equipment Malfunction and IRB */
+#malIrbRow { gap: 8px !important; }
+
+#malfunctionRow,
+#irbCol,
+#systemSlot {
+  /* don’t stretch to take equal thirds; hug content instead */
+  flex: 0 0 auto !important;
 }
+
+/* remove the extra side margins from inline styles */
+#malfunctionRow { margin-left: 0 !important; }
+#irbCol        { margin-right: 0 !important; }
