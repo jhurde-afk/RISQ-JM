@@ -1145,7 +1145,9 @@ function toggleContent(contentId, arrowBoxId) {
 
   const out = document.getElementById(selectedId);
   // after you collect `items` …
-  out.innerText = items.length ? items.join('\n') : 'Not Specified';
+  if (out) {
+    out.textContent = items.length ? "• " + items.join("\n• ") : "Not Specified";
+  }
   // make sure newlines show as line breaks
   out.style.whiteSpace = 'pre-line';
 
@@ -1278,6 +1280,22 @@ function openPopup(id){
   const el = document.getElementById(id);
   if (!el) return;
   el.classList.add('is-open');
+}
+
+function openPopup(id){
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('is-open');
+
+  // Prefill the MRN in the patient lookup popup
+  if (id === 'searchPopup') {
+    const mainMrn   = document.getElementById('mrn');        // main form field
+    const lookupMrn = document.getElementById('searchMrn');  // popup field
+    if (mainMrn && lookupMrn) {
+      lookupMrn.value = (mainMrn.value || '').trim();
+      setTimeout(() => { lookupMrn.focus(); lookupMrn.select(); }, 0);
+    }
+  }
 }
 function closePopup(id){
   const el = document.getElementById(id);
