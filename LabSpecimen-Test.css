@@ -922,3 +922,7 @@ select.is-invalid,
 }
 /* Give the inner content some breathing room */
 #popup .popup-body { padding: 12px; }
+
+#slotHelpDeskTop:empty { display: none !important; }
+#malfunctionRow { margin-left: 0 !important; }
+#irbpro        { margin-right: 0 !important; }
