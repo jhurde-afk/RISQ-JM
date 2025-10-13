@@ -1143,3 +1143,36 @@ textarea.is-invalid {
 
 .cf-group label { display:block; margin:6px 0; }
 details summary { cursor:pointer; font-weight:600; margin:8px 0; }
+
+/* Stack HP + RCC and CF + HR (one above the other) */
+.hp-rcc-row {
+  display: flex !important;
+  flex-direction: column !important; /* ← vertical */
+  gap: 12px !important;
+}
+
+/* When JS adds .two-col-inline, force each block to full width anyway */
+.two-col-inline {
+  display: block !important;
+  width: 100% !important;
+  
+}
+
+/* Make any inline left indents disappear in this section (some blocks had margin-left) */
+.hp-rcc-row [style*="margin-left"] {
+  margin-left: 0 !important;
+}
+
+/* Keep Add/Edit from jumping when the readout grows */
+.readout-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 260px;               /* adjust if you want it narrower/wider */
+}
+
+.readout-stack a {            /* the Add/Edit link */
+  margin-top: 10px;            /* consistent gap */
+}
+
+
