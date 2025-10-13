@@ -626,25 +626,25 @@
                                 </div>
 
                                 <!-- right: readout + action -->
-                                <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
-                                    <div id="selectedHuddleParticipants" class="selected-services" style="margin-top: 5px;">Not Specified</div>
-                                    <a href="#" onclick="openPopup('huddleParticipantsPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                                <div class="readout-stack">
+                                  <div id="selectedHuddleParticipants" class="selected-services">Not Specified</div>
+                                  <a href="#" onclick="openPopup('huddleParticipantsPopup')" style="font-size: 13px;">Add/Edit</a>
                                 </div>
                             </div>
                         </div>
                       </div>
                       <!-- New section for Recent Clinical Changes -->
                       <div id="recentClinicalChanges" style="display: none; ">
-                          <div class="form-row recent-clinical-changes-row" style="margin-top: 6%;">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 30px;">
+                          <div class="form-row recent-clinical-changes-row" style="margin-top: 4%;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 115px;">
                                 <div style="display:flex; flex-direction:column;">
                                   <label for="recentClinicalChanges" style="font-size: 13px;">Recent Clinical Changes</label>
                                   <div class="dashed-underline" style="width:150px; margin-top:0;"></div>
                                 </div> 
 
-                                <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
-                                  <div id="selectedRecentClinicalChanges" class="selected-services" style="margin-top: 5px;">Not Specified</div>
-                                  <a href="#" onclick="openPopup('recentClinicalChangesPopup')" style="display: block; margin-top: 5px; font-size: 13px;">Add/Edit</a>
+                                <div class="readout-stack">
+                                  <div id="selectedRecentClinicalChanges" class="selected-services">Not Specified</div>
+                                  <a href="#" onclick="openPopup('recentClinicalChangesPopup')" style="font-size: 13px;">Add/Edit</a>
                                 </div>
                             </div>
                           </div>
@@ -714,8 +714,8 @@
 
                 <div class="form-row hp-rcc-row">
                     <div id="cfBlock">
-                        <div class="form-row contributing-factors-row" style="margin-top:2%;">
-                            <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 115px;">
+                        <div class="form-row contributing-factors-row" style="margin-top: 4%;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-end; gap: 125px;">
                                 <!-- left: title + underline -->
                                 <div style="display:flex; flex-direction:column;">
                                     <label for="contributingFactors" style="font-size:13px;">Contributing Factors</label>
@@ -723,23 +723,23 @@
                                 </div>
 
                                 <!-- right: readout + action -->
-                                <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column;">
-                                  <div id="selectedContributingFactors" class="selected-services" style="margin:0; width:auto;">Not Specified</div>
-                                  <a href="#" onclick="openPopup('contributingFactorsPopup')" style="display: block; font-size: 13px;">Add/Edit</a>
+                                <div class="readout-stack">
+                                  <div id="selectedContributingFactors" class="selected-services">Not Specified</div>
+                                  <a href="#" onclick="openPopup('contributingFactorsPopup')" style="font-size: 13px;">Add/Edit</a>
                                 </div>
                             </div>
                         </div>  
                     </div>
               
-                    <div style="display:flex; align-items:flex-end; gap: 30px; margin-left: 25px;">
+                    <div style="display:flex; align-items:flex-end; gap: 140px; margin-left: 25px; margin-top: 4%;">
                       <div style="display:flex; flex-direction:column;">    
                         <label for="highRisk" style="font-size: 13px;">High Risk Criteria</label>
                         <div class="dashed-underline" style="width: 120px; margin-top: -2%;"></div>
                       </div>
 
-                      <div style="display:flex; align-items:center; gap:12px; font-size:13px; flex-direction: column; margin-left: 7%;">
-                        <div id="selectedHighRisk" class="selected-services" style="margin-top: 5px;">Not Specified</div>
-                        <a href="#" onclick="openPopup('highRiskPopup')" style="display: block; font-size: 13px;">Add/Edit</a>
+                      <div class="readout-stack">
+                        <div id="selectedHighRisk" class="selected-services">Not Specified</div>
+                        <a href="#" onclick="openPopup('highRiskPopup')" style="font-size: 13px;">Add/Edit</a>
                       </div>
                     </div>
                 </div>
@@ -1180,11 +1180,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 function openPopup(id){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.add('is-open');      // see CSS note below
-    el.style.display = 'block';
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  // Prefill the MRN in the patient lookup popup
+  if (id === 'searchPopup') {
+    const mainMrn   = document.getElementById('mrn');        // main form field
+    const lookupMrn = document.getElementById('searchMrn');  // popup field
+    if (mainMrn && lookupMrn) {
+      lookupMrn.value = (mainMrn.value || '').trim();
+      // focus/select so the user can immediately type or hit Enter
+      setTimeout(() => { lookupMrn.focus(); lookupMrn.select(); }, 0);
+    }
   }
+
+  el.style.display = 'block';
+}
 
 function closePopup(id){
   const el = document.getElementById(id);
@@ -1721,15 +1732,6 @@ function toggleContent(contentId, arrowBoxId) {
     updateProgressBar('fileProgressBar', 0); // 50% completed
     updateProgressBar('mandatoryProgressBar', 0); // 50% completed
 
-    // Function to open a popup
-    function openPopup(popupId) {
-        document.getElementById(popupId).style.display = 'block';
-    }
-
-    // Function to close a popup
-    function closePopup(popupId) {
-        document.getElementById(popupId).style.display = 'none';
-    }
 
 function confirmSelection(popupId, selectedId) {
   const popup = document.getElementById(popupId);
@@ -1756,7 +1758,9 @@ function confirmSelection(popupId, selectedId) {
 
   const out = document.getElementById(selectedId);
   // after you collect `items` …
-  out.innerText = items.length ? items.join('\n') : 'Not Specified';
+  if (out) {
+      out.textContent = items.length ? "• " + items.join("\n• ") : "Not Specified";
+    }
   // make sure newlines show as line breaks
   out.style.whiteSpace = 'pre-line';
 
@@ -1850,14 +1854,6 @@ function confirmSelection(popupId, selectedId) {
             event.preventDefault();
         });
     });
-
-    function openPopup(popupId) {
-    document.getElementById(popupId).style.display = 'block';
-    }
-
-    function closePopup(popupId) {
-        document.getElementById(popupId).style.display = 'none';
-    }
 
 function searchPatient(){
     const mrn  = document.getElementById('searchMrn').value.trim();
