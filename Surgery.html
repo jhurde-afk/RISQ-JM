@@ -1537,17 +1537,29 @@ document.querySelectorAll('form').forEach(form => {
 });
 
 function openPopup(id){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.add('is-open');      // see CSS note below
-    el.style.display = 'block';
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  // Prefill the MRN in the patient lookup popup
+  if (id === 'searchPopup') {
+    const mainMrn   = document.getElementById('mrn');        // main form field
+    const lookupMrn = document.getElementById('searchMrn');  // popup field
+    if (mainMrn && lookupMrn) {
+      lookupMrn.value = (mainMrn.value || '').trim();
+      setTimeout(() => { lookupMrn.focus(); lookupMrn.select(); }, 0);
+    }
   }
-  function closePopup(id){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.remove('is-open');
-    el.style.display = 'none';
-  }
+
+  el.classList.add('is-open');
+  el.style.display = 'block';
+}
+
+function closePopup(id){
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('is-open');
+  el.style.display = 'none';
+}
 
 
 function clearSearchFields(){
@@ -2358,6 +2370,47 @@ function isEventSectionComplete(sectionEl) {
     };
   }
 })();
+
+function systemSection(value) {
+  const initial = document.getElementById('systemInitial');
+  const grid    = document.getElementById('systemGrid');
+  const radios  = document.getElementById('systemRadios');
+
+  // make the EHR column occupy a whole line when opened
+  const systemCol  = document.getElementById('systemRow');                 // the column
+  const sectionRow = systemCol ? systemCol.closest('.form-section-row') : null;
+
+  if (value === 'yes' || value === 'unknown') {
+    // show details
+    if (initial) initial.style.display = 'none';
+    if (grid) {
+      grid.style.display = 'grid';
+      grid.children[0].appendChild(radios);
+    }
+    if (radios) {
+      radios.style.marginTop = '8px';
+      radios.style.flexDirection = 'row';
+    }
+
+    // force this column onto its own row
+    if (sectionRow) sectionRow.style.flexWrap = 'wrap';  // allow wrapping (safety)
+    if (systemCol)  systemCol.style.flex = '0 0 100%';   // take full width
+  } else {
+    // hide details and restore normal layout
+    if (initial) {
+      initial.style.display = 'flex';
+      initial.appendChild(radios);
+    }
+    if (grid) grid.style.display = 'none';
+    if (radios) {
+      radios.style.marginTop = '0';
+      radios.style.flexDirection = 'row';
+    }
+
+    if (systemCol)  systemCol.style.flex = '1 1 0';       // share the row again
+  }
+}
+
 
 
 </script>
