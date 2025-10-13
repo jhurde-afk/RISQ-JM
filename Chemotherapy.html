@@ -457,7 +457,7 @@
                                 <div style="display: flex; flex-direction: column;">    
                                     <label for="IRBno" style="font-size: 13px;">IRB #</label>
                                     <div class="dashed-underline" style="width: 60px; margin-top: 0%;"></div>
-                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%;">
+                                    <input type="text" id="IRBno" name="IRBno" style="width: 90%; height: 75%;">
                                 </div>
                             </div>    
                         </div>
@@ -1264,15 +1264,27 @@ document.querySelectorAll('form').forEach(form => {
 });
 
 function openPopup(id){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.classList.add('is-open');      // see CSS note below
-    el.style.display = 'block';
+  const el = document.getElementById(id);
+  if (!el) return;
 
-    if (id === 'popup') {
-    window.dispatchEvent(new Event('open-med-popup'));
+  // Prefill the MRN in the patient lookup popup
+  if (id === 'searchPopup') {
+    const mainMrn   = document.getElementById('mrn');        // main form field
+    const lookupMrn = document.getElementById('searchMrn');  // popup field
+    if (mainMrn && lookupMrn) {
+      lookupMrn.value = (mainMrn.value || '').trim();
+      setTimeout(() => { lookupMrn.focus(); lookupMrn.select(); }, 0);
     }
   }
+
+  el.classList.add('is-open');
+  el.style.display = 'block';
+
+  if (id === 'popup') {
+  window.dispatchEvent(new Event('open-med-popup'));
+  }
+}
+  
   function closePopup(id){
     const el = document.getElementById(id);
     if (!el) return;
